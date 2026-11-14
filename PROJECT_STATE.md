@@ -1,28 +1,26 @@
 # ATIAF Project State — CANONICAL HANDOFF
-- **Snapshot:** 2026-11-14; Phase P2 completed, transitioning to Phase P3.
+- **Snapshot:** 2026-11-14; Phase P3 completed, transitioning to Phase P4.
 - **Project root:** `أطياف/` (UTF-8 path: `d:\My Software\ATIAF`). Git repository on branch `main`.
-- **Current phase:** P3 — Native ArcGIS Pro independent tools (.pyt), parameter UI, validation, and Tool 01 (Spectral Indices).
-- **Active plans:** None currently active. PLAN-0001, PLAN-0002, and PLAN-0003 completed.
+- **Current phase:** P4 — Surface Temperature (Tool 02) & Geological / Mineral Analysis (Tool 05).
+- **Active plans:** None currently active. PLAN-0001 through PLAN-0004 completed.
 - **Completed plans:**
   - PLAN-0001 (`Development_Plans/Completed/PLAN-0001_bootstrap.md`).
   - PLAN-0002 (`Development_Plans/Completed/PLAN-0002_product_recognition.md`).
   - PLAN-0003 (`Development_Plans/Completed/PLAN-0003_core_raster_crs_output.md`).
-- **Latest numbered development report:** `Reports/0003_core_raster_crs_output.md`.
-- **Agent Development Journal:** Canonical append-only journal in `.agent-development-log/` (verified 5 records).
+  - PLAN-0004 (`Development_Plans/Completed/PLAN-0004_arcgis_pro_spectral_indices.md`).
+- **Latest numbered development report:** `Reports/0004_arcgis_pro_spectral_indices.md`.
+- **Agent Development Journal:** Canonical append-only journal in `.agent-development-log/` (verified 7 records).
 - **Approved Skills:** Cloned in `.agent_resources/GIS-Development-Skills` (commit `2a0a9a23618e40218484ec8ae5848a481df51f1a`).
 - **Host runtime verification:**
   - Python 3.14.7 (standalone) with `numpy 2.5.3`, `rasterio 1.5.2`, `shapely 2.1.2`, `geopandas 1.2.0`, `pyproj 3.8.0`.
   - QGIS 4.2.3-Belém do Pará with verified working PyQGIS (`qgis.core`).
   - ArcGIS Pro 3.6.0.59527 (`C:\Program Files\ArcGIS\Pro`).
 - **Implemented GIS processing:**
-  - `atyaf_core/discovery/`: Landsat C2 L2 / L1 MSS, Sentinel-2 L2A / L1C, ASTER AST_07 / AST_08 / L1T, SceneScanner, ManualBandMapper.
-  - `atyaf_core/raster/`:
-    - `CRSManager`: projected metre validation (Decision D-007), geographic degree rejection.
-    - `QualityMaskEngine`: Landsat QA_PIXEL bitmask and Sentinel-2 SCL categorical filtering.
-    - `PolygonClipEngine`: true polygon geometry clipping, auto CRS reprojection, affine updates.
-    - `WindowedRasterEngine`: chunked block processing with streaming statistics and atomic writes (`.tmp_*` cleanup on error).
-    - `WorkspaceManager`: hierarchical `Work/` and `Results/` (no `Results_2`), cache fingerprinting, run manifests.
+  - `atyaf_core/discovery/`: Landsat, Sentinel-2, ASTER, SceneScanner, ManualBandMapper.
+  - `atyaf_core/raster/`: CRSManager (projected metre enforcement), QualityMaskEngine, PolygonClipEngine, WindowedRasterEngine, WorkspaceManager.
+  - `atyaf_core/indices/`: INDEX_CATALOG (14 validated optical indices), SpectralIndicesEngine (capability gating, QA masking, windowed processing, AOI clipping, run manifests).
+  - `arcgis_pro/ATIAF.pyt`: Native Python Toolbox containing Tool 01 (Spectral Indices | المؤشرات الطيفية) with canonical 8-parameter layout, dynamic validation, metric projected CRS checking, and map execution.
 - **Verified checks in package:**
-  - `python tools/validate_package.py`: PASS (285 md, 98 json).
-  - `python -m unittest discover tests`: PASS (29 unit tests passing).
-- **Pending next:** Phase P3 — Native ArcGIS Pro Python Toolbox (`arcgis_pro/ATIAF.pyt`), tool parameter specification and validator, and Tool 01 (Spectral Indices) implementing vegetation, water, soil, urban, burn, and snow indices connected to the core engine.
+  - `python tools/validate_package.py`: PASS (289 md, 100 json).
+  - `python -m unittest discover tests`: PASS (40 unit tests passing).
+- **Pending next:** Phase P4 — Implement Tool 02 (Surface Temperature: official L2 ST, Brightness Temperature, Split-Window/Single-Channel) and Tool 05 (Geological & Mineral Analysis: iron oxides, clay/hydroxyl alteration, ASTER thermal indices), adding both tools to `arcgis_pro/ATIAF.pyt`.

@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "sequence": 7,
+  "timestamp_utc": "2026-11-14T11:18:00+00:00",
+  "kind": "request",
+  "status": "proposed",
+  "summary": "Phase P3: ArcGIS Pro Independent Tools & Tool 01 (Spectral Indices)",
+  "details": "Implement atyaf_core/indices, arcgis_pro/ATIAF.pyt with 8 canonical parameters, parameter validation, and unit tests",
+  "references": [],
+  "task_id": "PLAN-0004",
+  "plan_revision": "r1",
+  "changed_files": [],
+  "tests": [],
+  "test_result": "not_run",
+  "commit": "",
+  "previous_hash": "2b27968676b6ba64a810fdedb713c175c7bb67cecd3c3029367c44ec1b825076",
+  "hash": "19e86e1a75a6e25f29b464703c650f57cdbdec007cd8d2a0e72f2c964280c780"
+}

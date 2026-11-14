@@ -114,8 +114,8 @@ class WindowedRasterEngine:
 
                         # Accumulate streaming statistics
                         valid_pixels = result_block_clean[~invalid_mask]
-                        valid_count += valid_pixels.size
-                        nodata_count += np.count_nonzero(invalid_mask)
+                        valid_count += int(valid_pixels.size)
+                        nodata_count += int(np.count_nonzero(invalid_mask))
 
                         if valid_pixels.size > 0:
                             b_min = float(np.min(valid_pixels))

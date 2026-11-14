@@ -1,5 +1,5 @@
 # Development Plans — chronological index
-**Current state:** PLAN-0003 is COMPLETED. Ready for Phase P3.
+**Current state:** PLAN-0004 is COMPLETED. Ready for Phase P4.
 
 ## Numbering rules
 - Incoming root file `PLAN_*.md` or `TASK_*.md` -> `PLAN-0001_short_slug.md` in `Active/` on verified intake, then `PLAN-0002` etc. Record a new revision in-file if requirements change.
@@ -11,3 +11,4 @@
 | [PLAN-0001](Completed/PLAN-0001_bootstrap.md) | Repository Bootstrap, Skills & Environment Verification | Completed | r1 | [0001_initial_bootstrap_and_environment.md](../Reports/0001_initial_bootstrap_and_environment.md) | Phase P0 bootstrap, skills, and baseline verification |
 | [PLAN-0002](Completed/PLAN-0002_product_recognition.md) | Product Recognition, Scene Discovery & Metadata Extraction Core | Completed | r1 | [0002_product_recognition.md](../Reports/0002_product_recognition.md) | Phase P1 scene discovery and metadata core |
 | [PLAN-0003](Completed/PLAN-0003_core_raster_crs_output.md) | Core Raster Array Processing, CRS, Masks & Workspace Manager | Completed | r1 | [0003_core_raster_crs_output.md](../Reports/0003_core_raster_crs_output.md) | Phase P2 raster operations, CRS, QA masks, workspace manager |
+| [PLAN-0004](Completed/PLAN-0004_arcgis_pro_spectral_indices.md) | ArcGIS Pro Independent Tools & Tool 01 (Spectral Indices) | Completed | r1 | [0004_arcgis_pro_spectral_indices.md](../Reports/0004_arcgis_pro_spectral_indices.md) | Phase P3 ArcGIS Pro .pyt, validation, and Tool 01 Spectral Indices |

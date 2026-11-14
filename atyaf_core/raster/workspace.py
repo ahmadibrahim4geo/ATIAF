@@ -121,6 +121,11 @@ class WorkspaceManager:
         run_dir = reports_dir / "Runs" / run_id
         run_dir.mkdir(parents=True, exist_ok=True)
 
+        def json_encoder(obj):
+            if hasattr(obj, "item"):
+                return obj.item()
+            return str(obj)
+
         # 1. Processing_Manifest.json
         manifest_data = {
             "run_id": run_id,
@@ -131,13 +136,13 @@ class WorkspaceManager:
             "qa_summary": qa_summary or {},
         }
         (run_dir / "Processing_Manifest.json").write_text(
-            json.dumps(manifest_data, indent=2, ensure_ascii=False) + "\n",
+            json.dumps(manifest_data, indent=2, ensure_ascii=False, default=json_encoder) + "\n",
             encoding="utf-8",
         )
 
         # 2. Parameters.json
         (run_dir / "Parameters.json").write_text(
-            json.dumps(parameters, indent=2, ensure_ascii=False, default=str) + "\n",
+            json.dumps(parameters, indent=2, ensure_ascii=False, default=json_encoder) + "\n",
             encoding="utf-8",
         )
 
