@@ -1,0 +1,455 @@
+{
+  "schema_version": "0.1",
+  "catalog_status": "CANDIDATES_ONLY_NOT_EXECUTABLE",
+  "reproducibility_note": "Original papers and sensor-specific inputs must be independently reviewed before support enabled",
+  "items": [
+    {
+      "id": "NDVI_RN",
+      "acronym": "NDVI",
+      "name_ar": "مؤشر الفرق المعياري للغطاء النباتي",
+      "name_en": "Normalized Difference Vegetation Index",
+      "category": "Vegetation",
+      "formula": "(NIR-Red)/(NIR+Red)",
+      "band_roles": [
+        "NIR",
+        "Red"
+      ],
+      "source_url": "https://github.com/awesome-spectral-indices/awesome-spectral-indices",
+      "requires": [],
+      "notes": "",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "SAVI_SOIL",
+      "acronym": "SAVI",
+      "name_ar": "مؤشر الغطاء النباتي المعدّل للتربة",
+      "name_en": "Soil Adjusted Vegetation Index",
+      "category": "Vegetation",
+      "formula": "((NIR-Red)/(NIR+Red+L))*(1+L)",
+      "band_roles": [
+        "NIR",
+        "Red"
+      ],
+      "source_url": "https://github.com/awesome-spectral-indices/awesome-spectral-indices",
+      "requires": [
+        "L"
+      ],
+      "notes": "Requires justified soil constant L",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "EVI_3B",
+      "acronym": "EVI",
+      "name_ar": "مؤشر الغطاء النباتي المحسن",
+      "name_en": "Enhanced Vegetation Index",
+      "category": "Vegetation",
+      "formula": "G*(NIR-Red)/(NIR+C1*Red-C2*Blue+L)",
+      "band_roles": [
+        "NIR",
+        "Red",
+        "Blue"
+      ],
+      "source_url": "https://github.com/awesome-spectral-indices/awesome-spectral-indices",
+      "requires": [
+        "G",
+        "C1",
+        "C2",
+        "L"
+      ],
+      "notes": "Coefficients require verified formula variant",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "NDRE",
+      "acronym": "NDRE",
+      "name_ar": "الفرق المعياري للحافة الحمراء",
+      "name_en": "Normalized Difference Red Edge",
+      "category": "Vegetation",
+      "formula": "(NIR-RedEdge)/(NIR+RedEdge)",
+      "band_roles": [
+        "NIR",
+        "RedEdge"
+      ],
+      "source_url": "https://github.com/awesome-spectral-indices/awesome-spectral-indices",
+      "requires": [],
+      "notes": "Red edge absent on Landsat OLI",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "GNDVI",
+      "acronym": "GNDVI",
+      "name_ar": "مؤشر الغطاء النباتي المعياري الأخضر",
+      "name_en": "Green Normalized Difference Vegetation Index",
+      "category": "Vegetation",
+      "formula": "(NIR-Green)/(NIR+Green)",
+      "band_roles": [
+        "NIR",
+        "Green"
+      ],
+      "source_url": "https://github.com/awesome-spectral-indices/awesome-spectral-indices",
+      "requires": [],
+      "notes": "",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "NDWI_MCFEETERS",
+      "acronym": "NDWI",
+      "name_ar": "مؤشر المياه المعياري (ماكفيترز)",
+      "name_en": "Normalized Difference Water Index — McFeeters",
+      "category": "Water",
+      "formula": "(Green-NIR)/(Green+NIR)",
+      "band_roles": [
+        "Green",
+        "NIR"
+      ],
+      "source_url": "https://github.com/awesome-spectral-indices/awesome-spectral-indices",
+      "requires": [],
+      "notes": "Separate from Gao NDWI despite shared acronym",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "NDWI_GAO",
+      "acronym": "NDWI",
+      "name_ar": "مؤشر المياه النباتية (جاو)",
+      "name_en": "Normalized Difference Water Index — Gao",
+      "category": "Water",
+      "formula": "(NIR-SWIR1)/(NIR+SWIR1)",
+      "band_roles": [
+        "NIR",
+        "SWIR1"
+      ],
+      "source_url": "https://github.com/awesome-spectral-indices/awesome-spectral-indices",
+      "requires": [],
+      "notes": "Separate from McFeeters NDWI despite shared acronym",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "MNDWI_XU",
+      "acronym": "MNDWI",
+      "name_ar": "مؤشر المياه المعياري المعدّل",
+      "name_en": "Modified Normalized Difference Water Index",
+      "category": "Water",
+      "formula": "(Green-SWIR1)/(Green+SWIR1)",
+      "band_roles": [
+        "Green",
+        "SWIR1"
+      ],
+      "source_url": "https://github.com/awesome-spectral-indices/awesome-spectral-indices",
+      "requires": [],
+      "notes": "",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "NDMI",
+      "acronym": "NDMI",
+      "name_ar": "مؤشر الرطوبة المعياري",
+      "name_en": "Normalized Difference Moisture Index",
+      "category": "Water",
+      "formula": "(NIR-SWIR1)/(NIR+SWIR1)",
+      "band_roles": [
+        "NIR",
+        "SWIR1"
+      ],
+      "source_url": "https://github.com/awesome-spectral-indices/awesome-spectral-indices",
+      "requires": [],
+      "notes": "Can be algebraically same as Gao NDWI, keep method provenance",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "NDBI_ZHA",
+      "acronym": "NDBI",
+      "name_ar": "مؤشر المناطق المبنية المعياري",
+      "name_en": "Normalized Difference Built-up Index",
+      "category": "Urban",
+      "formula": "(SWIR1-NIR)/(SWIR1+NIR)",
+      "band_roles": [
+        "SWIR1",
+        "NIR"
+      ],
+      "source_url": "https://github.com/awesome-spectral-indices/awesome-spectral-indices",
+      "requires": [],
+      "notes": "",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "NBR",
+      "acronym": "NBR",
+      "name_ar": "مؤشر الاحتراق المعياري",
+      "name_en": "Normalized Burn Ratio",
+      "category": "Burn",
+      "formula": "(NIR-SWIR2)/(NIR+SWIR2)",
+      "band_roles": [
+        "NIR",
+        "SWIR2"
+      ],
+      "source_url": "https://github.com/awesome-spectral-indices/awesome-spectral-indices",
+      "requires": [],
+      "notes": "",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "NDSI_SNOW",
+      "acronym": "NDSI",
+      "name_ar": "مؤشر الثلوج المعياري",
+      "name_en": "Normalized Difference Snow Index",
+      "category": "Snow",
+      "formula": "(Green-SWIR1)/(Green+SWIR1)",
+      "band_roles": [
+        "Green",
+        "SWIR1"
+      ],
+      "source_url": "https://github.com/awesome-spectral-indices/awesome-spectral-indices",
+      "requires": [],
+      "notes": "Algebraically similar to MNDWI but different interpretation",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "BSI_VARIANT_1",
+      "acronym": "BSI",
+      "name_ar": "مؤشر التربة العارية — صيغة محددة",
+      "name_en": "Bare Soil Index — defined variant",
+      "category": "Soil",
+      "formula": "((SWIR1+Red)-(NIR+Blue))/((SWIR1+Red)+(NIR+Blue))",
+      "band_roles": [
+        "SWIR1",
+        "Red",
+        "NIR",
+        "Blue"
+      ],
+      "source_url": "https://github.com/awesome-spectral-indices/awesome-spectral-indices",
+      "requires": [],
+      "notes": "Do not equate all acronyms BSI",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "IRON_OXIDE_RED_BLUE",
+      "acronym": "IronOxide",
+      "name_ar": "نسبة أكاسيد الحديد أحمر/أزرق",
+      "name_en": "Iron oxide red/blue ratio",
+      "category": "Geology",
+      "formula": "Red/Blue",
+      "band_roles": [
+        "Red",
+        "Blue"
+      ],
+      "source_url": "https://github.com/awesome-spectral-indices/awesome-spectral-indices",
+      "requires": [],
+      "notes": "Mineral indication only; cite source method/sensor and land-cover confounders",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "CLAY_SWIR_RATIO",
+      "acronym": "ClayRatio",
+      "name_ar": "نسبة المعادلة الطينية قصيرة الموجة",
+      "name_en": "Clay/Hydroxyl SWIR ratio",
+      "category": "Geology",
+      "formula": "SWIR1/SWIR2",
+      "band_roles": [
+        "SWIR1",
+        "SWIR2"
+      ],
+      "source_url": "https://github.com/awesome-spectral-indices/awesome-spectral-indices",
+      "requires": [],
+      "notes": "Clay/OH alteration proxy, not mineral confirmation; sensor wavelengths must be validated",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "ASTER_QUARTZ_QI",
+      "acronym": "QI",
+      "name_ar": "مؤشر الكوارتز أستر",
+      "name_en": "ASTER Quartz Index",
+      "category": "Geology",
+      "formula": "(TIR11*TIR11)/(TIR10*TIR12)",
+      "band_roles": [
+        "TIR10",
+        "TIR11",
+        "TIR12"
+      ],
+      "source_url": "https://doi.org/10.11440/rssj1981.22.50",
+      "requires": [],
+      "notes": "Requires original ASTER TIR method and emissivity/radiance validation",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "ASTER_CARBONATE_CI",
+      "acronym": "CI",
+      "name_ar": "مؤشر الكربونات أستر",
+      "name_en": "ASTER Carbonate Index",
+      "category": "Geology",
+      "formula": "TIR13/TIR14",
+      "band_roles": [
+        "TIR13",
+        "TIR14"
+      ],
+      "source_url": "https://doi.org/10.11440/rssj1981.22.50",
+      "requires": [],
+      "notes": "Requires ASTER TIR product semantics verification",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "TCB",
+      "acronym": "TCB",
+      "name_ar": "سطوع Tasseled Cap",
+      "name_en": "Tasseled Cap Brightness",
+      "category": "Transformation",
+      "formula": "sensor_specific_weighted_sum",
+      "band_roles": [
+        "multi_band"
+      ],
+      "source_url": "https://grass.osgeo.org/grass-stable/manuals/i.tasscap.html",
+      "requires": [],
+      "notes": "Select coefficient vector by sensor AND processing level",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "TCG",
+      "acronym": "TCG",
+      "name_ar": "اخضرار Tasseled Cap",
+      "name_en": "Tasseled Cap Greenness",
+      "category": "Transformation",
+      "formula": "sensor_specific_weighted_sum",
+      "band_roles": [
+        "multi_band"
+      ],
+      "source_url": "https://grass.osgeo.org/grass-stable/manuals/i.tasscap.html",
+      "requires": [],
+      "notes": "Select coefficient vector by sensor AND processing level",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "TCW",
+      "acronym": "TCW",
+      "name_ar": "رطوبة Tasseled Cap",
+      "name_en": "Tasseled Cap Wetness",
+      "category": "Transformation",
+      "formula": "sensor_specific_weighted_sum",
+      "band_roles": [
+        "multi_band"
+      ],
+      "source_url": "https://grass.osgeo.org/grass-stable/manuals/i.tasscap.html",
+      "requires": [],
+      "notes": "Select coefficient vector by sensor AND processing level",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "LST_C2_L2",
+      "acronym": "LST",
+      "name_ar": "درجة حرارة سطح الأرض",
+      "name_en": "Landsat C2 Level-2 surface temperature",
+      "category": "Thermal",
+      "formula": "ST_BAND_DN*0.00341802+149.0-273.15",
+      "band_roles": [
+        "OfficialSurfaceTemperatureBand"
+      ],
+      "source_url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products",
+      "requires": [],
+      "notes": "Celsius; validate exact product, QA and fill",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "SUHI_MEAN_DIFFERENCE",
+      "acronym": "SUHI",
+      "name_ar": "الجزيرة الحرارية السطحية",
+      "name_en": "Surface Urban Heat Island",
+      "category": "Thermal",
+      "formula": "mean(UrbanLST)-mean(RuralReferenceLST)",
+      "band_roles": [
+        "LST",
+        "UrbanMask",
+        "RuralMask"
+      ],
+      "source_url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products",
+      "requires": [],
+      "notes": "Need legitimate rural reference and comparable dates",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "TVDI",
+      "acronym": "TVDI",
+      "name_ar": "مؤشر جفاف النبات الحراري",
+      "name_en": "Temperature Vegetation Dryness Index",
+      "category": "Drought",
+      "formula": "(LST-LST_wet_edge_NDVI)/(LST_dry_edge_NDVI-LST_wet_edge_NDVI)",
+      "band_roles": [
+        "LST",
+        "NDVI"
+      ],
+      "source_url": "https://github.com/awesome-spectral-indices/awesome-spectral-indices",
+      "requires": [],
+      "notes": "Dry/wet envelope fit and sample sufficient; not direct soil moisture",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "ALBEDO",
+      "acronym": "Albedo",
+      "name_ar": "البياض السطحي",
+      "name_en": "Broadband Surface Albedo",
+      "category": "Energy",
+      "formula": "sensor_specific_broadband_estimator",
+      "band_roles": [
+        "multiple_reflectance_bands"
+      ],
+      "source_url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products",
+      "requires": [],
+      "notes": "Requires sensor specific scientifically cited coefficients",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "PCA",
+      "acronym": "PCA",
+      "name_ar": "تحليل المكونات الرئيسية",
+      "name_en": "Principal Component Analysis",
+      "category": "Transformation",
+      "formula": "eigenvectors_of_covariance_from_valid_pixels",
+      "band_roles": [
+        "multi_band"
+      ],
+      "source_url": "https://github.com/awesome-spectral-indices/awesome-spectral-indices",
+      "requires": [],
+      "notes": "Transformation method, no single fixed band-ratio equation",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    },
+    {
+      "id": "SAM",
+      "acronym": "SAM",
+      "name_ar": "مطابقة الزاوية الطيفية",
+      "name_en": "Spectral Angle Mapper",
+      "category": "Hyperspectral",
+      "formula": "arccos(dot(x,r)/(norm(x)*norm(r)))",
+      "band_roles": [
+        "spectral_cube",
+        "reference_spectrum"
+      ],
+      "source_url": "https://github.com/awesome-spectral-indices/awesome-spectral-indices",
+      "requires": [],
+      "notes": "Needs validated reference spectrum, wavelength alignment and QA",
+      "status": "CANDIDATE_UNVERIFIED",
+      "implementation_status": "NOT_IMPLEMENTED"
+    }
+  ]
+}

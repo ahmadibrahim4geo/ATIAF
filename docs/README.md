@@ -1,0 +1,2 @@
+# ATIAF documentation structure
+Primary language deliverables are Markdown in `docs/ar` and `docs/en`. `docs/index.html` is a small offline navigation page to Markdown documents, **not yet a fully generated searchable bilingual documentation website**. Agent roadmap P9 will generate actual HTML pages, screenshots and optional `.chm` files for Windows, preserving Markdown as the canonical source. Add native ArcGIS Pro/QGIS help files per tool when implementation begins.

@@ -1,0 +1,2 @@
+# Reuse ATIAF lessons in GIS-Development-Skills
+As ATIAF gains verified capabilities, create concise **reusable and project-agnostic** skill proposals here. Candidate contributions: Satellite Sensor Compatibility, Spectral Index Engineering, Project Development Lifecycle, Scientific Processing Reports, Raster Workspace Performance. Each proposal must state purpose, prerequisites, workflow, independent tests, copyright/license, generic examples, and observed evidence; link a numbered `Reports/` entry and Git reference. No upstream PR/send happens automatically.

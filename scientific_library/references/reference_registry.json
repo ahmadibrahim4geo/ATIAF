@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1",
+  "checked_at": "2026-11-13",
+  "sources": [
+    {
+      "id": "usgs_c2_l2",
+      "url": "https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products",
+      "publisher": "USGS",
+      "role": "official product science",
+      "license_review": "official source documentation; do not copy entire text"
+    },
+    {
+      "id": "copernicus_s2",
+      "url": "https://sentinels.copernicus.eu/sentinel-data-access/sentinel-products/sentinel-2-data-products",
+      "publisher": "ESA / Copernicus",
+      "role": "official data product specifications",
+      "license_review": "official docs linked"
+    },
+    {
+      "id": "aster_products",
+      "url": "https://asterweb.jpl.nasa.gov/data_products.asp",
+      "publisher": "NASA/JPL",
+      "role": "official ASTER products",
+      "license_review": "official docs linked"
+    },
+    {
+      "id": "awesome_indices",
+      "url": "https://github.com/awesome-spectral-indices/awesome-spectral-indices",
+      "publisher": "Awesome Spectral Indices contributors",
+      "role": "MIT offline index candidate catalog",
+      "license_review": "MIT license; pin commit, copy LICENSE and keep attribution"
+    },
+    {
+      "id": "idb",
+      "url": "https://www.indexdatabase.de/db/i.php",
+      "publisher": "Index DataBase",
+      "role": "reference/optional API",
+      "license_review": "do not redistribute full API data"
+    },
+    {
+      "id": "gis_skills",
+      "url": "https://github.com/ahmadibrahim4geo/GIS-Development-Skills",
+      "publisher": "Ahmed Ibrahim",
+      "role": "approved primary agent skills",
+      "license_review": "MIT per skill files; inspect full repo license"
+    },
+    {
+      "id": "astro_qi",
+      "url": "https://doi.org/10.11440/rssj1981.22.50",
+      "publisher": "Original ASTER geology study",
+      "role": "geological mineral index formula verification",
+      "license_review": "citation only"
+    }
+  ]
+}

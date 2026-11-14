@@ -1,0 +1,507 @@
+{
+  "schema_version": "0.1",
+  "status": "candidate_planning_only",
+  "sensors": [
+    {
+      "id": "LANDSAT_MSS_1_3",
+      "platform": "Landsat 1–3",
+      "instrument": "MSS",
+      "modality": "multispectral",
+      "approx_resolution": "~60–80m product-dependent",
+      "preferred_products": [
+        "L1"
+      ],
+      "portals": [
+        "usgs_ee"
+      ],
+      "available_roles": [
+        "Green",
+        "Red",
+        "NIR"
+      ],
+      "notes": "No SWIR or thermal, no MSS C2 L2 SR product; older files may differ in naming",
+      "planned_phase": 1,
+      "restrictions": "",
+      "implementation_status": "PLANNED_NOT_TESTED",
+      "validated_products": []
+    },
+    {
+      "id": "LANDSAT_MSS_4_5",
+      "platform": "Landsat 4–5",
+      "instrument": "MSS",
+      "modality": "multispectral",
+      "approx_resolution": "~60–80m product-dependent",
+      "preferred_products": [
+        "L1"
+      ],
+      "portals": [
+        "usgs_ee"
+      ],
+      "available_roles": [
+        "Green",
+        "Red",
+        "NIR"
+      ],
+      "notes": "Different band numbering from Landsat TM, verify acquisition metadata",
+      "planned_phase": 1,
+      "restrictions": "",
+      "implementation_status": "PLANNED_NOT_TESTED",
+      "validated_products": []
+    },
+    {
+      "id": "LANDSAT_TM_4_5",
+      "platform": "Landsat 4–5",
+      "instrument": "TM",
+      "modality": "multispectral_thermal",
+      "approx_resolution": "30m reflective; thermal coarser",
+      "preferred_products": [
+        "C2_L2_SR",
+        "C2_L2_ST",
+        "L1"
+      ],
+      "portals": [
+        "usgs_ee"
+      ],
+      "available_roles": [
+        "Blue",
+        "Green",
+        "Red",
+        "NIR",
+        "SWIR1",
+        "SWIR2",
+        "Thermal"
+      ],
+      "notes": "Collection 2 L2 ST only if available",
+      "planned_phase": 1,
+      "restrictions": "",
+      "implementation_status": "PLANNED_NOT_TESTED",
+      "validated_products": []
+    },
+    {
+      "id": "LANDSAT_ETM_7",
+      "platform": "Landsat 7",
+      "instrument": "ETM+",
+      "modality": "multispectral_thermal",
+      "approx_resolution": "30m reflective; thermal coarser",
+      "preferred_products": [
+        "C2_L2_SR",
+        "C2_L2_ST",
+        "L1"
+      ],
+      "portals": [
+        "usgs_ee"
+      ],
+      "available_roles": [
+        "Blue",
+        "Green",
+        "Red",
+        "NIR",
+        "SWIR1",
+        "SWIR2",
+        "Thermal"
+      ],
+      "notes": "SLC-off data gaps after 2003-05-31; verify scene",
+      "planned_phase": 1,
+      "restrictions": "",
+      "implementation_status": "PLANNED_NOT_TESTED",
+      "validated_products": []
+    },
+    {
+      "id": "LANDSAT_OLI_TIRS_8",
+      "platform": "Landsat 8",
+      "instrument": "OLI/TIRS",
+      "modality": "multispectral_thermal",
+      "approx_resolution": "30m reflective; TIR originally ~100m and delivered 30m grid",
+      "preferred_products": [
+        "C2_L2_SR",
+        "C2_L2_ST",
+        "L1"
+      ],
+      "portals": [
+        "usgs_ee"
+      ],
+      "available_roles": [
+        "Coastal",
+        "Blue",
+        "Green",
+        "Red",
+        "NIR",
+        "SWIR1",
+        "SWIR2",
+        "Cirrus",
+        "Thermal"
+      ],
+      "notes": "SR_B4=Red, SR_B5=NIR, ST_B10 official temperature product",
+      "planned_phase": 1,
+      "restrictions": "",
+      "implementation_status": "PLANNED_NOT_TESTED",
+      "validated_products": []
+    },
+    {
+      "id": "LANDSAT_OLI2_TIRS2_9",
+      "platform": "Landsat 9",
+      "instrument": "OLI-2/TIRS-2",
+      "modality": "multispectral_thermal",
+      "approx_resolution": "30m reflective; TIR originally ~100m and delivered 30m grid",
+      "preferred_products": [
+        "C2_L2_SR",
+        "C2_L2_ST",
+        "L1"
+      ],
+      "portals": [
+        "usgs_ee"
+      ],
+      "available_roles": [
+        "Coastal",
+        "Blue",
+        "Green",
+        "Red",
+        "NIR",
+        "SWIR1",
+        "SWIR2",
+        "Cirrus",
+        "Thermal"
+      ],
+      "notes": "Product availability depends on ancillary data",
+      "planned_phase": 1,
+      "restrictions": "",
+      "implementation_status": "PLANNED_NOT_TESTED",
+      "validated_products": []
+    },
+    {
+      "id": "SENTINEL2_MSI",
+      "platform": "Sentinel-2 A/B/C",
+      "instrument": "MSI",
+      "modality": "multispectral",
+      "approx_resolution": "10m / 20m / 60m bands",
+      "preferred_products": [
+        "L2A_SAFE",
+        "L1C_SAFE"
+      ],
+      "portals": [
+        "copernicus"
+      ],
+      "available_roles": [
+        "Coastal",
+        "Blue",
+        "Green",
+        "Red",
+        "RedEdge",
+        "NIR",
+        "SWIR1",
+        "SWIR2"
+      ],
+      "notes": "L2A BOA preferred; no thermal",
+      "planned_phase": 1,
+      "restrictions": "",
+      "implementation_status": "PLANNED_NOT_TESTED",
+      "validated_products": []
+    },
+    {
+      "id": "ASTER_TERRA",
+      "platform": "Terra",
+      "instrument": "ASTER",
+      "modality": "multispectral_thermal",
+      "approx_resolution": "VNIR 15m / SWIR 30m / TIR 90m",
+      "preferred_products": [
+        "AST_L1T",
+        "AST_07",
+        "AST_07XT",
+        "AST_05",
+        "AST_08",
+        "AST_09T"
+      ],
+      "portals": [
+        "earthdata"
+      ],
+      "available_roles": [
+        "Green",
+        "Red",
+        "NIR",
+        "SWIR1",
+        "SWIR2",
+        "Thermal"
+      ],
+      "notes": "Original HDF subdatasets, granule/date and product type; various Level-2 products on demand",
+      "planned_phase": 1,
+      "restrictions": "SWIR post-April-2008 generally scientifically unusable; TIR acquisitions ceased 2026-01-16",
+      "implementation_status": "PLANNED_NOT_TESTED",
+      "validated_products": []
+    },
+    {
+      "id": "SENTINEL3_OLCI",
+      "platform": "Sentinel-3 A/B",
+      "instrument": "OLCI",
+      "modality": "multispectral_ocean",
+      "approx_resolution": "~300m",
+      "preferred_products": [
+        "L1",
+        "L2"
+      ],
+      "portals": [
+        "copernicus"
+      ],
+      "available_roles": [
+        "OceanColor",
+        "Chlorophyll",
+        "Red",
+        "NIR"
+      ],
+      "notes": "Sea/ocean color spectral response and L2 products",
+      "planned_phase": 2,
+      "restrictions": "",
+      "implementation_status": "PLANNED_NOT_TESTED",
+      "validated_products": []
+    },
+    {
+      "id": "SENTINEL3_SLSTR",
+      "platform": "Sentinel-3 A/B",
+      "instrument": "SLSTR",
+      "modality": "multispectral_thermal",
+      "approx_resolution": "500m / 1km product-dependent",
+      "preferred_products": [
+        "L1",
+        "L2_LST"
+      ],
+      "portals": [
+        "copernicus"
+      ],
+      "available_roles": [
+        "Visible",
+        "NIR",
+        "SWIR",
+        "Thermal"
+      ],
+      "notes": "LST and active fire products different",
+      "planned_phase": 2,
+      "restrictions": "",
+      "implementation_status": "PLANNED_NOT_TESTED",
+      "validated_products": []
+    },
+    {
+      "id": "MODIS_TERRA_AQUA",
+      "platform": "Terra/Aqua",
+      "instrument": "MODIS",
+      "modality": "multispectral_thermal",
+      "approx_resolution": "250m/500m/1km product-dependent",
+      "preferred_products": [
+        "MOD09",
+        "MYD09",
+        "MOD11",
+        "MYD11",
+        "MOD13",
+        "MYD13"
+      ],
+      "portals": [
+        "earthdata"
+      ],
+      "available_roles": [
+        "Blue",
+        "Green",
+        "Red",
+        "NIR",
+        "SWIR1",
+        "SWIR2",
+        "Thermal"
+      ],
+      "notes": "Science data HDF/QA, temporal composite semantics",
+      "planned_phase": 2,
+      "restrictions": "",
+      "implementation_status": "PLANNED_NOT_TESTED",
+      "validated_products": []
+    },
+    {
+      "id": "VIIRS",
+      "platform": "Suomi NPP / NOAA",
+      "instrument": "VIIRS",
+      "modality": "multispectral_thermal",
+      "approx_resolution": "375m/750m and gridded variants",
+      "preferred_products": [
+        "L2_LST",
+        "L2_FIRE",
+        "L2_SR"
+      ],
+      "portals": [
+        "earthdata"
+      ],
+      "available_roles": [
+        "Blue",
+        "Green",
+        "Red",
+        "NIR",
+        "SWIR",
+        "Thermal"
+      ],
+      "notes": "Products vary by satellite and release; no uniform band map",
+      "planned_phase": 2,
+      "restrictions": "",
+      "implementation_status": "PLANNED_NOT_TESTED",
+      "validated_products": []
+    },
+    {
+      "id": "ECOSTRESS",
+      "platform": "ISS",
+      "instrument": "ECOSTRESS",
+      "modality": "thermal",
+      "approx_resolution": "~70m products",
+      "preferred_products": [
+        "L2_LST",
+        "L2_EMISSIVITY",
+        "L3_ET"
+      ],
+      "portals": [
+        "earthdata"
+      ],
+      "available_roles": [
+        "Thermal"
+      ],
+      "notes": "Prefer Version 2 and distinguish direct delivered products from calculated methods",
+      "planned_phase": 2,
+      "restrictions": "",
+      "implementation_status": "PLANNED_NOT_TESTED",
+      "validated_products": []
+    },
+    {
+      "id": "ENMAP",
+      "platform": "EnMAP",
+      "instrument": "HSI",
+      "modality": "hyperspectral",
+      "approx_resolution": "30m",
+      "preferred_products": [
+        "L2A_GEOTIFF",
+        "L1B",
+        "L1C"
+      ],
+      "portals": [
+        "enmap"
+      ],
+      "available_roles": [
+        "HyperspectralVNIR",
+        "HyperspectralSWIR"
+      ],
+      "notes": "Use real wavelength/FWHM metadata and QA; registration and license constraints",
+      "planned_phase": 3,
+      "restrictions": "",
+      "implementation_status": "PLANNED_NOT_TESTED",
+      "validated_products": []
+    },
+    {
+      "id": "PRISMA",
+      "platform": "PRISMA",
+      "instrument": "HSI",
+      "modality": "hyperspectral",
+      "approx_resolution": "30m HSI; 5m pan",
+      "preferred_products": [
+        "L2D",
+        "L2C"
+      ],
+      "portals": [
+        "prisma"
+      ],
+      "available_roles": [
+        "HyperspectralVNIR",
+        "HyperspectralSWIR"
+      ],
+      "notes": "ASI data-use terms, orthorectification and product levels to inspect",
+      "planned_phase": 3,
+      "restrictions": "",
+      "implementation_status": "PLANNED_NOT_TESTED",
+      "validated_products": []
+    },
+    {
+      "id": "EMIT",
+      "platform": "ISS",
+      "instrument": "EMIT imaging spectrometer",
+      "modality": "hyperspectral",
+      "approx_resolution": "~60m",
+      "preferred_products": [
+        "EMITL2ARFL",
+        "EMITL2BMIN"
+      ],
+      "portals": [
+        "earthdata"
+      ],
+      "available_roles": [
+        "HyperspectralVNIR",
+        "HyperspectralSWIR"
+      ],
+      "notes": "NetCDF4, L2A may be unorthorectified, requires geolocation work",
+      "planned_phase": 3,
+      "restrictions": "",
+      "implementation_status": "PLANNED_NOT_TESTED",
+      "validated_products": []
+    },
+    {
+      "id": "SENTINEL1_SAR",
+      "platform": "Sentinel-1",
+      "instrument": "C-band SAR",
+      "modality": "radar",
+      "approx_resolution": "~5–40m by GRD/SLC mode",
+      "preferred_products": [
+        "GRD",
+        "SLC"
+      ],
+      "portals": [
+        "copernicus",
+        "asf"
+      ],
+      "available_roles": [
+        "VV",
+        "VH",
+        "HH",
+        "HV"
+      ],
+      "notes": "Separate radar physics and products; no optical indices",
+      "planned_phase": 3,
+      "restrictions": "",
+      "implementation_status": "PLANNED_NOT_TESTED",
+      "validated_products": []
+    },
+    {
+      "id": "ALOS_PALSAR",
+      "platform": "ALOS",
+      "instrument": "PALSAR / PALSAR-2",
+      "modality": "radar",
+      "approx_resolution": "varies by mode/product",
+      "preferred_products": [
+        "SAR"
+      ],
+      "portals": [
+        "asf"
+      ],
+      "available_roles": [
+        "HH",
+        "HV",
+        "VV",
+        "VH"
+      ],
+      "notes": "Check exact mission/product restrictions and metadata",
+      "planned_phase": 3,
+      "restrictions": "",
+      "implementation_status": "PLANNED_NOT_TESTED",
+      "validated_products": []
+    },
+    {
+      "id": "NISAR_SAR",
+      "platform": "NASA–ISRO NISAR",
+      "instrument": "SAR",
+      "modality": "radar",
+      "approx_resolution": "varies by mode/product",
+      "preferred_products": [
+        "L1",
+        "L2"
+      ],
+      "portals": [
+        "earthdata"
+      ],
+      "available_roles": [
+        "RadarPolarizations"
+      ],
+      "notes": "Target future SAR workflow; verify mission archive and product availability at development date",
+      "planned_phase": 3,
+      "restrictions": "",
+      "implementation_status": "PLANNED_NOT_TESTED",
+      "validated_products": []
+    }
+  ]
+}

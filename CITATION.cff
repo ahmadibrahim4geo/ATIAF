@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: 'If you use ATIAF, please cite the software and the original scientific references for all computed indices.'
+title: 'ATIAF — Advanced Thematic Imagery Analysis Framework'
+authors:
+  - family-names: Ibrahim
+    given-names: Ahmed
+license: MIT
+type: software
+keywords:
+  - remote sensing
+  - GIS
+  - spectral indices
+  - satellite imagery
+repository-code: 'https://github.com/ahmadibrahim4geo'

@@ -1,0 +1,2 @@
+# Future pure-Python ATIAF Core
+Architectural placeholder only. Modules to implement: product discovery, scene metadata, sensor compatibility, safe calibration/masks, raster windows, CRS/grid harmonization, quality-aware mosaic, AOI clip, spectral/thermal/geological math, output and cache manager, report/manifest renderer, incremental deterministic processing, native host bridge. Make no claim these modules exist yet. See `PROJECT_SPECIFICATION.md`.

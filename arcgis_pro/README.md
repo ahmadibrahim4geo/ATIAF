@@ -1,0 +1,2 @@
+# ArcGIS Pro adapter (planned)
+Create a native `.pyt` Python Toolbox with multiple independent tools, all sharing `atyaf_core`. Validate native parameter capabilities and data types before promising arbitrary nested checkbox UI. Use ArcPy GP messages, native spatial reference chooser, host-safe Add Results to Map queue, localized help and true `.pyt` ArcGIS Pro integration tests. No `.pyt` has been implemented here.

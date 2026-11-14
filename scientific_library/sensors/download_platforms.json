@@ -1,0 +1,49 @@
+{
+  "schema_version": "0.1",
+  "checked_at": "2026-11-13",
+  "policy": "linked portal only; imagery is not bundled",
+  "portals": {
+    "usgs_ee": {
+      "name": "USGS EarthExplorer",
+      "url": "https://earthexplorer.usgs.gov/",
+      "cost": "free",
+      "registration": "free account often required",
+      "type": "download"
+    },
+    "copernicus": {
+      "name": "Copernicus Data Space Browser",
+      "url": "https://dataspace.copernicus.eu/browser/",
+      "cost": "free",
+      "registration": "free account for Browser download",
+      "type": "download"
+    },
+    "earthdata": {
+      "name": "NASA Earthdata Search",
+      "url": "https://search.earthdata.nasa.gov/",
+      "cost": "free",
+      "registration": "NASA Earthdata free login",
+      "type": "download"
+    },
+    "asf": {
+      "name": "ASF Vertex",
+      "url": "https://search.asf.alaska.edu/",
+      "cost": "free",
+      "registration": "NASA Earthdata free login",
+      "type": "download"
+    },
+    "enmap": {
+      "name": "EnMAP DLR Data Portal",
+      "url": "https://www.enmap.org/data_access/",
+      "cost": "data access free, registration/license conditions apply",
+      "registration": "registration; verify institutional/individual eligibility",
+      "type": "download"
+    },
+    "prisma": {
+      "name": "ASI PRISMA",
+      "url": "https://www.asi.it/en/earth-science/prisma/",
+      "cost": "free-data access subject to accepted license",
+      "registration": "free access registration/terms",
+      "type": "download"
+    }
+  }
+}

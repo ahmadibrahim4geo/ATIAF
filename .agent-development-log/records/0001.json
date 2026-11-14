@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "sequence": 1,
+  "timestamp_utc": "2026-11-14T10:41:50+00:00",
+  "kind": "request",
+  "status": "proposed",
+  "summary": "Bootstrap project, skills and environment verification",
+  "details": "Execute Phase P0: validate package, clone approved skills, inspect host environments, write unit tests and first development report",
+  "references": [],
+  "task_id": "PLAN-0001",
+  "plan_revision": "r1",
+  "changed_files": [],
+  "tests": [],
+  "test_result": "not_run",
+  "commit": "",
+  "previous_hash": null,
+  "hash": "2aa4e0ffa87a5c1c608660cd1a2500cc2c02767d3aa684da32600e6ce8dc7a43"
+}

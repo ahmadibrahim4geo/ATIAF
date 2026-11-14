@@ -1,0 +1,19 @@
+# PLAN-0000 — <concise English title>
+- **Status:** PROPOSED / ACTIVE / BLOCKED / VERIFIED-COMPLETED / SUPERSEDED
+- **Revision:** r1
+- **Owner and date:**
+- **Original user request:** preserve user requirements verbatim in approved form
+- **Scope and exclusions:**
+- **Dependencies and scientific sources:**
+- **Skills and links selected:**
+- **Affected paths:**
+- **Execution steps:**
+- **Acceptance criteria** (testable):
+  - [ ] Exact file/feature and output condition
+  - [ ] Scientific correctness, independently checked
+  - [ ] EN/AR docs/help parity
+  - [ ] Native GIS host test or explicitly BLOCKED
+  - [ ] Existing results/original imagery unchanged
+- **Risk/rollback approach:**
+- **Reports:** (linked after execution)
+- **Revision log:**

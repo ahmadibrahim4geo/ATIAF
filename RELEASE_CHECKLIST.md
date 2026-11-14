@@ -1,0 +1,12 @@
+# ATIAF public-release checklist
+- [ ] All mandatory plan acceptance criteria VERIFIED with versioned reports and Git evidence.
+- [ ] User-facing tools independently functional for the declared supported sensor/product combinations.
+- [ ] All claimed formulas scientifically referenced, unit-tested, and validated with genuine satellite products.
+- [ ] ArcGIS Pro and QGIS host/installer test matrices current and truthful; blockers shown.
+- [ ] Scene data and prior Work/Results safely preserved in repeated and concurrent runs.
+- [ ] Native metre CRS picker, output folder, AOI, mosaic, sequential layer-add tested.
+- [ ] EN/AR interface/help/reports and accessibility reviewed.
+- [ ] Metadata, QA, method equations, source-key provenance, errors and manifest verifiable in outputs.
+- [ ] Documentation site and optional CHM (if shipped) actually built and tested.
+- [ ] MIT/LICENSE/CITATION/CONTRIBUTING/SECURITY/third-party licenses complete; no proprietary source or IDB bulk dataset shipped.
+- [ ] Released version/commit and change log match actual contents; clean environment T4 walkthrough passes.

@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1",
+  "primary_repository": "https://github.com/ahmadibrahim4geo/GIS-Development-Skills",
+  "pin_commit_on_install": true,
+  "mandatory": [
+    "gis-development",
+    "prompt-intent-orchestrator",
+    "agent-development-journal",
+    "completion-evidence",
+    "remote-sensing-pipelines",
+    "arcgis-toolbox-engineering",
+    "geospatial-data-processing",
+    "gis-security-guardian",
+    "gis-internationalization-arabic",
+    "coordinate-reference-systems"
+  ],
+  "conditional": [
+    "qgis-plugin-development",
+    "gis-data-flow-diagnostics",
+    "gis-ui-ux-design-testing",
+    "geospatial-api-integration",
+    "geospatial-data-catalogs",
+    "gis-code-discovery",
+    "gis-cartography-symbology",
+    "geospatial-ai-agents"
+  ],
+  "external_reference_only": [
+    "https://github.com/VelimirMueller/ai-development-skills",
+    "https://github.com/obra/superpowers",
+    "https://github.com/opengeos/geoai-skills"
+  ]
+}

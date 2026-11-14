@@ -1,0 +1,28 @@
+# Generated satellite imagery, reports, runtime state
+**/Work/
+**/Results/
+*.tif
+*.tiff
+*.jp2
+*.hdf
+*.h5
+*.nc
+*.SAFE/
+*.zip
+*.tar
+*.gz
+*.7z
+.agent_resources/
+# Canonical sanitized .agent-development-log/ can be tracked for cross-machine continuity.
+.env
+.env.*
+*.key
+*.pem
+__pycache__/
+.pytest_cache/
+.venv/
+dist/
+build/
+*.egg-info/
+# Reports/ contains development reports and MUST be versioned, not excluded.
+!Reports/.gitkeep

@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ATIAF scientific index record",
+  "type": "object",
+  "required": [
+    "id",
+    "acronym",
+    "name_ar",
+    "name_en",
+    "category",
+    "formula",
+    "band_roles",
+    "source_url",
+    "status",
+    "implementation_status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Z0-9_]+$"
+    },
+    "acronym": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name_ar": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name_en": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "type": "string"
+    },
+    "formula": {
+      "type": "string"
+    },
+    "band_roles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "requires": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "status": {
+      "enum": [
+        "CANDIDATE_UNVERIFIED",
+        "REVIEWED",
+        "SCIENTIFICALLY_VALIDATED"
+      ]
+    },
+    "implementation_status": {
+      "enum": [
+        "NOT_IMPLEMENTED",
+        "IMPLEMENTED_UNTESTED",
+        "TESTED_OFFLINE",
+        "TESTED_IN_HOST",
+        "RELEASED"
+      ]
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

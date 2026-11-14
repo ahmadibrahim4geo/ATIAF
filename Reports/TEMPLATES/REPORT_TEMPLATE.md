@@ -1,0 +1,18 @@
+# Report 0000 — <title>
+- **When (UTC):**
+- **Author / agent:**
+- **Related plan ID + revision:**
+- **Status:** VERIFIED / PARTIAL / FAILED / BLOCKED
+- **Previous state:**
+- **Implemented steps (actual only):**
+- **Files changed/created:**
+- **Verification commands and *observed* output:**
+- **Evidence tiers T0/T1/T2/T3/T4:**
+- **GIS versions and product IDs tested:**
+- **Scientific QA: formula, unit, band and product-level checks:**
+- **Translation/help parity:**
+- **Errors, warnings and unresolved issues:**
+- **Git commit / PR (if truly exists):**
+- **Current state and exact next action:**
+- **Journal record reference:**
+- **Licensing and security review:**
