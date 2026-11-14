@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """QGIS Processing Algorithm: Thermal & Urban Analysis (التحليل الحراري والحضري)."""
 
+from collections import defaultdict
 from pathlib import Path
 import sys
 
@@ -24,6 +25,7 @@ except ImportError:
     QgsProcessing = None
 
 from atyaf_core.discovery import SceneScanner
+from atyaf_core.mosaic import MosaicStrategy, QualityMosaicEngine
 from atyaf_core.urban import ThermalUrbanEngine
 
 
@@ -32,6 +34,7 @@ class ThermalUrbanAlgorithm(QgsProcessingAlgorithm):
 
     INPUT_FOLDER = "INPUT_FOLDER"
     APPLY_QA = "APPLY_QA"
+    ENABLE_MOSAIC = "ENABLE_MOSAIC"
     AOI = "AOI"
     CRS = "CRS"
     OUTPUT_FOLDER = "OUTPUT_FOLDER"
@@ -61,6 +64,7 @@ class ThermalUrbanAlgorithm(QgsProcessingAlgorithm):
 
         self.addParameter(QgsProcessingParameterFile(self.INPUT_FOLDER, "Imagery Input Folder | مجلد المرئية", behavior=QgsProcessingParameterFile.Folder))
         self.addParameter(QgsProcessingParameterBoolean(self.APPLY_QA, "Apply Quality Mask | تطبيق أقنعة الجودة", defaultValue=True))
+        self.addParameter(QgsProcessingParameterBoolean(self.ENABLE_MOSAIC, "Mosaic Multiple Scenes | دمج المشاهد المتعددة (موزاييك)", defaultValue=False))
         self.addParameter(QgsProcessingParameterFeatureSource(self.AOI, "Study Area AOI Polygon (Optional) | منطقة الدراسة", types=[QgsProcessing.TypeVectorPolygon], optional=True))
         self.addParameter(QgsProcessingParameterCrs(self.CRS, "Output Projected Coordinate System (Metres) | نظام الإحداثيات المسقط", optional=True))
         self.addParameter(QgsProcessingParameterFolderDestination(self.OUTPUT_FOLDER, "Output Folder (Last Parameter) | مجلد حفظ النتائج", optional=True))
@@ -74,6 +78,7 @@ class ThermalUrbanAlgorithm(QgsProcessingAlgorithm):
             raise QgsProcessingException(f"Invalid directory: {in_folder}")
 
         apply_qa = self.parameterAsBool(parameters, self.APPLY_QA, context)
+        enable_mosaic = self.parameterAsBool(parameters, self.ENABLE_MOSAIC, context)
         custom_out_val = self.parameterAsString(parameters, self.OUTPUT_FOLDER, context)
         custom_out = Path(custom_out_val).resolve() if custom_out_val else in_folder
 
@@ -105,6 +110,7 @@ class ThermalUrbanAlgorithm(QgsProcessingAlgorithm):
                 aoi_geom = union_geom
 
         all_output_rasters = []
+        product_scene_map = defaultdict(list)
         for scene in scan_res.scenes:
             if feedback.isCanceled():
                 break
@@ -114,7 +120,24 @@ class ThermalUrbanAlgorithm(QgsProcessingAlgorithm):
             for p in res["executed_products"]:
                 t_path = p["clipped_path"] if p["clipped_path"] else p["full_path"]
                 all_output_rasters.append(t_path)
+                product_scene_map[p["product_name"]].append((scene, Path(t_path)))
                 feedback.pushInfo(f"Generated: {Path(t_path).name}")
+
+        if enable_mosaic and len(scan_res.scenes) > 1 and not feedback.isCanceled():
+            for prod_name, scene_paths in product_scene_map.items():
+                if len(scene_paths) > 1:
+                    mos_res = QualityMosaicEngine.run_mosaic(
+                        scene_products=scene_paths,
+                        product_name=prod_name,
+                        category="Thermal_Urban",
+                        output_root=custom_out,
+                        strategy=MosaicStrategy.HIGHEST_QUALITY,
+                        aoi_geometry=aoi_geom,
+                        aoi_crs=aoi_crs,
+                    )
+                    mosaic_path = mos_res.clipped_path if mos_res.clipped_path else mos_res.full_path
+                    all_output_rasters.append(mosaic_path)
+                    feedback.pushInfo(f"Mosaic Generated: {Path(mosaic_path).name}")
 
         return {
             self.OUTPUT_FOLDER: str(custom_out),

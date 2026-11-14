@@ -158,6 +158,11 @@ class TestQGISAlgorithmDefinitions(unittest.TestCase):
             self.assertTrue(hasattr(alg, "OUTPUT_FOLDER"), f"{name} missing OUTPUT_FOLDER")
             self.assertEqual(alg.OUTPUT_FOLDER, "OUTPUT_FOLDER")
 
+            # Canonical rule: ENABLE_MOSAIC is defined for all single-scene tools
+            if name != "temporal_change":
+                self.assertTrue(hasattr(alg, "ENABLE_MOSAIC"), f"{name} missing ENABLE_MOSAIC")
+                self.assertEqual(alg.ENABLE_MOSAIC, "ENABLE_MOSAIC")
+
     def test_create_instance(self):
         for name, alg in self.algorithms.items():
             inst = alg.createInstance()

@@ -183,6 +183,12 @@ END_GROUP = L1_METADATA_FILE
         manifests = list(self.output_dir.rglob("Processing_Manifest.json"))
         self.assertTrue(len(manifests) > 0, "Processing_Manifest.json was not created")
 
+        # Verify standalone report.html and cumulative Reports/index.html
+        html_reports = list(self.output_dir.rglob("report.html"))
+        self.assertTrue(len(html_reports) > 0, "report.html was not created")
+        index_reports = list(self.output_dir.rglob("index.html"))
+        self.assertTrue(len(index_reports) > 0, "Results/Reports/index.html was not created")
+
     def test_04_enforce_decision_d007_crs_rejection(self):
         """Verifies that passing unprojected geographic CRS (EPSG:4326) raises QgsProcessingException."""
         alg = SpectralIndicesAlgorithm()

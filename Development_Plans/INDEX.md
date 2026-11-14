@@ -1,5 +1,5 @@
 # Development Plans — chronological index
-**Current state:** ALL ROADMAP PLANS COMPLETED (PLAN-0001 through PLAN-0010). All 10 phases verified and delivered.
+**Current state:** Comprehensive Audit & Hardening Completed (PLAN-0001 through PLAN-0011 all Completed).
 
 ## Numbering rules
 - Incoming root file `PLAN_*.md` or `TASK_*.md` -> `PLAN-0001_short_slug.md` in `Active/` on verified intake, then `PLAN-0002` etc. Record a new revision in-file if requirements change.
@@ -18,3 +18,4 @@
 | [PLAN-0008](Completed/PLAN-0008_qgis_native_adapter.md) | Native QGIS Processing Provider Adapter (Phase P7) | Completed | r1 | [0008_qgis_native_adapter.md](../Reports/0008_qgis_native_adapter.md) | Phase P7 QGIS Native Adapter |
 | [PLAN-0009](Completed/PLAN-0009_advanced_modalities_and_gating.md) | Advanced Modalities, Radar (SAR) & Hyperspectral Gating (Phase P8) | Completed | r1 | [0009_advanced_modalities_and_gating.md](../Reports/0009_advanced_modalities_and_gating.md) | Phase P8 Advanced Modalities & Gating |
 | [PLAN-0010](Completed/PLAN-0010_packaging_and_documentation.md) | Packaging, Documentation Build & Release Readiness (Phase P9) | Completed | r1 | [0010_packaging_and_documentation.md](../Reports/0010_packaging_and_documentation.md) | Phase P9 Packaging and Documentation |
+| [PLAN-0011](Completed/PLAN-0011_comprehensive_audit_and_hardening.md) | Comprehensive Audit, Hardening & Cumulative Reporting Engine | Completed | r1 | [0011_comprehensive_audit_and_hardening.md](../Reports/0011_comprehensive_audit_and_hardening.md) | Comprehensive project audit, HTML run & index reporting, and QGIS parameter parity |

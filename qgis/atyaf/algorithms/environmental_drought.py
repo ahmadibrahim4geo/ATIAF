@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """QGIS Processing Algorithm: Environmental & Drought Analysis (التحليل البيئي ومؤشرات الجفاف)."""
 
+from collections import defaultdict
 from pathlib import Path
 import sys
 
@@ -25,6 +26,7 @@ except ImportError:
 
 from atyaf_core.discovery import SceneScanner
 from atyaf_core.environment import EnvironmentalDroughtEngine
+from atyaf_core.mosaic import MosaicStrategy, QualityMosaicEngine
 
 
 class EnvironmentalDroughtAlgorithm(QgsProcessingAlgorithm):
@@ -32,6 +34,7 @@ class EnvironmentalDroughtAlgorithm(QgsProcessingAlgorithm):
 
     INPUT_FOLDER = "INPUT_FOLDER"
     APPLY_QA = "APPLY_QA"
+    ENABLE_MOSAIC = "ENABLE_MOSAIC"
     CALC_ALBEDO = "CALC_ALBEDO"
     CALC_TVDI = "CALC_TVDI"
     AOI = "AOI"
@@ -63,6 +66,7 @@ class EnvironmentalDroughtAlgorithm(QgsProcessingAlgorithm):
 
         self.addParameter(QgsProcessingParameterFile(self.INPUT_FOLDER, "Imagery Input Folder | مجلد المرئية", behavior=QgsProcessingParameterFile.Folder))
         self.addParameter(QgsProcessingParameterBoolean(self.APPLY_QA, "Apply Quality Mask | تطبيق أقنعة الجودة", defaultValue=True))
+        self.addParameter(QgsProcessingParameterBoolean(self.ENABLE_MOSAIC, "Mosaic Multiple Scenes | دمج المشاهد المتعددة (موزاييك)", defaultValue=False))
         self.addParameter(QgsProcessingParameterBoolean(self.CALC_ALBEDO, "Calculate Broadband Albedo (Liang 2001) | حساب البيدو السطح", defaultValue=True))
         self.addParameter(QgsProcessingParameterBoolean(self.CALC_TVDI, "Calculate TVDI Dryness Index | حساب مؤشر الجفاف TVDI", defaultValue=True))
         self.addParameter(QgsProcessingParameterFeatureSource(self.AOI, "Study Area AOI Polygon (Optional) | منطقة الدراسة", types=[QgsProcessing.TypeVectorPolygon], optional=True))
@@ -78,6 +82,7 @@ class EnvironmentalDroughtAlgorithm(QgsProcessingAlgorithm):
             raise QgsProcessingException(f"Invalid directory: {in_folder}")
 
         apply_qa = self.parameterAsBool(parameters, self.APPLY_QA, context)
+        enable_mosaic = self.parameterAsBool(parameters, self.ENABLE_MOSAIC, context)
         do_albedo = self.parameterAsBool(parameters, self.CALC_ALBEDO, context)
         do_tvdi = self.parameterAsBool(parameters, self.CALC_TVDI, context)
         custom_out_val = self.parameterAsString(parameters, self.OUTPUT_FOLDER, context)
@@ -107,6 +112,7 @@ class EnvironmentalDroughtAlgorithm(QgsProcessingAlgorithm):
                 aoi_geom = union_geom
 
         all_output_rasters = []
+        product_scene_map = defaultdict(list)
         for scene in scan_res.scenes:
             if feedback.isCanceled():
                 break
@@ -117,7 +123,24 @@ class EnvironmentalDroughtAlgorithm(QgsProcessingAlgorithm):
             for p in res["executed_products"]:
                 t_path = p["clipped_path"] if p["clipped_path"] else p["full_path"]
                 all_output_rasters.append(t_path)
+                product_scene_map[p["product_name"]].append((scene, Path(t_path)))
                 feedback.pushInfo(f"Generated: {Path(t_path).name}")
+
+        if enable_mosaic and len(scan_res.scenes) > 1 and not feedback.isCanceled():
+            for prod_name, scene_paths in product_scene_map.items():
+                if len(scene_paths) > 1:
+                    mos_res = QualityMosaicEngine.run_mosaic(
+                        scene_products=scene_paths,
+                        product_name=prod_name,
+                        category="Environmental_Drought",
+                        output_root=custom_out,
+                        strategy=MosaicStrategy.HIGHEST_QUALITY,
+                        aoi_geometry=aoi_geom,
+                        aoi_crs=aoi_crs,
+                    )
+                    mosaic_path = mos_res.clipped_path if mos_res.clipped_path else mos_res.full_path
+                    all_output_rasters.append(mosaic_path)
+                    feedback.pushInfo(f"Mosaic Generated: {Path(mosaic_path).name}")
 
         return {
             self.OUTPUT_FOLDER: str(custom_out),
