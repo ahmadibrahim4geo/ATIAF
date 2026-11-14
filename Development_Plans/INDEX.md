@@ -1,5 +1,5 @@
 # Development Plans — chronological index
-**Current state:** PLAN-0008 COMPLETED; ready for Phase P8 (High-accuracy advanced & modality specifications / radar and hyperspectral gating).
+**Current state:** PLAN-0009 COMPLETED; ready for Phase P9 (Packaging, Documentation Build & Release Readiness).
 
 ## Numbering rules
 - Incoming root file `PLAN_*.md` or `TASK_*.md` -> `PLAN-0001_short_slug.md` in `Active/` on verified intake, then `PLAN-0002` etc. Record a new revision in-file if requirements change.
@@ -16,3 +16,4 @@
 | [PLAN-0006](Completed/PLAN-0006_mosaic_temporal.md) | Multi-Scene Quality-Aware Mosaic & Temporal Change Detection (Tool 06) | Completed | r1 | [0006_mosaic_temporal.md](../Reports/0006_mosaic_temporal.md) | Phase P5 Mosaic and Temporal Change Detection |
 | [PLAN-0007](Completed/PLAN-0007_expanded_catalog_environment.md) | Expanded Offline Catalog, Thermal Urban & Environmental Drought (Tools 03 & 04) | Completed | r1 | [0007_expanded_catalog_environment.md](../Reports/0007_expanded_catalog_environment.md) | Phase P6 Expanded Catalog & Environmental Models |
 | [PLAN-0008](Completed/PLAN-0008_qgis_native_adapter.md) | Native QGIS Processing Provider Adapter (Phase P7) | Completed | r1 | [0008_qgis_native_adapter.md](../Reports/0008_qgis_native_adapter.md) | Phase P7 QGIS Native Adapter |
+| [PLAN-0009](Completed/PLAN-0009_advanced_modalities_and_gating.md) | Advanced Modalities, Radar (SAR) & Hyperspectral Gating (Phase P8) | Completed | r1 | [0009_advanced_modalities_and_gating.md](../Reports/0009_advanced_modalities_and_gating.md) | Phase P8 Advanced Modalities & Gating |

@@ -1,8 +1,8 @@
 # ATIAF Project State — CANONICAL HANDOFF
-- **Snapshot:** 2026-11-14; Phase P7 completed, transitioning to Phase P8.
+- **Snapshot:** 2026-11-14; Phase P8 completed, transitioning to Phase P9.
 - **Project root:** `أطياف/` (UTF-8 path: `d:\My Software\ATIAF`). Git repository on branch `main`.
-- **Current phase:** P8 — High-accuracy advanced & modality specifications / radar and hyperspectral gating.
-- **Active plans:** None currently active. PLAN-0001 through PLAN-0008 completed.
+- **Current phase:** P9 — Packaging, Documentation Build & Release Readiness.
+- **Active plans:** None currently active. PLAN-0001 through PLAN-0009 completed.
 - **Completed plans:**
   - PLAN-0001 (`Development_Plans/Completed/PLAN-0001_bootstrap.md`).
   - PLAN-0002 (`Development_Plans/Completed/PLAN-0002_product_recognition.md`).
@@ -12,7 +12,8 @@
   - PLAN-0006 (`Development_Plans/Completed/PLAN-0006_mosaic_temporal.md`).
   - PLAN-0007 (`Development_Plans/Completed/PLAN-0007_expanded_catalog_environment.md`).
   - PLAN-0008 (`Development_Plans/Completed/PLAN-0008_qgis_native_adapter.md`).
-- **Latest numbered development report:** `Reports/0008_qgis_native_adapter.md`.
+  - PLAN-0009 (`Development_Plans/Completed/PLAN-0009_advanced_modalities_and_gating.md`).
+- **Latest numbered development report:** `Reports/0009_advanced_modalities_and_gating.md`.
 - **Agent Development Journal:** Canonical append-only journal in `.agent-development-log/` (verified records).
 - **Approved Skills:** Cloned in `.agent_resources/GIS-Development-Skills` (commit `2a0a9a23618e40218484ec8ae5848a481df51f1a`).
 - **Host runtime verification:**
@@ -20,19 +21,20 @@
   - QGIS 4.2.3-Belém do Pará with verified working PyQGIS (`qgis.core`), Python 3.12.9, GDAL 3.13.3, rasterio 1.5.2.
   - ArcGIS Pro 3.6.0.59527 (`C:\Program Files\ArcGIS\Pro`).
 - **Implemented GIS processing:**
-  - `atyaf_core/discovery/`: Landsat, Sentinel-2, ASTER, SceneScanner, ManualBandMapper.
+  - `atyaf_core/discovery/`: Landsat, Sentinel-2, ASTER, Sentinel-1 C-SAR, SceneScanner, ManualBandMapper.
   - `atyaf_core/raster/`: CRSManager (projected metre enforcement), QualityMaskEngine, PolygonClipEngine, WindowedRasterEngine, WorkspaceManager.
-  - `atyaf_core/indices/`: INDEX_CATALOG (22 validated optical indices including NDMI, MSAVI, OSAVI, VARI, GLI, TCB, TCG, TCW), SpectralIndicesEngine (capability gating, QA masking, windowed processing, AOI clipping, run manifests).
+  - `atyaf_core/indices/`: INDEX_CATALOG (22 validated optical indices), SpectralIndicesEngine (capability gating, QA masking, windowed processing, AOI clipping, run manifests).
   - `atyaf_core/temperature/`: EmissivityEngine (Sobrino et al. 2004 NDVI thresholds), SurfaceTemperatureEngine (Landsat C2 L2 ST, Kelvin/Celsius units, strict Sentinel-2 thermal absence blocking).
   - `atyaf_core/urban/`: ThermalUrbanEngine (UTFVI calculation and 6-class thermal comfort mapping, thermal hotspots z >= 2.0, SUHI).
   - `atyaf_core/environment/`: EnvironmentalDroughtEngine (Liang 2001 broadband surface albedo, TVDI dryness index).
   - `atyaf_core/geology/`: GEOLOGICAL_CATALOG (8 diagnostic alteration ratios & thermal mineral indices), GeologicalAnalysisEngine (ASTER post-April 2008 SWIR cutoff enforcement, scientific disclaimer, run manifests).
   - `atyaf_core/mosaic/`: QualityMosaicEngine (union extent, quality ranking, mean valid, latest date, Source_Scene_ID provenance raster).
   - `atyaf_core/temporal/`: ChangeDetectionEngine (dNDVI, dNBR USGS Burn Severity classification, dLST, relative change %, statistical standard deviation classes).
-  - `arcgis_pro/ATIAF.pyt`: Native Python Toolbox containing ALL 6 independent tools (Tool 01 Spectral Indices, Tool 02 Surface Temperature, Tool 03 Thermal & Urban, Tool 04 Environmental & Drought, Tool 05 Geological Analysis, Tool 06 Temporal Change Detection) with canonical parameter layout, dynamic validation, metric projected CRS checking, multi-scene mosaic execution, and map execution.
+  - `atyaf_core/modalities/`: Modality models (`SensorModality`, `PolarizationRole`, `SARCalibrationType`, `HyperspectralCubeMetadata`), `SAREngine` (dB scaling, cross-pol ratio, RVI, pure-NumPy Lee filter), `HyperspectralEngine` (SAM angle, continuum-removed absorption feature depths, L2 gating), `ModalityRouter` (enforces "never route SAR to optical/thermal").
+  - `arcgis_pro/ATIAF.pyt`: Native Python Toolbox containing ALL 6 independent tools with canonical parameter layout, dynamic validation, metric projected CRS checking, multi-scene mosaic execution, and map execution.
   - `qgis/atyaf/`: Native QGIS Processing Provider Plugin registering provider ID `atyaf` (`ATIAF | أطياف`) containing ALL 6 independent processing algorithms (`atyaf:spectral_indices`, `atyaf:surface_temperature`, `atyaf:thermal_urban`, `atyaf:environmental_drought`, `atyaf:geological_analysis`, `atyaf:temporal_change`), with canonical parameter ordering (OUTPUT_FOLDER last), Decision D-007 metric CRS validation, and complete bilingual metadata.
 - **Verified checks in package:**
-  - `python tools/validate_package.py`: PASS (305 md, 108 json).
-  - `python -m unittest discover tests`: PASS (79 unit tests passing).
+  - `python tools/validate_package.py`: PASS (311 md, 110 json).
+  - `python -m unittest discover tests`: PASS (93 unit tests passing).
   - `& "C:\Program Files\QGIS 4.2.3\bin\python-qgis.bat" tests/native_qgis/test_qgis_provider.py`: PASS (5 native host integration tests passing).
-- **Pending next:** Phase P8 — High-accuracy advanced & modality specifications / radar and hyperspectral gating.
+- **Pending next:** Phase P9 — Packaging, Documentation Build & Release Readiness.

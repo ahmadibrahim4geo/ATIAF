@@ -21,3 +21,5 @@ create a linked revision or cancellation. This local hash chain is not a signatu
 | [#0014](reports/0014.md) | 2026-11-14T11:53:59+00:00 | implementation | completed | — | Completed Phase P6: Expanded Offline Catalog, Thermal Urban & Environmental Drought |
 | [#0015](reports/0015.md) | 2026-11-14T11:56:19+00:00 | plan | in_progress | — | Initiated Phase P7: Native QGIS Processing Provider Adapter |
 | [#0016](reports/0016.md) | 2026-11-14T12:12:33+00:00 | implementation | completed | #0015 | Completed Phase P7: Native QGIS Processing Provider Adapter |
+| [#0017](reports/0017.md) | 2026-11-14T12:28:00+00:00 | plan | in_progress | — | Initiated Phase P8: Advanced Modalities, Radar (SAR) & Hyperspectral Gating |
+| [#0018](reports/0018.md) | 2026-11-14T12:36:56+00:00 | implementation | completed | #0017 | Completed Phase P8: Advanced Modalities, Radar (SAR) & Hyperspectral Gating |

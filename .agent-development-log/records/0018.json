@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "sequence": 18,
+  "timestamp_utc": "2026-11-14T12:36:56+00:00",
+  "kind": "implementation",
+  "status": "completed",
+  "summary": "Completed Phase P8: Advanced Modalities, Radar (SAR) & Hyperspectral Gating",
+  "details": "Delivered atyaf_core/modalities/ with SAR (Sentinel-1, ALOS PALSAR, NISAR) specifications and gating (never route SAR through optical equations), dB scaling, cross-polarization ratio, RVI, pure-NumPy Lee filter, Hyperspectral (EnMAP, PRISMA, EMIT) cube/wavelength validation, SAM angle in float64, absorption depths (2200nm, 2350nm, 900nm), L2 gating, Copernicus Sentinel-1 parser, and complete bilingual documentation in docs/en/ and docs/ar/. Verified with 14 unit tests, 93 total tests passing.",
+  "references": [
+    17
+  ],
+  "task_id": "PLAN-0009",
+  "plan_revision": "r1",
+  "changed_files": [
+    "atyaf_core/modalities/models.py",
+    "atyaf_core/modalities/sar.py",
+    "atyaf_core/modalities/hyperspectral.py",
+    "atyaf_core/modalities/router.py",
+    "atyaf_core/modalities/__init__.py",
+    "atyaf_core/discovery/models.py",
+    "atyaf_core/discovery/sentinel1.py",
+    "atyaf_core/discovery/scanner.py",
+    "atyaf_core/discovery/__init__.py",
+    "atyaf_core/indices/engine.py",
+    "atyaf_core/temperature/engine.py",
+    "atyaf_core/geology/engine.py",
+    "tests/test_advanced_modalities.py",
+    "docs/en/ADVANCED_MODALITIES.md",
+    "docs/ar/ADVANCED_MODALITIES.md",
+    "Reports/0009_advanced_modalities_and_gating.md",
+    "Reports/INDEX.md",
+    "Development_Plans/Completed/PLAN-0009_advanced_modalities_and_gating.md",
+    "Development_Plans/INDEX.md",
+    "PROJECT_STATE.md"
+  ],
+  "tests": [
+    "tests/test_advanced_modalities.py",
+    "tests/native_qgis/test_qgis_provider.py"
+  ],
+  "test_result": "passed",
+  "commit": "",
+  "previous_hash": "f58a574fddac7761794a81dac3faaffa4cbd23162f510810bb43deb3044768c9",
+  "hash": "be1af3842e508a08199651635f64c07c7c261829f4ccdff200d9b56fa42bc440"
+}

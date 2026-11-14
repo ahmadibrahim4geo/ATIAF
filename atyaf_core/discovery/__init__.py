@@ -13,6 +13,7 @@ from atyaf_core.discovery.models import (
     SensorFamily,
 )
 from atyaf_core.discovery.scanner import SceneScanner, ScanResult
+from atyaf_core.discovery.sentinel1 import Sentinel1Parser
 from atyaf_core.discovery.sentinel2 import Sentinel2Parser
 
 __all__ = [
@@ -25,6 +26,7 @@ __all__ = [
     "SceneInfo",
     "LandsatParser",
     "Sentinel2Parser",
+    "Sentinel1Parser",
     "AsterParser",
     "SceneScanner",
     "ScanResult",

@@ -32,7 +32,10 @@ class SurfaceTemperatureEngine:
         block_size: int = 512,
     ) -> Dict[str, Any]:
         """Calculates Surface Temperature or Emissivity for an identified scene."""
-        # 1. Strict Physics Gating: Sentinel-2 and Landsat MSS have NO thermal bands!
+        # 1. Strict Physics Gating: Modality check (Sentinel-2 and SAR have NO thermal bands!)
+        from atyaf_core.modalities import ModalityRouter
+        ModalityRouter.validate_tool_compatibility(scene.metadata, "Surface_Temperature")
+
         if not scene.has_thermal():
             raise ValueError(
                 f"Scene '{scene.metadata.scene_id}' ({scene.metadata.platform}) lacks thermal infrared measurement bands. "

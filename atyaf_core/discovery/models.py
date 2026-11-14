@@ -28,6 +28,10 @@ class BandRole(str, Enum):
     QA_RADSAT = "qa_radsat"
     QA_AEROSOL = "qa_aerosol"
     SCL = "scl"
+    SAR_VV = "sar_vv"
+    SAR_VH = "sar_vh"
+    SAR_HH = "sar_hh"
+    SAR_HV = "sar_hv"
 
 
 class ProductLevel(str, Enum):
@@ -39,6 +43,9 @@ class ProductLevel(str, Enum):
     L1T = "L1T"
     AST_07 = "AST_07"
     AST_08 = "AST_08"
+    L1_GRD = "L1_GRD"
+    L1_SLC = "L1_SLC"
+    L2A_HYPER = "L2A_HYPER"
     UNKNOWN = "UNKNOWN"
 
 
@@ -46,6 +53,11 @@ class SensorFamily(str, Enum):
     LANDSAT = "Landsat"
     SENTINEL_2 = "Sentinel-2"
     ASTER = "ASTER"
+    SENTINEL_1 = "Sentinel-1"
+    ENMAP = "EnMAP"
+    PRISMA = "PRISMA"
+    EMIT = "EMIT"
+    ALOS_PALSAR = "ALOS PALSAR"
     UNKNOWN = "Unknown"
 
 

@@ -7,6 +7,7 @@ from typing import List, Optional
 from atyaf_core.discovery.aster import AsterParser
 from atyaf_core.discovery.landsat import LandsatParser
 from atyaf_core.discovery.models import SceneInfo
+from atyaf_core.discovery.sentinel1 import Sentinel1Parser
 from atyaf_core.discovery.sentinel2 import Sentinel2Parser
 
 
@@ -64,6 +65,12 @@ class SceneScanner:
         # 3. ASTER
         if AsterParser.can_parse(folder):
             scene = AsterParser.parse(folder)
+            if scene and scene.bands:
+                return scene
+
+        # 4. Sentinel-1 SAR
+        if Sentinel1Parser.can_parse(folder):
+            scene = Sentinel1Parser.parse(folder)
             if scene and scene.bands:
                 return scene
 

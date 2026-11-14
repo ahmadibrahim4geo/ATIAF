@@ -47,6 +47,9 @@ class GeologicalAnalysisEngine:
         block_size: int = 512,
     ) -> Dict[str, Any]:
         """Executes selected geological and mineral indices on an identified scene."""
+        from atyaf_core.modalities import ModalityRouter
+        ModalityRouter.validate_tool_compatibility(scene.metadata, "Geological_Analysis")
+
         scene_root, work_dir, cache_dir, results_dir, reports_dir = WorkspaceManager.resolve_workspace_roots(
             scene_path=scene.scene_path,
             custom_destination=custom_destination,

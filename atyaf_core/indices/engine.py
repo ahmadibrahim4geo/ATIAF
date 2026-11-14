@@ -42,6 +42,11 @@ class SpectralIndicesEngine:
         and run manifest details.
         """
         custom_constants = custom_constants or {}
+
+        # Gating: Enforce sensor modality compatibility (never route SAR to optical)
+        from atyaf_core.modalities import ModalityRouter
+        ModalityRouter.validate_tool_compatibility(scene.metadata, "Spectral_Indices")
+
         scene_root, work_dir, cache_dir, results_dir, reports_dir = WorkspaceManager.resolve_workspace_roots(
             scene_path=scene.scene_path,
             custom_destination=custom_destination,
