@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "sequence": 16,
+  "timestamp_utc": "2026-11-14T12:12:33+00:00",
+  "kind": "implementation",
+  "status": "completed",
+  "summary": "Completed Phase P7: Native QGIS Processing Provider Adapter",
+  "details": "Delivered qgis/atyaf/ plugin package (metadata.txt, __init__.py with classFactory, atyaf_plugin.py, provider.py with provider ID atyaf, and 6 algorithms wrapping atyaf_core). Enforced Decision D-007 metric CRS validation and canonical OUTPUT_FOLDER destination ordering. Verified with 8 T1 unit tests in tests/test_qgis_adapter.py and 5 T2 native QGIS 4.2.3 host tests in tests/native_qgis/test_qgis_provider.py. All 79 project tests passing.",
+  "references": [
+    15
+  ],
+  "task_id": "PLAN-0008",
+  "plan_revision": "r1",
+  "changed_files": [
+    "qgis/atyaf/metadata.txt",
+    "qgis/atyaf/__init__.py",
+    "qgis/atyaf/atyaf_plugin.py",
+    "qgis/atyaf/provider.py",
+    "qgis/atyaf/algorithms/__init__.py",
+    "qgis/atyaf/algorithms/spectral_indices.py",
+    "qgis/atyaf/algorithms/surface_temperature.py",
+    "qgis/atyaf/algorithms/thermal_urban.py",
+    "qgis/atyaf/algorithms/environmental_drought.py",
+    "qgis/atyaf/algorithms/geological_analysis.py",
+    "qgis/atyaf/algorithms/temporal_change.py",
+    "qgis/README.md",
+    "tests/test_qgis_adapter.py",
+    "tests/native_qgis/test_qgis_provider.py",
+    "tests/native_qgis/README.md",
+    "atyaf_core/raster/workspace.py",
+    "Reports/0008_qgis_native_adapter.md",
+    "Reports/INDEX.md",
+    "Development_Plans/Completed/PLAN-0008_qgis_native_adapter.md",
+    "Development_Plans/INDEX.md",
+    "PROJECT_STATE.md"
+  ],
+  "tests": [
+    "tests/test_qgis_adapter.py",
+    "tests/native_qgis/test_qgis_provider.py"
+  ],
+  "test_result": "passed",
+  "commit": "",
+  "previous_hash": "421e3f02068d05add9121afd9e941c7a46d08d537c50d98e9285b676d71dfedf",
+  "hash": "1bbf1aee971989f334bb4806467adb5990e53443fec485ec0506e75889cdba86"
+}

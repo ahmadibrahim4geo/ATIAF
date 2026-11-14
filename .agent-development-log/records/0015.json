@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "sequence": 15,
+  "timestamp_utc": "2026-11-14T11:56:19+00:00",
+  "kind": "plan",
+  "status": "in_progress",
+  "summary": "Initiated Phase P7: Native QGIS Processing Provider Adapter",
+  "details": "Created PLAN-0008. Building complete QGIS Processing Provider plugin under qgis/ (metadata.txt, __init__.py, provider.py, and 6 algorithms in qgis/algorithms/), with native projected metre CRS validation, bilingual descriptions, and native QGIS 4.2.3 integration tests.",
+  "references": [],
+  "task_id": "PLAN-0008",
+  "plan_revision": "r1",
+  "changed_files": [],
+  "tests": [],
+  "test_result": "not_run",
+  "commit": "",
+  "previous_hash": "569cd4210459098aca23dd764b3fad8f060a5bd2c5872c3d7ffab7735a853f62",
+  "hash": "421e3f02068d05add9121afd9e941c7a46d08d537c50d98e9285b676d71dfedf"
+}

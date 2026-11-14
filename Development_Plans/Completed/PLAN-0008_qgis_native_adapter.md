@@ -1,0 +1,77 @@
+# PLAN-0008 — Native QGIS Processing Provider Adapter (Phase P7)
+- **Status:** COMPLETED
+- **Revision:** r1
+- **Owner and date:** Implementation Agent, 2026-11-14
+- **Original user request:** Execute Phase P7 of the ATIAF development roadmap: implement a complete, native QGIS Processing Provider plugin (`qgis/`) exposing all 6 scientific remote sensing tools (Tools 01 to 06) via PyQGIS, enforce Decision D-007 (projected metre CRS validation), and verify with both standalone tests and real native QGIS 4.2.3 host tests.
+- **Scope and exclusions:**
+  - Scope:
+    - QGIS Plugin packaging structure:
+      - `qgis/metadata.txt`: valid QGIS plugin metadata specification.
+      - `qgis/__init__.py`: `classFactory` entry point.
+      - `qgis/atyaf_plugin.py`: plugin lifecycle manager.
+      - `qgis/provider.py`: `ATIAFProcessingProvider` inheriting `QgsProcessingProvider`.
+    - 6 Native Processing Algorithms in `qgis/algorithms/`:
+      - `SpectralIndicesAlgorithm` (`atyaf:spectral_indices`)
+      - `SurfaceTemperatureAlgorithm` (`atyaf:surface_temperature`)
+      - `ThermalUrbanAlgorithm` (`atyaf:thermal_urban`)
+      - `EnvironmentalDroughtAlgorithm` (`atyaf:environmental_drought`)
+      - `GeologicalAnalysisAlgorithm` (`atyaf:geological_analysis`)
+      - `TemporalChangeAlgorithm` (`atyaf:temporal_change`)
+    - Native parameter bindings: `QgsProcessingParameterFile` (folder), `QgsProcessingParameterBoolean`, `QgsProcessingParameterEnum`, `QgsProcessingParameterCrs`, `QgsProcessingParameterFeatureSource`, `QgsProcessingParameterFolderDestination`.
+    - Bilingual English/Arabic names, group descriptions, and help strings.
+    - Integration with `atyaf_core` processing engines.
+    - Testing:
+      - Standalone unit test suite `tests/test_qgis_adapter.py` runnable with standalone Python.
+      - Native host integration test `tests/native_qgis/test_qgis_provider.py` executed with `C:\Program Files\QGIS 4.2.3\bin\python-qgis.bat`.
+  - Exclusions:
+    - Standalone Windows installer / CHM build (Phase P9).
+- **Dependencies and scientific sources:**
+  - `PROJECT_SPECIFICATION.md` & `PROJECT_SPECIFICATION_AR.md` (Sections 1, 2, 3, 10)
+  - `DECISIONS.md` (D-002, D-003, D-007, D-011, D-018, D-020)
+  - QGIS 4.2.3 PyQGIS Core & Processing API
+- **Skills and links selected:**
+  - [`skills/qgis-plugin-development/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/qgis-plugin-development/SKILL.md)
+  - [`skills/qgis-engine-integration/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/qgis-engine-integration/SKILL.md)
+  - [`skills/coordinate-reference-systems/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/coordinate-reference-systems/SKILL.md)
+  - [`skills/completion-evidence/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/completion-evidence/SKILL.md)
+  - [`skills/agent-development-journal/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/agent-development-journal/SKILL.md)
+- **Affected paths:**
+  - `qgis/metadata.txt`
+  - `qgis/__init__.py`
+  - `qgis/atyaf_plugin.py`
+  - `qgis/provider.py`
+  - `qgis/algorithms/__init__.py`
+  - `qgis/algorithms/spectral_indices.py`
+  - `qgis/algorithms/surface_temperature.py`
+  - `qgis/algorithms/thermal_urban.py`
+  - `qgis/algorithms/environmental_drought.py`
+  - `qgis/algorithms/geological_analysis.py`
+  - `qgis/algorithms/temporal_change.py`
+  - `tests/test_qgis_adapter.py`
+  - `tests/native_qgis/test_qgis_provider.py`
+  - `Development_Plans/Active/PLAN-0008_qgis_native_adapter.md`
+  - `Development_Plans/INDEX.md`
+  - `Reports/0008_qgis_native_adapter.md`
+  - `Reports/INDEX.md`
+  - `PROJECT_STATE.md`
+- **Execution steps:**
+  1. Record plan in Agent Development Journal.
+  2. Implement QGIS plugin files: `metadata.txt`, `__init__.py`, `atyaf_plugin.py`, `provider.py`.
+  3. Implement the 6 algorithms in `qgis/algorithms/` wrapping `atyaf_core`.
+  4. Write standalone structural tests in `tests/test_qgis_adapter.py`.
+  5. Write native host tests in `tests/native_qgis/test_qgis_provider.py` and run via `python-qgis.bat`.
+  6. Author Report 0008, update indexes, journal, and `PROJECT_STATE.md`.
+- **Acceptance criteria (testable):**
+  - [x] `qgis/atyaf/metadata.txt` conforms to QGIS plugin standard (name, qgisMinimumVersion, description, version, author).
+  - [x] `ATIAFProcessingProvider` successfully registers in QGIS Processing Registry with provider ID `atyaf`.
+  - [x] All 6 processing algorithms load with unique IDs (`atyaf:spectral_indices`, `atyaf:surface_temperature`, `atyaf:thermal_urban`, `atyaf:environmental_drought`, `atyaf:geological_analysis`, `atyaf:temporal_change`).
+  - [x] Parameters mirror ArcGIS Pro canonical ordering and include native `QgsProcessingParameterCrs` picker.
+  - [x] Native QGIS 4.2.3 execution of `atyaf:spectral_indices` produces valid GeoTIFF output rasters and manifests.
+  - [x] All unit and native tests pass cleanly (8 T1 unit tests, 5 T2 native QGIS host tests, 79 total unit tests).
+  - [x] Report 0008 written and recorded in development journal.
+- **Risk/rollback approach:**
+  - Standalone pure-Python adapters cleanly separated from host GUI. Headless PyQGIS runtime enables automated testing without UI popups. Git rollback available if needed.
+- **Reports:**
+  - `Reports/0008_qgis_native_adapter.md` (VERIFIED-COMPLETED)
+- **Revision log:**
+  - r1 (2026-11-14): Initial plan creation for Phase P7 QGIS native adapter.

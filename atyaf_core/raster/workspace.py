@@ -25,7 +25,7 @@ class WorkspaceManager:
         scene_path: Path,
         custom_destination: Optional[Path] = None,
         is_multi_scene: bool = False,
-    ) -> Tuple_Roots:
+    ) -> tuple[Path, Path, Path, Path, Path]:
         """Determines the exact Work and Results directory roots based on input
         and destination settings, without ever generating 'Results_2'.
         """

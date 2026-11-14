@@ -1,0 +1,16 @@
+[general]
+name=ATIAF - Thematic Imagery Analysis Framework (أطياف)
+qgisMinimumVersion=3.0
+description=Bilingual satellite imagery analysis framework for spectral indices, surface temperature, urban heat islands, environmental drought, and temporal change.
+version=1.0.0
+author=ATIAF Open Source Geospatial Project
+email=info@atyaf.org
+about=ATIAF (أطياف) brings bilingual scientific remote sensing analysis to QGIS with automated sensor recognition, quality masking, and reproducible manifests.
+category=Raster
+tags=remote sensing,landsat,sentinel-2,aster,ndvi,lst,change detection,satellite
+homepage=https://github.com/ahmadibrahim4geo/ATIAF
+tracker=https://github.com/ahmadibrahim4geo/ATIAF/issues
+repository=https://github.com/ahmadibrahim4geo/ATIAF
+icon=icon.png
+experimental=False
+deprecated=False

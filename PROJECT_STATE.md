@@ -1,8 +1,8 @@
 # ATIAF Project State — CANONICAL HANDOFF
-- **Snapshot:** 2026-11-14; Phase P6 completed, transitioning to Phase P7.
+- **Snapshot:** 2026-11-14; Phase P7 completed, transitioning to Phase P8.
 - **Project root:** `أطياف/` (UTF-8 path: `d:\My Software\ATIAF`). Git repository on branch `main`.
-- **Current phase:** P7 — Native QGIS Processing Provider Adapter.
-- **Active plans:** None currently active. PLAN-0001 through PLAN-0007 completed.
+- **Current phase:** P8 — High-accuracy advanced & modality specifications / radar and hyperspectral gating.
+- **Active plans:** None currently active. PLAN-0001 through PLAN-0008 completed.
 - **Completed plans:**
   - PLAN-0001 (`Development_Plans/Completed/PLAN-0001_bootstrap.md`).
   - PLAN-0002 (`Development_Plans/Completed/PLAN-0002_product_recognition.md`).
@@ -11,12 +11,13 @@
   - PLAN-0005 (`Development_Plans/Completed/PLAN-0005_surface_temperature_geological.md`).
   - PLAN-0006 (`Development_Plans/Completed/PLAN-0006_mosaic_temporal.md`).
   - PLAN-0007 (`Development_Plans/Completed/PLAN-0007_expanded_catalog_environment.md`).
-- **Latest numbered development report:** `Reports/0007_expanded_catalog_environment.md`.
+  - PLAN-0008 (`Development_Plans/Completed/PLAN-0008_qgis_native_adapter.md`).
+- **Latest numbered development report:** `Reports/0008_qgis_native_adapter.md`.
 - **Agent Development Journal:** Canonical append-only journal in `.agent-development-log/` (verified records).
 - **Approved Skills:** Cloned in `.agent_resources/GIS-Development-Skills` (commit `2a0a9a23618e40218484ec8ae5848a481df51f1a`).
 - **Host runtime verification:**
   - Python 3.14.7 (standalone) with `numpy 2.5.3`, `rasterio 1.5.2`, `shapely 2.1.2`, `geopandas 1.2.0`, `pyproj 3.8.0`.
-  - QGIS 4.2.3-Belém do Pará with verified working PyQGIS (`qgis.core`).
+  - QGIS 4.2.3-Belém do Pará with verified working PyQGIS (`qgis.core`), Python 3.12.9, GDAL 3.13.3, rasterio 1.5.2.
   - ArcGIS Pro 3.6.0.59527 (`C:\Program Files\ArcGIS\Pro`).
 - **Implemented GIS processing:**
   - `atyaf_core/discovery/`: Landsat, Sentinel-2, ASTER, SceneScanner, ManualBandMapper.
@@ -29,7 +30,9 @@
   - `atyaf_core/mosaic/`: QualityMosaicEngine (union extent, quality ranking, mean valid, latest date, Source_Scene_ID provenance raster).
   - `atyaf_core/temporal/`: ChangeDetectionEngine (dNDVI, dNBR USGS Burn Severity classification, dLST, relative change %, statistical standard deviation classes).
   - `arcgis_pro/ATIAF.pyt`: Native Python Toolbox containing ALL 6 independent tools (Tool 01 Spectral Indices, Tool 02 Surface Temperature, Tool 03 Thermal & Urban, Tool 04 Environmental & Drought, Tool 05 Geological Analysis, Tool 06 Temporal Change Detection) with canonical parameter layout, dynamic validation, metric projected CRS checking, multi-scene mosaic execution, and map execution.
+  - `qgis/atyaf/`: Native QGIS Processing Provider Plugin registering provider ID `atyaf` (`ATIAF | أطياف`) containing ALL 6 independent processing algorithms (`atyaf:spectral_indices`, `atyaf:surface_temperature`, `atyaf:thermal_urban`, `atyaf:environmental_drought`, `atyaf:geological_analysis`, `atyaf:temporal_change`), with canonical parameter ordering (OUTPUT_FOLDER last), Decision D-007 metric CRS validation, and complete bilingual metadata.
 - **Verified checks in package:**
-  - `python tools/validate_package.py`: PASS (301 md, 106 json).
-  - `python -m unittest discover tests`: PASS (71 unit tests passing).
-- **Pending next:** Phase P7 — Native QGIS Processing Provider Adapter (`qgis/`).
+  - `python tools/validate_package.py`: PASS (305 md, 108 json).
+  - `python -m unittest discover tests`: PASS (79 unit tests passing).
+  - `& "C:\Program Files\QGIS 4.2.3\bin\python-qgis.bat" tests/native_qgis/test_qgis_provider.py`: PASS (5 native host integration tests passing).
+- **Pending next:** Phase P8 — High-accuracy advanced & modality specifications / radar and hyperspectral gating.
