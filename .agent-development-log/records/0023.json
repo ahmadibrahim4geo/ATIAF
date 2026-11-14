@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "sequence": 23,
+  "timestamp_utc": "2026-11-14T16:01:55+00:00",
+  "kind": "plan",
+  "status": "in_progress",
+  "summary": "Initiated PLAN-0012: Interactive Documentation Portal & Scientific Indicators Catalog",
+  "details": "Initiated PLAN-0012 to deliver an interactive GitHub Pages portal with live search/filters, comprehensive bilingual scientific indicator catalogs, and user guides.",
+  "references": [],
+  "task_id": "PLAN-0012",
+  "plan_revision": "r1",
+  "changed_files": [
+    "Development_Plans/Active/PLAN-0012_interactive_docs_portal_and_scientific_catalog.md",
+    "Development_Plans/INDEX.md"
+  ],
+  "tests": [],
+  "test_result": "not_run",
+  "commit": "",
+  "previous_hash": "5548b2dc021123de13687b40a25a6a9e8f557657a65bfc679cac1a5e1a8c2342",
+  "hash": "fd12543254e2496488143eb2d533adcf365b55b3a689cb43a9603652b751bc91"
+}

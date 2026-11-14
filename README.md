@@ -5,7 +5,7 @@
 [![Python: 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](pyproject.toml)
 [![ArcGIS Pro: 3.x](https://img.shields.io/badge/ArcGIS%20Pro-3.x%20Ready-brightgreen.svg)](arcgis_pro/)
 [![QGIS: 3.x / 4.x](https://img.shields.io/badge/QGIS-3.x%20%2F%204.x%20Ready-forestgreen.svg)](qgis/atyaf/)
-[![Tests: 93 passing](https://img.shields.io/badge/Tests-93%20passed-success.svg)](tests/)
+[![Tests: 99 passing](https://img.shields.io/badge/Tests-99%20passed-success.svg)](tests/)
 
 An open-source, **free-first**, **offline-at-runtime** satellite imagery analysis framework providing native geoprocessing tools in **ArcGIS Pro** (via `arcgis_pro/ATIAF.pyt`) and **QGIS** (via `qgis/atyaf/` Processing Provider plugin), backed by a shared pure-Python computational core (`atyaf_core/`).
 
@@ -72,19 +72,20 @@ ATIAF adheres to strict completion evidence standards:
 
 | Test Suite | Execution Command | Result |
 |---|---|---|
-| **Core & Engine Unit Tests** | `python -m unittest discover tests` | **93 tests passed (100%)** |
+| **Core & Engine Unit Tests** | `python -m unittest discover tests` | **99 tests passed (100%)** |
 | **Native QGIS 4.2.3 Host Tests** | `& "C:\Program Files\QGIS 4.2.3\bin\python-qgis.bat" tests/native_qgis/test_qgis_provider.py` | **5 host tests passed** |
-| **Package Structural QA** | `python tools/validate_package.py` | **Passed (313 md, 111 json)** |
+| **Package Structural QA** | `python tools/validate_package.py` | **Passed (321 md, 115 json)** |
 | **Environment Verification** | `python tools/verify_installation.py` | **All 5 check tiers verified** |
 
 ---
 
-## Documentation
+## Documentation & Portals
 
-- **Offline Documentation Portal:** Open [`docs/index.html`](docs/index.html) in any web browser.
+- **Interactive Documentation & GitHub Pages Portal:** Open [`docs/index.html`](docs/index.html) in any web browser.
+- **Master Indicators Catalog (Comprehensive):** [English](docs/en/INDICATORS_CATALOG.md) · [العربية](docs/ar/INDICATORS_CATALOG.md)
 - **Quick Start Guide:** [English](docs/en/QUICK_START.md) · [العربية](docs/ar/QUICK_START.md)
-- **Scientific Methods & Citations:** [English](docs/en/SCIENTIFIC_METHODS.md) · [العربية](docs/ar/SCIENTIFIC_METHODS.md)
-- **Sensor Download Guide:** [English](docs/en/SENSORS_AND_DOWNLOADS.md) · [العربية](docs/ar/SENSORS_AND_DOWNLOADS.md)
+- **Scientific Methods & Formulas:** [English](docs/en/SCIENTIFIC_METHODS.md) · [العربية](docs/ar/SCIENTIFIC_METHODS.md)
+- **Sensors & Free Data Download Guide:** [English](docs/en/SENSORS_AND_DOWNLOADS.md) · [العربية](docs/ar/SENSORS_AND_DOWNLOADS.md)
 - **Advanced Modalities (SAR & Hyperspectral):** [English](docs/en/ADVANCED_MODALITIES.md) · [العربية](docs/ar/ADVANCED_MODALITIES.md)
 - **Full Specification:** [English](PROJECT_SPECIFICATION.md) · [العربية](PROJECT_SPECIFICATION_AR.md)
 - **Development Reports:** Chronological evidence in [`Reports/INDEX.md`](Reports/INDEX.md).

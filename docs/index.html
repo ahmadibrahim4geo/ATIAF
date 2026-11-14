@@ -1,292 +1,1329 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ATIAF | أطياف — Documentation Portal (v1.0.0)</title>
+  <title>ATIAF | أطياف — Advanced Thematic Imagery Analysis Framework</title>
   <style>
     :root {
-      --primary: #04718e;
-      --primary-dark: #034b5e;
-      --accent: #2e8540;
-      --bg: #f4f7f9;
-      --card-bg: #ffffff;
-      --text: #20242b;
-      --text-muted: #58656a;
-      --border: #d8e6ea;
-      --header-bg: #1c232b;
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --primary-light: #e0f2fe;
+      --accent: #10b981;
+      --accent-dark: #059669;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-alt: #f1f5f9;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --border-dark: #cbd5e1;
+      --header-bg: #0f172a;
+      --header-surface: #1e293b;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
-      padding-bottom: 60px;
+      -webkit-font-smoothing: antialiased;
     }
-    header {
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Top Nav Bar */
+    nav.top-bar {
       background: var(--header-bg);
-      color: #ffffff;
-      padding: 40px 20px;
+      color: #fff;
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.5px;
+    }
+    .brand-logo .dot {
+      width: 12px;
+      height: 12px;
+      background: linear-gradient(135deg, #38bdf8, #10b981);
+      border-radius: 50%;
+    }
+    .brand-logo span.ar {
+      color: #38bdf8;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+    .nav-links a { color: #cbd5e1; font-weight: 500; }
+    .nav-links a:hover { color: #fff; text-decoration: none; }
+    .lang-switcher {
+      background: var(--header-surface);
+      border: 1px solid #334155;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s ease;
+    }
+    .lang-switcher:hover { background: #334155; }
+
+    /* Hero Section */
+    header.hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #fff;
+      padding: 60px 24px 70px;
       text-align: center;
       border-bottom: 4px solid var(--primary);
     }
-    .header-content {
-      max-width: 1000px;
+    .hero-content {
+      max-width: 900px;
       margin: 0 auto;
     }
-    header h1 {
-      font-size: 2.4rem;
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 12px;
       letter-spacing: -0.5px;
-      margin-bottom: 8px;
     }
-    header h1 span {
-      color: #48cae4;
-      font-weight: 300;
+    .hero h1 span.gradient {
+      background: linear-gradient(135deg, #38bdf8, #34d399);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    header p.tagline {
-      font-size: 1.15rem;
-      color: #b0c4de;
-      margin-bottom: 16px;
+    .hero p.tagline {
+      font-size: 1.25rem;
+      color: #94a3b8;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .badges-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
     }
     .badge {
-      display: inline-block;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      margin: 0 4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
-    .badge-release { background: #0077b6; color: white; }
-    .badge-license { background: #2b9348; color: white; }
-    .badge-status { background: #55a630; color: white; }
+    .badge-v { background: #0284c7; color: #fff; }
+    .badge-license { background: #10b981; color: #fff; }
+    .badge-offline { background: #8b5cf6; color: #fff; }
+    .badge-tested { background: #059669; color: #fff; }
 
+    .quick-cli {
+      display: inline-flex;
+      align-items: center;
+      background: #020617;
+      border: 1px solid #334155;
+      border-radius: var(--radius-md);
+      padding: 8px 16px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.9rem;
+      color: #38bdf8;
+      box-shadow: var(--shadow-md);
+    }
+    .quick-cli span.prompt { color: #64748b; margin-right: 8px; }
+
+    /* Main Container */
     .container {
-      max-width: 1100px;
-      margin: 30px auto;
-      padding: 0 20px;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 24px;
+    }
+
+    /* Section Headings */
+    .section-header {
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 12px;
     }
     .section-title {
-      font-size: 1.5rem;
-      color: var(--primary-dark);
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #0f172a;
     }
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 20px;
-      margin-bottom: 30px;
-    }
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      margin-bottom: 30px;
-    }
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-    }
-    .card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
-    }
-    .card h3 {
-      font-size: 1.2rem;
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
-    .card p {
+    .section-subtitle {
       font-size: 0.95rem;
       color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Tabs Component */
+    .tabs-nav {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: 10px 18px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .tab-btn:hover { color: var(--primary); background: var(--surface-alt); }
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom: 3px solid var(--primary);
+      background: var(--surface);
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* Filter Bar & Search */
+    .explorer-bar {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 32px;
+    }
+    .search-box-wrap {
+      position: relative;
+      margin-bottom: 18px;
+    }
+    .search-input {
+      width: 100%;
+      padding: 14px 20px 14px 44px;
+      font-size: 1rem;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      outline: none;
+      background: #f8fafc;
+      transition: border 0.2s ease, background 0.2s ease;
+    }
+    .search-input:focus {
+      border-color: var(--primary);
+      background: #fff;
+    }
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+    .filter-group {
+      margin-bottom: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+    .filter-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      width: 110px;
+    }
+    .pill {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 5px 12px;
+      border-radius: 9999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .pill:hover { background: #e2e8f0; }
+    .pill.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+    .results-count {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-weight: 600;
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 24px;
+    }
+    .indicator-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+    .indicator-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+      border-color: #cbd5e1;
+    }
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
       margin-bottom: 12px;
     }
-    .card ul {
-      list-style-type: none;
-      padding-left: 0;
+    .card-acronym {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      letter-spacing: -0.5px;
     }
-    .card ul li {
-      padding: 6px 0;
-      border-bottom: 1px dashed #eef2f5;
-      font-size: 0.92rem;
+    .card-cat-badge {
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 9999px;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: #e0f2fe;
+      color: #0369a1;
     }
-    .card ul li:last-child { border-bottom: none; }
-    .card a {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 500;
+    .card-names {
+      margin-bottom: 12px;
     }
-    .card a:hover {
-      text-decoration: underline;
+    .name-en {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1e293b;
     }
-    .rtl {
+    .name-ar {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      margin-top: 2px;
+    }
+    .card-desc {
+      font-size: 0.88rem;
+      color: #334155;
+      line-height: 1.5;
+      margin-bottom: 16px;
+      background: #f8fafc;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--primary);
+    }
+    .card-formula {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      font-size: 0.82rem;
+      margin-bottom: 16px;
+      overflow-x: auto;
+      text-align: center;
+    }
+    .card-meta-list {
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+      display: grid;
+      gap: 6px;
+    }
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 4px;
+    }
+    .meta-row span.label { color: var(--text-muted); font-weight: 600; }
+    .meta-row span.val { font-weight: 700; text-align: right; }
+    .sensor-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 8px;
+    }
+    .tag {
+      background: #f1f5f9;
+      color: #475569;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    /* Host Guides */
+    .guide-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 30px;
+    }
+    .steps-list {
+      display: grid;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .step-item {
+      display: flex;
+      gap: 16px;
+    }
+    .step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .step-text h4 { font-size: 1.05rem; margin-bottom: 4px; color: #0f172a; }
+    .step-text p { font-size: 0.92rem; color: var(--text-muted); }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 50px 24px;
+      text-align: center;
+      margin-top: 60px;
+      border-top: 1px solid #1e293b;
+    }
+    footer p { font-size: 0.9rem; margin-bottom: 8px; }
+    footer a { color: #38bdf8; }
+
+    /* RTL Class when Arabic view activated */
+    body.rtl-mode {
       direction: rtl;
       text-align: right;
     }
-    .code-box {
-      background: #1e293b;
-      color: #f8fafc;
-      padding: 12px 16px;
-      border-radius: 8px;
-      font-family: Consolas, monospace;
-      font-size: 0.88rem;
-      overflow-x: auto;
-      margin: 10px 0;
+    body.rtl-mode .search-input {
+      padding: 14px 44px 14px 20px;
     }
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      border-top: 1px solid var(--border);
-      margin-top: 40px;
+    body.rtl-mode .search-icon {
+      left: auto;
+      right: 16px;
     }
+    body.rtl-mode .card-desc {
+      border-left: none;
+      border-right: 3px solid var(--primary);
+    }
+    body.rtl-mode .meta-row span.val { text-align: left; }
+    body.rtl-mode .step-item { flex-direction: row; }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="header-content">
-    <h1>ATIAF <span>| أطياف</span></h1>
-    <p class="tagline">Advanced Thematic Imagery Analysis Framework — إطار التحليل الطيفي والمكاني للمرئيات الفضائية</p>
-    <div>
-      <span class="badge badge-release">Version 1.0.0</span>
-      <span class="badge badge-license">MIT License</span>
-      <span class="badge badge-status">ArcGIS Pro & QGIS Ready</span>
+  <!-- Navigation Bar -->
+  <nav class="top-bar">
+    <div class="brand-logo">
+      <div class="dot"></div>
+      <span>ATIAF</span>
+      <span class="ar">أطياف</span>
     </div>
+    <div class="nav-links">
+      <a href="#explorer">Indicators Catalog</a>
+      <a href="#guides">Setup Guides</a>
+      <a href="#sensors">Sensors</a>
+      <a href="https://github.com/ahmadibrahim4geo/ATIAF" target="_blank">GitHub Repo</a>
+      <button class="lang-switcher" id="langToggle">
+        <span>🌐 العربية / EN</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>ATIAF <span class="gradient">| أطياف</span></h1>
+      <p class="tagline">
+        Advanced Thematic Imagery Analysis Framework • إطار التحليل الطيفي والمكاني للمرئيات الفضائية
+      </p>
+      <div class="badges-row">
+        <span class="badge badge-v">Version 1.0.0</span>
+        <span class="badge badge-license">MIT Open Source</span>
+        <span class="badge badge-offline">100% Free & Local Offline</span>
+        <span class="badge badge-tested">ArcGIS Pro & QGIS Native</span>
+      </div>
+      <div>
+        <div class="quick-cli">
+          <span class="prompt">$</span> python tools/verify_installation.py
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- Overview: The 6 Canonical Tools -->
+    <section id="tools-overview" style="margin-bottom: 50px;">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">The 6 Canonical Processing Tools | الأدوات الست الأساسية</h2>
+          <p class="section-subtitle">
+            Autonomous standalone geoprocessing tools integrated into ArcGIS Pro and QGIS.
+          </p>
+        </div>
+      </div>
+      <div class="cards-grid">
+        <div class="indicator-card">
+          <div class="card-top">
+            <span class="card-acronym">01. Spectral Indices</span>
+            <span class="card-cat-badge">Tool 01</span>
+          </div>
+          <div class="name-ar" style="font-weight:700; color:#1e293b; margin-bottom:8px;">المؤشرات الطيفية البصرية</div>
+          <p class="card-desc">22 validated optical spectral indices (NDVI, NDWI, MNDWI, NDMI, MSAVI, OSAVI, VARI, GLI, TCB, TCG, TCW, NDBI, NBR, SAVI, EVI, BSI) with automated QA masking and polygon clipping.</p>
+          <div class="meta-row"><span class="label">Supported:</span><span class="val">Landsat 1-9, Sentinel-2, ASTER</span></div>
+        </div>
+
+        <div class="indicator-card">
+          <div class="card-top">
+            <span class="card-acronym">02. Surface Temperature</span>
+            <span class="card-cat-badge">Tool 02</span>
+          </div>
+          <div class="name-ar" style="font-weight:700; color:#1e293b; margin-bottom:8px;">درجة حرارة السطح والانبعاثية</div>
+          <p class="card-desc">Land Surface Temperature (Kelvin / Celsius) and Emissivity via Sobrino et al. (2004) NDVI thresholds model. Strictly enforces thermal sensor presence.</p>
+          <div class="meta-row"><span class="label">Supported:</span><span class="val">Landsat 4-9, ASTER TIR</span></div>
+        </div>
+
+        <div class="indicator-card">
+          <div class="card-top">
+            <span class="card-acronym">03. Urban Heat Islands</span>
+            <span class="card-cat-badge">Tool 03</span>
+          </div>
+          <div class="name-ar" style="font-weight:700; color:#1e293b; margin-bottom:8px;">التحليل الحراري والجزر الحرارية</div>
+          <p class="card-desc">Urban Thermal Field Variance Index (UTFVI; 6-class ecological comfort), Severe Thermal Hotspots (z >= 2.0), and Surface Urban Heat Island (SUHI) mapping.</p>
+          <div class="meta-row"><span class="label">Supported:</span><span class="val">Landsat 4-9, ASTER TIR</span></div>
+        </div>
+
+        <div class="indicator-card">
+          <div class="card-top">
+            <span class="card-acronym">04. Environmental Drought</span>
+            <span class="card-cat-badge">Tool 04</span>
+          </div>
+          <div class="name-ar" style="font-weight:700; color:#1e293b; margin-bottom:8px;">التحليل البيئي ومؤشرات الجفاف</div>
+          <p class="card-desc">Liang (2001) broadband shortwave surface albedo and Temperature Vegetation Dryness Index (TVDI) based on empirical LST-NDVI trapezoidal feature space.</p>
+          <div class="meta-row"><span class="label">Supported:</span><span class="val">Landsat 4-9, Sentinel-2</span></div>
+        </div>
+
+        <div class="indicator-card">
+          <div class="card-top">
+            <span class="card-acronym">05. Geological Analysis</span>
+            <span class="card-cat-badge">Tool 05</span>
+          </div>
+          <div class="name-ar" style="font-weight:700; color:#1e293b; margin-bottom:8px;">التحليل الجيولوجي ونطاقات التحول</div>
+          <p class="card-desc">8 diagnostic mineral alteration ratios (ferric/ferrous iron, gossan, hydroxyl/clay alteration, alunite, quartz). Enforces ASTER post-April 2008 SWIR hardware cutoff.</p>
+          <div class="meta-row"><span class="label">Supported:</span><span class="val">ASTER, Landsat 4-9</span></div>
+        </div>
+
+        <div class="indicator-card">
+          <div class="card-top">
+            <span class="card-acronym">06. Temporal Change</span>
+            <span class="card-cat-badge">Tool 06</span>
+          </div>
+          <div class="name-ar" style="font-weight:700; color:#1e293b; margin-bottom:8px;">التحليل الزمني وتغير الغطاء الأرضي</div>
+          <p class="card-desc">dNDVI, dLST, and dNBR with official USGS FIREMON 7-class Burn Severity classification, relative percentage change, and standard deviation anomaly maps.</p>
+          <div class="meta-row"><span class="label">Supported:</span><span class="val">Landsat 4-9, Sentinel-2</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 1: Interactive Scientific Catalog Explorer -->
+    <section id="explorer">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Scientific Indicators Explorer | مستكشف المؤشرات العلمية</h2>
+          <p class="section-subtitle">
+            Instant search and filtering across all 22 optical indices, surface temperature, urban heat, drought, geology, and radar models.
+          </p>
+        </div>
+      </div>
+
+      <!-- Explorer Control Bar -->
+      <div class="explorer-bar">
+        <div class="search-box-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search by name, acronym, application (e.g., NDVI, agriculture, water, ASTER, drought)...">
+        </div>
+
+        <!-- Domain Filter Pills -->
+        <div class="filter-group">
+          <span class="filter-label">Domain:</span>
+          <button class="pill active" data-cat="all">All (الكل)</button>
+          <button class="pill" data-cat="vegetation">Vegetation (الغطاء النباتي)</button>
+          <button class="pill" data-cat="water">Water & Snow (المياه والجليد)</button>
+          <button class="pill" data-cat="urban">Urban & Soil (العمران والتربة)</button>
+          <button class="pill" data-cat="thermal">Thermal & Heat (الحرارة والجزر)</button>
+          <button class="pill" data-cat="drought">Drought & Albedo (الجفاف)</button>
+          <button class="pill" data-cat="geology">Geology & Minerals (الجيولوجيا)</button>
+          <button class="pill" data-cat="change">Wildfire & Change (الحرائق والتغير)</button>
+          <button class="pill" data-cat="radar">Radar SAR (الرادار)</button>
+        </div>
+
+        <!-- Sensor Filter Pills -->
+        <div class="filter-group">
+          <span class="filter-label">Satellite:</span>
+          <button class="pill active" data-sensor="all">All Sensors (كافة الأقمار)</button>
+          <button class="pill" data-sensor="landsat">Landsat 4-9</button>
+          <button class="pill" data-sensor="sentinel2">Sentinel-2</button>
+          <button class="pill" data-sensor="aster">ASTER</button>
+          <button class="pill" data-sensor="sentinel1">Sentinel-1 (SAR)</button>
+        </div>
+
+        <div class="results-count" id="resultsCount">Showing all indicators</div>
+      </div>
+
+      <!-- Dynamic Cards Grid -->
+      <div class="cards-grid" id="cardsGrid">
+        <!-- Rendered dynamically by JavaScript -->
+      </div>
+    </section>
+
+    <!-- Section 2: Host Installation & Setup Guides -->
+    <section id="guides" style="margin-top: 60px;">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Host Installation & Workflow Guides | دليل الإعداد والتشغيل</h2>
+          <p class="section-subtitle">
+            Step-by-step instructions for running ATIAF inside ArcGIS Pro, QGIS, or Python CLI.
+          </p>
+        </div>
+      </div>
+
+      <div class="tabs-nav">
+        <button class="tab-btn active" data-tab="tab-arcgis">ArcGIS Pro (.pyt)</button>
+        <button class="tab-btn" data-tab="tab-qgis">QGIS 3.x / 4.x Plugin</button>
+        <button class="tab-btn" data-tab="tab-cli">Python CLI & Batch API</button>
+      </div>
+
+      <!-- Tab 1: ArcGIS Pro -->
+      <div class="tab-content active" id="tab-arcgis">
+        <div class="guide-box">
+          <h3>Native ArcGIS Pro Integration (Toolbox `.pyt`)</h3>
+          <p style="color: var(--text-muted); margin-top: 4px;">Works natively in ArcGIS Pro 3.0+ without compilation or third-party add-ins.</p>
+          <div class="steps-list">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div class="step-text">
+                <h4>Add Toolbox to Catalog</h4>
+                <p>In ArcGIS Pro, open the <strong>Catalog Pane</strong>, right-click <strong>Toolboxes</strong> -> <strong>Add Toolbox</strong>, and navigate to <code>arcgis_pro/ATIAF.pyt</code>.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-text">
+                <h4>Select Satellite Imagery Folder</h4>
+                <p>Open any tool (e.g., <em>01. Spectral Indices</em>). Point the <strong>Imagery Input Folder</strong> parameter to your unpacked scene directory (e.g. Landsat or Sentinel-2 folder).</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-text">
+                <h4>Choose Projected Metre CRS & AOI</h4>
+                <p>Select your desired output projected coordinate system (in metres, such as UTM). Optionally select a study area polygon to clip outputs automatically.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">4</div>
+              <div class="step-text">
+                <h4>Click Run & View Results</h4>
+                <p>Outputs are generated in <code>Results/</code>, layered directly onto your active map, with complete HTML run reports in <code>Results/Reports/index.html</code>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: QGIS -->
+      <div class="tab-content" id="tab-qgis">
+        <div class="guide-box">
+          <h3>Native QGIS Processing Provider (`qgis/atyaf`)</h3>
+          <p style="color: var(--text-muted); margin-top: 4px;">Full compliance with QGIS Processing Framework in QGIS 3.x and 4.x.</p>
+          <div class="steps-list">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div class="step-text">
+                <h4>Install or Link Plugin Folder</h4>
+                <p>Copy or link <code>qgis/atyaf</code> to your active QGIS profile plugin folder (e.g., <code>%APPDATA%\QGIS\QGIS3\profiles\default\python\plugins\atyaf</code>).</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-text">
+                <h4>Enable in Plugins Manager</h4>
+                <p>In QGIS, go to <strong>Plugins -> Manage and Install Plugins</strong>, locate <strong>ATIAF (أطياف)</strong> under Installed, and enable its checkbox.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">3</div>
+              <div class="step-text">
+                <h4>Open Processing Toolbox</h4>
+                <p>Open the <strong>Processing Toolbox</strong> (<code>Ctrl+Alt+T</code>) to find the <strong>ATIAF | أطياف</strong> provider containing all 6 algorithms.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">4</div>
+              <div class="step-text">
+                <h4>Execute & Inspect Results</h4>
+                <p>Double-click any algorithm, pick your scene folder, set options, and click Run. Output rasters are instantly added to your QGIS layer canvas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: CLI -->
+      <div class="tab-content" id="tab-cli">
+        <div class="guide-box">
+          <h3>Command-Line Diagnostics & Batch Processing</h3>
+          <p style="color: var(--text-muted); margin-top: 4px;">Run automated environment verifications and batch pipelines programmatically.</p>
+          <div class="steps-list">
+            <div class="step-item">
+              <div class="step-num">1</div>
+              <div class="step-text">
+                <h4>Run Diagnostics Tool</h4>
+                <p>Verify all NumPy, Rasterio, Shapely, PyProj, and engine dependencies in one command:</p>
+                <div class="quick-cli" style="margin-top: 6px;"><span class="prompt">$</span> python tools/verify_installation.py</div>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-num">2</div>
+              <div class="step-text">
+                <h4>Batch Scripting with atyaf_core</h4>
+                <p>Import pure-Python engines directly in Python scripts or Jupyter Notebooks without GIS GUI overhead:</p>
+                <div class="quick-cli" style="margin-top: 6px;"><span class="prompt">>>></span> from atyaf_core.indices import SpectralIndicesEngine</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Free Portals & Sensors -->
+    <section id="sensors" style="margin-top: 60px;">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Satellite Missions & Free Download Portals | بوابات التحميل المجانية</h2>
+          <p class="section-subtitle">
+            Acquire free global analysis-ready imagery from official space agencies.
+          </p>
+        </div>
+      </div>
+
+      <div class="cards-grid">
+        <div class="indicator-card">
+          <div class="card-top">
+            <span class="card-acronym">USGS EarthExplorer</span>
+            <span class="card-cat-badge">Landsat 4-9</span>
+          </div>
+          <div class="name-en">United States Geological Survey</div>
+          <div class="name-ar">هيئة المسح الجيولوجي الأمريكية</div>
+          <p class="card-desc">Download Landsat Collection 2 Level-2 Surface Reflectance and Surface Temperature scenes freely across the global 1982–present archive.</p>
+          <div class="meta-row"><span class="label">Portal:</span><span class="val"><a href="https://earthexplorer.usgs.gov/" target="_blank">earthexplorer.usgs.gov &rarr;</a></span></div>
+          <div class="meta-row"><span class="label">Supported Tools:</span><span class="val">All 6 Tools (01-06)</span></div>
+        </div>
+
+        <div class="indicator-card">
+          <div class="card-top">
+            <span class="card-acronym">Copernicus Browser</span>
+            <span class="card-cat-badge">Sentinel-2 & 1</span>
+          </div>
+          <div class="name-en">European Space Agency (ESA)</div>
+          <div class="name-ar">وكالة الفضاء الأوروبية</div>
+          <p class="card-desc">Download Sentinel-2 Level-2A (10m/20m multispectral) and Sentinel-1 C-SAR GRD microwave radar products freely worldwide.</p>
+          <div class="meta-row"><span class="label">Portal:</span><span class="val"><a href="https://dataspace.copernicus.eu/browser/" target="_blank">dataspace.copernicus.eu &rarr;</a></span></div>
+          <div class="meta-row"><span class="label">Supported Tools:</span><span class="val">Tools 01, 04, 05, 06, SAR</span></div>
+        </div>
+
+        <div class="indicator-card">
+          <div class="card-top">
+            <span class="card-acronym">NASA Earthdata</span>
+            <span class="card-cat-badge">Terra ASTER</span>
+          </div>
+          <div class="name-en">NASA LP DAAC</div>
+          <div class="name-ar">وكالة ناسا الأمريكية</div>
+          <p class="card-desc">Download ASTER AST_07 Surface Reflectance and AST_08 Kinetic Temperature products for specialized geological mineral exploration.</p>
+          <div class="meta-row"><span class="label">Portal:</span><span class="val"><a href="https://search.earthdata.nasa.gov/" target="_blank">search.earthdata.nasa.gov &rarr;</a></span></div>
+          <div class="meta-row"><span class="label">Supported Tools:</span><span class="val">Tools 01, 02, 05 (TIR QI/CI/MI)</span></div>
+        </div>
+      </div>
+    </section>
+
   </div>
-</header>
 
-<div class="container">
+  <!-- Footer -->
+  <footer>
+    <p><strong>ATIAF (أطياف)</strong> &copy; 2026 Ahmed Ibrahim. Released under the MIT Open Source License.</p>
+    <p style="font-size: 0.82rem;">Advanced Thematic Imagery Analysis Framework • Free, Local, Deterministic Remote Sensing.</p>
+  </footer>
 
-  <!-- Overview Section -->
-  <div class="grid-2">
-    <div class="card">
-      <h3>About ATIAF</h3>
-      <p>An open-source, free-first, local-at-runtime satellite imagery processing toolkit for <strong>ArcGIS Pro</strong> (native <code>.pyt</code>) and <strong>QGIS</strong> (native processing plugin). Users supply downloaded imagery; ATIAF auto-discovers missions, validates calibration, applies quality masks, clips AOI geometries, calculates physical models, and outputs reproducible manifests.</p>
-      <div class="code-box">python tools/verify_installation.py</div>
-    </div>
-    <div class="card rtl">
-      <h3>عن مشروع أطياف</h3>
-      <p>منظومة برمجية حرة ومفتوحة المصدر لمعالجة وتحليل المرئيات الفضائية محلياً دون الحاجة لاتصال بالإنترنت أثناء المعالجة، تعمل بسلاسة تامة داخل <strong>ArcGIS Pro</strong> و <strong>QGIS</strong>. تدعم الاستكشاف التلقائي للأقمار والمستشعرات، والمعايرة الإشعاعية، وحجب السحب والظلال، وحساب المؤشرات الطيفية والحرارية والجيولوجية مع تقارير تحقق علمية موثقة.</p>
-      <div class="code-box">python tools/verify_installation.py</div>
-    </div>
-  </div>
+  <!-- Embedded Scientific Indicators Catalog Data & Interactive Logic -->
+  <script>
+    const INDICATORS = [
+      // --- VEGETATION FAMILY ---
+      {
+        id: "NDVI",
+        cat: "vegetation",
+        acronym: "NDVI",
+        nameEn: "Normalized Difference Vegetation Index",
+        nameAr: "مؤشر الفرق المعياري للغطاء النباتي",
+        desc: "Measures photosynthetic vigor and biomass by contrasting chlorophyll absorption in Red against mesophyll reflection in NIR. Used globally in crop monitoring, phenology, and deforestation.",
+        formula: "(NIR - Red) / (NIR + Red)",
+        sensors: ["landsat", "sentinel2", "aster"],
+        sensorLabels: "Landsat 4-9, Sentinel-2, ASTER",
+        bands: "Red (665 nm), NIR (842 nm)",
+        range: "-1 to +1 (Vegetation: 0.2 to 0.85)"
+      },
+      {
+        id: "GNDVI",
+        cat: "vegetation",
+        acronym: "GNDVI",
+        nameEn: "Green Normalized Difference Vegetation Index",
+        nameAr: "مؤشر الفرق المعياري الأخضر للغطاء النباتي",
+        desc: "Replaces Red with Green, providing 4-5x higher sensitivity to chlorophyll concentration in dense canopies where NDVI saturates. Ideal for precision nitrogen management.",
+        formula: "(NIR - Green) / (NIR + Green)",
+        sensors: ["landsat", "sentinel2"],
+        sensorLabels: "Landsat 4-9, Sentinel-2",
+        bands: "Green (560 nm), NIR (842 nm)",
+        range: "-1 to +1 (Healthy crops > 0.5)"
+      },
+      {
+        id: "SAVI",
+        cat: "vegetation",
+        acronym: "SAVI",
+        nameEn: "Soil-Adjusted Vegetation Index",
+        nameAr: "مؤشر الغطاء النباتي المعدل بتأثير التربة",
+        desc: "Adds a soil-brightness correction factor (L=0.5) to minimize background soil reflectance scattering. Crucial for arid rangelands and early-stage emergent crops.",
+        formula: "((1 + L) * (NIR - Red)) / (NIR + Red + L)",
+        sensors: ["landsat", "sentinel2", "aster"],
+        sensorLabels: "Landsat 4-9, Sentinel-2, ASTER",
+        bands: "Red (665 nm), NIR (842 nm)",
+        range: "-1 to +1 (Soil background normalized)"
+      },
+      {
+        id: "MSAVI",
+        cat: "vegetation",
+        acronym: "MSAVI",
+        nameEn: "Modified Soil-Adjusted Vegetation Index",
+        nameAr: "مؤشر الغطاء النباتي المعدل للتربة الثاني",
+        desc: "Calculates an automatic self-adjusting soil line function, eliminating manual factor selection. Highest accuracy for hyper-arid desert agriculture.",
+        formula: "(2*NIR + 1 - sqrt((2*NIR+1)^2 - 8*(NIR-Red))) / 2",
+        sensors: ["landsat", "sentinel2"],
+        sensorLabels: "Landsat 4-9, Sentinel-2",
+        bands: "Red, NIR",
+        range: "0.0 to 1.0"
+      },
+      {
+        id: "OSAVI",
+        cat: "vegetation",
+        acronym: "OSAVI",
+        nameEn: "Optimized Soil-Adjusted Vegetation Index",
+        nameAr: "مؤشر الغطاء النباتي المعدل الأمثل للتربة",
+        desc: "Standardized optimization of SAVI with constant L=0.16. Best for semi-arid areas with 20% to 50% canopy cover.",
+        formula: "(NIR - Red) / (NIR + Red + 0.16)",
+        sensors: ["landsat", "sentinel2"],
+        sensorLabels: "Landsat 4-9, Sentinel-2",
+        bands: "Red, NIR",
+        range: "0.0 to 1.0"
+      },
+      {
+        id: "EVI",
+        cat: "vegetation",
+        acronym: "EVI",
+        nameEn: "Enhanced Vegetation Index",
+        nameAr: "مؤشر الغطاء النباتي المحسن",
+        desc: "Incorporates Blue band to correct for aerosol atmospheric scattering and soil background. Maintains sensitivity in high-biomass tropical rain forests.",
+        formula: "2.5 * (NIR - Red) / (NIR + 6*Red - 7.5*Blue + 1.0)",
+        sensors: ["landsat", "sentinel2"],
+        sensorLabels: "Landsat 4-9, Sentinel-2",
+        bands: "Blue (490 nm), Red (665 nm), NIR (842 nm)",
+        range: "-1 to +1 (Dense forest: 0.5 to 0.9)"
+      },
+      {
+        id: "NDRE1",
+        cat: "vegetation",
+        acronym: "NDRE1",
+        nameEn: "Normalized Difference Red Edge Index 1",
+        nameAr: "مؤشر الفرق المعياري لحافة الأحمر 1",
+        desc: "Exploits the sharp transition between Red absorption and NIR reflectance. Red edge light penetrates deep into multi-layered leaf canopies for nitrogen status detection.",
+        formula: "(NIR - RedEdge1) / (NIR + RedEdge1)",
+        sensors: ["sentinel2"],
+        sensorLabels: "Sentinel-2 Only (B5, B8)",
+        bands: "Red Edge 1 (705 nm), NIR (842 nm)",
+        range: "0.1 to 0.7 (Precision Agriculture standard)"
+      },
+      {
+        id: "VARI",
+        cat: "vegetation",
+        acronym: "VARI",
+        nameEn: "Visible Atmospherically Resistant Index",
+        nameAr: "المؤشر المرئي المقاوم لتأثيرات الغلاف الجوي",
+        desc: "Estimates vegetation fraction using strictly visible channels (RGB) while attenuating atmospheric scattering. Ideal for RGB UAV drone imagery.",
+        formula: "(Green - Red) / (Green + Red - Blue)",
+        sensors: ["landsat", "sentinel2"],
+        sensorLabels: "Landsat 4-9, Sentinel-2, RGB UAV",
+        bands: "Blue, Green, Red (Visible only)",
+        range: "-1.0 to +1.0"
+      },
+      {
+        id: "GLI",
+        cat: "vegetation",
+        acronym: "GLI",
+        nameEn: "Green Leaf Index",
+        nameAr: "مؤشر الورق الأخضر",
+        desc: "Quantifies turfgrass vigor and vegetative cover from visible imagery. Values range from negative (bare soil/water) to positive (green canopy).",
+        formula: "(2*Green - Red - Blue) / (2*Green + Red + Blue)",
+        sensors: ["landsat", "sentinel2"],
+        sensorLabels: "Landsat 4-9, Sentinel-2",
+        bands: "Blue, Green, Red",
+        range: "-1 to +1"
+      },
 
-  <!-- Six Tools Section -->
-  <h2 class="section-title">
-    <span>The 6 Canonical Remote Sensing Tools | الأدوات الست الأساسية</span>
-  </h2>
-  <div class="grid-3">
-    <div class="card">
-      <h3>01. Spectral Indices | المؤشرات الطيفية</h3>
-      <p>22 validated optical spectral indices (NDVI, NDWI, MNDWI, NDMI, MSAVI, OSAVI, VARI, GLI, TCB, TCG, TCW, NDBI, NBR, SAVI, EVI, BSI) with sensor auto-detection, QA masking, and true polygon clipping.</p>
-    </div>
-    <div class="card">
-      <h3>02. Surface Temperature | درجة حرارة السطح</h3>
-      <p>Land Surface Temperature (LST in Kelvin and Celsius) and Land Surface Emissivity (LSE) calculated via Sobrino et al. (2004) NDVI thresholds model. Strictly enforces thermal sensor presence.</p>
-    </div>
-    <div class="card">
-      <h3>03. Urban Heat Islands | الجزر الحرارية</h3>
-      <p>Urban Thermal Field Variance Index (UTFVI) with 6-class ecological comfort classification, thermal anomaly hotspots ($z \ge 2.0$), and Surface Urban Heat Island (SUHI) analysis.</p>
-    </div>
-    <div class="card">
-      <h3>04. Environmental Drought | الجفاف البيئي</h3>
-      <p>Liang (2001) broadband shortwave surface albedo ($\alpha$) and Temperature Vegetation Dryness Index (TVDI) based on empirical LST–NDVI trapezoidal feature space.</p>
-    </div>
-    <div class="card">
-      <h3>05. Geological Analysis | التحليل الجيولوجي</h3>
-      <p>8 diagnostic mineral alteration ratios (ferric iron, ferrous iron, gossan, hydroxyl/clay alteration, alunite, silica). Enforces ASTER post-April 2008 SWIR degradation cutoff.</p>
-    </div>
-    <div class="card">
-      <h3>06. Temporal Change | التغير وحرائق الغابات</h3>
-      <p>Multi-temporal delta products (dNDVI, dNBR) with official USGS FIREMON 7-class Burn Severity classification, relative percentage change, and standard deviation anomaly maps.</p>
-    </div>
-  </div>
+      // --- WATER & SNOW FAMILY ---
+      {
+        id: "NDWI_MCFEETERS",
+        cat: "water",
+        acronym: "NDWI (McFeeters)",
+        nameEn: "Normalized Difference Water Index",
+        nameAr: "مؤشر الفرق المعياري للمياه (ماك فيترز)",
+        desc: "Maximizes water feature reflectance in Green while minimizing NIR reflectance. Used for shoreline delineation, reservoir extent monitoring, and flood mapping.",
+        formula: "(Green - NIR) / (Green + NIR)",
+        sensors: ["landsat", "sentinel2"],
+        sensorLabels: "Landsat 4-9, Sentinel-2",
+        bands: "Green (560 nm), NIR (842 nm)",
+        range: "> 0 indicates open water bodies"
+      },
+      {
+        id: "MNDWI",
+        cat: "water",
+        acronym: "MNDWI (Xu)",
+        nameEn: "Modified Normalized Difference Water Index",
+        nameAr: "مؤشر الفرق المعياري المعدل للمياه (شو)",
+        desc: "Substitutes NIR with SWIR-1 to suppress built-up urban noise that confuses McFeeters NDWI. The gold standard for urban water extraction.",
+        formula: "(Green - SWIR1) / (Green + SWIR1)",
+        sensors: ["landsat", "sentinel2"],
+        sensorLabels: "Landsat 4-9, Sentinel-2",
+        bands: "Green (560 nm), SWIR-1 (1610 nm)",
+        range: "> 0 indicates urban and natural water"
+      },
+      {
+        id: "NDMI",
+        cat: "water",
+        acronym: "NDMI / NDWI (Gao)",
+        nameEn: "Normalized Difference Moisture Index",
+        nameAr: "مؤشر الرطوبة الفارق المعياري (جاو)",
+        desc: "Directly correlates with canopy liquid water thickness inside plant leaf mesophyll. Critical for irrigation scheduling and drought stress detection.",
+        formula: "(NIR - SWIR1) / (NIR + SWIR1)",
+        sensors: ["landsat", "sentinel2"],
+        sensorLabels: "Landsat 4-9, Sentinel-2",
+        bands: "NIR (842 nm), SWIR-1 (1610 nm)",
+        range: "-0.2 (water stress) to +0.4 (saturated)"
+      },
+      {
+        id: "NDSI",
+        cat: "water",
+        acronym: "NDSI",
+        nameEn: "Normalized Difference Snow Index",
+        nameAr: "مؤشر الفرق المعياري للثلوج",
+        desc: "Distinguishes snow cover from atmospheric water clouds based on snow's high visible reflectance and near-complete SWIR absorption.",
+        formula: "(Green - SWIR1) / (Green + SWIR1)",
+        sensors: ["landsat", "sentinel2"],
+        sensorLabels: "Landsat 4-9, Sentinel-2",
+        bands: "Green (560 nm), SWIR-1 (1610 nm)",
+        range: ">= 0.4 indicates snow cover"
+      },
 
-  <!-- Modality Rules Section -->
-  <h2 class="section-title">
-    <span>Sensor Modality Boundaries | ضوابط الأنماط الاستشعارية</span>
-  </h2>
-  <div class="grid-2">
-    <div class="card">
-      <h3>Radar (SAR) & Sentinel-1</h3>
-      <p><strong>Core Rule: Never route SAR through optical equations.</strong></p>
-      <ul>
-        <li>Active microwave backscatter ($\sigma^0, \gamma^0, \beta^0$) calibration.</li>
-        <li>Linear power to Decibels ($dB = 10 \cdot \log_{10}(\sigma^0)$).</li>
-        <li>Cross-polarization ratio ($VH / VV$).</li>
-        <li>Dual-pol Radar Vegetation Index ($RVI = \frac{4 \cdot VH}{VV + VH}$).</li>
-        <li>Spatial Lee speckle filter with pure-NumPy optimization.</li>
-      </ul>
-      <p style="margin-top: 10px;"><a href="en/ADVANCED_MODALITIES.md">Read SAR & Hyperspectral Specifications &rarr;</a></p>
-    </div>
-    <div class="card rtl">
-      <h3>الرادار والبيانات الفائقة الطيفية</h3>
-      <p><strong>القاعدة الإلزامية: يُحظر تطبيق معادلات المؤشرات البصرية على بيانات الرادار.</strong></p>
-      <ul>
-        <li>معايرة التشتت الراداري المرتد وتحويله إلى الديسبل (dB).</li>
-        <li>حساب نسبة الاستقطاب المتعامد ($VH / VV$).</li>
-        <li>حساب مؤشر الغطاء النباتي الراداري (RVI).</li>
-        <li>مرشح لي (Lee Filter) لتنقية التشويش الراداري.</li>
-        <li>تحليل المعادن فائق الطيفية (SAM وعمق الامتصاص) يشترط مكعبات Level-2.</li>
-      </ul>
-      <p style="margin-top: 10px;"><a href="ar/ADVANCED_MODALITIES.md">&larr; قراءة وثيقة الأنماط المتقدمة</a></p>
-    </div>
-  </div>
+      // --- URBAN & SOIL FAMILY ---
+      {
+        id: "NDBI",
+        cat: "urban",
+        acronym: "NDBI",
+        nameEn: "Normalized Difference Built-Up Index",
+        nameAr: "مؤشر الفرق المعياري للمناطق العمرانية",
+        desc: "Highlights asphalt, concrete, and built-up structures having higher reflectance in SWIR-1 than in NIR. Used in urban sprawl and impervious surface mapping.",
+        formula: "(SWIR1 - NIR) / (SWIR1 + NIR)",
+        sensors: ["landsat", "sentinel2"],
+        sensorLabels: "Landsat 4-9, Sentinel-2",
+        bands: "NIR, SWIR-1",
+        range: "> 0 indicates built-up / urban areas"
+      },
+      {
+        id: "UI",
+        cat: "urban",
+        acronym: "UI",
+        nameEn: "Urban Index",
+        nameAr: "المؤشر العمراني",
+        desc: "Employs SWIR-2 against NIR for urban settlement mapping, enhancing contrast between built structures and dry bare agricultural soils.",
+        formula: "(SWIR2 - NIR) / (SWIR2 + NIR)",
+        sensors: ["landsat", "sentinel2"],
+        sensorLabels: "Landsat 4-9, Sentinel-2",
+        bands: "NIR, SWIR-2 (2190 nm)",
+        range: "Higher values correlate with building density"
+      },
+      {
+        id: "BSI",
+        cat: "urban",
+        acronym: "BSI",
+        nameEn: "Bare Soil Index",
+        nameAr: "مؤشر التربة المكشوفة",
+        desc: "Combines 4 spectral bands to separate bare agricultural soil, ploughed ground, and fallow land from vegetation and built-up areas. Crucial for erosion risk.",
+        formula: "((SWIR1 + Red) - (NIR + Blue)) / ((SWIR1 + Red) + (NIR + Blue))",
+        sensors: ["landsat", "sentinel2"],
+        sensorLabels: "Landsat 4-9, Sentinel-2",
+        bands: "Blue, Red, NIR, SWIR-1",
+        range: "Positive values represent bare soil"
+      },
 
-  <!-- Documentation Links Grid -->
-  <h2 class="section-title">
-    <span>Documentation & Guides | الوثائق والأدلة الإرشادية</span>
-  </h2>
-  <div class="grid-2">
-    <div class="card">
-      <h3>English Documentation</h3>
-      <ul>
-        <li><a href="en/QUICK_START.md">Quick Start Guide</a> &mdash; First workflow walkthrough.</li>
-        <li><a href="en/INSTALLATION.md">Installation Guide</a> &mdash; Setting up ArcGIS Pro & QGIS.</li>
-        <li><a href="en/SCIENTIFIC_METHODS.md">Scientific Methods & Formulas</a> &mdash; Complete mathematics and citations.</li>
-        <li><a href="en/SENSORS_AND_DOWNLOADS.md">Sensors & Free Data Portals</a> &mdash; Landsat, Sentinel, ASTER download links.</li>
-        <li><a href="en/ADVANCED_MODALITIES.md">Advanced Modalities</a> &mdash; SAR radar and hyperspectral gating.</li>
-        <li><a href="en/REPORTING_AND_OUTPUTS.md">Outputs & Manifests</a> &mdash; Work/Results workspace structure.</li>
-        <li><a href="en/TROUBLESHOOTING.md">Troubleshooting Guide</a> &mdash; Resolving common issues.</li>
-        <li><a href="../PROJECT_SPECIFICATION.md">Full Engineering Specification</a></li>
-        <li><a href="../DEVELOPMENT_ROADMAP.md">Development Roadmap & Milestones</a></li>
-      </ul>
-    </div>
-    <div class="card rtl">
-      <h3>الوثائق والأدلة باللغة العربية</h3>
-      <ul>
-        <li><a href="ar/QUICK_START.md">دليل البدء السريع</a> &mdash; خطوات المعالجة الأولى خطوة بخطوة.</li>
-        <li><a href="ar/INSTALLATION.md">دليل التثبيت والإعداد</a> &mdash; تثبيت أطياف في ArcGIS Pro و QGIS.</li>
-        <li><a href="ar/SCIENTIFIC_METHODS.md">الطرق العلمية والمعادلات</a> &mdash; المعادلات والمراجع الأكاديمية المعتمدة.</li>
-        <li><a href="ar/SENSORS_AND_DOWNLOADS.md">دليل المستشعرات وبوابات التحميل</a> &mdash; روابط تحميل المرئيات مجاناً.</li>
-        <li><a href="ar/ADVANCED_MODALITIES.md">الأنماط المتقدمة</a> &mdash; ضوابط الرادار والاستشعار الفائق الطيفية.</li>
-        <li><a href="ar/REPORTING_AND_OUTPUTS.md">المخرجات وسجلات التشغيل</a> &mdash; تنظيم المجلدات وسجلات الجودة.</li>
-        <li><a href="ar/TROUBLESHOOTING.md">دليل حل المشكلات</a> &mdash; حل الأخطاء الشائعة في بيئات العمل.</li>
-        <li><a href="../PROJECT_SPECIFICATION_AR.md">المواصفات الهندسية الشاملة للمشروع</a></li>
-        <li><a href="../DEVELOPMENT_ROADMAP_AR.md">خارطة طريق التطوير والمراحل</a></li>
-      </ul>
-    </div>
-  </div>
+      // --- THERMAL & URBAN HEAT FAMILY ---
+      {
+        id: "LST",
+        cat: "thermal",
+        acronym: "LST",
+        nameEn: "Land Surface Temperature",
+        nameAr: "درجة حرارة السطح الأرضي",
+        desc: "Calculates radiometric surface skin temperature in Kelvin or Celsius. Strictly requires thermal infrared bands. Used in urban heat islands, evapotranspiration, and climate change.",
+        formula: "Landsat C2 L2 ST: K = DN * 0.00341802 + 149.0",
+        sensors: ["landsat", "aster"],
+        sensorLabels: "Landsat 4-9, ASTER (Sentinel-2 blocked: no thermal)",
+        bands: "Thermal Infrared TIR (10.9 µm)",
+        range: "Kelvin (K) or Celsius (°C)"
+      },
+      {
+        id: "UTFVI",
+        cat: "thermal",
+        acronym: "UTFVI",
+        nameEn: "Urban Thermal Field Variance Index",
+        nameAr: "مؤشر تباين الحقل الحراري الحضري",
+        desc: "Quantifies the microclimatic thermal anomaly of urban centers relative to background mean temperature. Automatically classified into 6 ecological comfort classes.",
+        formula: "(LST - mean(LST)) / mean(LST)",
+        sensors: ["landsat", "aster"],
+        sensorLabels: "Landsat 4-9, ASTER",
+        bands: "Thermal LST derived",
+        range: "< 0 Excellent, 0-0.01 Normal, > 0.02 Worst"
+      },
+      {
+        id: "HOTSPOTS",
+        cat: "thermal",
+        acronym: "Thermal Hotspots",
+        nameEn: "Severe Thermal Hotspots (z >= 2.0)",
+        nameAr: "البؤر الحرارية الشديدة",
+        desc: "Statistical z-score outlier identification detecting areas exceeding 2 standard deviations above the regional mean temperature. Pinpoints factories, unshaded asphalt, and heat hazards.",
+        formula: "(LST - mean) / std >= 2.0",
+        sensors: ["landsat", "aster"],
+        sensorLabels: "Landsat 4-9, ASTER",
+        bands: "Thermal LST derived",
+        range: "Binary raster (1 = Severe Hotspot, 0 = Normal)"
+      },
 
-</div>
+      // --- DROUGHT & ALBEDO FAMILY ---
+      {
+        id: "ALBEDO",
+        cat: "drought",
+        acronym: "Surface Albedo",
+        nameEn: "Broadband Shortwave Surface Albedo (Liang 2001)",
+        nameAr: "البيدو السطح عريض النطاق",
+        desc: "Total fraction of shortwave solar radiation reflected by the surface. Essential for surface energy balance, desertification monitoring, and urban climate simulation.",
+        formula: "0.356*Blue + 0.130*Red + 0.373*NIR + 0.085*SWIR1 + 0.072*SWIR2 - 0.0018",
+        sensors: ["landsat", "sentinel2"],
+        sensorLabels: "Landsat 4-9, Sentinel-2",
+        bands: "Blue, Red, NIR, SWIR1, SWIR2",
+        range: "0.0 (total absorption) to 1.0 (total reflection)"
+      },
+      {
+        id: "TVDI",
+        cat: "drought",
+        acronym: "TVDI",
+        nameEn: "Temperature Vegetation Dryness Index",
+        nameAr: "مؤشر جفاف الغطاء النباتي الحراري",
+        desc: "Evaluates soil and canopy drought stress within the trapezoidal feature space between LST and NDVI. Accurately maps agricultural drought without in-situ soil probes.",
+        formula: "(LST - LST_min) / (LST_max - LST_min)",
+        sensors: ["landsat", "aster"],
+        sensorLabels: "Landsat 4-9, ASTER",
+        bands: "NDVI (Optical) + LST (Thermal)",
+        range: "0.0 (saturated/wet) to 1.0 (extreme drought)"
+      },
 
-<footer>
-  <p>ATIAF Project (أطياف) &copy; 2026 Ahmed Ibrahim. Released under the MIT Open Source License.</p>
-  <p style="font-size: 0.82rem; margin-top: 6px;">Fully verified with 93 unit tests, real ArcGIS Pro 3.6 .pyt, and native QGIS 4.2.3 processing provider.</p>
-</footer>
+      // --- GEOLOGY & MINERALS FAMILY ---
+      {
+        id: "IRON_OXIDE",
+        cat: "geology",
+        acronym: "Iron Oxide",
+        nameEn: "Iron Oxide Ratio (Hematite / Goethite)",
+        nameAr: "نسبة أكاسيد الحديد (الهيماتيت / الجيوثايت)",
+        desc: "Detects gossan caps, oxidized weathering zones, and iron-bearing sedimentary rocks by contrasting high Red reflectance with Blue absorption.",
+        formula: "Red / Blue",
+        sensors: ["landsat", "sentinel2", "aster"],
+        sensorLabels: "Landsat 4-9, Sentinel-2, ASTER",
+        bands: "Red, Blue",
+        range: "Higher values indicate intense iron oxidation"
+      },
+      {
+        id: "CLAY_ALTERATION",
+        cat: "geology",
+        acronym: "Clay Alteration",
+        nameEn: "Hydroxyl / Clay Alteration Ratio (Al-OH)",
+        nameAr: "نسبة تحورات الطين والهيدروكسيل",
+        desc: "Key indicator for hydrothermal alteration (phyllic/argillic zones: kaolinite, alunite, illite). Exploits diagnostic 2.2 µm Al-OH absorption in SWIR-2 against SWIR-1.",
+        formula: "SWIR1 / SWIR2",
+        sensors: ["landsat", "sentinel2", "aster"],
+        sensorLabels: "Landsat 4-9, Sentinel-2, ASTER pre-2008",
+        bands: "SWIR-1 (1610 nm), SWIR-2 (2190 nm)",
+        range: "High values delineate hydrothermal alteration zones"
+      },
+      {
+        id: "ASTER_QUARTZ",
+        cat: "geology",
+        acronym: "ASTER QI",
+        nameEn: "ASTER Thermal Quartz Index",
+        nameAr: "مؤشر الكوارتز الحراري (أستير)",
+        desc: "Maps silicification and quartz-rich lithologies (granite, quartzite, chert) utilizing ASTER thermal infrared reststrahlen absorption bands.",
+        formula: "(TIR11 * TIR11) / (TIR10 * TIR12)",
+        sensors: ["aster"],
+        sensorLabels: "ASTER Thermal Only (TIR 10, 11, 12)",
+        bands: "Thermal 8.3 µm, 8.6 µm, 9.1 µm",
+        range: "High values identify quartz enrichment"
+      },
 
+      // --- WILDFIRE & CHANGE FAMILY ---
+      {
+        id: "NBR",
+        cat: "change",
+        acronym: "NBR",
+        nameEn: "Normalized Burn Ratio",
+        nameAr: "مؤشر نسبة الحريق المعيارية",
+        desc: "Standard metric for mapping wildfire scars and post-fire vegetation devastation. Healthy canopy reflects in NIR and absorbs in SWIR-2, while burned ash does the reverse.",
+        formula: "(NIR - SWIR2) / (NIR + SWIR2)",
+        sensors: ["landsat", "sentinel2"],
+        sensorLabels: "Landsat 4-9, Sentinel-2",
+        bands: "NIR, SWIR-2",
+        range: "-1 to +1 (Burned areas < 0)"
+      },
+      {
+        id: "DNBR",
+        cat: "change",
+        acronym: "dNBR",
+        nameEn: "Delta NBR (USGS FIREMON Burn Severity)",
+        nameAr: "فارق مؤشر الحريق (معيار شدة الاحتراق USGS)",
+        desc: "Differences pre-fire and post-fire NBR into 7 official USGS FIREMON severity classes, from enhanced regrowth to high-severity canopy destruction.",
+        formula: "NBR_prefire - NBR_postfire",
+        sensors: ["landsat", "sentinel2"],
+        sensorLabels: "Landsat 4-9, Sentinel-2 (Two-date temporal)",
+        bands: "NIR, SWIR-2 (Temporal pair)",
+        range: "< -0.25 Regrowth, 0.1-0.27 Low, > 0.66 High Severity"
+      },
+
+      // --- RADAR SAR FAMILY ---
+      {
+        id: "SAR_DB",
+        cat: "radar",
+        acronym: "SAR Sigma-0 (dB)",
+        nameEn: "Radiometric Backscatter Calibration (Decibels)",
+        nameAr: "معايرة التشتت الراداري المرتد (ديسبل)",
+        desc: "Calibrates Sentinel-1 C-band SAR microwave backscatter into decibels. Never routed through optical equations. Penetrates clouds, rain, and operates night and day.",
+        formula: "10 * log10(sigma0_linear)",
+        sensors: ["sentinel1"],
+        sensorLabels: "Sentinel-1 C-SAR (GRD)",
+        bands: "C-band Microwave (VV, VH polarizations)",
+        range: "-30 dB (smooth water/road) to 0 dB (urban/forest)"
+      },
+      {
+        id: "SAR_RVI",
+        cat: "radar",
+        acronym: "Radar RVI",
+        nameEn: "Dual-Pol Radar Vegetation Index",
+        nameAr: "مؤشر الغطاء النباتي الراداري",
+        desc: "Quantifies canopy volume scattering and structural biomass through clouds using cross-polarization ratios. Ideal for monsoon and all-weather crop monitoring.",
+        formula: "4 * VH / (VV + VH)",
+        sensors: ["sentinel1"],
+        sensorLabels: "Sentinel-1 C-SAR",
+        bands: "VV, VH Polarizations",
+        range: "0.0 (bare surface) to 1.0 (dense forest canopy)"
+      }
+    ];
+
+    // DOM Elements
+    const grid = document.getElementById("cardsGrid");
+    const searchInput = document.getElementById("searchInput");
+    const resultsCount = document.getElementById("resultsCount");
+    const langToggle = document.getElementById("langToggle");
+
+    let currentCat = "all";
+    let currentSensor = "all";
+    let currentSearch = "";
+    let isRtl = false;
+
+    // Render Function
+    function renderIndicators() {
+      grid.innerHTML = "";
+      const filtered = INDICATORS.filter(item => {
+        // Category filter
+        if (currentCat !== "all" && item.cat !== currentCat) return false;
+        // Sensor filter
+        if (currentSensor !== "all" && !item.sensors.includes(currentSensor)) return false;
+        // Search term
+        if (currentSearch) {
+          const q = currentSearch.toLowerCase();
+          const matchAcronym = item.acronym.toLowerCase().includes(q);
+          const matchEn = item.nameEn.toLowerCase().includes(q);
+          const matchAr = item.nameAr.toLowerCase().includes(q);
+          const matchDesc = item.desc.toLowerCase().includes(q);
+          const matchSensors = item.sensorLabels.toLowerCase().includes(q);
+          if (!matchAcronym && !matchEn && !matchAr && !matchDesc && !matchSensors) return false;
+        }
+        return true;
+      });
+
+      resultsCount.textContent = `Showing ${filtered.length} of ${INDICATORS.length} indicators (عرض ${filtered.length} من إجمالي ${INDICATORS.length} مؤشر)`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">
+          <h3>No indicators match your filter criteria</h3>
+          <p>لم يتم العثور على مؤشرات تطابق شروط البحث الحالية</p>
+        </div>`;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "indicator-card";
+        card.innerHTML = `
+          <div>
+            <div class="card-top">
+              <span class="card-acronym">${item.acronym}</span>
+              <span class="card-cat-badge">${item.cat}</span>
+            </div>
+            <div class="card-names">
+              <div class="name-en">${item.nameEn}</div>
+              <div class="name-ar">${item.nameAr}</div>
+            </div>
+            <div class="card-desc">${item.desc}</div>
+            <div class="card-formula"><code>${item.formula}</code></div>
+          </div>
+          <div>
+            <div class="card-meta-list">
+              <div class="meta-row">
+                <span class="label">Bands:</span>
+                <span class="val">${item.bands}</span>
+              </div>
+              <div class="meta-row">
+                <span class="label">Interpretation:</span>
+                <span class="val">${item.range}</span>
+              </div>
+              <div class="meta-row">
+                <span class="label">Satellites:</span>
+                <span class="val">${item.sensorLabels}</span>
+              </div>
+            </div>
+            <div class="sensor-tags">
+              ${item.sensors.map(s => `<span class="tag">#${s}</span>`).join(" ")}
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Event Listeners for Filters
+    document.querySelectorAll(".filter-group .pill").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const parent = btn.parentElement;
+        parent.querySelectorAll(".pill").forEach(p => p.classList.remove("active"));
+        btn.classList.add("active");
+
+        if (btn.dataset.cat) {
+          currentCat = btn.dataset.cat;
+        } else if (btn.dataset.sensor) {
+          currentSensor = btn.dataset.sensor;
+        }
+        renderIndicators();
+      });
+    });
+
+    // Search input
+    searchInput.addEventListener("input", (e) => {
+      currentSearch = e.target.value.trim();
+      renderIndicators();
+    });
+
+    // Tabs logic
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById(btn.dataset.tab).classList.add("active");
+      });
+    });
+
+    // Language Toggle (RTL / LTR)
+    langToggle.addEventListener("click", () => {
+      isRtl = !isRtl;
+      if (isRtl) {
+        document.body.classList.add("rtl-mode");
+        document.documentElement.dir = "rtl";
+        langToggle.innerHTML = "<span>🌐 English / الإنجليزية</span>";
+      } else {
+        document.body.classList.remove("rtl-mode");
+        document.documentElement.dir = "ltr";
+        langToggle.innerHTML = "<span>🌐 العربية / EN</span>";
+      }
+    });
+
+    // Initial render
+    renderIndicators();
+  </script>
 </body>
 </html>

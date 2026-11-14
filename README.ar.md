@@ -72,16 +72,17 @@ python tools/verify_installation.py
 
 | حزمة الاختبار | الأمر المنفذ | النتيجة الملاحظة |
 |---|---|---|
-| **اختبارات الوحدة لكامل النواة الحسابية** | `python -m unittest discover tests` | **93 اختبار اجتيزت بنجاح 100%** |
+| **اختبارات الوحدة لكامل النواة الحسابية** | `python -m unittest discover tests` | **99 اختبار اجتيزت بنجاح 100%** |
 | **اختبارات بيئة QGIS الحقيقية (Host Tests)** | `& "C:\Program Files\QGIS 4.2.3\bin\python-qgis.bat" tests/native_qgis/test_qgis_provider.py` | **5 اختبارات ناجحة داخل QGIS 4.2.3** |
-| **فحص الهيكل والروابط التوثيقية** | `python tools/validate_package.py` | **اجتياز كامل (313 ملف Markdown و111 ملف JSON)** |
+| **فحص الهيكل والروابط التوثيقية** | `python tools/validate_package.py` | **اجتياز كامل (321 ملف Markdown و115 ملف JSON)** |
 | **أداة الفحص والتشخيص الشاملة** | `python tools/verify_installation.py` | **اجتياز المستويات الخمسة بنجاح** |
 
 ---
 
-## الوثائق والمراجع التوثيقية
+## الوثائق وبوابات التوثيق
 
-- **بوابة التوثيق المحلية:** افتح الملف [`docs/index.html`](docs/index.html) في أي متصفح إنترنت.
+- **بوابة التوثيق التفاعلية (GitHub Pages):** افتح الملف [`docs/index.html`](docs/index.html) في أي متصفح إنترنت.
+- **دليل المؤشرات والطرق العلمية الشامل:** [بالعربية](docs/ar/INDICATORS_CATALOG.md) · [English](docs/en/INDICATORS_CATALOG.md)
 - **دليل البدء السريع:** [بالعربية](docs/ar/QUICK_START.md) · [English](docs/en/QUICK_START.md)
 - **الطرق والمعادلات العلمية:** [بالعربية](docs/ar/SCIENTIFIC_METHODS.md) · [English](docs/en/SCIENTIFIC_METHODS.md)
 - **دليل المستشعرات وبوابات التحميل:** [بالعربية](docs/ar/SENSORS_AND_DOWNLOADS.md) · [English](docs/en/SENSORS_AND_DOWNLOADS.md)

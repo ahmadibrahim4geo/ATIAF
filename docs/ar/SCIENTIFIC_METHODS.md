@@ -1,38 +1,97 @@
-# الدليل العلمي للمؤشرات والمعادلات — أطياف
-**المحتوى قائمة علمية مستهدفة للتطوير، وليس ادعاءً باختبار المؤشرات وتشغيلها بالفعل.** يُعتمد البحث الأصلي لتعريف اسم المؤشر ومعادلته، بينما تُستخدم الكتالوجات للعثور على التعريفات والمقارنة بينها.
+# المرجع العلمي الشامل للمعادلات الفيزيائية وطرق المعايرة
 
-## أمثلة أساسية
-| المجموعة | المؤشر/الحساب | المعادلة أو المتطلبات | تفسير النتيجة |
-|---|---|---|---|
-| نبات | NDVI | `(NIR - Red)/(NIR + Red)` | اختلاف الانعكاسية النباتية، عديم الوحدة |
-| نبات وتربة | SAVI | `(1+L)*(NIR-Red)/(NIR+Red+L)` | يتطلب اختيار معامل التربة L وتوثيقه |
-| مياه | NDWI — McFeeters | `(Green-NIR)/(Green+NIR)` | إبراز المياه السطحية |
-| رطوبة نبات | NDWI — Gao | `(NIR-SWIR1)/(NIR+SWIR1)` | تعريف مختلف تمامًا عن مؤشر ماكفيترز؛ معرف مستقل |
-| مياه | MNDWI | `(Green-SWIR1)/(Green+SWIR1)` | يتطلب SWIR1 |
-| عمران | NDBI | `(SWIR1-NIR)/(SWIR1+NIR)` | مؤشر للاستجابة العمرانية وليس تصنيف مبانٍ نهائيًا |
-| حرائق | NBR | `(NIR-SWIR2)/(NIR+SWIR2)` | dNBR يتطلب تاريخين |
-| ثلوج | NDSI | `(Green-SWIR1)/(Green+SWIR1)` | نفس تركيب بعض مؤشرات المياه، ولكن المعنى وخطوات الجودة مختلفان |
-| تربة | BSI — صيغة شائعة | `((SWIR1+Red)-(NIR+Blue))/((SWIR1+Red)+(NIR+Blue))` | يجب توثيق الصيغة المستخدمة وعدم الخلط مع صيغ أخرى |
-| جيولوجيا | أكاسيد الحديد | نسب Red/Blue أو Red/Green حسب المستشعر والمرجع | استجابة طيفية محتملة؛ لا تثبت خامًا |
-| جيولوجيا | الطين/الهيدروكسيل | نسب SWIR1/SWIR2 وفق المستشعر والصيغة المنشورة | تعتمد على الامتصاص ومواصفات المستشعر والتربة |
-| ASTER حراري | Quartz Index | `(B11*B11)/(B10*B12)` مع تحديد نوع بيانات TIR | لا تنقل أرقام ASTER إلى Sentinel-2 أو Landsat |
-| ASTER حراري | Carbonate Index | `B13/B14` مع تحديد مدخلات الانبعاثية وطريقة المصدر | يُراجع تعريف المرجع الأصلي قبل التنفيذ |
-| الحرارة | Landsat C2 Level-2 Surface Temperature | `K = DN*0.00341802 + 149.0` ثم `°C=K-273.15` | صالح فقط لملف حرارة مصحح ومنتج/مستشعر مناسب وقناع الجودة |
-| الانعكاسية | Landsat C2 Level-2 SR | `SR = DN*0.0000275 - 0.2` | قيم البكسلات الصالحة فقط؛ لا يعاد تطبيق المعامل مرتين |
+**إطار التحليل الطيفي والمكاني المتقدم للمرئيات الفضائية (أطياف — ATIAF)**  
+*المرجع الهندسي المعتمد للخوارزميات المنفذة، فيزياء المستشعرات، والنماذج الحركية السطحية*
 
-## المجموعات التي تُضاف إلى المكتبة
-- مؤشرات الغطاء النباتي والكلوروفيل والأصباغ والحافة الحمراء: EVI وSAVI وMSAVI وOSAVI وGCI وNDRE وMCARI وSIPI وPSRI وARI وkNDVI وWDRVI وغيرها، كل مؤشر بمعادلة ومعاملات ومصدر اختبار.
-- المياه والثلوج والرطوبة: NDWI بتعريفَيْه المختلفين وMNDWI وAWEI وNDMI وNDSI وصيغ تخصصية لمياه البحيرات والمناطق الرطبة.
-- التربة والعمران والحرائق: NDBI وBSI بصيغه المختلفة وNBR وNBR2 وdNBR وNDTillI وSTI ومؤشرات الصخور المكشوفة.
-- الجيولوجيا والمعادن: أكاسيد الحديد والحديدوز والطين والهيدروكسيل والتحول الهيدروحراري وGossan وASTER Quartz/Carbonate/Mafic وPCA وCrosta ومركبات Band Ratio وTasseled Cap.
-- الحرارة والجفاف: LST وBT والانبعاثية والإشعاع وSUHI وUTFVI والبؤر الساخنة وTVDI وVCI وTCI وVHI، مع شروط السلاسل الزمنية.
-- المستقبل: SAM وMNF وContinuum Removal وUnmixing مع بيانات EnMAP/PRISMA/EMIT ومكتبات الأطياف المرجعية. تحليلات SAR تحتاج محركًا مستقلًا.
+> [!NOTE]
+> للاطلاع على الدليل الشامل والمفصل للمستخدم مع شرح تفصيلي للنطاقات الطيفية لكل قمر وجداول تفسير القيم، يرجى مراجعة [دليل المؤشرات الشامل (INDICATORS_CATALOG.md)](INDICATORS_CATALOG.md).
 
-## ضوابط علمية لازمة
-- لا يوجد تطابق مضمون بين الاختصار والمعادلة؛ يستخدم النظام **ID داخلي فريدًا** ورابط DOI ومعلومات صيغة المؤشر.
-- يقارن المحرك الباندات الفعلية ومستوى المعالجة مع متطلبات المؤشر. المؤشر غير الصالح يظل ظاهرًا **معطّلًا وسبب التعطيل بالعربية أو الإنجليزية**.
-- معاملات File Metadata (الاسم والقيمة واسم الملف/الحقل) تختلف عن الثابت الذي جُلب من بحث علمي أو قيمة أدخلها المستخدم. التقرير يوضح المصدر بدقة.
-- حرارة السطح ليست حرارة الهواء أو حرارة السطوع. لا نستخرج ETa والتوازن الطاقي الكامل من مرئية واحدة عندما تتطلب الطريقة بيانات أرصاد محلية.
-- مؤشرات المعادن **إشارات استدلالية** تحتاج تحققًا ميدانيًا أو مرجعيًا، ولا تعتبر دليلًا قاطعًا على تركيز خام.
+---
 
-**مراجع أساسية:** [Awesome Spectral Indices](https://github.com/awesome-spectral-indices/awesome-spectral-indices) — [USGS Landsat Level-2](https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products) — [ASTER Products](https://asterweb.jpl.nasa.gov/data_products.asp) — [Index DataBase](https://www.indexdatabase.de/db/i.php) — [دراسة ASTER الجيولوجية](https://doi.org/10.11440/rssj1981.22.50).
+## 1. الوحدات الفيزيائية ومعايير المعايرة
+تعتمد جميع العمليات الرياضية داخل أطياف على قيم فيزيائية حقيقية ومصححة للسطح:
+1. **الانعكاسية السطحية ($\rho$):** أرقام كسرية عائمة ضمن المدى $[0.0, 1.0]$.
+   - لاندسات C2 L2: يتم التحويل باستخدام $\rho = \text{DN} \times 0.0000275 - 0.2$.
+   - سينتنل-2 L2A: يتم التحويل باستخدام $\rho = \text{DN} / 10000.0$.
+   - المنتجات المعايرة مسبقاً لا يتم مضاعفة معاملاتها أبداً.
+2. **درجة حرارة السطح ($T$):** أرقام كسرية بوحدة الكلفن ($K$) أو الدرجة المئوية ($^\circ\text{C}$).
+   - لاندسات C2 L2 ST: يتم التحويل باستخدام $T_K = \text{DN} \times 0.00341802 + 149.0$ و $T_{^\circ\text{C}} = T_K - 273.15$.
+3. **التشتت الراداري المرتد ($\sigma^0$):** يحول للديسبل عبر $\sigma^0_{\text{dB}} = 10 \cdot \log_{10}(\sigma^0_{\text{linear}})$.
+
+---
+
+## 2. المعادلات الرياضية المعتمدة حسب حزمة الأدوات
+
+### الأداة 01: المؤشرات الطيفية البصرية
+- **NDVI:** $\frac{\rho_{\text{NIR}} - \rho_{\text{Red}}}{\rho_{\text{NIR}} + \rho_{\text{Red}}}$
+- **GNDVI:** $\frac{\rho_{\text{NIR}} - \rho_{\text{Green}}}{\rho_{\text{NIR}} + \rho_{\text{Green}}}$
+- **SAVI:** $\frac{(1 + L)(\rho_{\text{NIR}} - \rho_{\text{Red}})}{\rho_{\text{NIR}} + \rho_{\text{Red}} + L} \quad (L = 0.5)$
+- **MSAVI:** $\frac{2\rho_{\text{NIR}} + 1 - \sqrt{(2\rho_{\text{NIR}} + 1)^2 - 8(\rho_{\text{NIR}} - \rho_{\text{Red}})}}{2}$
+- **OSAVI:** $\frac{\rho_{\text{NIR}} - \rho_{\text{Red}}}{\rho_{\text{NIR}} + \rho_{\text{Red}} + 0.16}$
+- **EVI:** $2.5 \cdot \frac{\rho_{\text{NIR}} - \rho_{\text{Red}}}{\rho_{\text{NIR}} + 6.0\rho_{\text{Red}} - 7.5\rho_{\text{Blue}} + 1.0}$
+- **NDRE1:** $\frac{\rho_{\text{NIR}} - \rho_{\text{RedEdge1}}}{\rho_{\text{NIR}} + \rho_{\text{RedEdge1}}}$ (سينتنل-2 فقط)
+- **VARI:** $\frac{\rho_{\text{Green}} - \rho_{\text{Red}}}{\rho_{\text{Green}} + \rho_{\text{Red}} - \rho_{\text{Blue}}}$
+- **GLI:** $\frac{2\rho_{\text{Green}} - \rho_{\text{Red}} - \rho_{\text{Blue}}}{2\rho_{\text{Green}} + \rho_{\text{Red}} + \rho_{\text{Blue}}}$
+- **NDWI (ماك فيترز):** $\frac{\rho_{\text{Green}} - \rho_{\text{NIR}}}{\rho_{\text{Green}} + \rho_{\text{NIR}}}$
+- **MNDWI (شو):** $\frac{\rho_{\text{Green}} - \rho_{\text{SWIR1}}}{\rho_{\text{Green}} + \rho_{\text{SWIR1}}}$
+- **NDMI / NDWI جاو:** $\frac{\rho_{\text{NIR}} - \rho_{\text{SWIR1}}}{\rho_{\text{NIR}} + \rho_{\text{SWIR1}}}$
+- **NDBI:** $\frac{\rho_{\text{SWIR1}} - \rho_{\text{NIR}}}{\rho_{\text{SWIR1}} + \rho_{\text{NIR}}}$
+- **UI:** $\frac{\rho_{\text{SWIR2}} - \rho_{\text{NIR}}}{\rho_{\text{SWIR2}} + \rho_{\text{NIR}}}$
+- **BSI:** $\frac{(\rho_{\text{SWIR1}} + \rho_{\text{Red}}) - (\rho_{\text{NIR}} + \rho_{\text{Blue}})}{(\rho_{\text{SWIR1}} + \rho_{\text{Red}}) + (\rho_{\text{NIR}} + \rho_{\text{Blue}})}$
+- **NBR & NBR2:** $\frac{\rho_{\text{NIR}} - \rho_{\text{SWIR2}}}{\rho_{\text{NIR}} + \rho_{\text{SWIR2}}}, \quad \frac{\rho_{\text{SWIR1}} - \rho_{\text{SWIR2}}}{\rho_{\text{SWIR1}} + \rho_{\text{SWIR2}}}$
+- **NDSI:** $\frac{\rho_{\text{Green}} - \rho_{\text{SWIR1}}}{\rho_{\text{Green}} + \rho_{\text{SWIR1}}}$
+- **تحويلات Tasseled Cap (السطوع TCB، الخضرة TCG، الرطوبة TCW):** مصفوفات تحويل متعامدة مخصصة لكل قمر (لاندسات 8-9، لاندسات 7، لاندسات 4-5، سينتنل-2).
+
+---
+
+### الأداة 02: درجة حرارة السطح والانبعاثية (LST & LSE)
+- **نموذج سوبرينو (Sobrino et al. 2004) للانبعاثية بالاعتماد على عتبات NDVI:**
+  $$P_v = \left( \frac{\text{NDVI} - 0.2}{0.5 - 0.2} \right)^2$$
+  $$\varepsilon = \begin{cases}
+  0.985 & \text{إذا كان } \text{NDVI} < 0.0 \\
+  0.970 & \text{إذا كان } 0.0 \le \text{NDVI} < 0.2 \\
+  0.004 \cdot P_v + 0.986 & \text{إذا كان } 0.2 \le \text{NDVI} \le 0.5 \\
+  0.990 & \text{إذا كان } \text{NDVI} > 0.5
+  \end{cases}$$
+
+---
+
+### الأداة 03: مؤشر تباين الحقل الحراري الحضري (UTFVI)
+$$\text{UTFVI} = \frac{\text{LST} - \mu_{\text{LST}}}{\mu_{\text{LST}}}$$
+يصنف إلى 6 مستويات للراحة البيئية من ممتاز ($<0$) وحتى الأسوأ للغاية ($>0.020$).
+وتحدد البؤر الحرارية الشديدة عبر:
+$$z = \frac{\text{LST} - \mu_{\text{LST}}}{\sigma_{\text{LST}}} \ge 2.0$$
+
+---
+
+### الأداة 04: الجفاف البيئي ومؤشر TVDI والبيدو السطح
+- **البيدو السطح (Liang 2001):**
+  $$\alpha = 0.356\rho_{\text{Blue}} + 0.130\rho_{\text{Red}} + 0.373\rho_{\text{NIR}} + 0.085\rho_{\text{SWIR1}} + 0.072\rho_{\text{SWIR2}} - 0.0018$$
+- **مؤشر جفاف الغطاء النباتي الحراري (TVDI):**
+  $$\text{TVDI} = \frac{\text{LST} - \text{LST}_{\text{min}}}{\text{LST}_{\text{max}} - \text{LST}_{\text{min}}}$$
+
+---
+
+### الأداة 05: التحليل الجيولوجي والنسب المعدنية
+- **أكاسيد الحديد:** $\rho_{\text{Red}} / \rho_{\text{Blue}}$
+- **الحديد ثلاثي التكافؤ:** $\rho_{\text{Red}} / \rho_{\text{Green}}$
+- **الحديد ثنائي التكافؤ:** $\rho_{\text{SWIR1}} / \rho_{\text{NIR}}$
+- **تحورات الطين والهيدروكسيل:** $\rho_{\text{SWIR1}} / \rho_{\text{SWIR2}}$
+- **الجوسان واللاتريت:** $\rho_{\text{SWIR1}} / \rho_{\text{Red}}$
+- **الكوارتز الحراري (QI):** $(\text{TIR}_{11} \cdot \text{TIR}_{11}) / (\text{TIR}_{10} \cdot \text{TIR}_{12})$
+- **الكربونات الحراري (CI):** $\text{TIR}_{13} / \text{TIR}_{14}$
+- **الصخور المافية الحراري (MI):** $\text{TIR}_{12} / \text{TIR}_{13}$
+
+---
+
+### الأداة 06: التحليل الزمني وتغير الغطاء الأرضي
+- **فارق نسبة الحريق (dNBR) وفق المعيار القياسي الأمريكي USGS FIREMON:**
+  $$\text{dNBR} = \text{NBR}_{\text{قبل الحريق}} - \text{NBR}_{\text{بعد الحريق}}$$
+- **التغير الزمني للمؤشرات (dNDVI / dLST):** $\Delta M = M_{T_2} - M_{T_1}$
+- **نسبة التغير المئوية:** $\text{RelChange} = \frac{M_{T_2} - M_{T_1}}{|M_{T_1}| + 10^{-6}} \times 100\%$
+
+---
+
+### الأنماط المتقدمة: رادار الفتحة الاصطناعية والاستشعار فائق الطيفية
+- **رادار Sentinel-1:** معايرة $\sigma^0_{\text{dB}} = 10 \cdot \log_{10}(\sigma^0_{\text{linear}})$، ونسبة $VH/VV$، ومؤشر RVI، ومرشح لي (Lee Filter).
+- **الاستشعار فائق الطيفية (EnMAP / PRISMA):** مخطط الزاوية الطيفية SAM ($\theta = \arccos \frac{\mathbf{v} \cdot \mathbf{r}}{\|\mathbf{v}\| \|\mathbf{r}\|}$)، وعمق قيعان الامتصاص التشخيصية للمعادن.

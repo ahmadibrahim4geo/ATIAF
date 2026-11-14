@@ -1,54 +1,121 @@
-# Scientific index, transformation and physical-model reference (EN)
-**All listed capabilities are planned; only registered and independently validated methods may be enabled by the future UI.** Formula variant/source/physical units take precedence over display acronym. The original peer-reviewed description is the authority for scientific naming; catalogs support discovery.
+# Scientific Methods, Mathematical Formulations & Provenance Reference
 
-## Formula families and explicit definitions
-| Category | Formula or method | Band roles / conditions | Notes |
-|---|---|---|---|
-| Vegetation | **NDVI = (NIR − Red)/(NIR + Red)** | Surface reflectance Red+NIR | Mask invalid zeros/NoData, floating-point math; not a direct emissivity measurement |
-| Vegetation | EVI = G*(NIR−Red)/(NIR+C1*Red−C2*Blue+L) | Reflectance plus method-specific G,C1,C2,L | Cite/validate accepted coefficients and physical input before use |
-| Vegetation / soil | SAVI = (1+L)*(NIR−Red)/(NIR+Red+L) | Red+NIR; chosen soil adjustment L | Record value and reason/source |
-| Water (McFeeters) | NDWI = (Green−NIR)/(Green+NIR) | Green+NIR | Different from Gao's vegetation water NDWI |
-| Water (Xu) | MNDWI = (Green−SWIR1)/(Green+SWIR1) | Green+SWIR1 | Reproject/band alignment if necessary |
-| Vegetation moisture (Gao) | NDWI = (NIR−SWIR1)/(NIR+SWIR1) | NIR+SWIR1 | Not the McFeeters formula; distinct stable ID |
-| Urban | NDBI = (SWIR1−NIR)/(SWIR1+NIR) | SWIR1+NIR | Built-up response not a binary building classification |
-| Burn | NBR = (NIR−SWIR2)/(NIR+SWIR2) | NIR+SWIR2 | delta-NBR requires reference acquisition |
-| Snow | NDSI = (Green−SWIR1)/(Green+SWIR1) | Green+SWIR1 plus relevant masking | Similar algebra to MNDWI but different intended interpretation and QA context |
-| Soil | BSI (one common variant) = ((SWIR1+Red)−(NIR+Blue))/((SWIR1+Red)+(NIR+Blue)) | Blue, Red, NIR, SWIR1 | Other "BSI" definitions exist; keep source-specific IDs |
-| Geological iron | Red/Blue or Red/Green ratios | Sensor/scene-specific reflectance | Prospective ferric iron response only, requires contextual validation |
-| Geological clay/OH | SWIR1/SWIR2 ratio | Landsat TM/OLI and suitable Sentinel-2 equivalents as researched | Not a universal mineral assay; reflectance and wavelength sensitivity vary |
-| ASTER geology | Quartz Index (example) `TIR11*TIR11/(TIR10*TIR12)` | ASTER TIR; **verify emissivity vs radiance and preprocessing in source** | Do not use with Sentinel-2 band numbers |
-| ASTER geology | Carbonate Index (example) `TIR13/TIR14` | ASTER TIR; method/product state must be verified | Candidate until exact original method checked |
-| Thermal | Landsat C2 L2 ST: K = `DN*0.00341802 + 149.0`; °C = K−273.15 | Product containing valid ST_B10 (L8/9), QA and fill mask | Refer to USGS for exact sensor/product variants; not for generic DN |
-| Thermal | Landsat C2 L2 SR = `DN*0.0000275 - 0.2` | L4–9 valid Level-2 reflectance bands, QA & fill | Verify per-product tags and file QA; do not scale twice |
-| Thermal | BT: Planck inversion with official K1/K2 coefficients | Radiance+metadata constants | BT ≠ LST; instrument-specific calibrated source required |
-| Urban | SUHI intensity = `mean(urban LST)−mean(reference rural LST)` (chosen definition) | LST, documented built-up & rural polygons, spatial/temporal comparability | Distinct from air UHI; reference choice controls conclusions |
-| Environmental | Tasseled Cap Brightness/Greenness/Wetness | Multi-band weighted sums | Coefficient tables depend on sensor & surface/TOA level; no universal matrix |
-| Environmental | Albedo | Wavelength-weighted broadband model | Requires sensor-specific equation and product level |
-| Drought | TVDI | LST + NDVI, dry and wet regression envelopes | Adequate land-cover sample range; not direct soil moisture |
-| Drought | TCI, VCI, VHI | Temporal reference years and statistical convention | Needs multi-date climatological or site baseline |
-| Surface energy | `Rn = G + H + LE` | Local net radiation, heat fluxes and weather/ancillary inputs | ETa requires actual model inputs; no fictional standalone imagery-only output |
-| Hyperspectral | SAM, MNF, continuum removal, spectral unmixing | Compatible spectral cube; spectral response and optional reference spectral library | Preserve wavelength/fwhm and quality/uncertainty profiles |
-| SAR | Calibrated VV/VH or other polarizations | Radar-specific product/geometry/calibration | Do not apply multispectral reflectance ratios directly |
+**Advanced Thematic Imagery Analysis Framework (ATIAF | أطياف)**  
+*Authoritative engineering reference for validated algorithms, sensor physics, and physical models*
 
-## Expanded catalog candidate families
-- **Vegetation/chlorophyll:** NDVI variants, EVI/EVI2, SAVI/OSAVI/MSAVI, GCI, NDRE, MCARI/TCARI, VARI, GEMI, GNDVI, WDRVI, ARI/ARI2, SIPI, PSRI, CIred-edge, kNDVI, TSAVI/ATSAVI, red-edge chlorophyll, mangrove index.
-- **Water, moisture and snow:** two scientifically distinct NDWI methods; MNDWI, AWEI, WRI, NDMI, moisture stress, NDSI snow variants, water turbidity/chlorophyll proxies where spectral response supports them.
-- **Urban, bare soil, agriculture, burn:** NDBI, BSI variants, IBI, UI, NBR/NBR2, dNBR/RdNBR, NDTillI, STI, MBI, bare rock and clay indicators.
-- **Geology/mineral:** iron oxides, ferric/ferrous iron, ferric hydroxides, clay/OH alteration, gossan, lithological ratios, ASTER TIR QI/CI/MI/SI, geological PCA/Crosta, Tasseled Cap, specialized composites; future hyperspectral mineral absorption methods.
-- **Thermal and environmental:** LST/BT/LSE/TIR radiance/uncertainty, SUHI/UTFVI/hotspot, TVDI/TCI/VCI/VHI, Albedo, Rn/G/H/LE/ETa gated by required meteorology.
+> [!NOTE]
+> For the comprehensive, user-friendly encyclopedia with individual satellite bands and value interpretation guides, please consult the [Master Indicators Catalog](INDICATORS_CATALOG.md).
 
-## Scientific evidence and provenance rules
-1. Search original paper/DOI first; record exact definition, variant and units, not a guessed acronym.
-2. The sensor registry maps physical roles/wavelengths to actual band assets; UI disables absent or scientifically incompatible combinations.
-3. A local registry entry must have unique ID, source, formula, variables, normalized role, sensor constraints, test fixture and validation status before release.
-4. QA mask, product scaling/offset, NoData and image date/CRS always precede arithmetic. Distinguish L1 TOA from L2 BOA and surface temperature from thermal brightness temperature.
-5. Record scale values read from actual metadata `file:key`; official product constants are cited if not actually sourced from file; user override separately flagged.
-6. Use named, peer-reviewed original references for geology/mineral classes and verify wavelength-response suitability, not universal claims about iron/ore detection.
+---
 
-### Reference sources
-- [Awesome Spectral Indices](https://github.com/awesome-spectral-indices/awesome-spectral-indices) (MIT; experimental v1 changes); [Spyndex](https://github.com/awesome-spectral-indices/spyndex).
-- [USGS C2 Level 2](https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products).
-- [GRASS Tasseled Cap](https://grass.osgeo.org/grass-stable/manuals/i.tasscap.html).
-- [ASTER products](https://asterweb.jpl.nasa.gov/data_products.asp).
-- [Index DataBase](https://www.indexdatabase.de/db/i.php) (reference/terms-restricted API).
-- [Original ASTER geological methods](https://doi.org/10.11440/rssj1981.22.50), subject to interpretation/product verification.
+## 1. Physical Units & Scaling Standards
+All analytical operations in ATIAF operate strictly on true physical surface values:
+1. **Surface Reflectance ($\rho$):** Floating-point values normalized to $[0.0, 1.0]$.
+   - Landsat Collection 2 Level-2 Surface Reflectance is scaled by:
+     $$\rho = \text{DN} \times 0.0000275 - 0.2$$
+   - Sentinel-2 Level-2A BOA Reflectance is scaled by:
+     $$\rho = \text{DN} / 10000.0$$
+   - Products already scaled or delivered as floating-point are detected via metadata and are never scaled twice.
+2. **Land Surface Temperature ($T$):** Floating-point temperature in Kelvin ($K$) or Celsius ($^\circ\text{C}$).
+   - Landsat Collection 2 Level-2 ST is scaled by:
+     $$T_K = \text{DN} \times 0.00341802 + 149.0, \quad T_{^\circ\text{C}} = T_K - 273.15$$
+3. **Radar Backscatter ($\sigma^0$):** Decibels ($\text{dB}$) derived from linear power:
+   $$\sigma^0_{\text{dB}} = 10 \cdot \log_{10}(\sigma^0_{\text{linear}})$$
+
+---
+
+## 2. Mathematical Formulations by Tool Family
+
+### Tool 01: Optical Spectral Indices
+- **NDVI (Normalized Difference Vegetation Index):**
+  $$\text{NDVI} = \frac{\rho_{\text{NIR}} - \rho_{\text{Red}}}{\rho_{\text{NIR}} + \rho_{\text{Red}}}$$
+- **GNDVI (Green Normalized Difference Vegetation Index):**
+  $$\text{GNDVI} = \frac{\rho_{\text{NIR}} - \rho_{\text{Green}}}{\rho_{\text{NIR}} + \rho_{\text{Green}}}$$
+- **SAVI (Soil-Adjusted Vegetation Index):**
+  $$\text{SAVI} = \frac{(1 + L)(\rho_{\text{NIR}} - \rho_{\text{Red}})}{\rho_{\text{NIR}} + \rho_{\text{Red}} + L} \quad (L = 0.5)$$
+- **MSAVI (Modified Soil-Adjusted Vegetation Index):**
+  $$\text{MSAVI} = \frac{2\rho_{\text{NIR}} + 1 - \sqrt{(2\rho_{\text{NIR}} + 1)^2 - 8(\rho_{\text{NIR}} - \rho_{\text{Red}})}}{2}$$
+- **OSAVI (Optimized Soil-Adjusted Vegetation Index):**
+  $$\text{OSAVI} = \frac{\rho_{\text{NIR}} - \rho_{\text{Red}}}{\rho_{\text{NIR}} + \rho_{\text{Red}} + 0.16}$$
+- **EVI (Enhanced Vegetation Index):**
+  $$\text{EVI} = 2.5 \cdot \frac{\rho_{\text{NIR}} - \rho_{\text{Red}}}{\rho_{\text{NIR}} + 6.0\rho_{\text{Red}} - 7.5\rho_{\text{Blue}} + 1.0}$$
+- **NDRE1 (Normalized Difference Red Edge 1):**
+  $$\text{NDRE1} = \frac{\rho_{\text{NIR}} - \rho_{\text{RedEdge1}}}{\rho_{\text{NIR}} + \rho_{\text{RedEdge1}}}$$
+- **VARI (Visible Atmospherically Resistant Index):**
+  $$\text{VARI} = \frac{\rho_{\text{Green}} - \rho_{\text{Red}}}{\rho_{\text{Green}} + \rho_{\text{Red}} - \rho_{\text{Blue}}}$$
+- **GLI (Green Leaf Index):**
+  $$\text{GLI} = \frac{2\rho_{\text{Green}} - \rho_{\text{Red}} - \rho_{\text{Blue}}}{2\rho_{\text{Green}} + \rho_{\text{Red}} + \rho_{\text{Blue}}}$$
+- **NDWI (McFeeters Water Index):**
+  $$\text{NDWI} = \frac{\rho_{\text{Green}} - \rho_{\text{NIR}}}{\rho_{\text{Green}} + \rho_{\text{NIR}}}$$
+- **MNDWI (Xu Modified Water Index):**
+  $$\text{MNDWI} = \frac{\rho_{\text{Green}} - \rho_{\text{SWIR1}}}{\rho_{\text{Green}} + \rho_{\text{SWIR1}}}$$
+- **NDMI / NDWI Gao (Moisture Index):**
+  $$\text{NDMI} = \frac{\rho_{\text{NIR}} - \rho_{\text{SWIR1}}}{\rho_{\text{NIR}} + \rho_{\text{SWIR1}}}$$
+- **NDBI (Normalized Difference Built-Up Index):**
+  $$\text{NDBI} = \frac{\rho_{\text{SWIR1}} - \rho_{\text{NIR}}}{\rho_{\text{SWIR1}} + \rho_{\text{NIR}}}$$
+- **UI (Urban Index):**
+  $$\text{UI} = \frac{\rho_{\text{SWIR2}} - \rho_{\text{NIR}}}{\rho_{\text{SWIR2}} + \rho_{\text{NIR}}}$$
+- **BSI (Bare Soil Index):**
+  $$\text{BSI} = \frac{(\rho_{\text{SWIR1}} + \rho_{\text{Red}}) - (\rho_{\text{NIR}} + \rho_{\text{Blue}})}{(\rho_{\text{SWIR1}} + \rho_{\text{Red}}) + (\rho_{\text{NIR}} + \rho_{\text{Blue}})}$$
+- **NBR & NBR2 (Normalized Burn Ratio):**
+  $$\text{NBR} = \frac{\rho_{\text{NIR}} - \rho_{\text{SWIR2}}}{\rho_{\text{NIR}} + \rho_{\text{SWIR2}}}, \quad \text{NBR2} = \frac{\rho_{\text{SWIR1}} - \rho_{\text{SWIR2}}}{\rho_{\text{SWIR1}} + \rho_{\text{SWIR2}}}$$
+- **NDSI (Normalized Difference Snow Index):**
+  $$\text{NDSI} = \frac{\rho_{\text{Green}} - \rho_{\text{SWIR1}}}{\rho_{\text{Green}} + \rho_{\text{SWIR1}}}$$
+- **Tasseled Cap Transformations (TCB, TCG, TCW):** Orthogonal rotation matrices specific to Landsat 8-9 (Baig et al. 2014), Landsat 7 (Huang et al. 2002), Landsat 4-5 (Crist & Cicone 1984), and Sentinel-2 (Nedkov 2017).
+
+---
+
+### Tool 02: Land Surface Temperature & Emissivity
+- **Sobrino et al. (2004) NDVI Thresholds Model:**
+  $$P_v = \left( \frac{\text{NDVI} - 0.2}{0.5 - 0.2} \right)^2$$
+  $$\varepsilon = \begin{cases}
+  0.985 & \text{if } \text{NDVI} < 0.0 \\
+  0.970 & \text{if } 0.0 \le \text{NDVI} < 0.2 \\
+  0.004 \cdot P_v + 0.986 & \text{if } 0.2 \le \text{NDVI} \le 0.5 \\
+  0.990 & \text{if } \text{NDVI} > 0.5
+  \end{cases}$$
+- **Thermal Sensor Presence:** Strictly required. Sentinel-2 cannot compute LST.
+
+---
+
+### Tool 03: Urban Thermal Field Variance Index (UTFVI)
+$$\text{UTFVI} = \frac{\text{LST} - \mu_{\text{LST}}}{\mu_{\text{LST}}}$$
+Classified into 6 ecological comfort zones from Excellent ($<0$) to Worst ($>0.020$).
+Thermal Hotspots identify pixels where:
+$$z = \frac{\text{LST} - \mu_{\text{LST}}}{\sigma_{\text{LST}}} \ge 2.0$$
+
+---
+
+### Tool 04: Environmental Drought & Albedo
+- **Liang (2001) Shortwave Broadband Surface Albedo ($\alpha$):**
+  $$\alpha = 0.356\rho_{\text{Blue}} + 0.130\rho_{\text{Red}} + 0.373\rho_{\text{NIR}} + 0.085\rho_{\text{SWIR1}} + 0.072\rho_{\text{SWIR2}} - 0.0018$$
+- **Temperature Vegetation Dryness Index (TVDI):**
+  $$\text{TVDI} = \frac{\text{LST} - \text{LST}_{\text{min}}}{\text{LST}_{\text{max}} - \text{LST}_{\text{min}}}$$
+
+---
+
+### Tool 05: Geological Alterations & Mineral Indices
+- **Iron Oxide:** $\rho_{\text{Red}} / \rho_{\text{Blue}}$
+- **Ferric Iron:** $\rho_{\text{Red}} / \rho_{\text{Green}}$
+- **Ferrous Iron:** $\rho_{\text{SWIR1}} / \rho_{\text{NIR}}$
+- **Clay / Hydroxyl Alteration:** $\rho_{\text{SWIR1}} / \rho_{\text{SWIR2}}$
+- **Gossan / Laterite:** $\rho_{\text{SWIR1}} / \rho_{\text{Red}}$
+- **ASTER Quartz Index (QI):** $(\text{TIR}_{11} \cdot \text{TIR}_{11}) / (\text{TIR}_{10} \cdot \text{TIR}_{12})$
+- **ASTER Carbonate Index (CI):** $\text{TIR}_{13} / \text{TIR}_{14}$
+- **ASTER Mafic Index (MI):** $\text{TIR}_{12} / \text{TIR}_{13}$
+
+---
+
+### Tool 06: Multi-Temporal Change Detection
+- **dNBR (USGS FIREMON 7-Class Standard):**
+  $$\text{dNBR} = \text{NBR}_{\text{pre}} - \text{NBR}_{\text{post}}$$
+- **dNDVI / dLST:**
+  $$\Delta M = M_{T_2} - M_{T_1}$$
+- **Relative Change (%):**
+  $$\text{RelChange} = \frac{M_{T_2} - M_{T_1}}{|M_{T_1}| + 10^{-6}} \times 100\%$$
+
+---
+
+### Advanced Modalities: Radar SAR & Hyperspectral
+- **Sentinel-1 SAR:** $\sigma^0_{\text{dB}} = 10 \cdot \log_{10}(\sigma^0_{\text{linear}})$, Cross-Pol Ratio $= VH/VV$, Dual-Pol RVI $= 4 \cdot VH / (VV + VH)$, spatial Lee speckle filter.
+- **Hyperspectral (EnMAP / PRISMA):** Spectral Angle Mapper (SAM) angle in radians $\theta = \arccos \frac{\mathbf{v} \cdot \mathbf{r}}{\|\mathbf{v}\| \|\mathbf{r}\|}$, absorption feature depth analysis.
