@@ -17,9 +17,10 @@ python tools/verify_installation.py
 ## 2. استخدام أطياف في برنامج ArcGIS Pro (3.x)
 
 1. **إضافة صندوق الأدوات (Toolbox):**
+   - في المرة الأولى، شغّل ملف `Setup_ArcGIS_Pro_Environment.bat` داخل مجلد `ArcGIS Pro Tools/` لتهيئة المكتبات.
    - افتح لوحة الفهرس **Catalog Pane** (`View -> Catalog Pane`).
    - انقر بزر الفأرة الأيمن على **Toolboxes** واختر **Add Toolbox**.
-   - توجه إلى المسار `d:\My Software\ATIAF\arcgis_pro\` واختر الملف `ATIAF.pyt`.
+   - توجه إلى المسار `d:\My Software\ATIAF\ArcGIS Pro Tools\` واختر الملف `ATIAF.pyt`.
 2. **استعراض الأدوات الست:**
    - ستظهر لك حزمة الأدوات الست الأساسية:
      - `01. Spectral Indices | المؤشرات الطيفية`
@@ -49,8 +50,8 @@ python tools/verify_installation.py
 ## 3. استخدام أطياف في برنامج QGIS (3.x / 4.x)
 
 1. **تفعيل الملحق البرمجي (Plugin):**
-   - انسخ مجلد `qgis/atyaf` إلى مجلد إضافات QGIS:
-     - في ويندوز: `%APPDATA%\QGIS\QGIS3\profiles\default\python\plugins\atyaf`
+   - انسخ مجلد `QGIS Tools/atiaf` إلى مجلد إضافات QGIS:
+     - في ويندوز: `%APPDATA%\QGIS\QGIS3\profiles\default\python\plugins\atiaf`
    - في QGIS، افتح قائمة الملحقات **Plugins -> Manage and Install Plugins** وقم بتفعيل **ATIAF (أطياف)**.
 2. **صندوق معالجة الأدوات (Processing Toolbox):**
    - افتح صندوق الأدوات (`Processing -> Toolbox` أو `Ctrl+Alt+T`).

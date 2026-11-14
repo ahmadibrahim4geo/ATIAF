@@ -11,9 +11,23 @@ import os
 from pathlib import Path
 import sys
 
-# Ensure atyaf_core is importable from toolbox location
-TOOLBOX_DIR = Path(__file__).resolve().parent if "__file__" in globals() else Path(".").resolve()
-PROJECT_ROOT = TOOLBOX_DIR.parent if TOOLBOX_DIR.name == "arcgis_pro" else TOOLBOX_DIR
+# Ensure atiaf_core / atyaf_core is reliably importable from toolbox location
+def _resolve_project_root():
+    if "__file__" in globals() and globals()["__file__"]:
+        p = Path(globals()["__file__"]).resolve().parent
+        for candidate in [p, p.parent, p.parent.parent]:
+            if (candidate / "atiaf_core").is_dir() or (candidate / "atyaf_core").is_dir():
+                return candidate
+    cwd = Path.cwd().resolve()
+    for candidate in [cwd, cwd.parent, cwd.parent.parent]:
+        if (candidate / "atiaf_core").is_dir() or (candidate / "atyaf_core").is_dir():
+            return candidate
+    known = Path(r"D:\My Software\ATIAF")
+    if (known / "atiaf_core").is_dir() or (known / "atyaf_core").is_dir():
+        return known
+    return Path.cwd().resolve()
+
+PROJECT_ROOT = _resolve_project_root()
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
@@ -22,21 +36,38 @@ try:
 except ImportError:
     arcpy = None
 
-from atyaf_core.discovery import SceneScanner
-from atyaf_core.indices import INDEX_CATALOG, SpectralIndicesEngine
-from atyaf_core.temperature import EmissivityEngine, SurfaceTemperatureEngine
-from atyaf_core.urban import ThermalUrbanEngine
-from atyaf_core.environment import EnvironmentalDroughtEngine
-from atyaf_core.geology import GEOLOGICAL_CATALOG, GeologicalAnalysisEngine
-from atyaf_core.mosaic import MosaicStrategy, QualityMosaicEngine
-from atyaf_core.temporal import ChangeDetectionEngine
-from atyaf_core.raster import CRSManager
+CORE_IMPORT_ERROR = None
+try:
+    from atiaf_core.discovery import SceneScanner
+    from atiaf_core.indices import INDEX_CATALOG, SpectralIndicesEngine
+    from atiaf_core.temperature import EmissivityEngine, SurfaceTemperatureEngine
+    from atiaf_core.urban import ThermalUrbanEngine
+    from atiaf_core.environment import EnvironmentalDroughtEngine
+    from atiaf_core.geology import GEOLOGICAL_CATALOG, GeologicalAnalysisEngine
+    from atiaf_core.mosaic import MosaicStrategy, QualityMosaicEngine
+    from atiaf_core.temporal import ChangeDetectionEngine
+    from atiaf_core.raster import CRSManager
+except Exception as _err:
+    CORE_IMPORT_ERROR = str(_err)
+    SceneScanner = None
+    INDEX_CATALOG = {}
+    SpectralIndicesEngine = None
+    EmissivityEngine = None
+    SurfaceTemperatureEngine = None
+    ThermalUrbanEngine = None
+    EnvironmentalDroughtEngine = None
+    GEOLOGICAL_CATALOG = {}
+    GeologicalAnalysisEngine = None
+    MosaicStrategy = None
+    QualityMosaicEngine = None
+    ChangeDetectionEngine = None
+    CRSManager = None
 
 
 class Toolbox(object):
     def __init__(self):
-        self.label = "ATIAF - Thematic Imagery Analysis Framework"
-        self.alias = "atyaf"
+        self.label = "ATIAF - Thematic Imagery Analysis Framework | أطياف"
+        self.alias = "atiaf"
         self.description = (
             "Bilingual scientific satellite imagery analysis framework for ArcGIS Pro. "
             "أطياف: منظومة التحليل العلمي للمرئيات الفضائية"
@@ -215,6 +246,13 @@ class SpectralIndicesTool(object):
     def updateMessages(self, parameters):
         if not arcpy:
             return
+        if CORE_IMPORT_ERROR:
+            if parameters and parameters[0]:
+                parameters[0].setErrorMessage(
+                    f"ATIAF Core dependencies missing ({CORE_IMPORT_ERROR}). "
+                    "Run tools\\setup_arcgis_pro_env.bat to install."
+                )
+            return
         param_sensor, param_input, _, _, _, _, param_crs, param_output_folder, _ = parameters
         if param_crs and param_crs.value:
             crs_str = str(param_crs.value)
@@ -238,6 +276,12 @@ class SpectralIndicesTool(object):
     def execute(self, parameters, messages):
         if not arcpy:
             raise RuntimeError("ArcPy runtime is required to execute in ArcGIS Pro.")
+        if CORE_IMPORT_ERROR:
+            messages.addErrorMessage(
+                f"Cannot execute tool: ATIAF Core dependencies missing ({CORE_IMPORT_ERROR}). "
+                "Please run tools\\setup_arcgis_pro_env.bat in the project directory."
+            )
+            return
 
         param_sensor, param_input, param_qa_mask, param_mosaic, param_indices, param_aoi, param_crs, param_output_folder, param_add_to_map = parameters
 
@@ -453,6 +497,10 @@ class SurfaceTemperatureTool(object):
     def updateMessages(self, parameters):
         if not arcpy:
             return
+        if CORE_IMPORT_ERROR:
+            if parameters and parameters[0]:
+                parameters[0].setErrorMessage(f"ATIAF Core dependencies missing ({CORE_IMPORT_ERROR}). Run tools\\setup_arcgis_pro_env.bat to install.")
+            return
         param_sensor, param_input, _, _, param_mode, _, _, param_crs, _, _ = parameters
         if param_crs and param_crs.value:
             crs_str = str(param_crs.value)
@@ -481,6 +529,9 @@ class SurfaceTemperatureTool(object):
     def execute(self, parameters, messages):
         if not arcpy:
             raise RuntimeError("ArcPy runtime is required.")
+        if CORE_IMPORT_ERROR:
+            messages.addErrorMessage(f"Cannot execute tool: ATIAF Core dependencies missing ({CORE_IMPORT_ERROR}). Please run tools\\setup_arcgis_pro_env.bat.")
+            return
         param_sensor, param_input, param_qa_mask, param_mosaic, param_mode, param_unit, param_aoi, param_crs, param_output_folder, param_add_to_map = parameters
         in_folder = Path(str(param_input.value)).resolve()
         custom_out = Path(str(param_output_folder.value)).resolve() if param_output_folder.value else None
@@ -580,6 +631,10 @@ class ThermalUrbanTool(object):
     def updateMessages(self, parameters):
         if not arcpy:
             return
+        if CORE_IMPORT_ERROR:
+            if parameters and parameters[0]:
+                parameters[0].setErrorMessage(f"ATIAF Core dependencies missing ({CORE_IMPORT_ERROR}). Run tools\\setup_arcgis_pro_env.bat to install.")
+            return
         _, param_input, _, _, _, param_crs, _, _ = parameters
         if param_crs and param_crs.value:
             val_res = CRSManager.validate_projected_metre(str(param_crs.value))
@@ -600,6 +655,9 @@ class ThermalUrbanTool(object):
     def execute(self, parameters, messages):
         if not arcpy:
             raise RuntimeError("ArcPy runtime required.")
+        if CORE_IMPORT_ERROR:
+            messages.addErrorMessage(f"Cannot execute: ATIAF Core dependencies missing ({CORE_IMPORT_ERROR}). Please run tools\\setup_arcgis_pro_env.bat.")
+            return
         _, param_input, param_qa_mask, param_mosaic, param_aoi, param_crs, param_output_folder, param_add_to_map = parameters
         in_folder = Path(str(param_input.value)).resolve()
         custom_out = Path(str(param_output_folder.value)).resolve() if param_output_folder.value else in_folder
@@ -683,6 +741,10 @@ class EnvironmentalDroughtTool(object):
     def updateMessages(self, parameters):
         if not arcpy:
             return
+        if CORE_IMPORT_ERROR:
+            if parameters and parameters[0]:
+                parameters[0].setErrorMessage(f"ATIAF Core dependencies missing ({CORE_IMPORT_ERROR}). Run tools\\setup_arcgis_pro_env.bat to install.")
+            return
         _, _, _, _, _, _, _, param_crs, _, _ = parameters
         if param_crs and param_crs.value:
             val_res = CRSManager.validate_projected_metre(str(param_crs.value))
@@ -692,6 +754,9 @@ class EnvironmentalDroughtTool(object):
     def execute(self, parameters, messages):
         if not arcpy:
             raise RuntimeError("ArcPy runtime required.")
+        if CORE_IMPORT_ERROR:
+            messages.addErrorMessage(f"Cannot execute: ATIAF Core dependencies missing ({CORE_IMPORT_ERROR}). Please run tools\\setup_arcgis_pro_env.bat.")
+            return
         _, param_input, param_qa_mask, param_mosaic, param_albedo, param_tvdi, param_aoi, param_crs, param_output_folder, param_add_to_map = parameters
         in_folder = Path(str(param_input.value)).resolve()
         custom_out = Path(str(param_output_folder.value)).resolve() if param_output_folder.value else in_folder
@@ -772,6 +837,10 @@ class GeologicalAnalysisTool(object):
     def updateMessages(self, parameters):
         if not arcpy:
             return
+        if CORE_IMPORT_ERROR:
+            if parameters and parameters[0]:
+                parameters[0].setErrorMessage(f"ATIAF Core dependencies missing ({CORE_IMPORT_ERROR}). Run tools\\setup_arcgis_pro_env.bat to install.")
+            return
         _, _, _, _, _, _, param_crs, _, _ = parameters
         if param_crs and param_crs.value:
             val_res = CRSManager.validate_projected_metre(str(param_crs.value))
@@ -781,6 +850,9 @@ class GeologicalAnalysisTool(object):
     def execute(self, parameters, messages):
         if not arcpy:
             raise RuntimeError("ArcPy runtime required.")
+        if CORE_IMPORT_ERROR:
+            messages.addErrorMessage(f"Cannot execute: ATIAF Core dependencies missing ({CORE_IMPORT_ERROR}). Please run tools\\setup_arcgis_pro_env.bat.")
+            return
         _, param_input, param_qa_mask, param_mosaic, param_indices, param_aoi, param_crs, param_output_folder, param_add_to_map = parameters
         in_folder = Path(str(param_input.value)).resolve()
         custom_out = Path(str(param_output_folder.value)).resolve() if param_output_folder.value else in_folder
@@ -885,6 +957,10 @@ class TemporalChangeTool(object):
     def updateMessages(self, parameters):
         if not arcpy:
             return
+        if CORE_IMPORT_ERROR:
+            if parameters and parameters[0]:
+                parameters[0].setErrorMessage(f"ATIAF Core dependencies missing ({CORE_IMPORT_ERROR}). Run tools\\setup_arcgis_pro_env.bat to install.")
+            return
         _, _, _, _, _, _, _, _, param_crs, _, _ = parameters
         if param_crs and param_crs.value:
             val_res = CRSManager.validate_projected_metre(str(param_crs.value))
@@ -894,6 +970,9 @@ class TemporalChangeTool(object):
     def execute(self, parameters, messages):
         if not arcpy:
             raise RuntimeError("ArcPy runtime required.")
+        if CORE_IMPORT_ERROR:
+            messages.addErrorMessage(f"Cannot execute: ATIAF Core dependencies missing ({CORE_IMPORT_ERROR}). Please run tools\\setup_arcgis_pro_env.bat.")
+            return
         _, param_t1, param_t2, param_qa_mask, param_metric, param_rel, param_classify, param_aoi, param_crs, param_output_folder, param_add_to_map = parameters
         t1_path = Path(str(param_t1.value)).resolve()
         t2_path = Path(str(param_t2.value)).resolve()

@@ -31,3 +31,5 @@ create a linked revision or cancellation. This local hash chain is not a signatu
 | [#0024](reports/0024.md) | 2026-11-14T16:11:57+00:00 | implementation | completed | #0023 | Completed PLAN-0012: Interactive Documentation Portal & Scientific Indicators Catalog |
 | [#0025](reports/0025.md) | 2026-11-14T18:06:44+00:00 | plan | in_progress | — | Initiated PLAN-0013: Professional Repository README & HTML Portal Overhaul |
 | [#0026](reports/0026.md) | 2026-11-14T18:14:32+00:00 | implementation | completed | #0025 | Completed PLAN-0013: Professional Repository README & HTML Documentation Portal Overhaul |
+| [#0027](reports/0027.md) | 2026-11-14T18:23:09+00:00 | plan | in_progress | — | Initiated PLAN-0014: ATIAF Spelling Standardization, Folder Renaming & ArcGIS Pro Toolbox Fix |
+| [#0028](reports/0028.md) | 2026-11-14T18:39:08+00:00 | implementation | completed | #0027 | Completed PLAN-0014: ATIAF Spelling Standardization, Folder Renaming & ArcGIS Pro Toolbox Fix |

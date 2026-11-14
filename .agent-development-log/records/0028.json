@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "sequence": 28,
+  "timestamp_utc": "2026-11-14T18:39:08+00:00",
+  "kind": "implementation",
+  "status": "completed",
+  "summary": "Completed PLAN-0014: ATIAF Spelling Standardization, Folder Renaming & ArcGIS Pro Toolbox Fix",
+  "details": "Standardized project name to ATIAF with I, created canonical atiaf_core package, renamed folders to 'ArcGIS Pro Tools' and 'QGIS Tools/atiaf', hardened ATIAF.pyt with guarded imports and dynamic root discovery so the toolbox never fails to open in ArcGIS Pro, created 1-click automated setup scripts for ArcGIS Pro Python environment, verified 99/99 unit tests and 5/5 native QGIS tests passing.",
+  "references": [
+    27
+  ],
+  "task_id": "PLAN-0014",
+  "plan_revision": "",
+  "changed_files": [],
+  "tests": [
+    "python -m unittest discover tests"
+  ],
+  "test_result": "passed",
+  "commit": "",
+  "previous_hash": "89e45c365a39192001e1795b1711e8039b6062e4e9c0d84f18632cc334d3eb8d",
+  "hash": "7b71a7d31184539f25ca37a7b5bf75f1b776077158bfc4c57007335c1667cd1b"
+}

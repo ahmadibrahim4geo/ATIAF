@@ -1,8 +1,8 @@
 # ATIAF Project State — CANONICAL HANDOFF
-- **Snapshot:** 2026-11-14; All 10 Roadmap Phases + Comprehensive Audit & Hardening + Master Docs Ecosystem + Professional README & Portal Overhaul Completed (PLAN-0001 through PLAN-0013). Stable Release v1.0.0 Ready.
+- **Snapshot:** 2026-11-14; All 10 Roadmap Phases + Comprehensive Audit & Hardening + Master Docs Ecosystem + Professional README & Portal Overhaul + ATIAF Naming, Folder Renaming & ArcGIS Pro Toolbox Fix Completed (PLAN-0001 through PLAN-0014). Stable Release v1.0.0 Ready.
 - **Project root:** `أطياف/` (UTF-8 path: `d:\My Software\ATIAF`). Git repository on branch `main` (Remote: `https://github.com/ahmadibrahim4geo/ATIAF.git`).
-- **Current phase:** Completed (v1.0.0 Release Ready, Hardened, with Enterprise Portal and Full Documentation Ecosystem).
-- **Active plans:** None currently active. ALL PLAN-0001 through PLAN-0013 COMPLETED.
+- **Current phase:** Completed (v1.0.0 Release Ready, Hardened, with Enterprise Portal, ArcGIS Pro Tools & QGIS Tools).
+- **Active plans:** None currently active. ALL PLAN-0001 through PLAN-0014 COMPLETED.
 - **Completed plans:**
   - PLAN-0001 (`Development_Plans/Completed/PLAN-0001_bootstrap.md`).
   - PLAN-0002 (`Development_Plans/Completed/PLAN-0002_product_recognition.md`).
@@ -17,33 +17,26 @@
   - PLAN-0011 (`Development_Plans/Completed/PLAN-0011_comprehensive_audit_and_hardening.md`).
   - PLAN-0012 (`Development_Plans/Completed/PLAN-0012_interactive_docs_portal_and_scientific_catalog.md`).
   - PLAN-0013 (`Development_Plans/Completed/PLAN-0013_professional_readme_and_html_portal_overhaul.md`).
-- **Latest numbered development report:** `Reports/0013_professional_readme_and_html_portal_overhaul.md`.
+  - PLAN-0014 (`Development_Plans/Completed/PLAN-0014_atiaf_spelling_folder_renaming_and_arcgis_pro_toolbox_fix.md`).
+- **Latest numbered development report:** `Reports/0014_atiaf_spelling_folder_renaming_and_arcgis_pro_toolbox_fix.md`.
 - **Agent Development Journal:** Canonical append-only journal in `.agent-development-log/` (verified records).
 - **Approved Skills:** Cloned in `.agent_resources/GIS-Development-Skills` (commit `2a0a9a23618e40218484ec8ae5848a481df51f1a`).
 - **Host runtime verification:**
   - Python 3.14.7 (standalone) with `numpy 2.5.3`, `rasterio 1.5.2`, `shapely 2.1.2`, `geopandas 1.2.0`, `pyproj 3.8.0`.
   - QGIS 4.2.3-Belém do Pará with verified working PyQGIS (`qgis.core`), Python 3.12.9, GDAL 3.13.3, rasterio 1.5.2.
-  - ArcGIS Pro 3.6.0.59527 (`C:\Program Files\ArcGIS\Pro`).
+  - ArcGIS Pro 3.6.0.59527 (`C:\Program Files\ArcGIS\Pro`) with configured Python runtime (`rasterio 1.5.2`, `shapely 2.1.2`, `pyproj 3.8.0`).
 - **Implemented GIS processing:**
-  - `atyaf_core/discovery/`: Landsat, Sentinel-2, ASTER, Sentinel-1 C-SAR, SceneScanner, ManualBandMapper.
-  - `atyaf_core/raster/`: CRSManager (projected metre enforcement), QualityMaskEngine, PolygonClipEngine, WindowedRasterEngine, WorkspaceManager (bilingual standalone HTML run reports & cumulative Reports/index.html engine).
-  - `atyaf_core/indices/`: INDEX_CATALOG (22 validated optical indices), SpectralIndicesEngine (capability gating, QA masking, windowed processing, AOI clipping, run manifests).
-  - `atyaf_core/temperature/`: EmissivityEngine (Sobrino et al. 2004 NDVI thresholds), SurfaceTemperatureEngine (Landsat C2 L2 ST, Kelvin/Celsius units, strict Sentinel-2 thermal absence blocking).
-  - `atyaf_core/urban/`: ThermalUrbanEngine (UTFVI calculation and 6-class thermal comfort mapping, thermal hotspots z >= 2.0, SUHI).
-  - `atyaf_core/environment/`: EnvironmentalDroughtEngine (Liang 2001 broadband surface albedo, TVDI dryness index).
-  - `atyaf_core/geology/`: GEOLOGICAL_CATALOG (8 diagnostic alteration ratios & thermal mineral indices), GeologicalAnalysisEngine (ASTER post-April 2008 SWIR cutoff enforcement, scientific disclaimer, run manifests).
-  - `atyaf_core/mosaic/`: QualityMosaicEngine (union extent, quality ranking, mean valid, latest date, Source_Scene_ID provenance raster).
-  - `atyaf_core/temporal/`: ChangeDetectionEngine (dNDVI, dNBR USGS Burn Severity classification, dLST, relative change %, statistical standard deviation classes).
-  - `atyaf_core/modalities/`: Modality models (`SensorModality`, `PolarizationRole`, `SARCalibrationType`, `HyperspectralCubeMetadata`), `SAREngine` (dB scaling, cross-pol ratio, RVI, pure-NumPy Lee filter), `HyperspectralEngine` (SAM angle, continuum-removed absorption feature depths, L2 gating), `ModalityRouter` (enforces "never route SAR to optical/thermal").
-  - `arcgis_pro/ATIAF.pyt`: Native Python Toolbox containing ALL 6 independent tools with canonical parameter layout, dynamic validation, metric projected CRS checking, multi-scene mosaic execution, and map execution.
-  - `qgis/atyaf/`: Native QGIS Processing Provider Plugin registering provider ID `atyaf` (`ATIAF | أطياف`) containing ALL 6 independent processing algorithms (`atyaf:spectral_indices`, `atyaf:surface_temperature`, `atyaf:thermal_urban`, `atyaf:environmental_drought`, `atyaf:geological_analysis`, `atyaf:temporal_change`), with canonical parameter ordering (OUTPUT_FOLDER last), Decision D-007 metric CRS validation, ENABLE_MOSAIC cross-host parity, and complete bilingual metadata.
-  - `pyproject.toml` & `tools/verify_installation.py`: Standards-compliant PEP 621 packaging and automated environment diagnostics.
+  - `atiaf_core/` (canonical) & `atyaf_core/`: Discovery, Raster, Indices, Temperature, Urban, Environment, Geology, Mosaic, Temporal, Modalities.
+  - `ArcGIS Pro Tools/ATIAF.pyt`: Native Python Toolbox containing ALL 6 independent tools with canonical parameter layout, dynamic validation, metric projected CRS checking, multi-scene mosaic execution, guarded safe imports, and 1-click environment setup script (`Setup_ArcGIS_Pro_Environment.bat`).
+  - `QGIS Tools/atiaf/`: Native QGIS Processing Provider Plugin registering provider ID `atiaf` (`ATIAF | أطياف`) containing ALL 6 independent processing algorithms (`atiaf:spectral_indices`, `atiaf:surface_temperature`, `atiaf:thermal_urban`, `atiaf:environmental_drought`, `atiaf:geological_analysis`, `atiaf:temporal_change`).
+  - `pyproject.toml` & `tools/verify_installation.py`: Standards-compliant PEP 621 packaging (name `atiaf`), CLI commands `atiaf-verify` & `atyaf-verify`.
+  - `tools/setup_arcgis_pro_env.py` & `.bat`: Automated ArcGIS Pro environment setup.
   - `docs/index.html`: Fully rendered modern interactive bilingual documentation portal and GitHub Pages showcase, with live filterable indicators explorer and host setup tabs.
   - `docs/en/` & `docs/ar/`: Master indicators catalogs, quick start guides, sensor download guides, scientific methods references, and advanced modalities documentation.
   - `README.md` & `README.ar.md`: Modern enterprise GitHub documentation with interactive tables, badges, architecture diagrams, and testing evidence.
   - `CODE_OF_CONDUCT.md`: Contributor Covenant v2.1 community standard.
 - **Verified checks in package:**
-  - `python tools/validate_package.py`: PASS (330 md, 118 json).
+  - `python tools/validate_package.py`: PASS (334 md, 120 json).
   - `python -m unittest discover tests`: PASS (99 unit tests passing).
   - `& "C:\Program Files\QGIS 4.2.3\bin\python-qgis.bat" tests/native_qgis/test_qgis_provider.py`: PASS (5 native host integration tests passing).
   - `python tools/verify_installation.py`: PASS (all 5 tiers verified).

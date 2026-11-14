@@ -7,8 +7,8 @@
 [![Release: v1.0.0](https://img.shields.io/badge/Release-v1.0.0-blue.svg)](CHANGELOG.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python: 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](pyproject.toml)
-[![ArcGIS Pro: 3.x](https://img.shields.io/badge/ArcGIS%20Pro-3.x%20Ready-brightgreen.svg)](arcgis_pro/)
-[![QGIS: 3.x / 4.x](https://img.shields.io/badge/QGIS-3.x%20%2F%204.x%20Ready-forestgreen.svg)](qgis/atyaf/)
+[![ArcGIS Pro: 3.x](https://img.shields.io/badge/ArcGIS%20Pro-3.x%20Ready-brightgreen.svg)](ArcGIS%20Pro%20Tools/)
+[![QGIS: 3.x / 4.x](https://img.shields.io/badge/QGIS-3.x%20%2F%204.x%20Ready-forestgreen.svg)](QGIS%20Tools/atiaf/)
 [![Tests: 99 passing](https://img.shields.io/badge/Tests-99%20passed-success.svg)](tests/)
 [![Docs: GitHub Pages](https://img.shields.io/badge/Documentation-GitHub%20Pages-informational.svg)](https://ahmadibrahim4geo.github.io/ATIAF/)
 
@@ -24,7 +24,7 @@
 
 ## 🌟 Executive Overview
 
-**ATIAF (أطياف)** is a pure-Python, free-first, offline-at-runtime remote sensing analysis framework engineered to eliminate complexity in satellite imagery processing. It provides seamless native geoprocessing tools inside **ArcGIS Pro** (via `arcgis_pro/ATIAF.pyt`) and **QGIS** (via `qgis/atyaf/` Processing Provider plugin), powered by an independent, high-performance computational core (`atyaf_core/`).
+**ATIAF (أطياف)** is a pure-Python, free-first, offline-at-runtime remote sensing analysis framework engineered to eliminate complexity in satellite imagery processing. It provides seamless native geoprocessing tools inside **ArcGIS Pro** (via `ArcGIS Pro Tools/ATIAF.pyt`) and **QGIS** (via `QGIS Tools/atiaf/` Processing Provider plugin), powered by an independent, high-performance computational core (`atiaf_core/`).
 
 Users supply downloaded raw or analysis-ready satellite scenes; ATIAF automatically discovers mission metadata, validates physical calibrations, applies pixel-level quality masks (clouds, shadows, saturation), blends multi-scene mosaics, clips study area boundaries (AOI), computes physical models, and generates immutable, publication-ready bilingual HTML run reports.
 
@@ -106,14 +106,15 @@ python tools/verify_installation.py
 
 ### 3. Usage in ArcGIS Pro
 1. Open ArcGIS Pro.
-2. In the **Catalog** pane (`View -> Catalog Pane`), right-click **Toolboxes** &rarr; **Add Toolbox**.
-3. Navigate to `arcgis_pro/ATIAF.pyt` and click **OK**.
-4. Open any of the 6 tools, select your unpacked satellite scene folder, and click **Run**!
+2. If this is your first time, run `Setup_ArcGIS_Pro_Environment.bat` inside `ArcGIS Pro Tools/` to install dependencies.
+3. In the **Catalog** pane (`View -> Catalog Pane`), right-click **Toolboxes** &rarr; **Add Toolbox**.
+4. Navigate to `ArcGIS Pro Tools/ATIAF.pyt` and click **OK**.
+5. Open any of the 6 tools, select your unpacked satellite scene folder, and click **Run**!
 
 ### 4. Usage in QGIS
-1. Copy or symlink `qgis/atyaf` into your active QGIS profile plugins directory:
-   - **Windows:** `%APPDATA%\QGIS\QGIS3\profiles\default\python\plugins\atyaf`
-   - **Linux:** `~/.local/share/QGIS/QGIS3/profiles/default/python/plugins/atyaf`
+1. Copy or symlink `QGIS Tools/atiaf` into your active QGIS profile plugins directory:
+   - **Windows:** `%APPDATA%\QGIS\QGIS3\profiles\default\python\plugins\atiaf`
+   - **Linux:** `~/.local/share/QGIS/QGIS3/profiles/default/python/plugins/atiaf`
 2. In QGIS, navigate to **Plugins -> Manage and Install Plugins -> Installed**, and enable **ATIAF (أطياف)**.
 3. Open the **Processing Toolbox** (`Ctrl+Alt+T`) to access all 6 algorithms under `ATIAF | أطياف`.
 

@@ -146,7 +146,7 @@ class TestArcGISProAllSixTools(unittest.TestCase):
     """Verifies that arcgis_pro/ATIAF.pyt exposes all 6 canonical tools."""
 
     def test_toolbox_all_six_tools(self):
-        pyt_path = ROOT / "arcgis_pro" / "ATIAF.pyt"
+        pyt_path = (ROOT / "ArcGIS Pro Tools" / "ATIAF.pyt") if (ROOT / "ArcGIS Pro Tools" / "ATIAF.pyt").exists() else (ROOT / "arcgis_pro" / "ATIAF.pyt")
         self.assertTrue(pyt_path.exists())
 
         code = pyt_path.read_text(encoding="utf-8")

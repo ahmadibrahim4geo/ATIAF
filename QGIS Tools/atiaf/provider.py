@@ -26,7 +26,7 @@ class ATIAFProcessingProvider(QgsProcessingProvider):
     """QGIS Processing provider for ATIAF scientific algorithms."""
 
     def id(self):
-        return "atyaf"
+        return "atiaf"
 
     def name(self):
         return "ATIAF | أطياف"

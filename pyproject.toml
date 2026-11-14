@@ -3,14 +3,14 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "atyaf"
+name = "atiaf"
 version = "1.0.0"
 description = "ATIAF (أطياف) — Advanced Thematic Imagery Analysis Framework"
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [
-    { name = "Ahmed Ibrahim", email = "info@atyaf.org" }
+    { name = "Ahmed Ibrahim", email = "info@atiaf.org" }
 ]
 keywords = [
     "remote-sensing",
@@ -59,6 +59,7 @@ test = [
 ]
 
 [project.scripts]
+atiaf-verify = "atyaf_core.cli:main"
 atyaf-verify = "atyaf_core.cli:main"
 
 [project.urls]
@@ -69,4 +70,4 @@ Issues = "https://github.com/ahmadibrahim4geo/ATIAF/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["atyaf_core*", "qgis*"]
+include = ["atiaf_core*", "atyaf_core*"]

@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "sequence": 27,
+  "timestamp_utc": "2026-11-14T18:23:09+00:00",
+  "kind": "plan",
+  "status": "in_progress",
+  "summary": "Initiated PLAN-0014: ATIAF Spelling Standardization, Folder Renaming & ArcGIS Pro Toolbox Fix",
+  "details": "Addressing user requests: standardize project name to ATIAF with I, rename folders to 'ArcGIS Pro Tools' and 'QGIS Tools', fix ArcGIS Pro toolbox opening failure by resolving missing dependencies and hardening ATIAF.pyt imports and path resolution.",
+  "references": [],
+  "task_id": "PLAN-0014",
+  "plan_revision": "",
+  "changed_files": [],
+  "tests": [],
+  "test_result": "not_run",
+  "commit": "",
+  "previous_hash": "cbe7feb1346acf58fcdf7da324f7fda86a120e4eabdefdd7589639aace35267d",
+  "hash": "89e45c365a39192001e1795b1711e8039b6062e4e9c0d84f18632cc334d3eb8d"
+}

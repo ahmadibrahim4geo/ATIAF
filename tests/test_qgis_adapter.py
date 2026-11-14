@@ -12,23 +12,23 @@ import sys
 import unittest
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-QGIS_DIR = PROJECT_ROOT / "qgis"
-PLUGIN_DIR = QGIS_DIR / "atyaf"
+QGIS_DIR = PROJECT_ROOT / "QGIS Tools"
+PLUGIN_DIR = QGIS_DIR / "atiaf"
 
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 if str(QGIS_DIR) not in sys.path:
     sys.path.insert(0, str(QGIS_DIR))
 
-from atyaf import classFactory
-from atyaf.atyaf_plugin import ATIAFPlugin
-from atyaf.provider import ATIAFProcessingProvider
-from atyaf.algorithms.spectral_indices import SpectralIndicesAlgorithm
-from atyaf.algorithms.surface_temperature import SurfaceTemperatureAlgorithm
-from atyaf.algorithms.thermal_urban import ThermalUrbanAlgorithm
-from atyaf.algorithms.environmental_drought import EnvironmentalDroughtAlgorithm
-from atyaf.algorithms.geological_analysis import GeologicalAnalysisAlgorithm
-from atyaf.algorithms.temporal_change import TemporalChangeAlgorithm
+from atiaf import classFactory
+from atiaf.atiaf_plugin import ATIAFPlugin
+from atiaf.provider import ATIAFProcessingProvider
+from atiaf.algorithms.spectral_indices import SpectralIndicesAlgorithm
+from atiaf.algorithms.surface_temperature import SurfaceTemperatureAlgorithm
+from atiaf.algorithms.thermal_urban import ThermalUrbanAlgorithm
+from atiaf.algorithms.environmental_drought import EnvironmentalDroughtAlgorithm
+from atiaf.algorithms.geological_analysis import GeologicalAnalysisAlgorithm
+from atiaf.algorithms.temporal_change import TemporalChangeAlgorithm
 
 
 class TestQGISMetadata(unittest.TestCase):
@@ -77,7 +77,7 @@ class TestQGISPluginLifecycle(unittest.TestCase):
 
     def test_provider_identity(self):
         provider = ATIAFProcessingProvider()
-        self.assertEqual(provider.id(), "atyaf")
+        self.assertEqual(provider.id(), "atiaf")
         self.assertIn("ATIAF", provider.name())
         self.assertIn("أطياف", provider.name())
         self.assertIn("ATIAF", provider.longName())

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Structural QA for the *documentation handoff*, not a GIS processing engine test."""
-import json, pathlib, re, sys
+import json, pathlib, re, sys, urllib.parse
 root=pathlib.Path(__file__).resolve().parents[1]
 required=['AGENTS.md','START_AGENT_PROMPT.txt','PROJECT_STATE.md','DECISIONS.md','PROJECT_SPECIFICATION.md','PROJECT_SPECIFICATION_AR.md','DEVELOPMENT_ROADMAP.md','DEVELOPMENT_ROADMAP_AR.md','README.md','README.ar.md','LICENSE','Development_Plans/INDEX.md','Reports/INDEX.md','development_resources/REPOSITORIES.md','development_resources/SKILLS_REGISTRY.md','development_resources/SOURCES.md','scientific_library/sensors/sensor_registry.json','scientific_library/indices/candidate_indices.json','docs/ar/SENSORS_AND_DOWNLOADS.md','docs/en/SENSORS_AND_DOWNLOADS.md','docs/ar/SCIENTIFIC_METHODS.md','docs/en/SCIENTIFIC_METHODS.md']
 err=[]
@@ -26,7 +26,7 @@ for file in root.rglob('*.md'):
  t=file.read_text(encoding='utf-8')
  for target in re.findall(r'\]\(([^)]+)\)',t):
   if target.startswith(('http://','https://','mailto:','#')):continue
-  target=target.split('#')[0]
+  target=urllib.parse.unquote(target.split('#')[0].strip())
   if not target:continue
   if not (file.parent/target).exists():err.append('Broken local link '+str(file.relative_to(root))+' -> '+target)
 print('Markdown files:',len(list(root.rglob('*.md'))),'JSON:',len(json_files))

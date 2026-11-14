@@ -168,7 +168,7 @@ class TestSpectralIndicesEngine(unittest.TestCase):
 
 class TestArcGISProToolboxStructure(unittest.TestCase):
     def test_pyt_file_valid_python(self):
-        pyt_path = ROOT / "arcgis_pro" / "ATIAF.pyt"
+        pyt_path = (ROOT / "ArcGIS Pro Tools" / "ATIAF.pyt") if (ROOT / "ArcGIS Pro Tools" / "ATIAF.pyt").exists() else (ROOT / "arcgis_pro" / "ATIAF.pyt")
         self.assertTrue(pyt_path.is_file())
 
         # Compile pyt to verify syntax
@@ -184,7 +184,7 @@ class TestArcGISProToolboxStructure(unittest.TestCase):
         self.assertIn("SpectralIndicesTool", namespace)
 
         toolbox = namespace["Toolbox"]()
-        self.assertEqual(toolbox.alias, "atyaf")
+        self.assertEqual(toolbox.alias, "atiaf")
         self.assertGreaterEqual(len(toolbox.tools), 1)
 
         tool = namespace["SpectralIndicesTool"]()

@@ -260,7 +260,7 @@ class TestArcGISProToolboxPhase5(unittest.TestCase):
     """Verifies that arcgis_pro/ATIAF.pyt exposes Tools 01, 02, 05, and 06."""
 
     def test_toolbox_tools_list_phase5(self):
-        pyt_path = ROOT / "arcgis_pro" / "ATIAF.pyt"
+        pyt_path = (ROOT / "ArcGIS Pro Tools" / "ATIAF.pyt") if (ROOT / "ArcGIS Pro Tools" / "ATIAF.pyt").exists() else (ROOT / "arcgis_pro" / "ATIAF.pyt")
         self.assertTrue(pyt_path.exists())
 
         code = pyt_path.read_text(encoding="utf-8")

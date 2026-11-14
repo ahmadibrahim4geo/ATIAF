@@ -18,7 +18,7 @@ import tempfile
 import unittest
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-QGIS_DIR = PROJECT_ROOT / "qgis"
+QGIS_DIR = PROJECT_ROOT / "QGIS Tools"
 
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
@@ -37,8 +37,8 @@ from qgis.core import (
     QgsRasterLayer,
 )
 
-from atyaf.provider import ATIAFProcessingProvider
-from atyaf.algorithms.spectral_indices import SpectralIndicesAlgorithm
+from atiaf.provider import ATIAFProcessingProvider
+from atiaf.algorithms.spectral_indices import SpectralIndicesAlgorithm
 
 
 class TestNativeQGISProvider(unittest.TestCase):
@@ -116,24 +116,24 @@ END_GROUP = L1_METADATA_FILE
         shutil.rmtree(self.output_dir, ignore_errors=True)
 
     def test_01_provider_registration(self):
-        """Verifies ATIAF provider registered with ID 'atyaf' in Processing Registry."""
-        registered_prov = QgsApplication.processingRegistry().providerById("atyaf")
-        self.assertIsNotNone(registered_prov, "Provider 'atyaf' not found in processingRegistry")
-        self.assertEqual(registered_prov.id(), "atyaf")
+        """Verifies ATIAF provider registered with ID 'atiaf' in Processing Registry."""
+        registered_prov = QgsApplication.processingRegistry().providerById("atiaf")
+        self.assertIsNotNone(registered_prov, "Provider 'atiaf' not found in processingRegistry")
+        self.assertEqual(registered_prov.id(), "atiaf")
         self.assertIn("ATIAF", registered_prov.name())
         self.assertIn("أطياف", registered_prov.name())
 
     def test_02_all_six_algorithms_registered(self):
         """Verifies that all 6 canonical algorithms are registered with unique IDs."""
         expected_ids = [
-            "atyaf:spectral_indices",
-            "atyaf:surface_temperature",
-            "atyaf:thermal_urban",
-            "atyaf:environmental_drought",
-            "atyaf:geological_analysis",
-            "atyaf:temporal_change",
+            "atiaf:spectral_indices",
+            "atiaf:surface_temperature",
+            "atiaf:thermal_urban",
+            "atiaf:environmental_drought",
+            "atiaf:geological_analysis",
+            "atiaf:temporal_change",
         ]
-        registered_prov = QgsApplication.processingRegistry().providerById("atyaf")
+        registered_prov = QgsApplication.processingRegistry().providerById("atiaf")
         prov_alg_ids = [a.id() for a in registered_prov.algorithms()]
 
         for exp_id in expected_ids:
@@ -219,7 +219,7 @@ END_GROUP = L1_METADATA_FILE
 
     def test_05_all_six_algorithms_parameter_definitions(self):
         """Audits all 6 algorithms for canonical parameter definitions and ordering."""
-        registered_prov = QgsApplication.processingRegistry().providerById("atyaf")
+        registered_prov = QgsApplication.processingRegistry().providerById("atiaf")
         for alg in registered_prov.algorithms():
             alg_inst = alg.createInstance()
             alg_inst.initAlgorithm()

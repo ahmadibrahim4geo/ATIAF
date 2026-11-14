@@ -16,6 +16,6 @@ if str(PROJECT_ROOT) not in sys.path:
 
 
 def classFactory(iface):
-    """Load ATIAFPlugin from atyaf_plugin."""
-    from .atyaf_plugin import ATIAFPlugin
+    """Load ATIAFPlugin from atiaf_plugin."""
+    from .atiaf_plugin import ATIAFPlugin
     return ATIAFPlugin(iface)

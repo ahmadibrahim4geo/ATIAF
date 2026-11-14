@@ -49,6 +49,7 @@ class TestRepositoryStructure(unittest.TestCase):
                 self.fail(f"Invalid JSON syntax in {jf.relative_to(ROOT)}: {e}")
 
     def test_no_broken_local_markdown_links(self):
+        import urllib.parse
         md_files = [p for p in ROOT.rglob('*.md') if '.agent_resources' not in p.parts]
         broken = []
         for mf in md_files:
@@ -56,7 +57,7 @@ class TestRepositoryStructure(unittest.TestCase):
             for target in re.findall(r'\]\(([^)]+)\)', text):
                 if target.startswith(('http://', 'https://', 'mailto:', '#')):
                     continue
-                target_clean = target.split('#')[0].strip()
+                target_clean = urllib.parse.unquote(target.split('#')[0].strip())
                 if not target_clean:
                     continue
                 resolved = mf.parent / target_clean

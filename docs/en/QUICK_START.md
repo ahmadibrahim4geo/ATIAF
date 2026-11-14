@@ -17,9 +17,10 @@ This runs a 5-tier diagnostic checking NumPy, Rasterio, Shapely, PyProj, `atyaf_
 ## 2. Using ATIAF in ArcGIS Pro (3.x)
 
 1. **Add the Toolbox:**
+   - If first time, run `Setup_ArcGIS_Pro_Environment.bat` inside `ArcGIS Pro Tools/` to install dependencies.
    - In ArcGIS Pro, open the **Catalog** pane (`View -> Catalog Pane`).
    - Right-click **Toolboxes** -> **Add Toolbox**.
-   - Navigate to `d:\My Software\ATIAF\arcgis_pro\` and select `ATIAF.pyt`.
+   - Navigate to `d:\My Software\ATIAF\ArcGIS Pro Tools\` and select `ATIAF.pyt`.
 2. **Open a Tool:**
    - Expand `ATIAF.pyt`. You will see all 6 canonical tools:
      - `01. Spectral Indices | المؤشرات الطيفية`
@@ -49,8 +50,8 @@ This runs a 5-tier diagnostic checking NumPy, Rasterio, Shapely, PyProj, `atyaf_
 ## 3. Using ATIAF in QGIS (3.x / 4.x)
 
 1. **Enable the Plugin:**
-   - Copy or symlink `qgis/atyaf` into your QGIS plugins folder:
-     - Windows: `%APPDATA%\QGIS\QGIS3\profiles\default\python\plugins\atyaf`
+   - Copy or symlink `QGIS Tools/atiaf` into your QGIS plugins folder:
+     - Windows: `%APPDATA%\QGIS\QGIS3\profiles\default\python\plugins\atiaf`
    - In QGIS, go to **Plugins -> Manage and Install Plugins -> Installed**, and enable **ATIAF (أطياف)**.
 2. **Open the Processing Toolbox:**
    - Open the **Processing Toolbox** (`Processing -> Toolbox` or `Ctrl+Alt+T`).

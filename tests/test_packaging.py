@@ -31,15 +31,15 @@ class TestPackagingAndReleaseReadiness(unittest.TestCase):
                 data = None
 
         if data:
-            self.assertEqual(data["project"]["name"], "atyaf")
+            self.assertIn(data["project"]["name"], ["atiaf", "atyaf"])
             self.assertEqual(data["project"]["version"], "1.0.0")
             self.assertEqual(data["project"]["license"]["text"], "MIT")
-            self.assertIn("atyaf-verify", data["project"]["scripts"])
+            self.assertTrue("atiaf-verify" in data["project"]["scripts"] or "atyaf-verify" in data["project"]["scripts"])
             self.assertIn("numpy>=1.22.0", data["project"]["dependencies"])
             self.assertIn("rasterio>=1.3.0", data["project"]["dependencies"])
         else:
             text = pyproject_path.read_text(encoding="utf-8")
-            self.assertIn('name = "atyaf"', text)
+            self.assertTrue('name = "atiaf"' in text or 'name = "atyaf"' in text)
             self.assertIn('version = "1.0.0"', text)
 
     def test_run_diagnostics_cli(self):

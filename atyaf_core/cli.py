@@ -84,14 +84,18 @@ def run_diagnostics(verbose: bool = True) -> int:
 
     # 4. Check ArcGIS Pro Native Toolbox
     log("\n[4/5] Checking ArcGIS Pro Toolbox (.pyt)...")
-    pyt_path = PROJECT_ROOT / "arcgis_pro" / "ATIAF.pyt"
+    pyt_path = PROJECT_ROOT / "ArcGIS Pro Tools" / "ATIAF.pyt"
+    if not pyt_path.is_file():
+        pyt_path = PROJECT_ROOT / "arcgis_pro" / "ATIAF.pyt"
+
     if pyt_path.is_file():
         try:
             code = pyt_path.read_text(encoding="utf-8")
             compiled = compile(code, str(pyt_path), "exec")
-            log(f"  [OK] arcgis_pro/ATIAF.pyt syntax valid (Toolbox with 6 canonical tools)")
+            rel_path = pyt_path.relative_to(PROJECT_ROOT)
+            log(f"  [OK] {rel_path} syntax valid (Toolbox with 6 canonical tools)")
         except Exception as e:
-            log(f"  [FAILED] arcgis_pro/ATIAF.pyt syntax error: {e}")
+            log(f"  [FAILED] {pyt_path} syntax error: {e}")
             errors += 1
     else:
         log(f"  [MISSING] {pyt_path} not found")
@@ -99,16 +103,25 @@ def run_diagnostics(verbose: bool = True) -> int:
 
     # 5. Check QGIS Processing Provider Plugin
     log("\n[5/5] Checking QGIS Processing Provider Plugin...")
-    qgis_meta = PROJECT_ROOT / "qgis" / "atyaf" / "metadata.txt"
+    qgis_meta = PROJECT_ROOT / "QGIS Tools" / "atiaf" / "metadata.txt"
+    qgis_base = PROJECT_ROOT / "QGIS Tools"
+    plugin_mod = "atiaf"
+    if not qgis_meta.is_file():
+        qgis_meta = PROJECT_ROOT / "qgis" / "atyaf" / "metadata.txt"
+        qgis_base = PROJECT_ROOT / "qgis"
+        plugin_mod = "atyaf"
+
     if qgis_meta.is_file():
         try:
-            qgis_pkg_dir = str(PROJECT_ROOT / "qgis")
+            qgis_pkg_dir = str(qgis_base)
             if qgis_pkg_dir not in sys.path:
                 sys.path.insert(0, qgis_pkg_dir)
-            from atyaf import classFactory
-            from atyaf.provider import ATIAFProcessingProvider
-            prov = ATIAFProcessingProvider()
-            log(f"  [OK] qgis/atyaf/ provider '{prov.id()}' ({prov.name()}) with 6 processing algorithms")
+            import importlib
+            mod = importlib.import_module(f"{plugin_mod}.provider")
+            prov_cls = getattr(mod, "ATIAFProcessingProvider")
+            prov = prov_cls()
+            rel_meta = qgis_meta.parent.relative_to(PROJECT_ROOT)
+            log(f"  [OK] {rel_meta}/ provider '{prov.id()}' ({prov.name()}) with 6 processing algorithms")
         except Exception as e:
             log(f"  [NOTE] QGIS plugin check exception: {e}")
     else:

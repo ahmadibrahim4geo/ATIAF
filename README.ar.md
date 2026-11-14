@@ -7,8 +7,8 @@
 [![Release: v1.0.0](https://img.shields.io/badge/Release-v1.0.0-blue.svg)](CHANGELOG.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python: 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](pyproject.toml)
-[![ArcGIS Pro: 3.x](https://img.shields.io/badge/ArcGIS%20Pro-3.x%20Ready-brightgreen.svg)](arcgis_pro/)
-[![QGIS: 3.x / 4.x](https://img.shields.io/badge/QGIS-3.x%20%2F%204.x%20Ready-forestgreen.svg)](qgis/atyaf/)
+[![ArcGIS Pro: 3.x](https://img.shields.io/badge/ArcGIS%20Pro-3.x%20Ready-brightgreen.svg)](ArcGIS%20Pro%20Tools/)
+[![QGIS: 3.x / 4.x](https://img.shields.io/badge/QGIS-3.x%20%2F%204.x%20Ready-forestgreen.svg)](QGIS%20Tools/atiaf/)
 [![Tests: 99 passing](https://img.shields.io/badge/Tests-99%20passed-success.svg)](tests/)
 [![Docs: GitHub Pages](https://img.shields.io/badge/Documentation-GitHub%20Pages-informational.svg)](https://ahmadibrahim4geo.github.io/ATIAF/)
 
@@ -26,7 +26,7 @@
 
 ## 🌟 نبذة عامة ورؤية المشروع
 
-**منظومة أطياف (ATIAF)** هي إطار عمل متكامل مفتوح المصدر ومكتوب بلغة بايثون النقية، صُمم لإلغاء التعقيد في معالجة وتحليل المرئيات الفضائية. يوفر الإطار أدوات معالجة مكانية أصلية وسلسة داخل **ArcGIS Pro** (عبر صندوق الأدوات `arcgis_pro/ATIAF.pyt`) وداخل **QGIS** (عبر ملحق معالجة أطياف `qgis/atyaf/`)، اعتماداً على نواة حسابية نقية وعالية الأداء (`atyaf_core/`).
+**منظومة أطياف (ATIAF)** هي إطار عمل متكامل مفتوح المصدر ومكتوب بلغة بايثون النقية، صُمم لإلغاء التعقيد في معالجة وتحليل المرئيات الفضائية. يوفر الإطار أدوات معالجة مكانية أصلية وسلسة داخل **ArcGIS Pro** (عبر صندوق الأدوات `ArcGIS Pro Tools/ATIAF.pyt`) وداخل **QGIS** (عبر ملحق معالجة أطياف `QGIS Tools/atiaf/`)، اعتماداً على نواة حسابية نقية وعالية الأداء (`atiaf_core/`).
 
 يقوم المستخدم بتزويد الأداة بمجلد المشهد الفضائي المحمّل (خام أو جاهز للتحليل)؛ ليتولى نظام أطياف استكشاف ميتاداتا المهمة آلياً، والتحقق من المعايرة الإشعاعية، وتطبيق أقنعة الجودة على مستوى البكسل (السحب، الظلال، التشبع)، ودمج المشاهد المتعددة (موزاييك)، واقتطاع منطقة الدراسة (AOI)، وحساب النماذج الفيزيائية، وتوليد تقارير تشغيل علمية تفاعلية ثنائية اللغة بصيغة HTML تحفظ تاريخ كل عملية حتمياً.
 
@@ -108,16 +108,17 @@ python tools/verify_installation.py
 
 ### 3. الاستخدام في ArcGIS Pro
 1. افتح برنامج ArcGIS Pro.
-2. في لوحة الفهرس **Catalog**، انقر بزر الفأرة الأيمن على **Toolboxes** واختر **Add Toolbox**.
-3. توجه إلى `arcgis_pro/ATIAF.pyt` واختره.
-4. ستظهر لك الأدوات الست جاهزة للاستخدام والتشغيل المباشر!
+2. إذا كانت هذه المرة الأولى، شغّل ملف `Setup_ArcGIS_Pro_Environment.bat` داخل مجلد `ArcGIS Pro Tools/` لتهيئة المكتبات تلقائياً.
+3. في لوحة الفهرس **Catalog**، انقر بزر الفأرة الأيمن على **Toolboxes** واختر **Add Toolbox**.
+4. توجه إلى `ArcGIS Pro Tools/ATIAF.pyt` واختره.
+5. ستظهر لك الأدوات الست جاهزة للاستخدام والتشغيل المباشر!
 
 ### 4. الاستخدام في QGIS
-1. انسخ مجلد `qgis/atyaf` إلى مجلد إضافات QGIS:
-   - **ويندوز:** `%APPDATA%\QGIS\QGIS3\profiles\default\python\plugins\atyaf`
-   - **لينكس:** `~/.local/share/QGIS/QGIS3/profiles/default/python/plugins/atyaf`
+1. انسخ مجلد `QGIS Tools/atiaf` إلى مجلد إضافات QGIS:
+   - **ويندوز:** `%APPDATA%\QGIS\QGIS3\profiles\default\python\plugins\atiaf`
+   - **لينكس:** `~/.local/share/QGIS/QGIS3/profiles/default/python/plugins/atiaf`
 2. في QGIS، افتح قائمة **Plugins -> Manage and Install Plugins** وفعّل ملحق **ATIAF (أطياف)**.
-3. افتح **صندوق معالجة الأدوات (Processing Toolbox)** للوصول إلى كافة الخوارزميات الست.
+3. افتح **صندوق معالجة الأدوات (Processing Toolbox)** للوصول إلى كافة الخوارزميات الست تحت تصنيف `ATIAF | أطياف`.
 
 ---
 

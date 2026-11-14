@@ -1,12 +1,10 @@
 # Project development state — agent handoff
 
 Read with INDEX.md and the linked reports. Independently inspect code and tests.
-Recorded steps: 26
+Recorded steps: 28
 
 ## Latest records
 
-- #0017 [in_progress] Initiated Phase P8: Advanced Modalities, Radar (SAR) & Hyperspectral Gating
-- #0018 [completed] Completed Phase P8: Advanced Modalities, Radar (SAR) & Hyperspectral Gating (related: #0017)
 - #0019 [in_progress] Initiated Phase P9: Packaging, Documentation Build & Release Readiness
 - #0020 [completed] Completed Phase P9: Packaging, Documentation Build & Release Readiness. All 10 Phases Delivered. (related: #0019)
 - #0021 [in_progress] Initiated PLAN-0011: Comprehensive Audit, Hardening & Cumulative Reporting Engine
@@ -15,6 +13,8 @@ Recorded steps: 26
 - #0024 [completed] Completed PLAN-0012: Interactive Documentation Portal & Scientific Indicators Catalog (related: #0023)
 - #0025 [in_progress] Initiated PLAN-0013: Professional Repository README & HTML Portal Overhaul
 - #0026 [completed] Completed PLAN-0013: Professional Repository README & HTML Documentation Portal Overhaul (related: #0025)
+- #0027 [in_progress] Initiated PLAN-0014: ATIAF Spelling Standardization, Folder Renaming & ArcGIS Pro Toolbox Fix
+- #0028 [completed] Completed PLAN-0014: ATIAF Spelling Standardization, Folder Renaming & ArcGIS Pro Toolbox Fix (related: #0027)
 
 ## Open/blocked records (confirm whether still applicable)
 
@@ -31,3 +31,4 @@ Recorded steps: 26
 - #0021: in_progress — Initiated PLAN-0011: Comprehensive Audit, Hardening & Cumulative Reporting Engine
 - #0023: in_progress — Initiated PLAN-0012: Interactive Documentation Portal & Scientific Indicators Catalog
 - #0025: in_progress — Initiated PLAN-0013: Professional Repository README & HTML Portal Overhaul
+- #0027: in_progress — Initiated PLAN-0014: ATIAF Spelling Standardization, Folder Renaming & ArcGIS Pro Toolbox Fix
