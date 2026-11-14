@@ -1,5 +1,5 @@
 # Development Plans — chronological index
-**Current state:** PLAN-0009 COMPLETED; ready for Phase P9 (Packaging, Documentation Build & Release Readiness).
+**Current state:** ALL ROADMAP PLANS COMPLETED (PLAN-0001 through PLAN-0010). All 10 phases verified and delivered.
 
 ## Numbering rules
 - Incoming root file `PLAN_*.md` or `TASK_*.md` -> `PLAN-0001_short_slug.md` in `Active/` on verified intake, then `PLAN-0002` etc. Record a new revision in-file if requirements change.
@@ -17,3 +17,4 @@
 | [PLAN-0007](Completed/PLAN-0007_expanded_catalog_environment.md) | Expanded Offline Catalog, Thermal Urban & Environmental Drought (Tools 03 & 04) | Completed | r1 | [0007_expanded_catalog_environment.md](../Reports/0007_expanded_catalog_environment.md) | Phase P6 Expanded Catalog & Environmental Models |
 | [PLAN-0008](Completed/PLAN-0008_qgis_native_adapter.md) | Native QGIS Processing Provider Adapter (Phase P7) | Completed | r1 | [0008_qgis_native_adapter.md](../Reports/0008_qgis_native_adapter.md) | Phase P7 QGIS Native Adapter |
 | [PLAN-0009](Completed/PLAN-0009_advanced_modalities_and_gating.md) | Advanced Modalities, Radar (SAR) & Hyperspectral Gating (Phase P8) | Completed | r1 | [0009_advanced_modalities_and_gating.md](../Reports/0009_advanced_modalities_and_gating.md) | Phase P8 Advanced Modalities & Gating |
+| [PLAN-0010](Completed/PLAN-0010_packaging_and_documentation.md) | Packaging, Documentation Build & Release Readiness (Phase P9) | Completed | r1 | [0010_packaging_and_documentation.md](../Reports/0010_packaging_and_documentation.md) | Phase P9 Packaging and Documentation |

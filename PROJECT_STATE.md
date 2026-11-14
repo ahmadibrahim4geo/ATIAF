@@ -1,8 +1,8 @@
 # ATIAF Project State — CANONICAL HANDOFF
-- **Snapshot:** 2026-11-14; Phase P8 completed, transitioning to Phase P9.
+- **Snapshot:** 2026-11-14; All 10 Roadmap Phases Completed (P0 through P9). Stable Release v1.0.0 Ready.
 - **Project root:** `أطياف/` (UTF-8 path: `d:\My Software\ATIAF`). Git repository on branch `main`.
-- **Current phase:** P9 — Packaging, Documentation Build & Release Readiness.
-- **Active plans:** None currently active. PLAN-0001 through PLAN-0009 completed.
+- **Current phase:** Completed (v1.0.0 Release Ready).
+- **Active plans:** None currently active. ALL PLAN-0001 through PLAN-0010 COMPLETED.
 - **Completed plans:**
   - PLAN-0001 (`Development_Plans/Completed/PLAN-0001_bootstrap.md`).
   - PLAN-0002 (`Development_Plans/Completed/PLAN-0002_product_recognition.md`).
@@ -13,7 +13,8 @@
   - PLAN-0007 (`Development_Plans/Completed/PLAN-0007_expanded_catalog_environment.md`).
   - PLAN-0008 (`Development_Plans/Completed/PLAN-0008_qgis_native_adapter.md`).
   - PLAN-0009 (`Development_Plans/Completed/PLAN-0009_advanced_modalities_and_gating.md`).
-- **Latest numbered development report:** `Reports/0009_advanced_modalities_and_gating.md`.
+  - PLAN-0010 (`Development_Plans/Completed/PLAN-0010_packaging_and_documentation.md`).
+- **Latest numbered development report:** `Reports/0010_packaging_and_documentation.md`.
 - **Agent Development Journal:** Canonical append-only journal in `.agent-development-log/` (verified records).
 - **Approved Skills:** Cloned in `.agent_resources/GIS-Development-Skills` (commit `2a0a9a23618e40218484ec8ae5848a481df51f1a`).
 - **Host runtime verification:**
@@ -33,6 +34,14 @@
   - `atyaf_core/modalities/`: Modality models (`SensorModality`, `PolarizationRole`, `SARCalibrationType`, `HyperspectralCubeMetadata`), `SAREngine` (dB scaling, cross-pol ratio, RVI, pure-NumPy Lee filter), `HyperspectralEngine` (SAM angle, continuum-removed absorption feature depths, L2 gating), `ModalityRouter` (enforces "never route SAR to optical/thermal").
   - `arcgis_pro/ATIAF.pyt`: Native Python Toolbox containing ALL 6 independent tools with canonical parameter layout, dynamic validation, metric projected CRS checking, multi-scene mosaic execution, and map execution.
   - `qgis/atyaf/`: Native QGIS Processing Provider Plugin registering provider ID `atyaf` (`ATIAF | أطياف`) containing ALL 6 independent processing algorithms (`atyaf:spectral_indices`, `atyaf:surface_temperature`, `atyaf:thermal_urban`, `atyaf:environmental_drought`, `atyaf:geological_analysis`, `atyaf:temporal_change`), with canonical parameter ordering (OUTPUT_FOLDER last), Decision D-007 metric CRS validation, and complete bilingual metadata.
+  - `pyproject.toml` & `tools/verify_installation.py`: Standards-compliant PEP 621 packaging and automated environment diagnostics.
+  - `docs/index.html`: Fully rendered modern bilingual documentation portal.
+- **Verified checks in package:**
+  - `python tools/validate_package.py`: PASS (315 md, 112 json).
+  - `python -m unittest discover tests`: PASS (97 unit tests passing).
+  - `& "C:\Program Files\QGIS 4.2.3\bin\python-qgis.bat" tests/native_qgis/test_qgis_provider.py`: PASS (5 native host integration tests passing).
+  - `python tools/verify_installation.py`: PASS (all 5 tiers verified).
+- **Pending next:** v1.0.0 release deployment and maintenance.
 - **Verified checks in package:**
   - `python tools/validate_package.py`: PASS (311 md, 110 json).
   - `python -m unittest discover tests`: PASS (93 unit tests passing).

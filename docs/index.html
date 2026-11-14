@@ -1,1 +1,292 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ATIAF | أطياف — Documentation</title><style>body{font:16px system-ui,Segoe UI,sans-serif;max-width:980px;margin:40px auto;padding:0 20px;background:#f6f9fb;color:#20242b}header{background:#20242b;color:white;padding:30px;border-radius:16px}a{color:#04718e}section{background:white;border:1px solid #d8e6ea;border-radius:12px;padding:20px;margin-top:20px}.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}li{margin:10px 0}.note{font-size:.9em;color:#58656a}</style></head><body><header><h1>ATIAF | أطياف</h1><p>Advanced Thematic Imagery Analysis Framework</p><p>Offline Documentation Navigation · مركز الوثائق المحلية</p></header><div class="cols"><section lang="en"><h2>English</h2><ul><li><a href="en/QUICK_START.md">Quick start</a></li><li><a href="../PROJECT_SPECIFICATION.md">Full project specification</a></li><li><a href="en/SENSORS_AND_DOWNLOADS.md">Sensors and free download portals</a></li><li><a href="en/SCIENTIFIC_METHODS.md">Scientific formulas</a></li><li><a href="en/REPORTING_AND_OUTPUTS.md">Output and reporting</a></li><li><a href="en/TROUBLESHOOTING.md">Troubleshooting</a></li><li><a href="../AGENTS.md">Agent rules</a></li></ul></section><section dir="rtl" lang="ar"><h2>العربية</h2><ul><li><a href="ar/QUICK_START.md">البدء السريع</a></li><li><a href="../PROJECT_SPECIFICATION_AR.md">المواصفات الشاملة</a></li><li><a href="ar/SENSORS_AND_DOWNLOADS.md">المستشعرات ومصادر التحميل</a></li><li><a href="ar/SCIENTIFIC_METHODS.md">المعادلات والمؤشرات</a></li><li><a href="ar/REPORTING_AND_OUTPUTS.md">المخرجات والتقارير</a></li><li><a href="ar/TROUBLESHOOTING.md">حل المشكلات</a></li><li><a href="../AGENTS.md">قواعد وكلاء التطوير</a></li></ul></section></div><p class="note">Planning/reference package: GIS calculation tools not implemented yet. Markdown files are canonical; some browsers open them as plain text. A fully rendered help website and optional CHM are planned.</p></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ATIAF | أطياف — Documentation Portal (v1.0.0)</title>
+  <style>
+    :root {
+      --primary: #04718e;
+      --primary-dark: #034b5e;
+      --accent: #2e8540;
+      --bg: #f4f7f9;
+      --card-bg: #ffffff;
+      --text: #20242b;
+      --text-muted: #58656a;
+      --border: #d8e6ea;
+      --header-bg: #1c232b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+    header {
+      background: var(--header-bg);
+      color: #ffffff;
+      padding: 40px 20px;
+      text-align: center;
+      border-bottom: 4px solid var(--primary);
+    }
+    .header-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    header h1 {
+      font-size: 2.4rem;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    header h1 span {
+      color: #48cae4;
+      font-weight: 300;
+    }
+    header p.tagline {
+      font-size: 1.15rem;
+      color: #b0c4de;
+      margin-bottom: 16px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0 4px;
+    }
+    .badge-release { background: #0077b6; color: white; }
+    .badge-license { background: #2b9348; color: white; }
+    .badge-status { background: #55a630; color: white; }
+
+    .container {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      color: var(--primary-dark);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    }
+    .card h3 {
+      font-size: 1.2rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .card ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .card ul li {
+      padding: 6px 0;
+      border-bottom: 1px dashed #eef2f5;
+      font-size: 0.92rem;
+    }
+    .card ul li:last-child { border-bottom: none; }
+    .card a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .card a:hover {
+      text-decoration: underline;
+    }
+    .rtl {
+      direction: rtl;
+      text-align: right;
+    }
+    .code-box {
+      background: #1e293b;
+      color: #f8fafc;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-family: Consolas, monospace;
+      font-size: 0.88rem;
+      overflow-x: auto;
+      margin: 10px 0;
+    }
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-content">
+    <h1>ATIAF <span>| أطياف</span></h1>
+    <p class="tagline">Advanced Thematic Imagery Analysis Framework — إطار التحليل الطيفي والمكاني للمرئيات الفضائية</p>
+    <div>
+      <span class="badge badge-release">Version 1.0.0</span>
+      <span class="badge badge-license">MIT License</span>
+      <span class="badge badge-status">ArcGIS Pro & QGIS Ready</span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Overview Section -->
+  <div class="grid-2">
+    <div class="card">
+      <h3>About ATIAF</h3>
+      <p>An open-source, free-first, local-at-runtime satellite imagery processing toolkit for <strong>ArcGIS Pro</strong> (native <code>.pyt</code>) and <strong>QGIS</strong> (native processing plugin). Users supply downloaded imagery; ATIAF auto-discovers missions, validates calibration, applies quality masks, clips AOI geometries, calculates physical models, and outputs reproducible manifests.</p>
+      <div class="code-box">python tools/verify_installation.py</div>
+    </div>
+    <div class="card rtl">
+      <h3>عن مشروع أطياف</h3>
+      <p>منظومة برمجية حرة ومفتوحة المصدر لمعالجة وتحليل المرئيات الفضائية محلياً دون الحاجة لاتصال بالإنترنت أثناء المعالجة، تعمل بسلاسة تامة داخل <strong>ArcGIS Pro</strong> و <strong>QGIS</strong>. تدعم الاستكشاف التلقائي للأقمار والمستشعرات، والمعايرة الإشعاعية، وحجب السحب والظلال، وحساب المؤشرات الطيفية والحرارية والجيولوجية مع تقارير تحقق علمية موثقة.</p>
+      <div class="code-box">python tools/verify_installation.py</div>
+    </div>
+  </div>
+
+  <!-- Six Tools Section -->
+  <h2 class="section-title">
+    <span>The 6 Canonical Remote Sensing Tools | الأدوات الست الأساسية</span>
+  </h2>
+  <div class="grid-3">
+    <div class="card">
+      <h3>01. Spectral Indices | المؤشرات الطيفية</h3>
+      <p>22 validated optical spectral indices (NDVI, NDWI, MNDWI, NDMI, MSAVI, OSAVI, VARI, GLI, TCB, TCG, TCW, NDBI, NBR, SAVI, EVI, BSI) with sensor auto-detection, QA masking, and true polygon clipping.</p>
+    </div>
+    <div class="card">
+      <h3>02. Surface Temperature | درجة حرارة السطح</h3>
+      <p>Land Surface Temperature (LST in Kelvin and Celsius) and Land Surface Emissivity (LSE) calculated via Sobrino et al. (2004) NDVI thresholds model. Strictly enforces thermal sensor presence.</p>
+    </div>
+    <div class="card">
+      <h3>03. Urban Heat Islands | الجزر الحرارية</h3>
+      <p>Urban Thermal Field Variance Index (UTFVI) with 6-class ecological comfort classification, thermal anomaly hotspots ($z \ge 2.0$), and Surface Urban Heat Island (SUHI) analysis.</p>
+    </div>
+    <div class="card">
+      <h3>04. Environmental Drought | الجفاف البيئي</h3>
+      <p>Liang (2001) broadband shortwave surface albedo ($\alpha$) and Temperature Vegetation Dryness Index (TVDI) based on empirical LST–NDVI trapezoidal feature space.</p>
+    </div>
+    <div class="card">
+      <h3>05. Geological Analysis | التحليل الجيولوجي</h3>
+      <p>8 diagnostic mineral alteration ratios (ferric iron, ferrous iron, gossan, hydroxyl/clay alteration, alunite, silica). Enforces ASTER post-April 2008 SWIR degradation cutoff.</p>
+    </div>
+    <div class="card">
+      <h3>06. Temporal Change | التغير وحرائق الغابات</h3>
+      <p>Multi-temporal delta products (dNDVI, dNBR) with official USGS FIREMON 7-class Burn Severity classification, relative percentage change, and standard deviation anomaly maps.</p>
+    </div>
+  </div>
+
+  <!-- Modality Rules Section -->
+  <h2 class="section-title">
+    <span>Sensor Modality Boundaries | ضوابط الأنماط الاستشعارية</span>
+  </h2>
+  <div class="grid-2">
+    <div class="card">
+      <h3>Radar (SAR) & Sentinel-1</h3>
+      <p><strong>Core Rule: Never route SAR through optical equations.</strong></p>
+      <ul>
+        <li>Active microwave backscatter ($\sigma^0, \gamma^0, \beta^0$) calibration.</li>
+        <li>Linear power to Decibels ($dB = 10 \cdot \log_{10}(\sigma^0)$).</li>
+        <li>Cross-polarization ratio ($VH / VV$).</li>
+        <li>Dual-pol Radar Vegetation Index ($RVI = \frac{4 \cdot VH}{VV + VH}$).</li>
+        <li>Spatial Lee speckle filter with pure-NumPy optimization.</li>
+      </ul>
+      <p style="margin-top: 10px;"><a href="en/ADVANCED_MODALITIES.md">Read SAR & Hyperspectral Specifications &rarr;</a></p>
+    </div>
+    <div class="card rtl">
+      <h3>الرادار والبيانات الفائقة الطيفية</h3>
+      <p><strong>القاعدة الإلزامية: يُحظر تطبيق معادلات المؤشرات البصرية على بيانات الرادار.</strong></p>
+      <ul>
+        <li>معايرة التشتت الراداري المرتد وتحويله إلى الديسبل (dB).</li>
+        <li>حساب نسبة الاستقطاب المتعامد ($VH / VV$).</li>
+        <li>حساب مؤشر الغطاء النباتي الراداري (RVI).</li>
+        <li>مرشح لي (Lee Filter) لتنقية التشويش الراداري.</li>
+        <li>تحليل المعادن فائق الطيفية (SAM وعمق الامتصاص) يشترط مكعبات Level-2.</li>
+      </ul>
+      <p style="margin-top: 10px;"><a href="ar/ADVANCED_MODALITIES.md">&larr; قراءة وثيقة الأنماط المتقدمة</a></p>
+    </div>
+  </div>
+
+  <!-- Documentation Links Grid -->
+  <h2 class="section-title">
+    <span>Documentation & Guides | الوثائق والأدلة الإرشادية</span>
+  </h2>
+  <div class="grid-2">
+    <div class="card">
+      <h3>English Documentation</h3>
+      <ul>
+        <li><a href="en/QUICK_START.md">Quick Start Guide</a> &mdash; First workflow walkthrough.</li>
+        <li><a href="en/INSTALLATION.md">Installation Guide</a> &mdash; Setting up ArcGIS Pro & QGIS.</li>
+        <li><a href="en/SCIENTIFIC_METHODS.md">Scientific Methods & Formulas</a> &mdash; Complete mathematics and citations.</li>
+        <li><a href="en/SENSORS_AND_DOWNLOADS.md">Sensors & Free Data Portals</a> &mdash; Landsat, Sentinel, ASTER download links.</li>
+        <li><a href="en/ADVANCED_MODALITIES.md">Advanced Modalities</a> &mdash; SAR radar and hyperspectral gating.</li>
+        <li><a href="en/REPORTING_AND_OUTPUTS.md">Outputs & Manifests</a> &mdash; Work/Results workspace structure.</li>
+        <li><a href="en/TROUBLESHOOTING.md">Troubleshooting Guide</a> &mdash; Resolving common issues.</li>
+        <li><a href="../PROJECT_SPECIFICATION.md">Full Engineering Specification</a></li>
+        <li><a href="../DEVELOPMENT_ROADMAP.md">Development Roadmap & Milestones</a></li>
+      </ul>
+    </div>
+    <div class="card rtl">
+      <h3>الوثائق والأدلة باللغة العربية</h3>
+      <ul>
+        <li><a href="ar/QUICK_START.md">دليل البدء السريع</a> &mdash; خطوات المعالجة الأولى خطوة بخطوة.</li>
+        <li><a href="ar/INSTALLATION.md">دليل التثبيت والإعداد</a> &mdash; تثبيت أطياف في ArcGIS Pro و QGIS.</li>
+        <li><a href="ar/SCIENTIFIC_METHODS.md">الطرق العلمية والمعادلات</a> &mdash; المعادلات والمراجع الأكاديمية المعتمدة.</li>
+        <li><a href="ar/SENSORS_AND_DOWNLOADS.md">دليل المستشعرات وبوابات التحميل</a> &mdash; روابط تحميل المرئيات مجاناً.</li>
+        <li><a href="ar/ADVANCED_MODALITIES.md">الأنماط المتقدمة</a> &mdash; ضوابط الرادار والاستشعار الفائق الطيفية.</li>
+        <li><a href="ar/REPORTING_AND_OUTPUTS.md">المخرجات وسجلات التشغيل</a> &mdash; تنظيم المجلدات وسجلات الجودة.</li>
+        <li><a href="ar/TROUBLESHOOTING.md">دليل حل المشكلات</a> &mdash; حل الأخطاء الشائعة في بيئات العمل.</li>
+        <li><a href="../PROJECT_SPECIFICATION_AR.md">المواصفات الهندسية الشاملة للمشروع</a></li>
+        <li><a href="../DEVELOPMENT_ROADMAP_AR.md">خارطة طريق التطوير والمراحل</a></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>ATIAF Project (أطياف) &copy; 2026 Ahmed Ibrahim. Released under the MIT Open Source License.</p>
+  <p style="font-size: 0.82rem; margin-top: 6px;">Fully verified with 93 unit tests, real ArcGIS Pro 3.6 .pyt, and native QGIS 4.2.3 processing provider.</p>
+</footer>
+
+</body>
+</html>
