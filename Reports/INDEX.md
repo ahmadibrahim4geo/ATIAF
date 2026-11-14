@@ -9,3 +9,4 @@ Every real work/verification/handoff batch gets a new monotonically numbered rep
 | Report | Date | Plan | Status | Verified evidence | Next action |
 |---|---|---|---|---|---|
 | [0001_initial_bootstrap_and_environment.md](0001_initial_bootstrap_and_environment.md) | 2026-11-14 | PLAN-0001 | VERIFIED-COMPLETED | P0 bootstrap, skills commit 2a0a9a2, QGIS 4.2.3, ArcGIS Pro 3.6, 6 unittests OK | Begin Phase P1: Product recognition & metadata extraction |
+| [0002_product_recognition.md](0002_product_recognition.md) | 2026-11-14 | PLAN-0002 | VERIFIED-COMPLETED | P1 discovery core: Landsat C2 L2, Sentinel-2 L2A/L1C, ASTER, SceneScanner, ManualBandMapper, 15 unittests OK | Begin Phase P2: Core raster arrays, CRS, QA masks & Work/Results manager |

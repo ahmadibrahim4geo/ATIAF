@@ -1,20 +1,26 @@
 # ATIAF Project State — CANONICAL HANDOFF
-- **Snapshot:** 2026-11-14; Phase P0 completed, transitioning to Phase P1.
-- **Project root:** `أطياف/` (UTF-8 path: `d:\My Software\ATIAF`). Git repository initialized.
-- **Current phase:** P1 — Product recognition, scene metadata discovery, and sensor compatibility.
-- **Active plans:** None currently active. PLAN-0001 completed.
-- **Completed plans:** PLAN-0001 (`Development_Plans/Completed/PLAN-0001_bootstrap.md`).
-- **Latest numbered development report:** `Reports/0001_initial_bootstrap_and_environment.md` (P0 verified).
-- **Agent Development Journal:** Initialized at `.agent-development-log/`. Step #0001 recorded.
-- **Approved Skills:** Cloned into `.agent_resources/GIS-Development-Skills` from `https://github.com/ahmadibrahim4geo/GIS-Development-Skills.git` at commit `2a0a9a23618e40218484ec8ae5848a481df51f1a`. 10 mandatory skills verified.
+- **Snapshot:** 2026-11-14; Phase P1 completed, transitioning to Phase P2.
+- **Project root:** `أطياف/` (UTF-8 path: `d:\My Software\ATIAF`). Git repository on branch `main`.
+- **Current phase:** P2 — Core raster operations, windowed processing, projected metre CRS reprojection, AOI clipping, and append-only Work/Results workspace.
+- **Active plans:** None currently active. PLAN-0001 and PLAN-0002 completed.
+- **Completed plans:**
+  - PLAN-0001 (`Development_Plans/Completed/PLAN-0001_bootstrap.md`).
+  - PLAN-0002 (`Development_Plans/Completed/PLAN-0002_product_recognition.md`).
+- **Latest numbered development report:** `Reports/0002_product_recognition.md`.
+- **Agent Development Journal:** Canonical append-only journal in `.agent-development-log/` (verified 3 records).
+- **Approved Skills:** Cloned in `.agent_resources/GIS-Development-Skills` (commit `2a0a9a23618e40218484ec8ae5848a481df51f1a`).
 - **Host runtime verification:**
   - Python 3.14.7 (standalone) with `numpy 2.5.3`, `rasterio 1.5.2`, `shapely 2.1.2`, `geopandas 1.2.0`, `pyproj 3.8.0`.
-  - QGIS 4.2.3-Belém do Pará installed at `C:\Program Files\QGIS 4.2.3` with working PyQGIS (`qgis.core`).
-  - ArcGIS Pro 3.6.0.59527 installed at `C:\Program Files\ArcGIS\Pro`.
-- **Implemented GIS processing:** None yet; automated unit tests established in `tests/test_package_and_registries.py` (6 tests passing).
+  - QGIS 4.2.3-Belém do Pará with verified working PyQGIS (`qgis.core`).
+  - ArcGIS Pro 3.6.0.59527.
+- **Implemented GIS processing:**
+  - `atyaf_core/discovery/` fully implemented and tested:
+    - `LandsatParser`: C2 L2 (SR scale 0.0000275, offset -0.2; ST scale 0.00341802, offset 149.0 K), MSS L1, QA bands.
+    - `Sentinel2Parser`: L2A BOA vs L1C TOA warning, multi-resolution bands (10m, 20m, 60m), SCL mask, NO_THERMAL restriction.
+    - `AsterParser`: L1T, AST_07, AST_08, April 2008 SWIR degradation cutoff, Jan 2026 TIR notice.
+    - `SceneScanner`: Single scene vs parent directory, ignores `Work/`, `Results/`, `Reports/`.
+    - `ManualBandMapper`: Expert band mapping with custom scales, offsets, and wavelengths.
 - **Verified checks in package:**
-  - `python tools/validate_package.py`: PASS.
-  - `python tools/bootstrap_skills.py --verify`: PASS.
-  - `python -m unittest tests/test_package_and_registries.py`: PASS (6 tests).
-- **Pending next:** Begin Phase P1: Design and implement `atyaf_core/discovery/` for unpacked scene discovery and metadata parsing (Landsat 4-9 C2 L2, Sentinel-2 L2A, ASTER), with synthetic scene fixtures and offline unit tests.
-- **Important:** Update this file on each meaningful handoff; verify against Git and latest report rather than trusting text blindly.
+  - `python tools/validate_package.py`: PASS (281 md, 96 json).
+  - `python -m unittest discover tests`: PASS (15 unit tests passing).
+- **Pending next:** Phase P2 — Implement `atyaf_core/raster/` for windowed raster chunking, QA pixel mask evaluation, native metre CRS reprojection, AOI clipping, and non-destructive `Work/` / `Results/` hierarchical workspace manager.

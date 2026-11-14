@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "sequence": 3,
+  "timestamp_utc": "2026-11-14T10:47:40+00:00",
+  "kind": "request",
+  "status": "proposed",
+  "summary": "Phase P1: Product Recognition, Scene Discovery & Metadata Extraction Core",
+  "details": "Implement atyaf_core/discovery for Landsat, Sentinel-2, ASTER, scene scanner, manual band mapper, synthetic fixtures and tests",
+  "references": [],
+  "task_id": "PLAN-0002",
+  "plan_revision": "r1",
+  "changed_files": [],
+  "tests": [],
+  "test_result": "not_run",
+  "commit": "",
+  "previous_hash": "ec4b90c6a90dbab8fc25252b75a43e8dd7ecf2c2082cd1a4e1057b1b75e93cfa",
+  "hash": "49bd462323af772cc39912a1232dfb7cb1c43780a86e84a42477d2e15afca42b"
+}
