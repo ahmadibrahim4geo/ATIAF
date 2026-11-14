@@ -1,26 +1,28 @@
 # ATIAF Project State — CANONICAL HANDOFF
-- **Snapshot:** 2026-11-14; Phase P1 completed, transitioning to Phase P2.
+- **Snapshot:** 2026-11-14; Phase P2 completed, transitioning to Phase P3.
 - **Project root:** `أطياف/` (UTF-8 path: `d:\My Software\ATIAF`). Git repository on branch `main`.
-- **Current phase:** P2 — Core raster operations, windowed processing, projected metre CRS reprojection, AOI clipping, and append-only Work/Results workspace.
-- **Active plans:** None currently active. PLAN-0001 and PLAN-0002 completed.
+- **Current phase:** P3 — Native ArcGIS Pro independent tools (.pyt), parameter UI, validation, and Tool 01 (Spectral Indices).
+- **Active plans:** None currently active. PLAN-0001, PLAN-0002, and PLAN-0003 completed.
 - **Completed plans:**
   - PLAN-0001 (`Development_Plans/Completed/PLAN-0001_bootstrap.md`).
   - PLAN-0002 (`Development_Plans/Completed/PLAN-0002_product_recognition.md`).
-- **Latest numbered development report:** `Reports/0002_product_recognition.md`.
-- **Agent Development Journal:** Canonical append-only journal in `.agent-development-log/` (verified 3 records).
+  - PLAN-0003 (`Development_Plans/Completed/PLAN-0003_core_raster_crs_output.md`).
+- **Latest numbered development report:** `Reports/0003_core_raster_crs_output.md`.
+- **Agent Development Journal:** Canonical append-only journal in `.agent-development-log/` (verified 5 records).
 - **Approved Skills:** Cloned in `.agent_resources/GIS-Development-Skills` (commit `2a0a9a23618e40218484ec8ae5848a481df51f1a`).
 - **Host runtime verification:**
   - Python 3.14.7 (standalone) with `numpy 2.5.3`, `rasterio 1.5.2`, `shapely 2.1.2`, `geopandas 1.2.0`, `pyproj 3.8.0`.
   - QGIS 4.2.3-Belém do Pará with verified working PyQGIS (`qgis.core`).
-  - ArcGIS Pro 3.6.0.59527.
+  - ArcGIS Pro 3.6.0.59527 (`C:\Program Files\ArcGIS\Pro`).
 - **Implemented GIS processing:**
-  - `atyaf_core/discovery/` fully implemented and tested:
-    - `LandsatParser`: C2 L2 (SR scale 0.0000275, offset -0.2; ST scale 0.00341802, offset 149.0 K), MSS L1, QA bands.
-    - `Sentinel2Parser`: L2A BOA vs L1C TOA warning, multi-resolution bands (10m, 20m, 60m), SCL mask, NO_THERMAL restriction.
-    - `AsterParser`: L1T, AST_07, AST_08, April 2008 SWIR degradation cutoff, Jan 2026 TIR notice.
-    - `SceneScanner`: Single scene vs parent directory, ignores `Work/`, `Results/`, `Reports/`.
-    - `ManualBandMapper`: Expert band mapping with custom scales, offsets, and wavelengths.
+  - `atyaf_core/discovery/`: Landsat C2 L2 / L1 MSS, Sentinel-2 L2A / L1C, ASTER AST_07 / AST_08 / L1T, SceneScanner, ManualBandMapper.
+  - `atyaf_core/raster/`:
+    - `CRSManager`: projected metre validation (Decision D-007), geographic degree rejection.
+    - `QualityMaskEngine`: Landsat QA_PIXEL bitmask and Sentinel-2 SCL categorical filtering.
+    - `PolygonClipEngine`: true polygon geometry clipping, auto CRS reprojection, affine updates.
+    - `WindowedRasterEngine`: chunked block processing with streaming statistics and atomic writes (`.tmp_*` cleanup on error).
+    - `WorkspaceManager`: hierarchical `Work/` and `Results/` (no `Results_2`), cache fingerprinting, run manifests.
 - **Verified checks in package:**
-  - `python tools/validate_package.py`: PASS (281 md, 96 json).
-  - `python -m unittest discover tests`: PASS (15 unit tests passing).
-- **Pending next:** Phase P2 — Implement `atyaf_core/raster/` for windowed raster chunking, QA pixel mask evaluation, native metre CRS reprojection, AOI clipping, and non-destructive `Work/` / `Results/` hierarchical workspace manager.
+  - `python tools/validate_package.py`: PASS (285 md, 98 json).
+  - `python -m unittest discover tests`: PASS (29 unit tests passing).
+- **Pending next:** Phase P3 — Native ArcGIS Pro Python Toolbox (`arcgis_pro/ATIAF.pyt`), tool parameter specification and validator, and Tool 01 (Spectral Indices) implementing vegetation, water, soil, urban, burn, and snow indices connected to the core engine.

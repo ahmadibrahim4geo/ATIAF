@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "sequence": 5,
+  "timestamp_utc": "2026-11-14T10:58:31+00:00",
+  "kind": "request",
+  "status": "proposed",
+  "summary": "Phase P2: Core Raster Array Processing, CRS, Masks & Workspace Manager",
+  "details": "Implement atyaf_core/raster with windowed processing, QA masks, projected metre CRS validation, polygon AOI clipping, Work/Results manager, atomic writes, and tests",
+  "references": [],
+  "task_id": "PLAN-0003",
+  "plan_revision": "r1",
+  "changed_files": [],
+  "tests": [],
+  "test_result": "not_run",
+  "commit": "",
+  "previous_hash": "a3da22d98ff5c73b97d1cee38cacf0e3a6d17528067ab5e1064281c87eec4829",
+  "hash": "0b577b965665c694253bac075a346f920ddf58609f50e4b3c05edbdb4ae27d55"
+}
