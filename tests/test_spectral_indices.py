@@ -185,7 +185,7 @@ class TestArcGISProToolboxStructure(unittest.TestCase):
 
         toolbox = namespace["Toolbox"]()
         self.assertEqual(toolbox.alias, "atyaf")
-        self.assertEqual(len(toolbox.tools), 1)
+        self.assertGreaterEqual(len(toolbox.tools), 1)
 
         tool = namespace["SpectralIndicesTool"]()
         self.assertIn("Spectral Indices", tool.label)

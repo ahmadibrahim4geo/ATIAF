@@ -112,6 +112,7 @@ class WorkspaceManager:
         output_products: List[Dict[str, Any]],
         qa_summary: Optional[Dict[str, Any]] = None,
         log_messages: Optional[List[str]] = None,
+        extra_metadata: Optional[Dict[str, Any]] = None,
     ) -> Path:
         """Writes the immutable run manifest, parameters, and log under Reports/Runs/<RUN_ID>/."""
         timestamp_str = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
@@ -135,6 +136,8 @@ class WorkspaceManager:
             "output_products": output_products,
             "qa_summary": qa_summary or {},
         }
+        if extra_metadata:
+            manifest_data.update(extra_metadata)
         (run_dir / "Processing_Manifest.json").write_text(
             json.dumps(manifest_data, indent=2, ensure_ascii=False, default=json_encoder) + "\n",
             encoding="utf-8",

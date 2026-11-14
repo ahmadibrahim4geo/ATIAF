@@ -13,3 +13,5 @@ create a linked revision or cancellation. This local hash chain is not a signatu
 | [#0006](reports/0006.md) | 2026-11-14T11:03:08+00:00 | implementation | completed | #0005 | Completed Phase P2: Core Raster Array Processing, CRS, Masks & Workspace Manager |
 | [#0007](reports/0007.md) | 2026-11-14T11:18:00+00:00 | request | proposed | — | Phase P3: ArcGIS Pro Independent Tools & Tool 01 (Spectral Indices) |
 | [#0008](reports/0008.md) | 2026-11-14T11:22:42+00:00 | implementation | completed | #0007 | Completed Phase P3: ArcGIS Pro Independent Tools & Tool 01 (Spectral Indices) |
+| [#0009](reports/0009.md) | 2026-11-14T11:25:51+00:00 | request | proposed | — | Phase P4: Surface Temperature & Geological / Mineral Analysis (Tools 02 & 05) |
+| [#0010](reports/0010.md) | 2026-11-14T11:36:28+00:00 | implementation | completed | — | Completed Phase P4: Surface Temperature & Geological Analysis |

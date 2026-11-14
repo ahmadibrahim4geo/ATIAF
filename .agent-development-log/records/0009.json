@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "sequence": 9,
+  "timestamp_utc": "2026-11-14T11:25:51+00:00",
+  "kind": "request",
+  "status": "proposed",
+  "summary": "Phase P4: Surface Temperature & Geological / Mineral Analysis (Tools 02 & 05)",
+  "details": "Implement atyaf_core/temperature, atyaf_core/geology, add Tools 02 and 05 to ATIAF.pyt, and write unit tests",
+  "references": [],
+  "task_id": "PLAN-0005",
+  "plan_revision": "r1",
+  "changed_files": [],
+  "tests": [],
+  "test_result": "not_run",
+  "commit": "",
+  "previous_hash": "1b8dc9e34c8e340daa43671c4c5ea56cd0307d82c77792aa57e5fffdf88277a1",
+  "hash": "38bab3a61ccb815788ded0a130d7e07ae7273ea8a004b740f4924d1be954ee78"
+}
