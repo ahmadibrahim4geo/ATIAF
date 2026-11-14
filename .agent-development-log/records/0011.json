@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "sequence": 11,
+  "timestamp_utc": "2026-11-14T11:37:47+00:00",
+  "kind": "plan",
+  "status": "in_progress",
+  "summary": "Initiated Phase P5: Multi-Scene Quality-Aware Mosaic & Temporal Change Detection",
+  "details": "Created PLAN-0006. Implementing atyaf_core/mosaic (QualityMosaicEngine with union extent, quality-aware pixel blending, and Source_Scene_ID provenance raster), atyaf_core/temporal (ChangeDetectionEngine with dNDVI, dNBR burn severity classification, dLST), and adding Tool 06 to arcgis_pro/ATIAF.pyt.",
+  "references": [],
+  "task_id": "PLAN-0006",
+  "plan_revision": "r1",
+  "changed_files": [],
+  "tests": [],
+  "test_result": "not_run",
+  "commit": "",
+  "previous_hash": "2bcbf4dbd51f6327606463076e57bef05d5aa70c27c9595b62c9a1868d36a97e",
+  "hash": "da49ff737a6f697ba15119ccc00603571a338974b6ea0d5e5646f3642951ed78"
+}

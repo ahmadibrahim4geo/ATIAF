@@ -1,0 +1,71 @@
+# PLAN-0006 — Multi-Scene Quality-Aware Mosaic & Temporal Change Detection (Tool 06)
+- **Status:** COMPLETED
+- **Revision:** r1
+- **Owner and date:** Implementation Agent, 2026-11-14
+- **Original user request:** Execute Phase P5 of the ATIAF development roadmap: implement multi-scene quality-aware mosaic blending (`atyaf_core/mosaic/`), temporal change detection (`atyaf_core/temporal/`), integrate mosaic execution into existing tools, and implement Tool 06 (`TemporalChangeTool`) in `arcgis_pro/ATIAF.pyt`.
+- **Scope and exclusions:**
+  - Scope:
+    - Pure-Python mosaic module `atyaf_core/mosaic/` supporting:
+      - Union extent computation across multiple scenes with grid harmonization.
+      - Quality-aware blending strategies: `highest_quality`, `mean_valid`, `latest_date`.
+      - Scene provenance tracking raster (`Source_Scene_ID.tif`) mapping pixels to source scene and acquisition date.
+      - Additive output directory structure under `Results/Mosaic_<stable-scene-set-id>/...`.
+    - Pure-Python temporal module `atyaf_core/temporal/` supporting:
+      - Two-date spectral difference ($\Delta \text{Index} = T_2 - T_1$), e.g. dNDVI, dNBR, dNDWI, dLST.
+      - Relative percentage change: $(\Delta / T_1) \times 100\%$.
+      - Standard deviation thresholding and USGS Burn Severity classification for dNBR.
+      - Grid harmonization / resampling when input scenes differ slightly in extent or resolution.
+    - ArcGIS Pro Tool 06 in `arcgis_pro/ATIAF.pyt`:
+      - `TemporalChangeTool` (06. Temporal Analysis & Change Detection | التحليل الزمني وتغير الغطاء الأرضي).
+      - Wire `enable_mosaic` in Tool 01, Tool 02, and Tool 05 to invoke `QualityMosaicEngine`.
+    - Comprehensive unit and integration tests in `tests/test_mosaic_temporal.py`.
+  - Exclusions:
+    - QGIS Processing provider adapter (Phase P7).
+    - Expanded candidate catalog import (Phase P6).
+- **Dependencies and scientific sources:**
+  - `PROJECT_SPECIFICATION.md` & `PROJECT_SPECIFICATION_AR.md` (Sections 2, 3, 4, 7)
+  - `DECISIONS.md` (D-002, D-007, D-011, D-018, D-020)
+  - USGS FIREMON / Key & Benson (2006), Landscape Assessment: Ground measure of severity, the Composite Burn Index; and Remote sensing of severity, the Normalized Burn Ratio.
+  - Coppin et al. (2004), Digital change detection methods in ecosystem monitoring.
+- **Skills and links selected:**
+  - [`skills/remote-sensing-pipelines/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/remote-sensing-pipelines/SKILL.md)
+  - [`skills/arcgis-toolbox-engineering/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/arcgis-toolbox-engineering/SKILL.md)
+  - [`skills/geospatial-data-processing/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/geospatial-data-processing/SKILL.md)
+  - [`skills/coordinate-reference-systems/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/coordinate-reference-systems/SKILL.md)
+  - [`skills/completion-evidence/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/completion-evidence/SKILL.md)
+  - [`skills/agent-development-journal/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/agent-development-journal/SKILL.md)
+- **Affected paths:**
+  - `atyaf_core/mosaic/__init__.py`
+  - `atyaf_core/mosaic/models.py`
+  - `atyaf_core/mosaic/engine.py`
+  - `atyaf_core/temporal/__init__.py`
+  - `atyaf_core/temporal/engine.py`
+  - `arcgis_pro/ATIAF.pyt`
+  - `tests/test_mosaic_temporal.py`
+  - `Development_Plans/Completed/PLAN-0006_mosaic_temporal.md`
+  - `Development_Plans/INDEX.md`
+  - `Reports/0006_mosaic_temporal.md`
+  - `Reports/INDEX.md`
+  - `PROJECT_STATE.md`
+- **Execution steps:**
+  1. Record plan in Agent Development Journal.
+  2. Implement `atyaf_core/mosaic/models.py` and `atyaf_core/mosaic/engine.py`.
+  3. Implement `atyaf_core/temporal/engine.py`.
+  4. Update `arcgis_pro/ATIAF.pyt` to include Tool 06 and activate mosaic processing in Tools 01, 02, and 05.
+  5. Author and run unit tests in `tests/test_mosaic_temporal.py`.
+  6. Author Report 0006, update indexes, journal, and `PROJECT_STATE.md`.
+- **Acceptance criteria (testable):**
+  - [x] QualityMosaicEngine creates a combined raster covering the union extent of multiple scenes.
+  - [x] Overlapping pixels are blended according to the selected strategy (`highest_quality`, `mean_valid`, `latest_date`).
+  - [x] Provenance raster (`Source_Scene_ID.tif`) is generated tracking pixel contribution by scene.
+  - [x] ChangeDetectionEngine computes correct spectral delta ($\Delta = T_2 - T_1$) and relative percentage change.
+  - [x] Burn Severity classification correctly maps dNBR values to USGS severity levels (Unburned, Low, Moderate, High).
+  - [x] Tool 06 (`TemporalChangeTool`) is registered in `arcgis_pro/ATIAF.pyt` with canonical parameters and metric projected CRS enforcement.
+  - [x] All tests in `tests/test_mosaic_temporal.py` and prior test suites pass cleanly (100% PASS).
+  - [x] Report 0006 written and recorded in development journal.
+- **Risk/rollback approach:**
+  - Independent pure-Python modules verified with synthetic multi-scene fixtures. Git rollback available if needed.
+- **Reports:**
+  - [`Reports/0006_mosaic_temporal.md`](../../Reports/0006_mosaic_temporal.md)
+- **Revision log:**
+  - r1 (2026-11-14): Initial plan creation and full verification for Phase P5 mosaic and temporal change detection.

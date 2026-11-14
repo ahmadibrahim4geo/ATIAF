@@ -1,15 +1,16 @@
 # ATIAF Project State — CANONICAL HANDOFF
-- **Snapshot:** 2026-11-14; Phase P4 completed, transitioning to Phase P5.
+- **Snapshot:** 2026-11-14; Phase P5 completed, transitioning to Phase P6.
 - **Project root:** `أطياف/` (UTF-8 path: `d:\My Software\ATIAF`). Git repository on branch `main`.
-- **Current phase:** P5 — Multi-Scene Quality-Aware Mosaic & Temporal Change Detection.
-- **Active plans:** None currently active. PLAN-0001 through PLAN-0005 completed.
+- **Current phase:** P6 — Expanded Pinned Offline Index Catalog & Environmental Models.
+- **Active plans:** None currently active. PLAN-0001 through PLAN-0006 completed.
 - **Completed plans:**
   - PLAN-0001 (`Development_Plans/Completed/PLAN-0001_bootstrap.md`).
   - PLAN-0002 (`Development_Plans/Completed/PLAN-0002_product_recognition.md`).
   - PLAN-0003 (`Development_Plans/Completed/PLAN-0003_core_raster_crs_output.md`).
   - PLAN-0004 (`Development_Plans/Completed/PLAN-0004_arcgis_pro_spectral_indices.md`).
   - PLAN-0005 (`Development_Plans/Completed/PLAN-0005_surface_temperature_geological.md`).
-- **Latest numbered development report:** `Reports/0005_surface_temperature_geological.md`.
+  - PLAN-0006 (`Development_Plans/Completed/PLAN-0006_mosaic_temporal.md`).
+- **Latest numbered development report:** `Reports/0006_mosaic_temporal.md`.
 - **Agent Development Journal:** Canonical append-only journal in `.agent-development-log/` (verified records).
 - **Approved Skills:** Cloned in `.agent_resources/GIS-Development-Skills` (commit `2a0a9a23618e40218484ec8ae5848a481df51f1a`).
 - **Host runtime verification:**
@@ -22,8 +23,10 @@
   - `atyaf_core/indices/`: INDEX_CATALOG (14 validated optical indices), SpectralIndicesEngine (capability gating, QA masking, windowed processing, AOI clipping, run manifests).
   - `atyaf_core/temperature/`: EmissivityEngine (Sobrino et al. 2004 NDVI thresholds), SurfaceTemperatureEngine (Landsat C2 L2 ST, Kelvin/Celsius units, strict Sentinel-2 thermal absence blocking).
   - `atyaf_core/geology/`: GEOLOGICAL_CATALOG (8 diagnostic alteration ratios & thermal mineral indices), GeologicalAnalysisEngine (ASTER post-April 2008 SWIR cutoff enforcement, scientific disclaimer, run manifests).
-  - `arcgis_pro/ATIAF.pyt`: Native Python Toolbox containing Tool 01 (Spectral Indices), Tool 02 (Surface Temperature), and Tool 05 (Geological & Mineral Analysis) with canonical parameter layout, dynamic validation, metric projected CRS checking, and map execution.
+  - `atyaf_core/mosaic/`: QualityMosaicEngine (union extent, quality ranking, mean valid, latest date, Source_Scene_ID provenance raster).
+  - `atyaf_core/temporal/`: ChangeDetectionEngine (dNDVI, dNBR USGS Burn Severity classification, dLST, relative change %, statistical standard deviation classes).
+  - `arcgis_pro/ATIAF.pyt`: Native Python Toolbox containing Tool 01 (Spectral Indices), Tool 02 (Surface Temperature), Tool 05 (Geological & Mineral Analysis), and Tool 06 (Temporal Analysis & Change Detection) with canonical parameter layout, dynamic validation, metric projected CRS checking, multi-scene mosaic execution, and map execution.
 - **Verified checks in package:**
-  - `python tools/validate_package.py`: PASS (293 md, 102 json).
-  - `python -m unittest discover tests`: PASS (53 unit tests passing).
-- **Pending next:** Phase P5 — Multi-Scene Quality-Aware Mosaic and Temporal Change Detection (Tool 06 Land Cover Change & Thermal Anomalies).
+  - `python tools/validate_package.py`: PASS (297 md, 104 json).
+  - `python -m unittest discover tests`: PASS (60 unit tests passing).
+- **Pending next:** Phase P6 — Pinned Offline Index Catalog, Drought and Environmental Models (Tool 03 Thermal & Urban Analysis, Tool 04 Environmental & Drought).
