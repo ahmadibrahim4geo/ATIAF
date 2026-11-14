@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "sequence": 14,
+  "timestamp_utc": "2026-11-14T11:53:59+00:00",
+  "kind": "implementation",
+  "status": "completed",
+  "summary": "Completed Phase P6: Expanded Offline Catalog, Thermal Urban & Environmental Drought",
+  "details": "Expanded atyaf_core/indices with NDMI, MSAVI, OSAVI, VARI, GLI, TCB, TCG, TCW. Implemented atyaf_core/urban (Tool 03 ThermalUrbanEngine with UTFVI, thermal hotspots, SUHI) and atyaf_core/environment (Tool 04 EnvironmentalDroughtEngine with Liang broadband albedo, TVDI). Updated arcgis_pro/ATIAF.pyt to expose all 6 independent tools (Tools 01 through 06). 71 full project tests passing. Authored Reports/0007_expanded_catalog_environment.md.",
+  "references": [],
+  "task_id": "PLAN-0007",
+  "plan_revision": "r1",
+  "changed_files": [],
+  "tests": [
+    "tests/test_expanded_catalog_environment.py"
+  ],
+  "test_result": "passed",
+  "commit": "",
+  "previous_hash": "5fedf1b16f5f2acbdccd71d54d64ffb9f89381e03155d403ec63ecded6f35d89",
+  "hash": "569cd4210459098aca23dd764b3fad8f060a5bd2c5872c3d7ffab7735a853f62"
+}

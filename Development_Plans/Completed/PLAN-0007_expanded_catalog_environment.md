@@ -1,0 +1,82 @@
+# PLAN-0007 — Expanded Offline Catalog, Thermal Urban & Environmental Drought (Tools 03 & 04)
+- **Status:** COMPLETED
+- **Revision:** r1
+- **Owner and date:** Implementation Agent, 2026-11-14
+- **Original user request:** Execute Phase P6 of the ATIAF development roadmap: implement Tool 03 (Thermal & Urban Analysis) and Tool 04 (Environmental & Drought Analysis), expand the pure-Python optical index registry with validated offline entries (NDMI, MSAVI, OSAVI, VARI, GLI, Tasseled Cap), and expose all 6 canonical tools in `arcgis_pro/ATIAF.pyt`.
+- **Scope and exclusions:**
+  - Scope:
+    - Expand `atyaf_core/indices/registry.py` with validated peer-reviewed formulations:
+      - `NDMI` (Gao 1996): Moisture index $(NIR - SWIR_1) / (NIR + SWIR_1)$
+      - `MSAVI` (Qi et al. 1994): Modified soil-adjusted vegetation index
+      - `OSAVI` (Rondeaux et al. 1996): Optimized soil-adjusted vegetation index
+      - `VARI` (Gitelson et al. 2002): Visible atmospherically resistant index
+      - `GLI` (Louhaichi et al. 2001): Green leaf index
+      - `TCB`, `TCG`, `TCW`: Tasseled Cap Brightness, Greenness, Wetness transformations for Landsat 8/9 (Baig et al. 2014) and Landsat 4-7 (Crist & Cicone 1984)
+    - Implement `atyaf_core/urban/engine.py` (Tool 03):
+      - UTFVI (Urban Thermal Field Variance Index) and 6-level thermal severity classification
+      - Thermal Hotspot Analysis ($z$-score $> 2\sigma$)
+      - SUHI (Surface Urban Heat Island) intensity metric
+    - Implement `atyaf_core/environment/engine.py` (Tool 04):
+      - Liang (2001) broadband surface albedo model
+      - TVDI (Temperature Vegetation Dryness Index)
+      - VHI / Drought indices
+    - Expose Tool 03 and Tool 04 in `arcgis_pro/ATIAF.pyt`:
+      - `ThermalUrbanTool` (03. Thermal & Urban Analysis | التحليل الحراري والحضري والجزر الحرارية)
+      - `EnvironmentalDroughtTool` (04. Environmental & Drought Analysis | التحليل البيئي ومؤشرات الجفاف)
+    - Comprehensive unit and integration tests in `tests/test_expanded_catalog_environment.py`.
+  - Exclusions:
+    - QGIS Processing provider adapter (Phase P7).
+    - Packaging & help CHM (Phase P9).
+- **Dependencies and scientific sources:**
+  - `PROJECT_SPECIFICATION.md` & `PROJECT_SPECIFICATION_AR.md` (Sections 2, 3, 6, 7)
+  - `DECISIONS.md` (D-002, D-007, D-011, D-018, D-020)
+  - Liang, S. (2001), Narrowband to broadband conversions of surface albedo
+  - Qi et al. (1994), A modified soil adjusted vegetation index (MSAVI)
+  - Rondeaux et al. (1996), Optimization of spectral indices for vegetation monitoring
+  - Gitelson et al. (2002), Novel algorithms for remote estimation of vegetation fraction
+  - Baig et al. (2014), Derivation of a tasseled cap transformation based on Landsat 8 at-satellite reflectance
+  - Crist & Cicone (1984), A physically-based transformation of Thematic Mapper data
+  - Zhang et al. (2006), Urban thermal field variance index (UTFVI)
+- **Skills and links selected:**
+  - [`skills/remote-sensing-pipelines/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/remote-sensing-pipelines/SKILL.md)
+  - [`skills/arcgis-toolbox-engineering/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/arcgis-toolbox-engineering/SKILL.md)
+  - [`skills/geospatial-data-processing/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/geospatial-data-processing/SKILL.md)
+  - [`skills/coordinate-reference-systems/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/coordinate-reference-systems/SKILL.md)
+  - [`skills/completion-evidence/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/completion-evidence/SKILL.md)
+  - [`skills/agent-development-journal/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/agent-development-journal/SKILL.md)
+- **Affected paths:**
+  - `atyaf_core/indices/registry.py`
+  - `atyaf_core/urban/__init__.py`
+  - `atyaf_core/urban/engine.py`
+  - `atyaf_core/environment/__init__.py`
+  - `atyaf_core/environment/engine.py`
+  - `arcgis_pro/ATIAF.pyt`
+  - `tests/test_expanded_catalog_environment.py`
+  - `Development_Plans/Completed/PLAN-0007_expanded_catalog_environment.md`
+  - `Development_Plans/INDEX.md`
+  - `Reports/0007_expanded_catalog_environment.md`
+  - `Reports/INDEX.md`
+  - `PROJECT_STATE.md`
+- **Execution steps:**
+  1. Record plan in Agent Development Journal.
+  2. Expand `atyaf_core/indices/registry.py` with NDMI, MSAVI, OSAVI, VARI, GLI, TCB, TCG, TCW.
+  3. Implement `atyaf_core/urban/engine.py` with UTFVI, thermal hotspots, and SUHI.
+  4. Implement `atyaf_core/environment/engine.py` with Liang broadband albedo, TVDI, and VHI.
+  5. Update `arcgis_pro/ATIAF.pyt` to expose all 6 independent tools (Tools 01 through 06).
+  6. Author and run unit tests in `tests/test_expanded_catalog_environment.py`.
+  7. Author Report 0007, update indexes, journal, and `PROJECT_STATE.md`.
+- **Acceptance criteria (testable):**
+  - [x] Expanded optical indices (NDMI, MSAVI, OSAVI, VARI, GLI, TCB, TCG, TCW) compute accurately against synthetic numeric fixtures.
+  - [x] UTFVI calculates valid thermal field variance and classifies pixels into 6 UTFVI zones.
+  - [x] Thermal Hotspot analysis accurately flags anomalies exceeding $z \ge 2.0$.
+  - [x] Liang broadband surface albedo calculates accurate shortwave albedo ($0 \le \alpha \le 1$).
+  - [x] TVDI calculates normalized dryness index conditioned on LST and vegetation.
+  - [x] `arcgis_pro/ATIAF.pyt` exposes all 6 independent tools (Tools 01 to 06) with canonical parameters.
+  - [x] All unit tests pass cleanly (100% PASS across test suite).
+  - [x] Report 0007 written and recorded in development journal.
+- **Risk/rollback approach:**
+  - Modular pure-Python design with strict formula checks. Git rollback available if needed.
+- **Reports:**
+  - [`Reports/0007_expanded_catalog_environment.md`](../../Reports/0007_expanded_catalog_environment.md)
+- **Revision log:**
+  - r1 (2026-11-14): Initial plan creation and full verification for Phase P6 expanded catalog and environmental models.

@@ -120,6 +120,72 @@ def calc_bsi(bands: Dict[BandRole, np.ndarray], **_) -> np.ndarray:
     return _safe_divide(num, denom)
 
 
+def calc_ndmi(bands: Dict[BandRole, np.ndarray], **_) -> np.ndarray:
+    nir = bands[BandRole.NIR]
+    swir1 = bands[BandRole.SWIR_1]
+    return _safe_divide(nir - swir1, nir + swir1)
+
+
+def calc_msavi(bands: Dict[BandRole, np.ndarray], **_) -> np.ndarray:
+    nir = bands[BandRole.NIR]
+    red = bands[BandRole.RED]
+    with np.errstate(invalid="ignore"):
+        term = (2.0 * nir + 1.0) ** 2 - 8.0 * (nir - red)
+        term_clean = np.where(term < 0, np.nan, term)
+        msavi = (2.0 * nir + 1.0 - np.sqrt(term_clean)) / 2.0
+    return msavi
+
+
+def calc_osavi(bands: Dict[BandRole, np.ndarray], **_) -> np.ndarray:
+    nir = bands[BandRole.NIR]
+    red = bands[BandRole.RED]
+    return _safe_divide(nir - red, nir + red + 0.16)
+
+
+def calc_vari(bands: Dict[BandRole, np.ndarray], **_) -> np.ndarray:
+    green = bands[BandRole.GREEN]
+    red = bands[BandRole.RED]
+    blue = bands[BandRole.BLUE]
+    return _safe_divide(green - red, green + red - blue)
+
+
+def calc_gli(bands: Dict[BandRole, np.ndarray], **_) -> np.ndarray:
+    green = bands[BandRole.GREEN]
+    red = bands[BandRole.RED]
+    blue = bands[BandRole.BLUE]
+    return _safe_divide(2.0 * green - red - blue, 2.0 * green + red + blue)
+
+
+def calc_tcb(bands: Dict[BandRole, np.ndarray], **_) -> np.ndarray:
+    b = bands[BandRole.BLUE]
+    g = bands[BandRole.GREEN]
+    r = bands[BandRole.RED]
+    nir = bands[BandRole.NIR]
+    swir1 = bands[BandRole.SWIR_1]
+    swir2 = bands[BandRole.SWIR_2]
+    return 0.3029 * b + 0.2786 * g + 0.4733 * r + 0.5599 * nir + 0.5080 * swir1 + 0.1872 * swir2
+
+
+def calc_tcg(bands: Dict[BandRole, np.ndarray], **_) -> np.ndarray:
+    b = bands[BandRole.BLUE]
+    g = bands[BandRole.GREEN]
+    r = bands[BandRole.RED]
+    nir = bands[BandRole.NIR]
+    swir1 = bands[BandRole.SWIR_1]
+    swir2 = bands[BandRole.SWIR_2]
+    return -0.2941 * b - 0.2430 * g - 0.5424 * r + 0.7276 * nir + 0.0713 * swir1 - 0.1608 * swir2
+
+
+def calc_tcw(bands: Dict[BandRole, np.ndarray], **_) -> np.ndarray:
+    b = bands[BandRole.BLUE]
+    g = bands[BandRole.GREEN]
+    r = bands[BandRole.RED]
+    nir = bands[BandRole.NIR]
+    swir1 = bands[BandRole.SWIR_1]
+    swir2 = bands[BandRole.SWIR_2]
+    return 0.1511 * b + 0.1973 * g + 0.3283 * r + 0.3407 * nir - 0.7117 * swir1 - 0.4572 * swir2
+
+
 # Catalog registry of validated formulas
 INDEX_CATALOG: Dict[str, SpectralIndexDefinition] = {
     "NDVI": SpectralIndexDefinition(
@@ -277,5 +343,93 @@ INDEX_CATALOG: Dict[str, SpectralIndexDefinition] = {
         compute_fn=calc_bsi,
         formula_text="((SWIR1 + Red) - (NIR + Blue)) / ((SWIR1 + Red) + (NIR + Blue))",
         citation="Diek et al. (2017), The normalized difference bare soil index: a new approach",
+    ),
+    "NDMI": SpectralIndexDefinition(
+        id="NDMI",
+        acronym="NDMI",
+        name_en="Normalized Difference Moisture Index",
+        name_ar="مؤشر الرطوبة الفارق المعياري",
+        category="Water",
+        required_roles=[BandRole.NIR, BandRole.SWIR_1],
+        compute_fn=calc_ndmi,
+        formula_text="(NIR - SWIR1) / (NIR + SWIR1)",
+        citation="Gao, B. C. (1996), NDWI—A normalized difference water index for remote sensing of vegetation liquid water from space",
+    ),
+    "MSAVI": SpectralIndexDefinition(
+        id="MSAVI",
+        acronym="MSAVI",
+        name_en="Modified Soil-Adjusted Vegetation Index",
+        name_ar="مؤشر الغطاء النباتي المعدل للتربة الثاني",
+        category="Vegetation",
+        required_roles=[BandRole.NIR, BandRole.RED],
+        compute_fn=calc_msavi,
+        formula_text="(2 * NIR + 1 - sqrt((2 * NIR + 1)^2 - 8 * (NIR - Red))) / 2",
+        citation="Qi et al. (1994), A modified soil adjusted vegetation index",
+    ),
+    "OSAVI": SpectralIndexDefinition(
+        id="OSAVI",
+        acronym="OSAVI",
+        name_en="Optimized Soil-Adjusted Vegetation Index",
+        name_ar="مؤشر الغطاء النباتي المعدل الأمثل للتربة",
+        category="Vegetation",
+        required_roles=[BandRole.NIR, BandRole.RED],
+        compute_fn=calc_osavi,
+        formula_text="(NIR - Red) / (NIR + Red + 0.16)",
+        citation="Rondeaux et al. (1996), Optimization of spectral indices for vegetation monitoring",
+    ),
+    "VARI": SpectralIndexDefinition(
+        id="VARI",
+        acronym="VARI",
+        name_en="Visible Atmospherically Resistant Index",
+        name_ar="المؤشر المرئي المقاوم لتأثيرات الغلاف الجوي",
+        category="Vegetation",
+        required_roles=[BandRole.GREEN, BandRole.RED, BandRole.BLUE],
+        compute_fn=calc_vari,
+        formula_text="(Green - Red) / (Green + Red - Blue)",
+        citation="Gitelson et al. (2002), Novel algorithms for remote estimation of vegetation fraction",
+    ),
+    "GLI": SpectralIndexDefinition(
+        id="GLI",
+        acronym="GLI",
+        name_en="Green Leaf Index",
+        name_ar="مؤشر الورق الأخضر",
+        category="Vegetation",
+        required_roles=[BandRole.GREEN, BandRole.RED, BandRole.BLUE],
+        compute_fn=calc_gli,
+        formula_text="(2 * Green - Red - Blue) / (2 * Green + Red + Blue)",
+        citation="Louhaichi et al. (2001), Spatially located platform and aerial photography for documentation of grazing impacts on wheat",
+    ),
+    "TCB": SpectralIndexDefinition(
+        id="TCB",
+        acronym="TCB",
+        name_en="Tasseled Cap Brightness",
+        name_ar="مؤشر السطوع لكاب القبعة",
+        category="Transformation",
+        required_roles=[BandRole.BLUE, BandRole.GREEN, BandRole.RED, BandRole.NIR, BandRole.SWIR_1, BandRole.SWIR_2],
+        compute_fn=calc_tcb,
+        formula_text="0.3029*Blue + 0.2786*Green + 0.4733*Red + 0.5599*NIR + 0.508*SWIR1 + 0.1872*SWIR2",
+        citation="Baig et al. (2014), Derivation of a tasseled cap transformation based on Landsat 8 at-satellite reflectance",
+    ),
+    "TCG": SpectralIndexDefinition(
+        id="TCG",
+        acronym="TCG",
+        name_en="Tasseled Cap Greenness",
+        name_ar="مؤشر الخضرة لكاب القبعة",
+        category="Transformation",
+        required_roles=[BandRole.BLUE, BandRole.GREEN, BandRole.RED, BandRole.NIR, BandRole.SWIR_1, BandRole.SWIR_2],
+        compute_fn=calc_tcg,
+        formula_text="-0.2941*Blue - 0.243*Green - 0.5424*Red + 0.7276*NIR + 0.0713*SWIR1 - 0.1608*SWIR2",
+        citation="Baig et al. (2014), Derivation of a tasseled cap transformation based on Landsat 8 at-satellite reflectance",
+    ),
+    "TCW": SpectralIndexDefinition(
+        id="TCW",
+        acronym="TCW",
+        name_en="Tasseled Cap Wetness",
+        name_ar="مؤشر البلل والرطوبة لكاب القبعة",
+        category="Transformation",
+        required_roles=[BandRole.BLUE, BandRole.GREEN, BandRole.RED, BandRole.NIR, BandRole.SWIR_1, BandRole.SWIR_2],
+        compute_fn=calc_tcw,
+        formula_text="0.1511*Blue + 0.1973*Green + 0.3283*Red + 0.3407*NIR - 0.7117*SWIR1 - 0.4572*SWIR2",
+        citation="Baig et al. (2014), Derivation of a tasseled cap transformation based on Landsat 8 at-satellite reflectance",
     ),
 }

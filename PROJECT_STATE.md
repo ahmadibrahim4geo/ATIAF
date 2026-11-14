@@ -1,8 +1,8 @@
 # ATIAF Project State — CANONICAL HANDOFF
-- **Snapshot:** 2026-11-14; Phase P5 completed, transitioning to Phase P6.
+- **Snapshot:** 2026-11-14; Phase P6 completed, transitioning to Phase P7.
 - **Project root:** `أطياف/` (UTF-8 path: `d:\My Software\ATIAF`). Git repository on branch `main`.
-- **Current phase:** P6 — Expanded Pinned Offline Index Catalog & Environmental Models.
-- **Active plans:** None currently active. PLAN-0001 through PLAN-0006 completed.
+- **Current phase:** P7 — Native QGIS Processing Provider Adapter.
+- **Active plans:** None currently active. PLAN-0001 through PLAN-0007 completed.
 - **Completed plans:**
   - PLAN-0001 (`Development_Plans/Completed/PLAN-0001_bootstrap.md`).
   - PLAN-0002 (`Development_Plans/Completed/PLAN-0002_product_recognition.md`).
@@ -10,7 +10,8 @@
   - PLAN-0004 (`Development_Plans/Completed/PLAN-0004_arcgis_pro_spectral_indices.md`).
   - PLAN-0005 (`Development_Plans/Completed/PLAN-0005_surface_temperature_geological.md`).
   - PLAN-0006 (`Development_Plans/Completed/PLAN-0006_mosaic_temporal.md`).
-- **Latest numbered development report:** `Reports/0006_mosaic_temporal.md`.
+  - PLAN-0007 (`Development_Plans/Completed/PLAN-0007_expanded_catalog_environment.md`).
+- **Latest numbered development report:** `Reports/0007_expanded_catalog_environment.md`.
 - **Agent Development Journal:** Canonical append-only journal in `.agent-development-log/` (verified records).
 - **Approved Skills:** Cloned in `.agent_resources/GIS-Development-Skills` (commit `2a0a9a23618e40218484ec8ae5848a481df51f1a`).
 - **Host runtime verification:**
@@ -20,13 +21,15 @@
 - **Implemented GIS processing:**
   - `atyaf_core/discovery/`: Landsat, Sentinel-2, ASTER, SceneScanner, ManualBandMapper.
   - `atyaf_core/raster/`: CRSManager (projected metre enforcement), QualityMaskEngine, PolygonClipEngine, WindowedRasterEngine, WorkspaceManager.
-  - `atyaf_core/indices/`: INDEX_CATALOG (14 validated optical indices), SpectralIndicesEngine (capability gating, QA masking, windowed processing, AOI clipping, run manifests).
+  - `atyaf_core/indices/`: INDEX_CATALOG (22 validated optical indices including NDMI, MSAVI, OSAVI, VARI, GLI, TCB, TCG, TCW), SpectralIndicesEngine (capability gating, QA masking, windowed processing, AOI clipping, run manifests).
   - `atyaf_core/temperature/`: EmissivityEngine (Sobrino et al. 2004 NDVI thresholds), SurfaceTemperatureEngine (Landsat C2 L2 ST, Kelvin/Celsius units, strict Sentinel-2 thermal absence blocking).
+  - `atyaf_core/urban/`: ThermalUrbanEngine (UTFVI calculation and 6-class thermal comfort mapping, thermal hotspots z >= 2.0, SUHI).
+  - `atyaf_core/environment/`: EnvironmentalDroughtEngine (Liang 2001 broadband surface albedo, TVDI dryness index).
   - `atyaf_core/geology/`: GEOLOGICAL_CATALOG (8 diagnostic alteration ratios & thermal mineral indices), GeologicalAnalysisEngine (ASTER post-April 2008 SWIR cutoff enforcement, scientific disclaimer, run manifests).
   - `atyaf_core/mosaic/`: QualityMosaicEngine (union extent, quality ranking, mean valid, latest date, Source_Scene_ID provenance raster).
   - `atyaf_core/temporal/`: ChangeDetectionEngine (dNDVI, dNBR USGS Burn Severity classification, dLST, relative change %, statistical standard deviation classes).
-  - `arcgis_pro/ATIAF.pyt`: Native Python Toolbox containing Tool 01 (Spectral Indices), Tool 02 (Surface Temperature), Tool 05 (Geological & Mineral Analysis), and Tool 06 (Temporal Analysis & Change Detection) with canonical parameter layout, dynamic validation, metric projected CRS checking, multi-scene mosaic execution, and map execution.
+  - `arcgis_pro/ATIAF.pyt`: Native Python Toolbox containing ALL 6 independent tools (Tool 01 Spectral Indices, Tool 02 Surface Temperature, Tool 03 Thermal & Urban, Tool 04 Environmental & Drought, Tool 05 Geological Analysis, Tool 06 Temporal Change Detection) with canonical parameter layout, dynamic validation, metric projected CRS checking, multi-scene mosaic execution, and map execution.
 - **Verified checks in package:**
-  - `python tools/validate_package.py`: PASS (297 md, 104 json).
-  - `python -m unittest discover tests`: PASS (60 unit tests passing).
-- **Pending next:** Phase P6 — Pinned Offline Index Catalog, Drought and Environmental Models (Tool 03 Thermal & Urban Analysis, Tool 04 Environmental & Drought).
+  - `python tools/validate_package.py`: PASS (301 md, 106 json).
+  - `python -m unittest discover tests`: PASS (71 unit tests passing).
+- **Pending next:** Phase P7 — Native QGIS Processing Provider Adapter (`qgis/`).
