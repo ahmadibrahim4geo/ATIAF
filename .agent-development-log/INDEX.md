@@ -29,3 +29,5 @@ create a linked revision or cancellation. This local hash chain is not a signatu
 | [#0022](reports/0022.md) | 2026-11-14T14:59:22+00:00 | implementation | completed | #0021 | Completed PLAN-0011: Comprehensive Audit, Hardening & Cumulative Reporting Engine |
 | [#0023](reports/0023.md) | 2026-11-14T16:01:55+00:00 | plan | in_progress | — | Initiated PLAN-0012: Interactive Documentation Portal & Scientific Indicators Catalog |
 | [#0024](reports/0024.md) | 2026-11-14T16:11:57+00:00 | implementation | completed | #0023 | Completed PLAN-0012: Interactive Documentation Portal & Scientific Indicators Catalog |
+| [#0025](reports/0025.md) | 2026-11-14T18:06:44+00:00 | plan | in_progress | — | Initiated PLAN-0013: Professional Repository README & HTML Portal Overhaul |
+| [#0026](reports/0026.md) | 2026-11-14T18:14:32+00:00 | implementation | completed | #0025 | Completed PLAN-0013: Professional Repository README & HTML Documentation Portal Overhaul |

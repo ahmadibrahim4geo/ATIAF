@@ -1,12 +1,10 @@
 # Project development state — agent handoff
 
 Read with INDEX.md and the linked reports. Independently inspect code and tests.
-Recorded steps: 24
+Recorded steps: 26
 
 ## Latest records
 
-- #0015 [in_progress] Initiated Phase P7: Native QGIS Processing Provider Adapter
-- #0016 [completed] Completed Phase P7: Native QGIS Processing Provider Adapter (related: #0015)
 - #0017 [in_progress] Initiated Phase P8: Advanced Modalities, Radar (SAR) & Hyperspectral Gating
 - #0018 [completed] Completed Phase P8: Advanced Modalities, Radar (SAR) & Hyperspectral Gating (related: #0017)
 - #0019 [in_progress] Initiated Phase P9: Packaging, Documentation Build & Release Readiness
@@ -15,6 +13,8 @@ Recorded steps: 24
 - #0022 [completed] Completed PLAN-0011: Comprehensive Audit, Hardening & Cumulative Reporting Engine (related: #0021)
 - #0023 [in_progress] Initiated PLAN-0012: Interactive Documentation Portal & Scientific Indicators Catalog
 - #0024 [completed] Completed PLAN-0012: Interactive Documentation Portal & Scientific Indicators Catalog (related: #0023)
+- #0025 [in_progress] Initiated PLAN-0013: Professional Repository README & HTML Portal Overhaul
+- #0026 [completed] Completed PLAN-0013: Professional Repository README & HTML Documentation Portal Overhaul (related: #0025)
 
 ## Open/blocked records (confirm whether still applicable)
 
@@ -30,3 +30,4 @@ Recorded steps: 24
 - #0019: in_progress — Initiated Phase P9: Packaging, Documentation Build & Release Readiness
 - #0021: in_progress — Initiated PLAN-0011: Comprehensive Audit, Hardening & Cumulative Reporting Engine
 - #0023: in_progress — Initiated PLAN-0012: Interactive Documentation Portal & Scientific Indicators Catalog
+- #0025: in_progress — Initiated PLAN-0013: Professional Repository README & HTML Portal Overhaul
