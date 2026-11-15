@@ -1,5 +1,5 @@
 # Development Reports — chronological index
-**Latest: 0022 — professional presentation/publication preparation, PLAN-0016 Active; dev1 local checks passed, remote publication pending. PLAN-0015 remains Active / PARTIAL. Earlier completion rows are not current release certification.**
+**Latest: 0023 — project published; clean-runner portability fixes, final hosted checks pending. PLAN-0016 Active; PLAN-0015 remains Active / PARTIAL. Earlier completion rows are not current release certification.**
 
 Every real work/verification/handoff batch gets a new monotonically numbered report: `0001_<slug>.md`, then `0002_...` and so on.
 
@@ -32,3 +32,5 @@ Every real work/verification/handoff batch gets a new monotonically numbered rep
 | [0020_output_interpretation_and_local_classification_requirements.md](0020_output_interpretation_and_local_classification_requirements.md) | 2026-11-15 | PLAN-0015 r5 | REQUIREMENTS / NOT IMPLEMENTED | Catalog interpretation gap inspected; NASA/USGS guidance reviewed; EN/AR notes and structural checks | Include per-index meaning, sourced class status, locally adjustable thresholds and report provenance in consolidated work |
 | [0021_consolidated_tools_interpretation_and_native_evidence.md](0021_consolidated_tools_interpretation_and_native_evidence.md) | 2026-11-15 | PLAN-0015 r6 | IMPLEMENTED / PARTIAL ACTIVE | 140 headless, 11 QGIS native, 8 Pro native fixture checks PASS; grouped/manual/NDVI-RTE/classes, package identity/relocation, EN/AR docs and browser PASS | Real acquisitions/local calibration, complete actual dialogs and clean-machine acceptance; retain remaining scientific candidates as unvalidated |
 | [0022_professional_presentation_and_publication_preparation.md](0022_professional_presentation_and_publication_preparation.md) | 2026-11-15 | PLAN-0016 r1 | PREPARED / NOT YET PUBLISHED | dev1 professional EN/AR README/Index, audit, 140 tests, browser/card routes and package checks PASS | Fresh staged export, normal commit/push, independent remote/CI readback |
+
+| [0023_github_publication_and_clean_runner_portability.md](0023_github_publication_and_clean_runner_portability.md) | 2026-11-15 | PLAN-0016 r1 | PUBLISHED / ACTIVE | Remote SHA/files verified, Pages HTTP 200; clean-source 141 tests and packages PASS; two hosted portability failures diagnosed/fixed | Observe final hosted checks/artifacts before archiving |

@@ -250,7 +250,9 @@ class TestPolygonClipping(unittest.TestCase):
 
 class TestWorkspaceManager(unittest.TestCase):
     def setUp(self):
-        self.temp_dir = Path(tempfile.mkdtemp())
+        # Windows runners may expose TEMP through an 8.3 alias; the engine
+        # returns canonical paths, so compare the same physical directory.
+        self.temp_dir = Path(tempfile.mkdtemp()).resolve()
         self.scene_dir = self.temp_dir / "LC08_L2SP_176039_20230520"
         self.scene_dir.mkdir(parents=True, exist_ok=True)
         self.dummy_band = self.scene_dir / "LC08_B4.TIF"

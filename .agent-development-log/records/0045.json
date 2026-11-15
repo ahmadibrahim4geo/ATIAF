@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "sequence": 45,
+  "timestamp_utc": "2026-11-15T15:58:41+00:00",
+  "kind": "verification",
+  "status": "in_progress",
+  "summary": "Verified normal GitHub pushes and clean-source publication checks",
+  "details": "Normal push succeeded at 9f6d2df, e1cabb8 and 14d4c95; remote main independently matched. README EN/AR, Index and supplied asset Git blob IDs matched. Clean indexed export passed 141 tests, full documentation/link/JSON checks and QGIS/wheel builds/source identity. First hosted check failed on 55 old local skill links; migrated these to reviewed pinned upstream URLs without changing plan requirements. Final hosted run 43732778478 is still running. Existing GitHub Pages configuration automatically deployed the site; page, assets and Arabic installation help returned HTTP 200. Earlier automatic approval usage-limit review failure executed no action, later approved retry succeeded. PLAN-0015 remains Active/partial.",
+  "references": [
+    44
+  ],
+  "task_id": "PLAN-0016",
+  "plan_revision": "r1",
+  "changed_files": [
+    "tools/link_validation.py",
+    "tests/test_product_recognition.py",
+    "tests/test_package_and_registries.py",
+    "Reports/evidence/PLAN-0016/clean_checkout_final.json"
+  ],
+  "tests": [
+    "Clean indexed export: validate_package, 141 headless tests, QGIS/wheel build and source identity"
+  ],
+  "test_result": "passed",
+  "commit": "14d4c95492afd7ebde65ef04f7826eaddad5e185",
+  "previous_hash": "0947fb54171e2df5f99a0cbc272bab201561b949d3285fd5b82618c005abb63a",
+  "hash": "b786ca2e9149ad5c964e31824bac2cdf1e362fed3e3005e856d7cb672fead7fd"
+}

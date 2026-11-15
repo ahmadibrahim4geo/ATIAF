@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 class TestWorkflowRepair(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
-        self.root = Path(self.temp.name)
+        self.root = Path(self.temp.name).resolve()
         self.scene = make_scene(self.root)
 
     def tearDown(self):
