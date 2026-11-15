@@ -8,10 +8,10 @@ import unittest
 import numpy as np
 import rasterio
 
-from atyaf_core.discovery import AsterParser, LandsatParser, Sentinel2Parser
-from atyaf_core.discovery.models import BandRole
-from atyaf_core.geology import GEOLOGICAL_CATALOG, GeologicalAnalysisEngine
-from atyaf_core.temperature import EmissivityEngine, SurfaceTemperatureEngine
+from atiaf_core.discovery import AsterParser, LandsatParser, Sentinel2Parser
+from atiaf_core.discovery.models import BandRole
+from atiaf_core.geology import GEOLOGICAL_CATALOG, GeologicalAnalysisEngine
+from atiaf_core.temperature import EmissivityEngine, SurfaceTemperatureEngine
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = ROOT / "tests" / "fixtures" / "synthetic_scenes"

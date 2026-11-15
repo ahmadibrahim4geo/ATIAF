@@ -61,7 +61,7 @@ class TestQGISMetadata(unittest.TestCase):
             self.assertIn(key, general, f"metadata.txt missing required key: {key}")
             self.assertTrue(len(general[key].strip()) > 0, f"Key '{key}' in metadata.txt is empty")
 
-        self.assertEqual(general["qgisMinimumVersion"], "3.0")
+        self.assertEqual(general["qgisMinimumVersion"], "4.2")
         self.assertIn("ATIAF", general["name"])
         self.assertIn("أطياف", general["name"])
 
@@ -109,41 +109,15 @@ class TestQGISAlgorithmDefinitions(unittest.TestCase):
         }
 
     def test_algorithm_names_and_display_names(self):
-        expected_meta = {
-            "spectral_indices": (
-                "01. Spectral Indices | المؤشرات الطيفية",
-                "Indices",
-            ),
-            "surface_temperature": (
-                "02. Surface Temperature | درجة حرارة السطح",
-                "Thermal",
-            ),
-            "thermal_urban": (
-                "03. Thermal & Urban Analysis | التحليل الحراري والحضري والجزر الحرارية",
-                "Thermal",
-            ),
-            "environmental_drought": (
-                "04. Environmental & Drought Analysis | التحليل البيئي ومؤشرات الجفاف",
-                "Environmental",
-            ),
-            "geological_analysis": (
-                "05. Geological Analysis & Mineral Alteration | التحليل الجيولوجي ونطاقات التحول المعدني",
-                "Geology",
-            ),
-            "temporal_change": (
-                "06. Temporal Analysis & Change Detection | التحليل الزمني وتغير الغطاء الأرضي",
-                "Temporal",
-            ),
-        }
-
+        from atiaf_core.tool_contract import title
         for alg_id, alg in self.algorithms.items():
             self.assertEqual(alg.name(), alg_id)
-            exp_disp, exp_grp = expected_meta[alg_id]
-            self.assertEqual(alg.displayName(), exp_disp)
-            self.assertEqual(alg.group(), exp_grp)
-            self.assertTrue(len(alg.shortHelpString()) > 0)
-            # Verify bilingual help strings
-            self.assertIn("أطياف", alg.shortHelpString())
+            alg.language = 'en'
+            self.assertEqual(alg.displayName(), title(alg_id, 'en'))
+            self.assertFalse(any('\u0600' <= c <= '\u06ff' for c in alg.shortHelpString()))
+            alg.language = 'ar'
+            self.assertEqual(alg.displayName(), title(alg_id, 'ar'))
+            self.assertIn('اختر', alg.shortHelpString())
 
     def test_canonical_parameter_names(self):
         for name, alg in self.algorithms.items():

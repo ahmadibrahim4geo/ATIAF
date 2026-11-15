@@ -18,6 +18,8 @@ class ATIAFPlugin:
 
     def initProcessing(self):
         """Init Processing provider for QGIS."""
+        if self.provider is not None:
+            return
         self.provider = ATIAFProcessingProvider()
         if QgsApplication and hasattr(QgsApplication, "processingRegistry"):
             QgsApplication.processingRegistry().addProvider(self.provider)
@@ -30,3 +32,4 @@ class ATIAFPlugin:
         """Unload plugin and remove provider."""
         if self.provider and QgsApplication and hasattr(QgsApplication, "processingRegistry"):
             QgsApplication.processingRegistry().removeProvider(self.provider)
+            self.provider = None

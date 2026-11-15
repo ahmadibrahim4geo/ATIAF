@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "sequence": 30,
+  "timestamp_utc": "2026-11-14T19:46:47+00:00",
+  "kind": "implementation",
+  "status": "in_progress",
+  "summary": "Implemented shared workflow repair, canonical core and bilingual documentation",
+  "details": "Moved implementation to atiaf_core and docs to documentation; root specifications grouped under documentation/project with contract updated. Both adapters expose explicit calculations; real sensor/CRS/AOI/QA/mosaic preflight and immutable raster names. Native Pro 6 tests and native QGIS 7 tests observed passing on synthetic fixtures. Isolated plugin/wheel smoke tests pass. Offline portal tested at 1400 and 390 px. Physical Escape stopped desktop Computer Use; no further live UI operations. Plan remains Active pending native UI/real-product/clean-machine acceptance.",
+  "references": [
+    29
+  ],
+  "task_id": "PLAN-0015",
+  "plan_revision": "r1",
+  "changed_files": [
+    "atiaf_core/workflow.py",
+    "ArcGIS Pro Tools/atiaf_arcgis.py",
+    "QGIS Tools/atiaf/algorithms/common.py",
+    "documentation/index.html"
+  ],
+  "tests": [
+    "native ArcGIS 6 tests; native QGIS 7 tests; isolated wheel/plugin and headless browser checks"
+  ],
+  "test_result": "passed",
+  "commit": "",
+  "previous_hash": "b508a661a436e21a54c9ff97bd0d64a7913725069cd4e463cf5fb430a4d33a97",
+  "hash": "211f64f746ba0186145c4d8b291b6151e87d84a0df7ab89d00db4dedc395b8de"
+}

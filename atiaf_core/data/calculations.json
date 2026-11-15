@@ -1,0 +1,383 @@
+{
+  "spectral_indices": [
+    {
+      "id": "NDVI",
+      "en": "Normalized Difference Vegetation Index",
+      "ar": "مؤشر الفرق المعياري للغطاء النباتي",
+      "category": "Vegetation",
+      "formula": "(NIR - Red) / (NIR + Red)",
+      "roles": [
+        "nir",
+        "red"
+      ],
+      "citation": "Rouse et al. (1974), Monitoring vegetation systems in the Great Plains with ERTS"
+    },
+    {
+      "id": "GNDVI",
+      "en": "Green Normalized Difference Vegetation Index",
+      "ar": "مؤشر الفرق المعياري الأخضر للغطاء النباتي",
+      "category": "Vegetation",
+      "formula": "(NIR - Green) / (NIR + Green)",
+      "roles": [
+        "nir",
+        "green"
+      ],
+      "citation": "Gitelson et al. (1996), Remote sensing of chlorophyll concentration in higher plant leaves"
+    },
+    {
+      "id": "SAVI",
+      "en": "Soil-Adjusted Vegetation Index",
+      "ar": "مؤشر الغطاء النباتي المعدل بتأثير التربة",
+      "category": "Vegetation",
+      "formula": "((NIR - Red) / (NIR + Red + L)) * (1 + L)",
+      "roles": [
+        "nir",
+        "red"
+      ],
+      "citation": "Huete (1988), A soil-adjusted vegetation index (SAVI)"
+    },
+    {
+      "id": "EVI",
+      "en": "Enhanced Vegetation Index",
+      "ar": "مؤشر الغطاء النباتي المحسن",
+      "category": "Vegetation",
+      "formula": "2.5 * ((NIR - Red) / (NIR + 6*Red - 7.5*Blue + 1))",
+      "roles": [
+        "nir",
+        "red",
+        "blue"
+      ],
+      "citation": "Huete et al. (2002), Overview of the radiometric and biophysical performance of the MODIS vegetation indices"
+    },
+    {
+      "id": "NDRE1",
+      "en": "Normalized Difference Red Edge Index 1",
+      "ar": "مؤشر الفرق المعياري لحافة الأحمر 1",
+      "category": "Vegetation",
+      "formula": "(NIR - RedEdge1) / (NIR + RedEdge1)",
+      "roles": [
+        "nir",
+        "red_edge_1"
+      ],
+      "citation": "Gitelson & Merzlyak (1994), Quantitative estimation of chlorophyll-a using reflectance spectra"
+    },
+    {
+      "id": "NDWI_MCFEETERS",
+      "en": "Normalized Difference Water Index (McFeeters)",
+      "ar": "مؤشر الفرق المعياري للمياه (ماك فيترز)",
+      "category": "Water",
+      "formula": "(Green - NIR) / (Green + NIR)",
+      "roles": [
+        "green",
+        "nir"
+      ],
+      "citation": "McFeeters (1996), The use of the Normalized Difference Water Index in the delineation of open water features"
+    },
+    {
+      "id": "NDWI_GAO",
+      "en": "Normalized Difference Water/Moisture Index (Gao)",
+      "ar": "مؤشر محتوى الرطوبة المعياري (جاو)",
+      "category": "Water",
+      "formula": "(NIR - SWIR1) / (NIR + SWIR1)",
+      "roles": [
+        "nir",
+        "swir_1"
+      ],
+      "citation": "Gao (1996), NDWI—A normalized difference water index for remote sensing of vegetation liquid water from space"
+    },
+    {
+      "id": "MNDWI",
+      "en": "Modified Normalized Difference Water Index (Xu)",
+      "ar": "مؤشر الفرق المعياري المعدل للمياه (شو)",
+      "category": "Water",
+      "formula": "(Green - SWIR1) / (Green + SWIR1)",
+      "roles": [
+        "green",
+        "swir_1"
+      ],
+      "citation": "Xu (2006), Modification of normalised difference water index (NDWI) to enhance open water features"
+    },
+    {
+      "id": "NDBI",
+      "en": "Normalized Difference Built-Up Index",
+      "ar": "مؤشر الفرق المعياري للمناطق العمرانية",
+      "category": "Urban",
+      "formula": "(SWIR1 - NIR) / (SWIR1 + NIR)",
+      "roles": [
+        "swir_1",
+        "nir"
+      ],
+      "citation": "Zha et al. (2003), Use of normalized difference built-up index in automatically mapping urban areas from TM imagery"
+    },
+    {
+      "id": "UI",
+      "en": "Urban Index",
+      "ar": "المؤشر العمراني",
+      "category": "Urban",
+      "formula": "(SWIR2 - NIR) / (SWIR2 + NIR)",
+      "roles": [
+        "swir_2",
+        "nir"
+      ],
+      "citation": "Kawamura et al. (1996), Relation between social and environmental conditions in developing countries and urban heat islands"
+    },
+    {
+      "id": "NBR",
+      "en": "Normalized Burn Ratio",
+      "ar": "مؤشر نسبة الحريق المعيارية",
+      "category": "Burn",
+      "formula": "(NIR - SWIR2) / (NIR + SWIR2)",
+      "roles": [
+        "nir",
+        "swir_2"
+      ],
+      "citation": "Key & Benson (2006), Landscape assessment: Ground measure of severity, the Composite Burn Index; and Remote sensing of severity, the Normalized Burn Ratio"
+    },
+    {
+      "id": "NBR2",
+      "en": "Normalized Burn Ratio 2",
+      "ar": "مؤشر نسبة الحريق المعيارية 2",
+      "category": "Burn",
+      "formula": "(SWIR1 - SWIR2) / (SWIR1 + SWIR2)",
+      "roles": [
+        "swir_1",
+        "swir_2"
+      ],
+      "citation": "Garcia & Caselles (1991), Mapping burns and natural hazards with Landsat Thematic Mapper data"
+    },
+    {
+      "id": "NDSI",
+      "en": "Normalized Difference Snow Index",
+      "ar": "مؤشر الفرق المعياري للثلوج",
+      "category": "Snow",
+      "formula": "(Green - SWIR1) / (Green + SWIR1)",
+      "roles": [
+        "green",
+        "swir_1"
+      ],
+      "citation": "Hall et al. (1995), Development of methods for mapping global snow cover using moderate resolution imaging spectroradiometer data"
+    },
+    {
+      "id": "BSI",
+      "en": "Bare Soil Index",
+      "ar": "مؤشر التربة المكشوفة",
+      "category": "Soil",
+      "formula": "((SWIR1 + Red) - (NIR + Blue)) / ((SWIR1 + Red) + (NIR + Blue))",
+      "roles": [
+        "swir_1",
+        "red",
+        "nir",
+        "blue"
+      ],
+      "citation": "Diek et al. (2017), The normalized difference bare soil index: a new approach"
+    },
+    {
+      "id": "NDMI",
+      "en": "Normalized Difference Moisture Index",
+      "ar": "مؤشر الرطوبة الفارق المعياري",
+      "category": "Water",
+      "formula": "(NIR - SWIR1) / (NIR + SWIR1)",
+      "roles": [
+        "nir",
+        "swir_1"
+      ],
+      "citation": "Gao, B. C. (1996), NDWI—A normalized difference water index for remote sensing of vegetation liquid water from space"
+    },
+    {
+      "id": "MSAVI",
+      "en": "Modified Soil-Adjusted Vegetation Index",
+      "ar": "مؤشر الغطاء النباتي المعدل للتربة الثاني",
+      "category": "Vegetation",
+      "formula": "(2 * NIR + 1 - sqrt((2 * NIR + 1)^2 - 8 * (NIR - Red))) / 2",
+      "roles": [
+        "nir",
+        "red"
+      ],
+      "citation": "Qi et al. (1994), A modified soil adjusted vegetation index"
+    },
+    {
+      "id": "OSAVI",
+      "en": "Optimized Soil-Adjusted Vegetation Index",
+      "ar": "مؤشر الغطاء النباتي المعدل الأمثل للتربة",
+      "category": "Vegetation",
+      "formula": "(NIR - Red) / (NIR + Red + 0.16)",
+      "roles": [
+        "nir",
+        "red"
+      ],
+      "citation": "Rondeaux et al. (1996), Optimization of spectral indices for vegetation monitoring"
+    },
+    {
+      "id": "VARI",
+      "en": "Visible Atmospherically Resistant Index",
+      "ar": "المؤشر المرئي المقاوم لتأثيرات الغلاف الجوي",
+      "category": "Vegetation",
+      "formula": "(Green - Red) / (Green + Red - Blue)",
+      "roles": [
+        "green",
+        "red",
+        "blue"
+      ],
+      "citation": "Gitelson et al. (2002), Novel algorithms for remote estimation of vegetation fraction"
+    },
+    {
+      "id": "GLI",
+      "en": "Green Leaf Index",
+      "ar": "مؤشر الورق الأخضر",
+      "category": "Vegetation",
+      "formula": "(2 * Green - Red - Blue) / (2 * Green + Red + Blue)",
+      "roles": [
+        "green",
+        "red",
+        "blue"
+      ],
+      "citation": "Louhaichi et al. (2001), Spatially located platform and aerial photography for documentation of grazing impacts on wheat"
+    },
+    {
+      "id": "TCB",
+      "en": "Tasseled Cap Brightness",
+      "ar": "مؤشر السطوع لكاب القبعة",
+      "category": "Transformation",
+      "formula": "0.3029*Blue + 0.2786*Green + 0.4733*Red + 0.5599*NIR + 0.508*SWIR1 + 0.1872*SWIR2",
+      "roles": [
+        "blue",
+        "green",
+        "red",
+        "nir",
+        "swir_1",
+        "swir_2"
+      ],
+      "citation": "Baig et al. (2014), Derivation of a tasseled cap transformation based on Landsat 8 at-satellite reflectance"
+    },
+    {
+      "id": "TCG",
+      "en": "Tasseled Cap Greenness",
+      "ar": "مؤشر الخضرة لكاب القبعة",
+      "category": "Transformation",
+      "formula": "-0.2941*Blue - 0.243*Green - 0.5424*Red + 0.7276*NIR + 0.0713*SWIR1 - 0.1608*SWIR2",
+      "roles": [
+        "blue",
+        "green",
+        "red",
+        "nir",
+        "swir_1",
+        "swir_2"
+      ],
+      "citation": "Baig et al. (2014), Derivation of a tasseled cap transformation based on Landsat 8 at-satellite reflectance"
+    },
+    {
+      "id": "TCW",
+      "en": "Tasseled Cap Wetness",
+      "ar": "مؤشر البلل والرطوبة لكاب القبعة",
+      "category": "Transformation",
+      "formula": "0.1511*Blue + 0.1973*Green + 0.3283*Red + 0.3407*NIR - 0.7117*SWIR1 - 0.4572*SWIR2",
+      "roles": [
+        "blue",
+        "green",
+        "red",
+        "nir",
+        "swir_1",
+        "swir_2"
+      ],
+      "citation": "Baig et al. (2014), Derivation of a tasseled cap transformation based on Landsat 8 at-satellite reflectance"
+    }
+  ],
+  "geological_analysis": [
+    {
+      "id": "IRON_OXIDE",
+      "en": "Iron Oxide Ratio (Hematite / Goethite / Limonite)",
+      "ar": "نسبة أكاسيد الحديد (الهيماتيت / الجيوثايت)",
+      "category": "Geology",
+      "formula": "Red / Blue",
+      "roles": [
+        "red",
+        "blue"
+      ],
+      "citation": "Sabins (1999), Remote sensing for mineral exploration"
+    },
+    {
+      "id": "FERRIC_IRON",
+      "en": "Ferric Iron Ratio (Fe3+)",
+      "ar": "نسبة الحديد ثلاثي التكافؤ",
+      "category": "Geology",
+      "formula": "Red / Green",
+      "roles": [
+        "red",
+        "green"
+      ],
+      "citation": "Hunt (1977), Spectral signatures of particulate minerals"
+    },
+    {
+      "id": "FERROUS_IRON",
+      "en": "Ferrous Iron Ratio (Fe2+)",
+      "ar": "نسبة الحديد ثنائي التكافؤ",
+      "category": "Geology",
+      "formula": "SWIR1 / NIR",
+      "roles": [
+        "swir_1",
+        "nir"
+      ],
+      "citation": "Rowan et al. (1977), Discrimination of hydrothermally altered and unaltered rocks in Nevada"
+    },
+    {
+      "id": "CLAY_ALTERATION",
+      "en": "Clay / Hydroxyl / Al-OH Alteration Ratio",
+      "ar": "نسبة تحورات الطين والهيدروكسيل",
+      "category": "Geology",
+      "formula": "SWIR1 / SWIR2",
+      "roles": [
+        "swir_1",
+        "swir_2"
+      ],
+      "citation": "Drury (1993), Image Interpretation in Geology"
+    },
+    {
+      "id": "GOSSAN",
+      "en": "Gossan / Laterite Index",
+      "ar": "مؤشر الجوسان ورواسب اللاتريت",
+      "category": "Geology",
+      "formula": "SWIR1 / Red",
+      "roles": [
+        "swir_1",
+        "red"
+      ],
+      "citation": "Sabins (1999), Remote sensing for mineral exploration"
+    },
+    {
+      "id": "ASTER_QUARTZ",
+      "en": "ASTER Thermal Quartz Index (QI)",
+      "ar": "مؤشر الكوارتز الحراري (أستير)",
+      "category": "Geology",
+      "formula": "(B11 * B11) / (B10 * B12)",
+      "roles": [
+        "thermal_1",
+        "thermal_2"
+      ],
+      "citation": "Ninomiya et al. (2005), Mineral mapping with ASTER thermal infrared multispectral data"
+    },
+    {
+      "id": "ASTER_CARBONATE",
+      "en": "ASTER Thermal Carbonate Index (CI)",
+      "ar": "مؤشر صخور الكربونات الحراري (أستير)",
+      "category": "Geology",
+      "formula": "B13 / B14",
+      "roles": [
+        "thermal_1",
+        "thermal_2"
+      ],
+      "citation": "Ninomiya et al. (2005), Mineral mapping with ASTER thermal infrared multispectral data"
+    },
+    {
+      "id": "ASTER_MAFIC",
+      "en": "ASTER Thermal Mafic / Silicate Index (MI)",
+      "ar": "مؤشر الصخور المافية والقاعدية الحراري (أستير)",
+      "category": "Geology",
+      "formula": "B12 / B13",
+      "roles": [
+        "thermal_1",
+        "thermal_2"
+      ],
+      "citation": "Ninomiya et al. (2005), Mineral mapping with ASTER thermal infrared multispectral data"
+    }
+  ]
+}

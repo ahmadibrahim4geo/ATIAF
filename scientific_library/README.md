@@ -1,8 +1,13 @@
-# Scientific registry
-- `sensors/sensor_registry.json` — source-linked *candidate* sensor/product and download knowledge. Real parser validation required before marking support.
-- `indices/candidate_indices.json` — hand-picked index/method candidates; **not executable validated implementations**.
-- `schemas/index.schema.json` — minimum shape for an index; independent scientific reference and test are mandatory.
-- `catalog_upstream/` — intentionally empty initially. `python tools/sync_index_catalog.py` downloads an MIT catalog and its license into this directory on a development machine (network required). The agent must pin a commit and review license and schema before shipping it.
-- `references/reference_registry.json` — stable source links and usage policies.
+# Scientific library / المكتبة العلمية
 
-No bulk Index DataBase export is included or permitted under current API terms.
+This is a scientific/provenance registry, not another engine or blanket support claim. هذا سجل علمي وليس محركًا ثانيًا أو ضمانًا لصلاحية كل حساب.
+
+- `indices/candidate_indices.json`: original candidate requirements, unverified and not executable code.
+- `sensors/sensor_registry.json`: target knowledge; planned entries do not establish tested support.
+- `references/reference_registry.json`: scientific/official source links and reuse policies.
+- `catalog_upstream/`: no pinned external catalog imported in this repair; IDB remains reference-only.
+- Runtime choices: `atiaf_core/data/calculations.json`, `atiaf_core/tool_contract.py`; eligibility: `atiaf_core/workflow.py`.
+
+[Calculation cards](../documentation/en/INDICATORS_CATALOG.md) · [البطاقات بالعربية](../documentation/ar/INDICATORS_CATALOG.md) · [Observed state](../PROJECT_STATE.md).
+
+`runtime_support.json` records the current method inventory, gated choices and individually observed native synthetic methods. It does not promote the original candidates to scientific or real-product validation. يسجل الملف الحالة التنفيذية والأدلة الصناعية، ولا يغير المرشحات الأصلية إلى دعم مثبت بمرئيات حقيقية.

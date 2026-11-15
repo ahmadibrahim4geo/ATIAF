@@ -9,7 +9,7 @@ import unittest
 import numpy as np
 import rasterio
 
-from atyaf_core.discovery.models import (
+from atiaf_core.discovery.models import (
     BandAsset,
     BandRole,
     ProductLevel,
@@ -18,8 +18,8 @@ from atyaf_core.discovery.models import (
     SceneMetadata,
     SensorFamily,
 )
-from atyaf_core.mosaic import MosaicStrategy, QualityMosaicEngine
-from atyaf_core.temporal import ChangeDetectionEngine
+from atiaf_core.mosaic import MosaicStrategy, QualityMosaicEngine
+from atiaf_core.temporal import ChangeDetectionEngine
 
 ROOT = Path(__file__).resolve().parents[1]
 

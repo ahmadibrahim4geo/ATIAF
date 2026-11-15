@@ -1,0 +1,25 @@
+test_all_six_native_parameters (__main__.TestArcGISNativeWorkflow.test_all_six_native_parameters) ... ERROR 1: Unable to load CF-1 standard name database C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\Library\share\gdal\cf_standard_name_table.db. CF-1 lookups will fail.
+ok
+test_arabic_toolbox_parameter_labels (__main__.TestArcGISNativeWorkflow.test_arabic_toolbox_parameter_labels) ... ok
+test_empty_and_mismatch_are_errors (__main__.TestArcGISNativeWorkflow.test_empty_and_mismatch_are_errors) ... ERROR: Select at least one calculation; nothing is selected by default
+ok
+test_spectral_execution_and_crs (__main__.TestArcGISNativeWorkflow.test_spectral_execution_and_crs) ... LC08_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\atiaf_pro_oadtsfpy\scene\Results\Spectral_Indices\Vegetation\NDVI\NDVI_LC08_L2SP_176039_20230520_20230527_02_T1_FULL_RUN-bbf5df9f5f3343b9957d70322263051e.tif
+ok
+test_temperature_and_geology_execution (__main__.TestArcGISNativeWorkflow.test_temperature_and_geology_execution) ... LC08_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\atiaf_pro__t_ecckg\scene\Results\Surface_Temperature\LST_CELSIUS\LST_CELSIUS_LC08_L2SP_176039_20230520_20230527_02_T1_FULL_RUN-9d2afe8f7307409985a007d30df305e7.tif
+LC08_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\atiaf_pro__t_ecckg\scene\Results\Geological_Analysis\Iron_Oxide\Iron_Oxide_LC08_L2SP_176039_20230520_20230527_02_T1_FULL_RUN-5e360f247d6f41f29e68fd60ede3497f.tif
+ok
+test_urban_environment_and_temporal_execution (__main__.TestArcGISNativeWorkflow.test_urban_environment_and_temporal_execution) ... LC08_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\atiaf_pro_l_z1q81b\scene\Results\Thermal_Analysis\THERMAL_HOTSPOTS_LC08_L2SP_176039_20230520_20230527_02_T1_FULL_RUN-92fa4096eb03442d96d923107dba6b53.tif
+LE07_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\atiaf_pro_l_z1q81b\l7\Results\Environmental_Analysis\ALBEDO_LE07_L2SP_176039_20230520_20230527_02_T1_FULL_RUN-e67a80978000484780c3a6fd299a6372.tif
+LC08_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\atiaf_pro_l_z1q81b\scene\Results\Temporal_Change\NDVI\Delta_NDVI_LC08_L2SP_176039_20230520_20230527_02_T1_to_LC08_L2SP_176039_20230620_20230527_02_T1_DIFF_FULL_RUN-46d5621e0b4b49bfad13b86846f17699.tif
+ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 5.542s
+
+OK

@@ -1,0 +1,7 @@
+# Measured on this Windows/Python 3.14.7 development host, 2026-11-14.
+# Do not apply these wheel constraints blindly to ArcGIS Pro or QGIS environments.
+numpy==2.5.3
+rasterio==1.5.2
+shapely==2.1.2
+pyproj==3.8.0
+geopandas==1.2.0

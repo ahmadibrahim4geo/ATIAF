@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "sequence": 42,
+  "timestamp_utc": "2026-11-15T13:06:54+00:00",
+  "kind": "handoff",
+  "status": "in_progress",
+  "summary": "Deliver r6 development build; keep real-product and full host acceptance pending",
+  "details": "Latest report 0021, current state and both indexes updated; plan stays Active. Current QGIS installable QGIS Tools/Distribution/ATIAF-QGIS-1.0.2.dev0.zip; core wheel separate under dist. Source/adapter/help byte identity and relocated native readback passed. Refresh/restart hosts to avoid old caches. Real acquisitions/local class calibration, clean machine, complete bilingual interactive dialog/map checks and retained broader concurrency/CRS acceptance NOT RUN/incomplete. Further AWEI/MTCI/IBI/MIRBI and full Sentinel-1 workflow remain unvalidated future scope. Resume from r6 DoneProof with original plus added 21 criteria, not earlier completion claims.",
+  "references": [
+    41
+  ],
+  "task_id": "PLAN-0015",
+  "plan_revision": "r6",
+  "changed_files": [
+    "PROJECT_STATE.md",
+    "Development_Plans/INDEX.md",
+    "Reports/INDEX.md",
+    "Reports/evidence/PLAN-0015/r6/doneproof_r6.json"
+  ],
+  "tests": [],
+  "test_result": "not_run",
+  "commit": "",
+  "previous_hash": "e8d73719c01cfebbbdc169b8b56afed9519bb966b95aa4ad527a150d2c775f35",
+  "hash": "4508a62339730429191d1918f7dc91060f3bd3acc38bac452d5a21cd7d4c1851"
+}

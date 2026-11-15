@@ -1,0 +1,49 @@
+<!doctype html><html lang="en" dir="ltr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ATIAF — ADVANCED_MODALITIES</title><style>body{max-width:980px;margin:auto;padding:28px;color:#062d46;background:#f5f9fc;font:17px/1.85 "Segoe UI",Tahoma,sans-serif}a{color:#075f9c}header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #d8e5ed;padding-bottom:18px}header img{width:150px;height:auto}pre,.table{overflow-x:auto}pre,code{background:#e7f0f6;padding:3px 6px;border-radius:4px;unicode-bidi:isolate}pre{padding:18px}table{border-collapse:collapse;background:white;width:100%}td{padding:12px;border:1px solid #d8e5ed}h2{margin-top:40px}h1{line-height:1.5}</style><header><img src="../assets/atiaf-logo.png" alt="ATIAF"><a href="../index.html">Documentation home</a></header><main><p>Experimental array utilities only; not exposed as validated sensor/product native workflows.</p>
+<h1 id="advanced-modalities--radar--sar--and-hyperspectral-gating">Advanced Modalities: Radar (SAR) and Hyperspectral Gating</h1>
+<p>This document outlines the scientific specifications, modality classifications, and strict gating rules enforced in ATIAF for Synthetic Aperture Radar (SAR) and Hyperspectral sensors, in accordance with Specification Sections 1, 2, and 5.</p>
+<p>---</p>
+<h2 id="1--scientific-modality-classifications">1. Scientific Modality Classifications</h2>
+<p>Remote sensing sensors operate across fundamentally distinct physical regimes:</p>
+<div class="table"><table>
+<tr><td>Modality</td><td>Physical Measurement</td><td>Primary Sensors</td><td>Allowed Tool Domains</td><td>Strict Exclusions</td></tr>
+<tr><td><strong>Multispectral</strong></td><td>Optical Surface Reflectance ($\rho$)</td><td>Landsat OLI/ETM/TM, Sentinel-2 MSI, ASTER VNIR/SWIR</td><td>Spectral Indices, Geological Ratios, Temporal Change</td><td>Thermal (if no thermal band)</td></tr>
+<tr><td><strong>Thermal Infrared</strong></td><td>Radiance ($L_{\lambda}$) &amp; Temperature (K, °C)</td><td>Landsat TIRS, ASTER TIR, ECOSTRESS</td><td>Surface Temperature, Urban Heat Islands, TVDI</td><td>Optical reflectance indices</td></tr>
+<tr><td><strong>Hyperspectral</strong></td><td>Contiguous Narrow-band Reflectance</td><td>EnMAP, PRISMA, EMIT, DESIS</td><td>Mineral Unmixing, SAM, Absorption Depths</td><td>L1 TOA cubes without atmospheric correction</td></tr>
+<tr><td><strong>SAR (Radar)</strong></td><td>Active Microwave Backscatter ($\sigma^0, \gamma^0, \beta^0$)</td><td>Sentinel-1 C-SAR, ALOS-2 PALSAR-2, NISAR</td><td>Polarimetric Calibration, RVI, Decomposition, Coherence</td><td><strong>Never route through optical/thermal tools</strong></td></tr>
+</table></div>
+<p>---</p>
+<h2 id="2--sar--synthetic-aperture-radar--modality-rules">2. SAR (Synthetic Aperture Radar) Modality Rules</h2>
+<h3 id="the-non-negotiable-gating-rule">The Non-Negotiable Gating Rule</h3>
+<p>&gt; <strong>&quot;Never route SAR through optical equations.&quot;</strong> (Specification Section 2)</p>
+<p>Optical spectral indices (NDVI, MNDWI, SAVI, EVI, etc.) assume solar illumination reflected by surface materials governed by electronic transitions and vibrational molecular bonds. SAR measures coherent microwave pulses backscattered by physical surface roughness, dielectric permittivity (moisture), and volumetric canopy structure. Applying optical index equations to SAR backscatter is physically invalid and strictly blocked by <code>ModalityRouter</code>.</p>
+<h3 id="calibration-and-decibel--db--scaling">Calibration and Decibel (dB) Scaling</h3>
+<p>SAR data is calibrated to normalized radar cross section:</p>
+<p>$$\sigma^0_{\text{dB}} = 10 \cdot \log_{10}(\sigma^0_{\text{linear}})$$</p>
+<h3 id="cross-polarization-ratio">Cross-Polarization Ratio</h3>
+<p>Measures volumetric vs surface scattering:</p>
+<p>$$\text{Ratio} = \frac{\sigma^0_{VH}}{\sigma^0_{VV}} \quad \text{or} \quad \sigma^0_{VH,\text{dB}} - \sigma^0_{VV,\text{dB}}$$</p>
+<h3 id="dual-polarization-radar-vegetation-index--rvi-">Dual-Polarization Radar Vegetation Index (RVI)</h3>
+<p>For Sentinel-1 dual-pol acquisitions ($VV, VH$):</p>
+<p>$$RVI = \frac{4 \cdot \sigma^0_{VH}}{\sigma^0_{VV} + \sigma^0_{VH}}$$</p>
+<p>Ranges from ~0 (bare smooth soil, calm water) to ~1 (dense multi-layered forest canopies).</p>
+<h3 id="speckle-reduction">Speckle Reduction</h3>
+<p>Coherent radar fading (speckle) requires spatial adaptive filtering:</p>
+<p>- <strong>Lee Filter:</strong> Preserves edges while smoothing homogeneous zones based on local variance $\sigma_I^2$ and theoretical noise variance $\sigma_v^2 = \frac{1}{\text{num\_looks}}$.</p>
+<p>- <strong>Refined Lee &amp; Gamma-MAP:</strong> Directional windowing to preserve linear features (roads, shorelines).</p>
+<p>---</p>
+<h2 id="3--hyperspectral-modality-rules">3. Hyperspectral Modality Rules</h2>
+<h3 id="continuous-datacubes-and-atmospheric-gating">Continuous Datacubes and Atmospheric Gating</h3>
+<p>Hyperspectral sensors provide contiguous narrow-band spectra (5–10 nm FWHM). ATIAF enforces:</p>
+<p>1. <strong>Level-2 Surface Reflectance Requirement:</strong> Uncalibrated Top-of-Atmosphere (TOA) radiance cubes (e.g. EnMAP L1B, PRISMA L1) are strictly rejected from mineral unmixing. Atmospheric absorption completely distorts narrow mineral absorption features.</p>
+<p>2. <strong>Water Vapor Masking:</strong> Bands within atmospheric absorption windows (1350–1450 nm and 1800–1950 nm) are masked as unreliable unless corrected by validated local hygrometric models.</p>
+<h3 id="spectral-angle-mapper--sam-">Spectral Angle Mapper (SAM)</h3>
+<p>Computes the generalized $n$-dimensional angle between an image pixel spectrum $\mathbf{t}$ and a reference laboratory spectrum $\mathbf{r}$:</p>
+<p>$$\alpha = \arccos\left(\frac{\mathbf{t} \cdot \mathbf{r}}{\|\mathbf{t}\| \|\mathbf{r}\|}\right)$$</p>
+<p>SAM is illumination-invariant; scaling the brightness of a spectrum preserves $\alpha = 0$.</p>
+<h3 id="diagnostic-mineral-absorption-feature-depth">Diagnostic Mineral Absorption Feature Depth</h3>
+<p>Measures continuum-removed absorption depth:</p>
+<p>$$D = 1 - \frac{R(\lambda_0)}{R_{\text{continuum}}(\lambda_0)}$$</p>
+<p>Standard diagnostic absorption features:</p>
+<p>- <strong>Al-OH Alteration (2205 nm):</strong> Kaolinite, Alunite, Illite, Muscovite.</p>
+<p>- <strong>Mg-OH / Carbonate (2345 nm):</strong> Chlorite, Talc, Epidote, Calcite, Dolomite.</p>
+<p>- <strong>Fe3+ Iron Oxides (900 nm):</strong> Goethite, Hematite.</p></main></html>

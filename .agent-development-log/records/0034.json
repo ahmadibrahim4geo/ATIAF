@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "sequence": 34,
+  "timestamp_utc": "2026-11-15T12:05:29+00:00",
+  "kind": "revision",
+  "status": "proposed",
+  "summary": "Research additional indices; group calculations and clarify LST controls",
+  "details": "User requests research using popular free sensors, removal of calculation search if only filtering, thematic groups within both host tools and an explanation of Celsius/Kelvin versus NDVI-derived emissivity. Record consolidated PLAN-0015 r3 requirements; no runtime implementation during discussion.",
+  "references": [
+    33
+  ],
+  "task_id": "PLAN-0015",
+  "plan_revision": "r3",
+  "changed_files": [
+    "Development_Plans/Active/PLAN-0015_usability_branding_and_recovery.md"
+  ],
+  "tests": [],
+  "test_result": "not_run",
+  "commit": "",
+  "previous_hash": "13a0023db6453e2db88381604398504b1fc9afc01de93e2f431802b2e2c6219d",
+  "hash": "13e0407587024283c4a3b4a57095af98cf5ba359dbf4fd3cbc74a6f92309dbde"
+}

@@ -9,3 +9,7 @@
 - **Remote platforms:** IDB API not required at runtime; available for individual opt-in lookup only if credentials and current terms permit. No bundled API keys. Do not include complete IDB database.
 - **Testing and docs:** pytest and built-in Python standard library for structural tests; report native GIS acceptance separately. CHM build on Windows optional; markdown/HTML remains portable fallback.
 - **No lockfile yet:** runtime versions must be measured on the first development host. Agent should record exact versions and checksums in a newly versioned lock/compatibility file when actual environment is known; never claim a fabricated compatible matrix.
+
+## PLAN-0015 observed environment correction
+
+Measured versions and limits are in tested_environments.json. The standalone test constraints are developer-only, not instructions to mix binary stacks in Pro/QGIS. Native Pro 3.6 and QGIS 4.2.3 synthetic workflows were observed separately. QGIS Python is 3.12.15 on this session, correcting older report claims of 3.12.9. SciPy is absent in standalone Python; optional paths are not asserted as installed. No packages were installed into either GIS host. The helpers now diagnose without pip installation. Clean-machine installation and real products remain NOT RUN.

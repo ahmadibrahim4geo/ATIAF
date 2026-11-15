@@ -1,0 +1,71 @@
+<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ATIAF — SENSORS_AND_DOWNLOADS</title><style>body{max-width:980px;margin:auto;padding:28px;color:#062d46;background:#f5f9fc;font:17px/1.85 "Segoe UI",Tahoma,sans-serif}a{color:#075f9c}header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #d8e5ed;padding-bottom:18px}header img{width:150px;height:auto}pre,.table{overflow-x:auto}pre,code{background:#e7f0f6;padding:3px 6px;border-radius:4px;unicode-bidi:isolate}pre{padding:18px}table{border-collapse:collapse;background:white;width:100%}td{padding:12px;border:1px solid #d8e5ed}h2{margin-top:40px}h1{line-height:1.5}</style><header><img src="../assets/atiaf-logo.png" alt="ATIAF"><a href="../index.html">الرئيسية</a></header><main><h1 id="------------------------------------------------------">دليل المستشعرات وبوابات تحميل المرئيات الفضائية مجاناً</h1>
+<p><strong>إطار التحليل الطيفي والمكاني المتقدم للمرئيات الفضائية (أطياف — ATIAF)</strong>  </p>
+<p>*كيفية تحميل، وفك، واستخدام المرئيات الفضائية المجانية في أطياف دون الحاجة لكتابة كود أو استخدام مفاتيح برمجية*</p>
+<p>---</p>
+<h2 id="1----------------------------------">1. نظرة عامة على آلية تدفق البيانات</h2>
+<p>يعتمد مشروع <strong>أطياف</strong> مبدأ <strong>العمل المحلي المستقل (Local-First)</strong>:</p>
+<p>1. <strong>التحميل:</strong> تقوم بتحميل المشاهد الفضائية مجاناً من البوابات الرسمية التابعة لوكالات الفضاء (USGS، Copernicus، NASA).</p>
+<p>2. <strong>فك الضغط:</strong> تفك ضغط الأرشيف المحمل (<code>.tar</code>, <code>.zip</code>, <code>.tar.gz</code>) بالكامل داخل مجلد عادي على حاسوبك.</p>
+<p>3. <strong>التحديد:</strong> من داخل ArcGIS Pro أو QGIS، تختار ذلك المجلد المفكوك (أو المجلد الأب الذي يحوي عدة مشاهد).</p>
+<p>4. <strong>التشغيل:</strong> يتولى الماسح التلقائي لميتاداتا أطياف التعرف الذاتي على القمر، والمستشعر، ومستوى المعالجة، ومعاملات المعايرة، ومطابقة النطاقات الطيفية آلياً دون أي تدخل منك!</p>
+<p>---</p>
+<h2 id="2----------------------------------------------------">2. الأقمار المدعومة والبوابات الرسمية للتحميل المجاني</h2>
+<h3 id="2-1---------------8---9--landsat-8---9-oli---tirs-">2.1 أقمار لاندسات 8 و 9 (Landsat 8 &amp; 9 OLI / TIRS)</h3>
+<p>- <strong>البوابة الرسمية المجانية:</strong> <a href="https://earthexplorer.usgs.gov/">مستكشف الأرض الأمريكي (USGS EarthExplorer)</a></p>
+<p>- <strong>المنتج الموصى به:</strong> <code>Landsat Collection 2 Level-2</code> (يحوي الانعكاسية السطحية وحرارة السطح معاً)</p>
+<p>- <strong>الدقة المكانية:</strong> 30 متراً (للنطاقات البصرية والحرارية المعاد استيفاؤها)</p>
+<p>- <strong>الأدوات المدعومة في أطياف:</strong> جميع الأدوات من 01 إلى 06.</p>
+<p>- <strong>هيكل مجلد المشهد المفكوك:</strong></p>
+<p>  ```text</p>
+<p>  LC08_L2SP_176039_20230520_20230527_02_T1/</p>
+<p>  ├── LC08_L2SP_176039_20230520_20230527_02_T1_MTL.txt   &lt;-- ملف الميتاداتا الرئيسي (إلزامي)</p>
+<p>  ├── LC08_L2SP_176039_20230520_20230527_02_T1_SR_B2.TIF  &lt;-- النطاق الأزرق Blue</p>
+<p>  ├── LC08_L2SP_176039_20230520_20230527_02_T1_SR_B3.TIF  &lt;-- النطاق الأخضر Green</p>
+<p>  ├── LC08_L2SP_176039_20230520_20230527_02_T1_SR_B4.TIF  &lt;-- النطاق الأحمر Red</p>
+<p>  ├── LC08_L2SP_176039_20230520_20230527_02_T1_SR_B5.TIF  &lt;-- تحت الأحمر القريب NIR</p>
+<p>  ├── LC08_L2SP_176039_20230520_20230527_02_T1_SR_B6.TIF  &lt;-- تحت الأحمر القصير SWIR-1</p>
+<p>  ├── LC08_L2SP_176039_20230520_20230527_02_T1_SR_B7.TIF  &lt;-- تحت الأحمر القصير SWIR-2</p>
+<p>  ├── LC08_L2SP_176039_20230520_20230527_02_T1_ST_B10.TIF &lt;-- حرارة السطح ST الحراري</p>
+<p>  └── LC08_L2SP_176039_20230520_20230527_02_T1_QA_PIXEL.TIF &lt;-- قناع السحب والجودة</p>
+<p>  ```</p>
+<p>---</p>
+<h3 id="2-2------------2-----------sentinel-2a---2b-msi-">2.2 قمر سينتنل-2 الأوروبي (Sentinel-2A &amp; 2B MSI)</h3>
+<p>- <strong>البوابة الرسمية المجانية:</strong> <a href="https://dataspace.copernicus.eu/browser/">منظومة كوبرنيكوس للبيانات الفضائية (Copernicus Browser)</a></p>
+<p>- <strong>المنتج الموصى به:</strong> <code>Sentinel-2 Level-2A (BOA Surface Reflectance)</code></p>
+<p>- <strong>الدقة المكانية:</strong> 10 أمتار للنطاقات المرئية وتحت الحمراء القريبة، و20 متراً لنطاقات حافة الأحمر وSWIR.</p>
+<p>- <strong>الأدوات المدعومة في أطياف:</strong> الأدوات 01 و 04 (البيدو) و 05 (النسب البصرية) و 06.</p>
+<p>- <strong>قيد فيزيائي صارم:</strong> سينتنل-2 لا يمتلك مستشعراً حرارياً، ولذا تُحظر الأداة 02 (درجة حرارة السطح) والأداة 03 (الجزر الحرارية) تلقائياً مع توضيح فيزيائي صريح.</p>
+<p>- <strong>هيكل مجلد المشهد المفكوك (<code>.SAFE</code>):</strong></p>
+<p>  ```text</p>
+<p>  S2A_MSIL2A_20230520T082601_N0509_R064_T36RUU_20230520T121500.SAFE/</p>
+<p>  ├── MTD_MSIL2A.xml                                      &lt;-- ميتاداتا XML الرئيسية</p>
+<p>  └── GRANULE/</p>
+<p>      └── L2A_T36RUU_A041302_20230520T083424/</p>
+<p>          ├── MTD_TL.xml</p>
+<p>          └── IMG_DATA/</p>
+<p>              ├── R10m/ (B02, B03, B04, B08)</p>
+<p>              └── R20m/ (B05, B06, B07, B11, B12, SCL)</p>
+<p>  ```</p>
+<p>---</p>
+<h3 id="2-3------------terra-aster-">2.3 قمر أستير (Terra ASTER)</h3>
+<p>- <strong>البوابة الرسمية المجانية:</strong> <a href="https://search.earthdata.nasa.gov/">بحث بيانات وكالة ناسا (NASA Earthdata Search)</a></p>
+<p>- <strong>المنتجات الموصى بها:</strong></p>
+<p>  - <code>AST_07</code> أو <code>AST_07XT</code> (انعكاسية السطح VNIR/SWIR)</p>
+<p>  - <code>AST_08</code> (درجة الحرارة الحركية السطحية من النطاقات الحرارية TIR)</p>
+<p>- <strong>تنبيه تاريخي:</strong> في أبريل 2008، تعطل نظام تبريد مستشعر SWIR في أستير. يسمح أطياف بحساب نسب SWIR الجيولوجية فقط على المشاهد الملتقطة قبل مايو 2008.</p>
+<p>---</p>
+<h3 id="2-4--------------------1--sentinel-1-c-sar-">2.4 قمر الرادار سينتنل-1 (Sentinel-1 C-SAR)</h3>
+<p>- <strong>البوابة الرسمية المجانية:</strong> <a href="https://dataspace.copernicus.eu/">Copernicus Data Space</a> أو <a href="https://search.asf.alaska.edu/">Alaska Satellite Facility (ASF Vertex)</a></p>
+<p>- <strong>المنتج الموصى به:</strong> <code>Sentinel-1 Level-1 GRD (Ground Range Detected)</code></p>
+<p>- <strong>القدرات المتاحة في أطياف:</strong> المعايرة الرادارية للديسبل ($\sigma^0\text{ dB}$)، نسبة الاستقطاب المتعامد ($VH/VV$)، مؤشر الغطاء النباتي الراداري (RVI)، ومرشح لي (Lee Filter) لتنقية التحبب.</p>
+<p>---</p>
+<h2 id="3------------------------------------">3. خطوات التحميل خطوة بخطوة للمبتدئين</h2>
+<p>1. <strong>إنشاء حساب مجاني:</strong> قم بالتسجيل في <a href="https://earthexplorer.usgs.gov/">USGS EarthExplorer</a> أو <a href="https://dataspace.copernicus.eu/browser/">Copernicus Browser</a> (التسجيل مجاني ولا يتطلب سوى بريدك الإلكتروني).</p>
+<p>2. <strong>تحديد منطقة الدراسة (AOI):</strong> ارسم مضلعاً على الخريطة يغطي منطقتك أو ارفع ملف Shapefile/KML.</p>
+<p>3. <strong>تحديد نسبة السحب:</strong> ضع حداً أقصى للغيوم لا يتجاوز 10% أو 20% للحصول على نتائج بصرية نقية.</p>
+<p>4. <strong>اختيار مجموعة البيانات:</strong></p>
+<p>   - للاندسات: *Landsat -&gt; Landsat Collection 2 Level-2 -&gt; Landsat 8-9 OLI/TIRS C2 L2*.</p>
+<p>   - لسينتنل: *Sentinel-2 -&gt; Level-2A*.</p>
+<p>5. <strong>تحميل حزمة المشهد الكاملة:</strong> قم بتحميل الملف المضغوط الكامل (<code>.tar</code> للاندسات أو <code>.zip</code> لسينتنل).</p>
+<p>6. <strong>فك الضغط:</strong> استخدم برامج مثل 7-Zip أو WinRAR لفك ضغط المشهد بالكامل في مجلد محدد على قرصك الصلب.</p>
+<p>7. <strong>التشغيل المباشر:</strong> في ArcGIS Pro أو QGIS، اختر هذا المجلد المفكوك وسيقوم أطياف بجميع المعالجات آلياً!</p></main></html>

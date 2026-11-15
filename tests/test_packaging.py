@@ -9,7 +9,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from atyaf_core.cli import run_diagnostics
+from atiaf_core.cli import run_diagnostics
 
 
 class TestPackagingAndReleaseReadiness(unittest.TestCase):
@@ -32,33 +32,40 @@ class TestPackagingAndReleaseReadiness(unittest.TestCase):
 
         if data:
             self.assertIn(data["project"]["name"], ["atiaf", "atyaf"])
-            self.assertEqual(data["project"]["version"], "1.0.0")
+            self.assertEqual(data["project"]["version"], "1.0.2.dev1")
             self.assertEqual(data["project"]["license"]["text"], "MIT")
-            self.assertTrue("atiaf-verify" in data["project"]["scripts"] or "atyaf-verify" in data["project"]["scripts"])
+            self.assertIn("atiaf-verify", data["project"]["scripts"])
             self.assertIn("numpy>=1.22.0", data["project"]["dependencies"])
             self.assertIn("rasterio>=1.3.0", data["project"]["dependencies"])
         else:
             text = pyproject_path.read_text(encoding="utf-8")
             self.assertTrue('name = "atiaf"' in text or 'name = "atyaf"' in text)
-            self.assertIn('version = "1.0.0"', text)
+            self.assertIn('version = "1.0.2.dev1"', text)
 
     def test_run_diagnostics_cli(self):
         """Verifies that the CLI diagnostics utility runs and returns 0 errors."""
-        res = run_diagnostics(verbose=False)
+        from contextlib import redirect_stdout
+        from io import StringIO
+        captured = StringIO()
+        with redirect_stdout(captured):
+            res = run_diagnostics(verbose=True)
         self.assertEqual(res, 0, "run_diagnostics returned non-zero error count")
+        self.assertIn("scientific validation not checked", captured.getvalue())
+        self.assertNotIn("validated in catalog", captured.getvalue())
+        self.assertNotIn("INSTALLATION VERIFIED SUCCESSFULLY", captured.getvalue())
 
     def test_docs_index_html(self):
-        index_path = PROJECT_ROOT / "docs" / "index.html"
-        self.assertTrue(index_path.is_file(), "docs/index.html is missing")
+        index_path = PROJECT_ROOT / "documentation" / "index.html"
+        self.assertTrue(index_path.is_file(), "documentation/index.html is missing")
         content = index_path.read_text(encoding="utf-8")
         self.assertIn("ATIAF", content)
         self.assertIn("أطياف", content)
         self.assertIn("01. Spectral Indices", content)
         self.assertIn("02. Surface Temperature", content)
-        self.assertIn("03. Urban Heat Islands", content)
-        self.assertIn("04. Environmental Drought", content)
+        self.assertIn("03. Thermal & Urban Analysis", content)
+        self.assertIn("04. Environmental & Drought Analysis", content)
         self.assertIn("05. Geological Analysis", content)
-        self.assertIn("06. Temporal Change", content)
+        self.assertIn("06. Temporal Analysis & Change Detection", content)
 
     def test_readme_and_changelog(self):
         readme_en = PROJECT_ROOT / "README.md"
@@ -69,9 +76,9 @@ class TestPackagingAndReleaseReadiness(unittest.TestCase):
         self.assertTrue(readme_ar.is_file())
         self.assertTrue(changelog.is_file())
 
-        self.assertIn("1.0.0", readme_en.read_text(encoding="utf-8"))
-        self.assertIn("1.0.0", readme_ar.read_text(encoding="utf-8"))
-        self.assertIn("1.0.0", changelog.read_text(encoding="utf-8"))
+        self.assertIn("1.0.2.dev1", readme_en.read_text(encoding="utf-8"))
+        self.assertIn("1.0.2.dev1", readme_ar.read_text(encoding="utf-8"))
+        self.assertIn("1.0.2.dev1", changelog.read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

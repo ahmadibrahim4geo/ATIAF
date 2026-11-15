@@ -4,10 +4,10 @@ from pathlib import Path
 import unittest
 import numpy as np
 
-from atyaf_core.discovery.models import BandRole
-from atyaf_core.environment import EnvironmentalDroughtEngine
-from atyaf_core.indices import INDEX_CATALOG
-from atyaf_core.urban import ThermalUrbanEngine
+from atiaf_core.discovery.models import BandRole
+from atiaf_core.environment import EnvironmentalDroughtEngine
+from atiaf_core.indices import INDEX_CATALOG
+from atiaf_core.urban import ThermalUrbanEngine
 
 ROOT = Path(__file__).resolve().parents[1]
 

@@ -50,6 +50,33 @@
       "publisher": "Original ASTER geology study",
       "role": "geological mineral index formula verification",
       "license_review": "citation only"
+    },
+    {
+      "id": "evi2_noaa_v4_eq36",
+      "url": "https://www.ospo.noaa.gov/Products/documents/GVF_ATBD_V4.0.pdf",
+      "publisher": "NOAA NESDIS OSPO",
+      "role": "EVI2 2.5/2.4 formula corroboration; Jiang 2008 DOI 10.1016/j.rse.2008.06.006",
+      "source_version_or_commit": "ATBD 4.0 2018-06-01 Eq.3.6",
+      "license_review": "Reference only; no source/data redistribution",
+      "access_date": "2026-11-15"
+    },
+    {
+      "id": "nirv_badgley2017",
+      "url": "https://doi.org/10.1126/sciadv.1602244",
+      "publisher": "Science Advances / authors",
+      "role": "Original unadjusted NIR times NDVI definition",
+      "source_version_or_commit": "2017 article doi:10.1126/sciadv.1602244",
+      "license_review": "Reference only; independently implemented formula",
+      "access_date": "2026-11-15"
+    },
+    {
+      "id": "rte_sobrino2004",
+      "url": "https://www.uv.es/sobrino/sobrino_files/papers/Sobrino_LST-Landsat_RSE2004.pdf",
+      "publisher": "Sobrino et al. / University of Valencia",
+      "role": "RTE Eq.1 and NDVI fraction/mixture Eq.8-9; current user mixture differs from full published algorithm",
+      "source_version_or_commit": "RSE 90 (2004) 434-440 doi:10.1016/j.rse.2004.02.003",
+      "license_review": "Reference only; no paper copied/vendored",
+      "access_date": "2026-11-15"
     }
   ]
 }

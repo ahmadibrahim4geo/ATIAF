@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "sequence": 29,
+  "timestamp_utc": "2026-11-14T19:07:55+00:00",
+  "kind": "request",
+  "status": "in_progress",
+  "summary": "Repair tool usability, ATIAF naming, bilingual documentation and branding",
+  "details": "User requests usable per-tool calculations and parameter order, one core name, documentation organization, supplied logo and banner. Baseline: 99 headless tests and 5 native QGIS tests pass; ArcPy import crashes -1073741819. First journal append failed with WinError 5; no prior record was changed.",
+  "references": [],
+  "task_id": "PLAN-0015",
+  "plan_revision": "r1",
+  "changed_files": [
+    "Development_Plans/Active/PLAN-0015_usability_branding_and_recovery.md"
+  ],
+  "tests": [],
+  "test_result": "not_run",
+  "commit": "",
+  "previous_hash": "7b71a7d31184539f25ca37a7b5bf75f1b776077158bfc4c57007335c1667cd1b",
+  "hash": "b508a661a436e21a54c9ff97bd0d64a7913725069cd4e463cf5fb430a4d33a97"
+}

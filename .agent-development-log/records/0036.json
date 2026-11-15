@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "sequence": 36,
+  "timestamp_utc": "2026-11-15T12:13:35+00:00",
+  "kind": "revision",
+  "status": "proposed",
+  "summary": "Clarify NDVI-assisted LST requirement and Sentinel-1 scope",
+  "details": "User reaffirms optional use of NDVI within temperature derivation, not just a separate emissivity raster, and asks whether Sentinel-1 exists/is useful. Source inspection: current workflow uses official L2 ST only; NDVI emissivity gated; no external NDVI file input or complete NDVI-assisted LST path. Sentinel-1 parser/SAR helpers exist but no dedicated validated native radar tool. Preserve these facts and intended LST requirement in PLAN-0015 r4; no runtime change authorized during consolidated discussion.",
+  "references": [
+    34
+  ],
+  "task_id": "PLAN-0015",
+  "plan_revision": "r4",
+  "changed_files": [],
+  "tests": [],
+  "test_result": "not_run",
+  "commit": "",
+  "previous_hash": "442ce1098d9de17b3b4b6202d1af8bfca63389292ad5fbeed6a38182dcd1f7e7",
+  "hash": "652072ecdfd2d8bbdbc869101bb1ff371e11bb70825d86b84e37dace7f6fa4b9"
+}

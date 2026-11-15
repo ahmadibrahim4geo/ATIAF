@@ -12,7 +12,7 @@ import rasterio
 from rasterio.transform import from_origin
 from shapely.geometry import box, Polygon
 
-from atyaf_core.raster import (
+from atiaf_core.raster import (
     CRSManager,
     CRSValidationResult,
     QualityMaskEngine,

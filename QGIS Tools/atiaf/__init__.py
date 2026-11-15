@@ -8,9 +8,11 @@ License: MIT
 import sys
 from pathlib import Path
 
-# Ensure project root is on sys.path for atyaf_core imports
+# Ensure project root is on sys.path for atiaf_core imports
 PLUGIN_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = PLUGIN_DIR.parent.parent
+if (PLUGIN_DIR / "atiaf_core").is_dir() and str(PLUGIN_DIR) not in sys.path:
+    sys.path.insert(0, str(PLUGIN_DIR))
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 

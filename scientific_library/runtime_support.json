@@ -1,0 +1,297 @@
+{
+  "date": "2026-11-15",
+  "scope": "Runtime inventory and observed evidence; original candidate/sensor registries remain proposal baselines. No full mission/product support claim.",
+  "real_product_validation": "NOT_RUN",
+  "clean_machine_validation": "NOT_RUN",
+  "profiles_observed": [
+    "Synthetic Landsat 8 C2 L2 SR/ST",
+    "Synthetic Landsat 7 C2 L2 SR/ST"
+  ],
+  "tools": {
+    "spectral_indices": [
+      {
+        "id": "NDVI",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "ArcGIS Pro 3.6 and QGIS 4.2.3",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "GNDVI",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "SAVI",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "EVI",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "NDRE1",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "NDWI_MCFEETERS",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "NDWI_GAO",
+        "availability": "GATED_SCIENCE_OR_INPUTS",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "MNDWI",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "NDBI",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "UI",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "NBR",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "NBR2",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "NDSI",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "BSI",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "NDMI",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "MSAVI",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "OSAVI",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "VARI",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "GLI",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "TCB",
+        "availability": "GATED_SCIENCE_OR_INPUTS",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "TCG",
+        "availability": "GATED_SCIENCE_OR_INPUTS",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "TCW",
+        "availability": "GATED_SCIENCE_OR_INPUTS",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "EVI2",
+        "availability": "IMPLEMENTED_NUMERIC_FIXTURE_TESTED",
+        "native_fixture_evidence": "Fresh r6 native checks recorded in Reports; no real acquisition claim",
+        "source": "atiaf_core/catalog_additions.py; indices/registry.py"
+      },
+      {
+        "id": "NIRv",
+        "availability": "IMPLEMENTED_NUMERIC_FIXTURE_TESTED",
+        "native_fixture_evidence": "Fresh r6 native checks recorded in Reports; no real acquisition claim",
+        "source": "atiaf_core/catalog_additions.py; indices/registry.py"
+      }
+    ],
+    "geological_analysis": [
+      {
+        "id": "IRON_OXIDE",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "ArcGIS Pro 3.6 and QGIS 4.2.3",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "FERRIC_IRON",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "FERROUS_IRON",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "CLAY_ALTERATION",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "GOSSAN",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "ASTER_QUARTZ",
+        "availability": "GATED_SCIENCE_OR_INPUTS",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "ASTER_CARBONATE",
+        "availability": "GATED_SCIENCE_OR_INPUTS",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "ASTER_MAFIC",
+        "availability": "GATED_SCIENCE_OR_INPUTS",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      }
+    ],
+    "surface_temperature": [
+      {
+        "id": "LST_CELSIUS",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "ArcGIS Pro 3.6 and QGIS 4.2.3",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "LST_KELVIN",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "EMISSIVITY_NDVI",
+        "availability": "GATED_SCIENCE_OR_INPUTS",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "LST",
+        "availability": "CONDITIONAL_USER_INPUTS_REQUIRED",
+        "method": "Official L2 ST or explicit local NDVI_RTE_USER_MIXTURE",
+        "native_fixture_evidence": "Synthetic fixture/readback only; scalar atmosphere/local emissivity assumptions",
+        "source": "atiaf_core/temperature/ndvi_retrieval.py"
+      }
+    ],
+    "thermal_urban": [
+      {
+        "id": "UTFVI",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "HOTSPOTS",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "ArcGIS Pro 3.6 and QGIS 4.2.3",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "SUHI",
+        "availability": "GATED_SCIENCE_OR_INPUTS",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      }
+    ],
+    "environmental_drought": [
+      {
+        "id": "ALBEDO",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "ArcGIS Pro 3.6 and QGIS 4.2.3",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "TVDI",
+        "availability": "GATED_SCIENCE_OR_INPUTS",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "VCI_TCI_VHI",
+        "availability": "GATED_SCIENCE_OR_INPUTS",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      }
+    ],
+    "temporal_change": [
+      {
+        "id": "NDVI",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "ArcGIS Pro 3.6 and QGIS 4.2.3",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "NBR",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      },
+      {
+        "id": "LST",
+        "availability": "CONDITIONAL_PREFLIGHT_REQUIRED",
+        "native_fixture_evidence": "Not asserted individually by this repair",
+        "source": "atiaf_core/tool_contract.py; workflow.py; runtime numerical registry"
+      }
+    ]
+  },
+  "development_version": "1.0.2.dev0",
+  "consolidated_scope": "Manual band UI, thematic groups, local NDVI classes, user-parameterized NDVI/RTE retrieval and bilingual interpretation; real-product validation NOT_RUN"
+}

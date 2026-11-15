@@ -1,0 +1,32 @@
+{
+  "revision": "r6",
+  "date": "2026-11-15",
+  "scope": "Local development implementation and synthetic/native fixture evidence, not real acquisitions or clean-machine acceptance",
+  "checks": [
+    {"command": "Python 3.14.7 -m unittest discover tests", "status": "PASS", "tests": 140, "evidence": "headless.txt"},
+    {"command": "QGIS 4.2.3 python-qgis.bat tests/native_qgis/test_qgis_provider.py", "status": "PASS", "tests": 11, "evidence": "native_qgis.txt"},
+    {"command": "ArcGIS Pro vendor propy.bat tests/native_arcgis/test_arcgis_workflow.py", "status": "PASS", "tests": 8, "evidence": "native_arcgis.txt", "warning": "GDAL CF-1 standard-name database unavailable; tested GeoTIFF paths passed; CF-1 lookup untested"},
+    {"command": "Python tools/test_built_packages.py", "status": "PASS", "evidence": "packages.txt"},
+    {"command": "QGIS python-qgis.bat tests/native_qgis/test_packaged_plugin.py", "status": "PASS", "evidence": "packaged_qgis.txt"},
+    {"command": "node tools/test_documentation.mjs", "status": "PASS", "evidence": "browser.txt", "cards": 45, "desktop": "1400x1100", "mobile": "390x844"},
+    {"command": "Python tools/build_documentation.py and tools/validate_package.py", "status": "PASS", "scope": "Offline build, structure, JSON and local links only"}
+  ],
+  "attempts_retained": [
+    "QGIS custom panel test initially lacked the installed Processing plugins path; corrected the native test environment, then 11 checks passed.",
+    "Sandboxed headless browser could not expose its separate local test endpoint; authorized escalated separate browser test passed both viewports.",
+    "git ls-remote Awesome Spectral Indices failed with getaddrinfo; no source version pinned/imported. Formula additions were independently authored from named primary references."
+  ],
+  "packages": [
+    {"path": "QGIS Tools/Distribution/ATIAF-QGIS-1.0.2.dev0.zip", "sha256": "4f4e40556f54c813c52d871722bb708da652a80b2df4d0b608fe65dc2612e4cb"},
+    {"path": "dist/atiaf-1.0.2.dev0-py3-none-any.whl", "sha256": "ecbff9c9d8e6ec12ad3185df2aa8ac00591e2f95aefad17658f04ae74e605b14"}
+  ],
+  "not_run": [
+    "Real downloaded L1/L2 products and field accuracy/local ecological class calibration",
+    "Clean-machine installation",
+    "Full interactive ArcGIS Pro dialog/RTL/map-rendering click-through",
+    "All-six full interactive bilingual QGIS journeys (one actual Arabic parameter panel was rendered and inspected)",
+    "Full CRS suitability/datum-operation accuracy, large-scene concurrency/crash-resume acceptance",
+    "Remaining AWEI/MTCI/IBI/MIRBI original variant/product review and native real-product validation",
+    "Complete Sentinel-1 radar/InSAR tool"
+  ]
+}

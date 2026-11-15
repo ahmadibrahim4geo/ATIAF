@@ -1,0 +1,79 @@
+<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ATIAF — SCIENTIFIC_METHODS</title><style>body{max-width:980px;margin:auto;padding:28px;color:#062d46;background:#f5f9fc;font:17px/1.85 "Segoe UI",Tahoma,sans-serif}a{color:#075f9c}header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #d8e5ed;padding-bottom:18px}header img{width:150px;height:auto}pre,.table{overflow-x:auto}pre,code{background:#e7f0f6;padding:3px 6px;border-radius:4px;unicode-bidi:isolate}pre{padding:18px}table{border-collapse:collapse;background:white;width:100%}td{padding:12px;border:1px solid #d8e5ed}h2{margin-top:40px}h1{line-height:1.5}</style><header><img src="../assets/atiaf-logo.png" alt="ATIAF"><a href="../index.html">الرئيسية</a></header><main><p>تصحيح حالة الدعم في r6: الصيغ القديمة أدناه مرجع وليست إثبات تحقق شامل. Tasseled Cap وGao وفرع الانبعاثية القديم وASTER الحراري وTVDI وSUHI والمؤشرات التاريخية ما زالت موقوفة. تفسير القيم الحالي مولّد في دليل الحسابات. أضيف EVI2 وNIRv عدديًا، ودليل SURFACE_TEMPERATURE.md يشرح مسار NDVI والانتقال الإشعاعي الجديد ومعاملاته المحلية وحدوده. ثوابت الانبعاثية القديمة أدناه ليست النموذج الجديد أو معاملات عالمية معتمدة.</p>
+<h1 id="-------------------------------------------------------">المرجع العلمي الشامل للمعادلات الفيزيائية وطرق المعايرة</h1>
+<p><strong>إطار التحليل الطيفي والمكاني المتقدم للمرئيات الفضائية (أطياف — ATIAF)</strong>  </p>
+<p>*المرجع الهندسي المعتمد للخوارزميات المنفذة، فيزياء المستشعرات، والنماذج الحركية السطحية*</p>
+<p>&gt; [!NOTE]</p>
+<p>&gt; للاطلاع على الدليل الشامل والمفصل للمستخدم مع شرح تفصيلي للنطاقات الطيفية لكل قمر وجداول تفسير القيم، يرجى مراجعة <a href="INDICATORS_CATALOG.html">دليل المؤشرات الشامل (INDICATORS_CATALOG.md)</a>.</p>
+<p>---</p>
+<h2 id="1-------------------------------------">1. الوحدات الفيزيائية ومعايير المعايرة</h2>
+<p>تعتمد جميع العمليات الرياضية داخل أطياف على قيم فيزيائية حقيقية ومصححة للسطح:</p>
+<p>1. <strong>الانعكاسية السطحية ($\rho$):</strong> أرقام كسرية عائمة ضمن المدى $[0.0, 1.0]$.</p>
+<p>   - لاندسات C2 L2: يتم التحويل باستخدام $\rho = \text{DN} \times 0.0000275 - 0.2$.</p>
+<p>   - سينتنل-2 L2A: يتم التحويل باستخدام $\rho = \text{DN} / 10000.0$.</p>
+<p>   - المنتجات المعايرة مسبقاً لا يتم مضاعفة معاملاتها أبداً.</p>
+<p>2. <strong>درجة حرارة السطح ($T$):</strong> أرقام كسرية بوحدة الكلفن ($K$) أو الدرجة المئوية ($^\circ\text{C}$).</p>
+<p>   - لاندسات C2 L2 ST: يتم التحويل باستخدام $T_K = \text{DN} \times 0.00341802 + 149.0$ و $T_{^\circ\text{C}} = T_K - 273.15$.</p>
+<p>3. <strong>التشتت الراداري المرتد ($\sigma^0$):</strong> يحول للديسبل عبر $\sigma^0_{\text{dB}} = 10 \cdot \log_{10}(\sigma^0_{\text{linear}})$.</p>
+<p>---</p>
+<h2 id="2----------------------------------------------">2. المعادلات الرياضية المعتمدة حسب حزمة الأدوات</h2>
+<h3 id="-------01--------------------------">الأداة 01: المؤشرات الطيفية البصرية</h3>
+<p>- <strong>NDVI:</strong> $\frac{\rho_{\text{NIR}} - \rho_{\text{Red}}}{\rho_{\text{NIR}} + \rho_{\text{Red}}}$</p>
+<p>- <strong>GNDVI:</strong> $\frac{\rho_{\text{NIR}} - \rho_{\text{Green}}}{\rho_{\text{NIR}} + \rho_{\text{Green}}}$</p>
+<p>- <strong>SAVI:</strong> $\frac{(1 + L)(\rho_{\text{NIR}} - \rho_{\text{Red}})}{\rho_{\text{NIR}} + \rho_{\text{Red}} + L} \quad (L = 0.5)$</p>
+<p>- <strong>MSAVI:</strong> $\frac{2\rho_{\text{NIR}} + 1 - \sqrt{(2\rho_{\text{NIR}} + 1)^2 - 8(\rho_{\text{NIR}} - \rho_{\text{Red}})}}{2}$</p>
+<p>- <strong>OSAVI:</strong> $\frac{\rho_{\text{NIR}} - \rho_{\text{Red}}}{\rho_{\text{NIR}} + \rho_{\text{Red}} + 0.16}$</p>
+<p>- <strong>EVI:</strong> $2.5 \cdot \frac{\rho_{\text{NIR}} - \rho_{\text{Red}}}{\rho_{\text{NIR}} + 6.0\rho_{\text{Red}} - 7.5\rho_{\text{Blue}} + 1.0}$</p>
+<p>- <strong>NDRE1:</strong> $\frac{\rho_{\text{NIR}} - \rho_{\text{RedEdge1}}}{\rho_{\text{NIR}} + \rho_{\text{RedEdge1}}}$ (سينتنل-2 فقط)</p>
+<p>- <strong>VARI:</strong> $\frac{\rho_{\text{Green}} - \rho_{\text{Red}}}{\rho_{\text{Green}} + \rho_{\text{Red}} - \rho_{\text{Blue}}}$</p>
+<p>- <strong>GLI:</strong> $\frac{2\rho_{\text{Green}} - \rho_{\text{Red}} - \rho_{\text{Blue}}}{2\rho_{\text{Green}} + \rho_{\text{Red}} + \rho_{\text{Blue}}}$</p>
+<p>- <strong>NDWI (ماك فيترز):</strong> $\frac{\rho_{\text{Green}} - \rho_{\text{NIR}}}{\rho_{\text{Green}} + \rho_{\text{NIR}}}$</p>
+<p>- <strong>MNDWI (شو):</strong> $\frac{\rho_{\text{Green}} - \rho_{\text{SWIR1}}}{\rho_{\text{Green}} + \rho_{\text{SWIR1}}}$</p>
+<p>- <strong>NDMI / NDWI جاو:</strong> $\frac{\rho_{\text{NIR}} - \rho_{\text{SWIR1}}}{\rho_{\text{NIR}} + \rho_{\text{SWIR1}}}$</p>
+<p>- <strong>NDBI:</strong> $\frac{\rho_{\text{SWIR1}} - \rho_{\text{NIR}}}{\rho_{\text{SWIR1}} + \rho_{\text{NIR}}}$</p>
+<p>- <strong>UI:</strong> $\frac{\rho_{\text{SWIR2}} - \rho_{\text{NIR}}}{\rho_{\text{SWIR2}} + \rho_{\text{NIR}}}$</p>
+<p>- <strong>BSI:</strong> $\frac{(\rho_{\text{SWIR1}} + \rho_{\text{Red}}) - (\rho_{\text{NIR}} + \rho_{\text{Blue}})}{(\rho_{\text{SWIR1}} + \rho_{\text{Red}}) + (\rho_{\text{NIR}} + \rho_{\text{Blue}})}$</p>
+<p>- <strong>NBR &amp; NBR2:</strong> $\frac{\rho_{\text{NIR}} - \rho_{\text{SWIR2}}}{\rho_{\text{NIR}} + \rho_{\text{SWIR2}}}, \quad \frac{\rho_{\text{SWIR1}} - \rho_{\text{SWIR2}}}{\rho_{\text{SWIR1}} + \rho_{\text{SWIR2}}}$</p>
+<p>- <strong>NDSI:</strong> $\frac{\rho_{\text{Green}} - \rho_{\text{SWIR1}}}{\rho_{\text{Green}} + \rho_{\text{SWIR1}}}$</p>
+<p>- <strong>تحويلات Tasseled Cap (السطوع TCB، الخضرة TCG، الرطوبة TCW):</strong> مصفوفات تحويل متعامدة مخصصة لكل قمر (لاندسات 8-9، لاندسات 7، لاندسات 4-5، سينتنل-2).</p>
+<p>---</p>
+<h3 id="-------02--------------------------------lst---lse-">الأداة 02: درجة حرارة السطح والانبعاثية (LST &amp; LSE)</h3>
+<p>- <strong>نموذج سوبرينو (Sobrino et al. 2004) للانبعاثية بالاعتماد على عتبات NDVI:</strong></p>
+<p>  $$P_v = \left( \frac{\text{NDVI} - 0.2}{0.5 - 0.2} \right)^2$$</p>
+<p>  $$\varepsilon = \begin{cases}</p>
+<p>  0.985 &amp; \text{إذا كان } \text{NDVI} &lt; 0.0 \\</p>
+<p>  0.970 &amp; \text{إذا كان } 0.0 \le \text{NDVI} &lt; 0.2 \\</p>
+<p>  0.004 \cdot P_v + 0.986 &amp; \text{إذا كان } 0.2 \le \text{NDVI} \le 0.5 \\</p>
+<p>  0.990 &amp; \text{إذا كان } \text{NDVI} &gt; 0.5</p>
+<p>  \end{cases}$$</p>
+<p>---</p>
+<h3 id="-------03-----------------------------------utfvi-">الأداة 03: مؤشر تباين الحقل الحراري الحضري (UTFVI)</h3>
+<p>$$\text{UTFVI} = \frac{\text{LST} - \mu_{\text{LST}}}{\mu_{\text{LST}}}$$</p>
+<p>يصنف إلى 6 مستويات للراحة البيئية من ممتاز ($&lt;0$) وحتى الأسوأ للغاية ($&gt;0.020$).</p>
+<p>وتحدد البؤر الحرارية الشديدة عبر:</p>
+<p>$$z = \frac{\text{LST} - \mu_{\text{LST}}}{\sigma_{\text{LST}}} \ge 2.0$$</p>
+<p>---</p>
+<h3 id="-------04----------------------tvdi--------------">الأداة 04: الجفاف البيئي ومؤشر TVDI والبيدو السطح</h3>
+<p>- <strong>البيدو السطح (Liang 2001):</strong></p>
+<p>  $$\alpha = 0.356\rho_{\text{Blue}} + 0.130\rho_{\text{Red}} + 0.373\rho_{\text{NIR}} + 0.085\rho_{\text{SWIR1}} + 0.072\rho_{\text{SWIR2}} - 0.0018$$</p>
+<p>- <strong>مؤشر جفاف الغطاء النباتي الحراري (TVDI):</strong></p>
+<p>  $$\text{TVDI} = \frac{\text{LST} - \text{LST}_{\text{min}}}{\text{LST}_{\text{max}} - \text{LST}_{\text{min}}}$$</p>
+<p>---</p>
+<h3 id="-------05-----------------------------------">الأداة 05: التحليل الجيولوجي والنسب المعدنية</h3>
+<p>- <strong>أكاسيد الحديد:</strong> $\rho_{\text{Red}} / \rho_{\text{Blue}}$</p>
+<p>- <strong>الحديد ثلاثي التكافؤ:</strong> $\rho_{\text{Red}} / \rho_{\text{Green}}$</p>
+<p>- <strong>الحديد ثنائي التكافؤ:</strong> $\rho_{\text{SWIR1}} / \rho_{\text{NIR}}$</p>
+<p>- <strong>تحورات الطين والهيدروكسيل:</strong> $\rho_{\text{SWIR1}} / \rho_{\text{SWIR2}}$</p>
+<p>- <strong>الجوسان واللاتريت:</strong> $\rho_{\text{SWIR1}} / \rho_{\text{Red}}$</p>
+<p>- <strong>الكوارتز الحراري (QI):</strong> $(\text{TIR}_{11} \cdot \text{TIR}_{11}) / (\text{TIR}_{10} \cdot \text{TIR}_{12})$</p>
+<p>- <strong>الكربونات الحراري (CI):</strong> $\text{TIR}_{13} / \text{TIR}_{14}$</p>
+<p>- <strong>الصخور المافية الحراري (MI):</strong> $\text{TIR}_{12} / \text{TIR}_{13}$</p>
+<p>---</p>
+<h3 id="-------06------------------------------------">الأداة 06: التحليل الزمني وتغير الغطاء الأرضي</h3>
+<p>- <strong>فارق نسبة الحريق (dNBR) وفق المعيار القياسي الأمريكي USGS FIREMON:</strong></p>
+<p>  $$\text{dNBR} = \text{NBR}_{\text{قبل الحريق}} - \text{NBR}_{\text{بعد الحريق}}$$</p>
+<p>- <strong>التغير الزمني للمؤشرات (dNDVI / dLST):</strong> $\Delta M = M_{T_2} - M_{T_1}$</p>
+<p>- <strong>نسبة التغير المئوية:</strong> $\text{RelChange} = \frac{M_{T_2} - M_{T_1}}{|M_{T_1}| + 10^{-6}} \times 100\%$</p>
+<p>---</p>
+<h3 id="-----------------------------------------------------------------">الأنماط المتقدمة: رادار الفتحة الاصطناعية والاستشعار فائق الطيفية</h3>
+<p>- <strong>رادار Sentinel-1:</strong> معايرة $\sigma^0_{\text{dB}} = 10 \cdot \log_{10}(\sigma^0_{\text{linear}})$، ونسبة $VH/VV$، ومؤشر RVI، ومرشح لي (Lee Filter).</p>
+<p>- <strong>الاستشعار فائق الطيفية (EnMAP / PRISMA):</strong> مخطط الزاوية الطيفية SAM ($\theta = \arccos \frac{\mathbf{v} \cdot \mathbf{r}}{\|\mathbf{v}\| \|\mathbf{r}\|}$)، وعمق قيعان الامتصاص التشخيصية للمعادن.</p></main></html>

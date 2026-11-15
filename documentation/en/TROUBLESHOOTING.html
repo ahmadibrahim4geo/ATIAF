@@ -1,0 +1,14 @@
+<!doctype html><html lang="en" dir="ltr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ATIAF — TROUBLESHOOTING</title><style>body{max-width:980px;margin:auto;padding:28px;color:#062d46;background:#f5f9fc;font:17px/1.85 "Segoe UI",Tahoma,sans-serif}a{color:#075f9c}header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #d8e5ed;padding-bottom:18px}header img{width:150px;height:auto}pre,.table{overflow-x:auto}pre,code{background:#e7f0f6;padding:3px 6px;border-radius:4px;unicode-bidi:isolate}pre{padding:18px}table{border-collapse:collapse;background:white;width:100%}td{padding:12px;border:1px solid #d8e5ed}h2{margin-top:40px}h1{line-height:1.5}</style><header><img src="../assets/atiaf-logo.png" alt="ATIAF"><a href="../index.html">Documentation home</a></header><main><h1 id="troubleshooting">Troubleshooting</h1>
+<div class="table"><table>
+<tr><td>Symptom</td><td>Action</td></tr>
+<tr><td>Old order / absent controls</td><td>Close tool, Refresh toolbox/restart Pro. Open this complete checkout, not an old isolated copy.</td></tr>
+<tr><td>Missing scientific library</td><td>Controls remain visible. Check the exact active host Python using the read-only helper, repair a compatible cloned environment and restart.</td></tr>
+<tr><td>Empty selection</td><td>Check a calculation; open the multi-select list in QGIS.</td></tr>
+<tr><td>Sensor mismatch / missing bands</td><td>Choose AUTO or correct metadata level; supply complete assets or reviewed expert mapping.</td></tr>
+<tr><td>Missing QA</td><td>Restore actual mask or explicitly disable QA after assessing limitations.</td></tr>
+<tr><td>Invalid CRS</td><td>Use native projected metre picker. Correctly define unknown source CRS first.</td></tr>
+<tr><td>TVDI / SUHI / historical models gated</td><td>Required dry/wet edges, urban/rural references or historical baseline are not implemented as validated inputs yet.</td></tr>
+<tr><td>AOI error</td><td>Supply valid nonempty polygon with known CRS.</td></tr>
+<tr><td>Raster saved / no map layer</td><td>Open it manually; inspect native map warnings. Saved outputs remain independent of rendering.</td></tr>
+</table></div>
+<p>Record tool, selected methods, product level, host/environment and exact error. Do not upload imagery or private paths without consent. <a href="../../PROJECT_STATE.md">Current evidence</a>.</p></main></html>

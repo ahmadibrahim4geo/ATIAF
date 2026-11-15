@@ -3,8 +3,10 @@
 from datetime import datetime
 from pathlib import Path
 import unittest
+import runpy
+import tempfile
 
-from atyaf_core.discovery import (
+from atiaf_core.discovery import (
     BandRole,
     ProductLevel,
     SensorFamily,
@@ -17,6 +19,21 @@ from atyaf_core.discovery import (
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = ROOT / "tests" / "fixtures" / "synthetic_scenes"
+
+
+def setUpModule():
+    """Generate parser-only stubs in isolation; never depend on ignored local imagery."""
+    global FIXTURES, _fixture_directory
+    _fixture_directory = tempfile.TemporaryDirectory(prefix="atiaf-parser-fixtures-")
+    FIXTURES = Path(_fixture_directory.name) / "synthetic_scenes"
+    helper = runpy.run_path(str(ROOT / "tests" / "fixtures" / "create_synthetic_fixtures.py"))
+    create = helper["create_synthetic_fixtures"]
+    create.__globals__["FIXTURES_DIR"] = FIXTURES
+    create()
+
+
+def tearDownModule():
+    _fixture_directory.cleanup()
 
 
 class TestLandsatRecognition(unittest.TestCase):

@@ -1,14 +1,17 @@
 cff-version: 1.2.0
-message: 'If you use ATIAF, please cite the software and the original scientific references for all computed indices.'
-title: 'ATIAF — Advanced Thematic Imagery Analysis Framework'
-authors:
-  - family-names: Ibrahim
-    given-names: Ahmed
-license: MIT
+message: "If you use ATIAF, cite this software and the original scientific references for each method. This is a development version, not a peer-reviewed validation study."
 type: software
+title: "ATIAF: Advanced Thematic Imagery Analysis Framework"
+authors:
+  - name: "ATIAF contributors"
+version: "1.0.2.dev1"
+repository-code: "https://github.com/ahmadibrahim4geo/ATIAF"
+url: "https://github.com/ahmadibrahim4geo/ATIAF"
+license: MIT
 keywords:
   - remote sensing
   - GIS
+  - QGIS
+  - ArcGIS Pro
   - spectral indices
-  - satellite imagery
-repository-code: 'https://github.com/ahmadibrahim4geo'
+abstract: "Local satellite imagery analysis with a shared Python core, native GIS adapters, bilingual documentation and reproducible scientific provenance. Sensor and method validation limits are recorded separately."

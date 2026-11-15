@@ -33,3 +33,19 @@ create a linked revision or cancellation. This local hash chain is not a signatu
 | [#0026](reports/0026.md) | 2026-11-14T18:14:32+00:00 | implementation | completed | #0025 | Completed PLAN-0013: Professional Repository README & HTML Documentation Portal Overhaul |
 | [#0027](reports/0027.md) | 2026-11-14T18:23:09+00:00 | plan | in_progress | — | Initiated PLAN-0014: ATIAF Spelling Standardization, Folder Renaming & ArcGIS Pro Toolbox Fix |
 | [#0028](reports/0028.md) | 2026-11-14T18:39:08+00:00 | implementation | completed | #0027 | Completed PLAN-0014: ATIAF Spelling Standardization, Folder Renaming & ArcGIS Pro Toolbox Fix |
+| [#0029](reports/0029.md) | 2026-11-14T19:07:55+00:00 | request | in_progress | — | Repair tool usability, ATIAF naming, bilingual documentation and branding |
+| [#0030](reports/0030.md) | 2026-11-14T19:46:47+00:00 | implementation | in_progress | #0029 | Implemented shared workflow repair, canonical core and bilingual documentation |
+| [#0031](reports/0031.md) | 2026-11-15T10:54:07+00:00 | verification | completed | #0030 | Verified final repair checks; overall plan remains Active and partial |
+| [#0032](reports/0032.md) | 2026-11-15T10:55:36+00:00 | handoff | in_progress | #0031 | PLAN-0015 partial delivery; resume native GUI, real-product and clean-install acceptance |
+| [#0033](reports/0033.md) | 2026-11-15T11:49:40+00:00 | revision | proposed | #0029 | Record discussion requirements: manual band UI and QGIS-owned distribution |
+| [#0034](reports/0034.md) | 2026-11-15T12:05:29+00:00 | revision | proposed | #0033 | Research additional indices; group calculations and clarify LST controls |
+| [#0035](reports/0035.md) | 2026-11-15T12:09:53+00:00 | handoff | in_progress | #0034 | Recorded r3 index research and grouped calculation/temperature requirements |
+| [#0036](reports/0036.md) | 2026-11-15T12:13:35+00:00 | revision | proposed | #0034 | Clarify NDVI-assisted LST requirement and Sentinel-1 scope |
+| [#0037](reports/0037.md) | 2026-11-15T12:15:08+00:00 | handoff | in_progress | #0036 | Recorded NDVI-assisted LST gap and honest Sentinel-1 status |
+| [#0038](reports/0038.md) | 2026-11-15T12:22:25+00:00 | revision | proposed | #0036 | Require bilingual interpretation and sourced locally adjustable index classes |
+| [#0039](reports/0039.md) | 2026-11-15T12:23:56+00:00 | handoff | in_progress | #0038 | Recorded r5 output interpretation and locally adjustable classification scope |
+| [#0040](reports/0040.md) | 2026-11-15T12:27:28+00:00 | request | approved | #0038 | Implement consolidated PLAN-0015 r2-r5 tool and interpretation changes |
+| [#0041](reports/0041.md) | 2026-11-15T13:06:53+00:00 | implementation | in_progress | #0040 | Implemented consolidated native UI, NDVI thermal retrieval and interpretation/classification |
+| [#0042](reports/0042.md) | 2026-11-15T13:06:54+00:00 | handoff | in_progress | #0041 | Deliver r6 development build; keep real-product and full host acceptance pending |
+| [#0043](reports/0043.md) | 2026-11-15T13:13:11+00:00 | request | approved | — | Prepare professional project presentation and publish to user-owned GitHub ATIAF |
+| [#0044](reports/0044.md) | 2026-11-15T13:28:53+00:00 | implementation | in_progress | #0043 | Prepared professional EN/AR presentation and dev1 GitHub publication snapshot |

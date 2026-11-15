@@ -1,0 +1,31 @@
+[
+  {
+    "id": "atiaf-logo.png",
+    "source": "Modern ATIAF Wave Logo.png",
+    "path": "documentation/assets/atiaf-logo.png",
+    "dimensions": [
+      1535,
+      1024
+    ],
+    "sha256": "fb86e36fb632e6b01af5fecfa8e6879a468f72d161733d191315e48b6b62dfbb",
+    "role": "brand logo",
+    "authorization": "User supplied and explicitly requested project branding integration; no external license claim",
+    "altered": false,
+    "additional_uses": [
+      "QGIS Tools/atiaf/icon.png"
+    ]
+  },
+  {
+    "id": "atiaf-banner.png",
+    "source": "ATIAF Workflow with Earth Horizon.png",
+    "path": "documentation/assets/atiaf-banner.png",
+    "dimensions": [
+      2172,
+      724
+    ],
+    "sha256": "8ae9cea0aa2acdbee40f6301ecc8bb0424c7f8bbfad675dfd0cf2fcc9a357c5c",
+    "role": "illustrative workflow banner",
+    "authorization": "User supplied and explicitly requested project branding integration; no external license claim",
+    "altered": false
+  }
+]

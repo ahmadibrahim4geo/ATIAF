@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-14",
+  "scope": "Observed local runtime versions; not a blanket compatibility or clean-install matrix",
+  "standalone": {
+    "python": "3.14.7",
+    "numpy": "2.5.3",
+    "rasterio": "1.5.2",
+    "shapely": "2.1.2",
+    "pyproj": "3.8.0",
+    "geopandas": "1.2.0",
+    "matplotlib": "3.11.2",
+    "scipy": null
+  },
+  "qgis": {
+    "version": "4.2.3-Belém do Pará",
+    "python": "3.12.15",
+    "gdal": "3.13.3",
+    "validation": "native Processing synthetic tests; no full GUI acceptance"
+  },
+  "arcgis_pro": {
+    "version": "3.6",
+    "build": "59527",
+    "validation": "native toolbox parameters and six tools on synthetic fixtures; propy.bat with authorized execution context",
+    "warning": "GDAL CF-1 standard-name table unavailable; CF-1 lookup functionality not validated"
+  },
+  "native_gui": "Stopped by physical Escape; no more Computer Use actions",
+  "real_products": "NOT RUN",
+  "clean_machine_install": "NOT RUN",
+  "ci": "Workflow configured, remote run NOT RUN",
+  "skills": {
+    "source": "https://github.com/ahmadibrahim4geo/GIS-Development-Skills.git",
+    "commit": "2a0a9a23618e40218484ec8ae5848a481df51f1a",
+    "license": "MIT",
+    "upstream_modified": false
+  }
+}

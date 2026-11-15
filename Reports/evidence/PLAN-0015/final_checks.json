@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-15",
+  "plan": "PLAN-0015",
+  "revision": "r1",
+  "checks": [
+    {
+      "id": "unit_tests",
+      "command": "& 'C:/Users/ahmad/AppData/Local/Python/pythoncore-3.14-64/python.exe' -m unittest discover tests",
+      "exit_code": 0,
+      "output": "............................................................................................................................\r\n----------------------------------------------------------------------\r\nRan 124 tests in 4.785s\r\n\r\nOK\r\n"
+    },
+    {
+      "id": "native_qgis",
+      "command": "& 'C:/Program Files/QGIS 4.2.3/bin/python-qgis.bat' tests/native_qgis/test_qgis_provider.py",
+      "exit_code": 0,
+      "output": "........\r\n----------------------------------------------------------------------\r\nRan 8 tests in 3.016s\r\n\r\nOK\r\n"
+    },
+    {
+      "id": "packaging",
+      "command": "& 'C:/Users/ahmad/AppData/Local/Python/pythoncore-3.14-64/python.exe' tools/test_built_packages.py",
+      "exit_code": 0,
+      "output": "WHEEL PASS: isolated installed core, six catalogs, scientific imports\r\n\r\nSOURCE IDENTITY PASS: wheel and self-contained QGIS core match current source; icon included\r\n"
+    },
+    {
+      "id": "relocated_qgis",
+      "command": "& 'C:/Program Files/QGIS 4.2.3/bin/python-qgis.bat' tests/native_qgis/test_packaged_plugin.py",
+      "exit_code": 0,
+      "output": "PACKAGED PLUGIN PASS: relocated core, six algorithms, native synthetic NDVI readback\r\n\r\n"
+    },
+    {
+      "id": "structure",
+      "command": "& 'C:/Users/ahmad/AppData/Local/Python/pythoncore-3.14-64/python.exe' tools/validate_package.py",
+      "exit_code": 0,
+      "output": "Candidate indices: 26\r\nPlanned sensors: 19\r\nMarkdown files: 343 JSON: 42\r\nSTRUCTURAL VALIDATION PASS � documentation only. Native ArcGIS/QGIS tests NOT RUN.\r\n"
+    },
+    {
+      "id": "diagnostics",
+      "command": "& 'C:/Users/ahmad/AppData/Local/Python/pythoncore-3.14-64/python.exe' tools/verify_installation.py",
+      "exit_code": 0,
+      "output": "======================================================================\r\n  ATIAF (�����) � Installation & Environment Diagnostics (1.0.1.dev0)\r\n======================================================================\r\nPython Runtime: 3.14.7 (C:\\Users\\ahmad\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe)\r\nProject Root:   D:\\My Software\\ATIAF\r\n\r\n[1/5] Checking Core Scientific Dependencies...\r\n  [OK] numpy        v2.5.3      (NumPy array processing)\r\n  [OK] rasterio     v1.5.2      (GeoTIFF raster I/O)\r\n  [OK] shapely      v2.1.2      (AOI polygon vector geometry)\r\n  [OK] pyproj       v3.8.0      (Cartographic projections & CRS)\r\n\r\n[2/5] Checking Optional Analysis & Visualization Dependencies...\r\n  [OPTIONAL] geopandas    v1.2.0      (Vector GIS spatial frames)\r\n  [OPTIONAL] matplotlib   v3.11.2     (Rendering & colormaps)\r\n  [NOT INSTALLED] scipy        (Advanced spatial filtering - fallback available)\r\n\r\n[3/5] Checking ATIAF Core Processing Engines...\r\n  [OK] Discovery Core: Landsat, Sentinel-2, ASTER, Sentinel-1 Parsers loaded\r\n  [OK] Optical Indices: 22 scientific indices validated in catalog\r\n  [OK] Surface Temperature & Emissivity: Sobrino 2004 NDVI model loaded\r\n  [OK] Thermal Urban & Drought: UTFVI, Hotspots, Liang Albedo, TVDI loaded\r\n  [OK] Geological Ratios: 8 diagnostic mineral alterations loaded\r\n  [OK] Mosaic & Temporal: Quality-aware blending & dNBR burn severity loaded\r\n  [OK] Advanced Modalities: SAR (Sentinel-1) & Hyperspectral (EnMAP/PRISMA) gating loaded\r\n\r\n[4/5] Checking ArcGIS Pro Toolbox (.pyt)...\r\n  [OK] ArcGIS Pro Tools\\ATIAF.pyt syntax valid; native loading/execution not checked here\r\n\r\n[5/5] Checking QGIS Processing Provider Plugin...\r\n  [OK] QGIS Tools\\atiaf/ provider 'atiaf' imported; native registration not checked here\r\n\r\n======================================================================\r\n  RESULT: dependency/import/syntax checks passed; native dialogs, real products and clean installation NOT VERIFIED\r\n======================================================================\r\n"
+    }
+  ]
+}

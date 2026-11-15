@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "sequence": 33,
+  "timestamp_utc": "2026-11-15T11:49:40+00:00",
+  "kind": "revision",
+  "status": "proposed",
+  "summary": "Record discussion requirements: manual band UI and QGIS-owned distribution",
+  "details": "User is collecting modifications before execution. Existing plan advanced to r2 with original r1 criteria/history retained. User requires direct optional native band-file selection in both hosts for incomplete metadata, only needed/available bands, explicit science provenance and optional JSON persistence. Latest request: QGIS ZIP location must be explicitly QGIS-owned and linked to plan/project/build/docs. Proposed path QGIS Tools/Distribution; builder/tests/CI/README and EN/AR guides must migrate together after consolidated review. No folder move, runtime edit or rebuild in this batch. tools-to-developer_tools remains an assistant proposal. Report 0017, state and indexes updated. Structural validation PASS; runtime tests not run for r2 and old 124/8/6 counts remain r1 only.",
+  "references": [
+    29
+  ],
+  "task_id": "PLAN-0015",
+  "plan_revision": "r2",
+  "changed_files": [
+    "Development_Plans/Active/PLAN-0015_usability_branding_and_recovery.md",
+    "Reports/0017_manual_input_and_qgis_distribution_requirements.md",
+    "PROJECT_STATE.md"
+  ],
+  "tests": [
+    "python tools/validate_package.py: structural PASS; runtime r2 tests NOT RUN"
+  ],
+  "test_result": "passed",
+  "commit": "",
+  "previous_hash": "82cb00b50dd99bc683bbb3120500fd80a9e2c51f5f9df6307851e63d7bdbdadc",
+  "hash": "13a0023db6453e2db88381604398504b1fc9afc01de93e2f431802b2e2c6219d"
+}

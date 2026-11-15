@@ -1,7 +1,13 @@
-# Developer utilities
-- `python tools/validate_package.py` checks docs/JSON/internal links and explicit unimplemented status; it does **not** test GIS calculations.
-- `python tools/bootstrap_skills.py` downloads the approved GIS-Development-Skills repo into `.agent_resources/GIS-Development-Skills` and verifies mandatory files + commit SHA. Does NOT execute remote scripts. On a disconnected machine it may fail, which must be documented.
-- `python tools/bootstrap_skills.py --verify` verifies an existing installation locally, without network.
-- `python tools/sync_index_catalog.py --commit FULL_40_HEX_SHA` optionally downloads an MIT index catalog + LICENSE on a developer host. The experimental v1 catalog is **unreviewed** and is NOT directly enabled for users; citation/license/formula/QA validation comes first. `--dry-run` to print URLs.
+# Developer utilities / برامج صيانة المشروع
 
-Both network operations are developer-only; final user tools must function from already-downloaded local imagery and approved packaged scientific definitions.
+These scripts maintain/build/test ATIAF. They are not satellite analysis tools and are not prerequisite preparation steps for users. هذه برامج تجهيز وصيانة وليست أدوات التحليل التي يفتحها المستخدم داخل GIS.
+
+- `validate_package.py`: files, JSON, Markdown/HTML links and immutable historical path migrations.
+- `verify_installation.py`: dependency/import/syntax diagnostics; no native success claim.
+- `setup_arcgis_pro_env.py`: read-only dependency check in the active Pro environment, no installation.
+- `build_documentation.py`: offline HTML portal and EN/AR help generation.
+- `build_qgis_plugin.py`: self-contained plugin ZIP, no imagery or external source.
+- `bootstrap_skills.py`: approved development guidance checkout SHA verification; no remote scripts executed.
+- `sync_index_catalog.py`: optional developer catalog intake; requires pinned commit/license/science review before enabling entries. No catalog downloaded in this repair.
+
+[Installation](../documentation/en/INSTALLATION.md) · [التثبيت](../documentation/ar/INSTALLATION.md).

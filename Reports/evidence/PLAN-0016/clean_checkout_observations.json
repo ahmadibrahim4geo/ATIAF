@@ -1,0 +1,22 @@
+{
+  "plan": "PLAN-0016",
+  "revision": "r1",
+  "date": "2026-11-15",
+  "initial_indexed_export": {
+    "result": "failed",
+    "tests": 140,
+    "failures": 9,
+    "causes": ["Ignored parser raster placeholders were absent", "JSON exclusion matched .agent_resources in the absolute parent path"]
+  },
+  "corrected_indexed_export": {
+    "directory": ".agent_resources/publication-check-02/ATIAF",
+    "commands": ["git checkout-index --all --prefix=<fresh ATIAF directory>/", "python tools/validate_package.py", "python -m unittest discover tests"],
+    "structural_result": "PASS",
+    "json_files": 71,
+    "tests": 140,
+    "failures": 0,
+    "result": "PASS",
+    "exit_code": 0
+  },
+  "scope": "Clean indexed source with developer dependencies already installed; no real imagery, clean-machine or new native GIS validation claimed"
+}

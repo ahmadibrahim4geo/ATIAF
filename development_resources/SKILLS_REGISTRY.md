@@ -39,7 +39,7 @@ If network or Git fails, do not claim skills installed. Clone must remain outsid
 4. **Scientific Processing Reports & Provenance**: per-output formula, precise metadata key/value source, QA, raster readback, and multilingual report generation.
 5. **GIS Raster Performance & Workspaces**: streaming processing, cache fingerprinting, atomic writes and non-destructive resuming.
 
-Make skill contribution proposals under `docs/skill_backport_proposals/`, with tested generic examples and MIT-compatible source. Only modify https://github.com/ahmadibrahim4geo/GIS-Development-Skills upon a separate explicit authorisation; ATIAF repo code does not automatically backport.
+Make skill contribution proposals under `documentation/skill_backport_proposals/`, with tested generic examples and MIT-compatible source. Only modify https://github.com/ahmadibrahim4geo/GIS-Development-Skills upon a separate explicit authorisation; ATIAF repo code does not automatically backport.
 
 ## Optional GENERAL software-engineering skill sources
 - [AI Development Skills](https://github.com/VelimirMueller/ai-development-skills) — Claude Code-oriented engineering judgement; supplementary, not mission-critical. Do NOT bulk-install; review each plugin, platform suitability, and security.

@@ -12,13 +12,13 @@ class TestRepositoryStructure(unittest.TestCase):
     def test_required_files_exist(self):
         required = [
             'AGENTS.md',
-            'START_AGENT_PROMPT.txt',
+            'documentation/project/START_AGENT_PROMPT.txt',
             'PROJECT_STATE.md',
-            'DECISIONS.md',
-            'PROJECT_SPECIFICATION.md',
-            'PROJECT_SPECIFICATION_AR.md',
-            'DEVELOPMENT_ROADMAP.md',
-            'DEVELOPMENT_ROADMAP_AR.md',
+            'documentation/project/DECISIONS.md',
+            'documentation/project/PROJECT_SPECIFICATION.md',
+            'documentation/project/PROJECT_SPECIFICATION_AR.md',
+            'documentation/project/DEVELOPMENT_ROADMAP.md',
+            'documentation/project/DEVELOPMENT_ROADMAP_AR.md',
             'README.md',
             'README.ar.md',
             'LICENSE',
@@ -29,17 +29,17 @@ class TestRepositoryStructure(unittest.TestCase):
             'development_resources/SOURCES.md',
             'scientific_library/sensors/sensor_registry.json',
             'scientific_library/indices/candidate_indices.json',
-            'docs/ar/SENSORS_AND_DOWNLOADS.md',
-            'docs/en/SENSORS_AND_DOWNLOADS.md',
-            'docs/ar/SCIENTIFIC_METHODS.md',
-            'docs/en/SCIENTIFIC_METHODS.md',
+            'documentation/ar/SENSORS_AND_DOWNLOADS.md',
+            'documentation/en/SENSORS_AND_DOWNLOADS.md',
+            'documentation/ar/SCIENTIFIC_METHODS.md',
+            'documentation/en/SCIENTIFIC_METHODS.md',
         ]
         for f in required:
             target = ROOT / f
             self.assertTrue(target.is_file(), f"Missing required file: {f}")
 
     def test_json_files_well_formed(self):
-        json_files = [p for p in ROOT.rglob('*.json') if '.agent_resources' not in p.parts]
+        json_files = [p for p in ROOT.rglob('*.json') if '.agent_resources' not in p.relative_to(ROOT).parts]
         self.assertGreater(len(json_files), 0, "No JSON files found to validate")
         for jf in json_files:
             try:
@@ -49,21 +49,9 @@ class TestRepositoryStructure(unittest.TestCase):
                 self.fail(f"Invalid JSON syntax in {jf.relative_to(ROOT)}: {e}")
 
     def test_no_broken_local_markdown_links(self):
-        import urllib.parse
-        md_files = [p for p in ROOT.rglob('*.md') if '.agent_resources' not in p.parts]
-        broken = []
-        for mf in md_files:
-            text = mf.read_text(encoding='utf-8')
-            for target in re.findall(r'\]\(([^)]+)\)', text):
-                if target.startswith(('http://', 'https://', 'mailto:', '#')):
-                    continue
-                target_clean = urllib.parse.unquote(target.split('#')[0].strip())
-                if not target_clean:
-                    continue
-                resolved = mf.parent / target_clean
-                if not resolved.exists():
-                    broken.append(f"{mf.relative_to(ROOT)} -> {target_clean}")
-        self.assertEqual(len(broken), 0, f"Found broken markdown links:\n" + "\n".join(broken))
+        from tools.link_validation import broken_links
+        self.assertEqual(broken_links(), [])
+
 
 
 class TestScientificRegistries(unittest.TestCase):

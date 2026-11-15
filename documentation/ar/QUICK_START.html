@@ -1,0 +1,22 @@
+<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ATIAF — QUICK_START</title><style>body{max-width:980px;margin:auto;padding:28px;color:#062d46;background:#f5f9fc;font:17px/1.85 "Segoe UI",Tahoma,sans-serif}a{color:#075f9c}header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #d8e5ed;padding-bottom:18px}header img{width:150px;height:auto}pre,.table{overflow-x:auto}pre,code{background:#e7f0f6;padding:3px 6px;border-radius:4px;unicode-bidi:isolate}pre{padding:18px}table{border-collapse:collapse;background:white;width:100%}td{padding:12px;border:1px solid #d8e5ed}h2{margin-top:40px}h1{line-height:1.5}</style><header><img src="../assets/atiaf-logo.png" alt="ATIAF"><a href="../index.html">الرئيسية</a></header><main><h1 id="---------">أول تشغيل</h1>
+<p>ابدأ بدليل <a href="INSTALLATION.html">التثبيت</a>. هذه خطوات استخدام وليست إثباتًا لصلاحية كل منتج فضائي.</p>
+<p>1. <strong>المستشعر والمنتج:</strong> اختر AUTO أو المستشعر والمستوى الفعليين. التعارض مع الميتاداتا يوقف الكشف التلقائي. عند نقصها اختر المستشعر الفعلي وفعّل <a href="MANUAL_BANDS.html">التعيين اليدوي</a>؛ JSON اختياري.</p>
+<p>2. <strong>مجلد بيانات الإدخال:</strong> مرئية مفكوكة أو مجلد يضم مرئيات. احتفظ بالميتاداتا والباندات والجودة معًا عند توافرها. التعيين اليدوي يقبل الملفات المختارة دون ملف تعريف، ويجري تجاهل Work وResults أثناء الكشف التلقائي.</p>
+<p>3. <strong>الجودة والمعالجة:</strong> الجودة مفعّلة افتراضيًا. تطبق المعايرة مرة واحدة من تعريف المنتج، ولا يوجد تصحيح جوي تلقائي. غياب القناع يمنع التشغيل مع طلب الجودة؛ إلغاؤها اختيار صريح يقلل الضمان العلمي.</p>
+<p>4. <strong>الدمج:</strong> مغلق افتراضيًا. تفعيله يدمج نتائج مشاهد متوافقة في اليوم نفسه مع إبقاء مصادرها ونواتجها. اختلاف المستشعر أو التاريخ يتطلب طريقة مواءمة موثقة.</p>
+<p>5. <strong>الحسابات:</strong> اختر المربعات المسماة تحت عناوين المجموعات في البرنامجين. جميعها غير محددة افتراضيًا وأزيل البحث. الحساب الموقوف يوضح السبب. <a href="INDICATORS_CATALOG.html">دليل الحسابات</a> يشرح المعنى والوحدات والمدى والمحاذير. تصنيف NDVI المحلي اختياري يحتاج مبررًا ويحفظ الراستر الأصلي.</p>
+<p>6. <strong>منطقة الدراسة:</strong> مضلع اختياري صالح وغير فارغ ومسقطه معروف، مستقل عن الدمج. المضلع غير الصالح خطأ صريح ولا يجري تجاهل القص.</p>
+<p>7. <strong>المسقط:</strong> من المنتقي الأصلي للمضيف. الفراغ يعيد استخدام مسقط مصدر معروف وملائم بالمتر. المصدر المجهول أو الجغرافي أو القدم يحتاج تصحيحًا أو اختيارًا مناسبًا؛ لا EPSG افتراضي. الاختيار يغيّر شبكة الناتج المحفوظة.</p>
+<p>8. <strong>الإضافة للخريطة:</strong> اختيارية ومغلقة افتراضيًا. المنتجات باقية إذا فشل العرض. تحقق طابور الطبقات واتجاه العربية يسجل منفصلًا.</p>
+<p>9. <strong>الحفظ:</strong> آخر إعداد. الفراغ أو نفس الإدخال يعني Work وResults لكل مرئية. الوجهة المخصصة تنشئ مجلدًا باسم المرئية. التشغيل المتكرر يحتفظ بالنواتج السابقة.</p>
+<p>لتجربة NDVI استخدم انعكاسية الأحمر وتحت الحمراء القريبة مع الجودة المناسبة. المعادلة <code>(NIR-Red)/(NIR+Red)</code> تعطي 0.6667 عند أحمر 0.1 وتحت حمراء 0.5؛ أرقام DN تحتاج المعايرة أولًا. افتح GeoTIFF وافحص المسقط وNoData ثم <code>Results/Reports/index.html</code> وملف manifest للتشغيل.</p>
+<div class="table"><table>
+<tr><td>الأداة</td><td>اختيار البداية</td><td>الشرط</td></tr>
+<tr><td>المؤشرات</td><td>NDVI</td><td>انعكاسية الأحمر وتحت الحمراء القريبة</td></tr>
+<tr><td>الحرارة</td><td>LST ثم وحدة مئوية أو كلفن</td><td>حرارة سطح رسمية أو <a href="SURFACE_TEMPERATURE.html">مدخلات NDVI والإشعاع والغلاف الجوي المحلية</a></td></tr>
+<tr><td>التحليل الحراري</td><td>UTFVI أو HOTSPOTS</td><td>حرارة رسمية؛ SUHI موقوف</td></tr>
+<tr><td>البيئة</td><td>ALBEDO</td><td>ملف Landsat TM/ETM+ الحالي فقط؛ TVDI موقوف</td></tr>
+<tr><td>الجيولوجيا</td><td>IRON_OXIDE</td><td>أحمر وأزرق معايران؛ دلالة وليست إثبات معدن</td></tr>
+<tr><td>الزمن</td><td>NDVI أو NBR أو LST</td><td>مرئية ثانية أحدث وبالمستشعر والمستوى نفسيهما؛ الفرق الثاني ناقص الأول</td></tr>
+</table></div>
+<p><a href="INDICATORS_CATALOG.html">المعادلات</a> · <a href="TOOL_UI_AND_WORKSPACE.html">المجلدات</a> · <a href="TROUBLESHOOTING.html">الأخطاء</a>.</p></main></html>

@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0",
+  "request_id": "ATIAF-REPAIR-2026-11-14",
+  "task_id": "PLAN-0015",
+  "revision": "r1",
+  "overall_status": "partial",
+  "criteria": [
+    {
+      "id": "C1",
+      "statement": "One implementation package `atiaf_core`; any old spelling is an explicitly documented compatibility shim, with identical nested module/class identity. ArcGIS and QGIS remain thin separate adapters.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "command_output",
+          "reference": "Reports/evidence/PLAN-0015/final_after_layout_and_diagnostics.json",
+          "observed": "One I implementation; built wheel and ZIP match current source; isolated imports pass.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "statement": "All six tool dialogs expose sensor, input, QA/preprocessing, optional mosaic, explicit tool calculations (initially unselected), AOI, native CRS, map option and output folder LAST. Invalid or unsupported choices give actionable reasons. Sensor choices must affect preflight.",
+      "status": "partial",
+      "evidence": [
+        {
+          "type": "command_output",
+          "reference": "Reports/evidence/PLAN-0015/native_arcgis_final.txt",
+          "observed": "Six native Pro parameter lists and six native computations pass; QGIS eight native tests pass.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ],
+      "reason": "Native parameter/processing checks passed; full live GUI/RTL click-through and individual QGIS row disabling remain incomplete."
+    },
+    {
+      "id": "C3",
+      "statement": "Selected calculations, QA, AOI, CRS, destination and mosaic must reach actual processing, with output readback. Fail safely for missing science prerequisites. Expert mapping must be explicit and validated or visibly blocked, never silently ignored.",
+      "status": "partial",
+      "evidence": [
+        {
+          "type": "command_output",
+          "reference": "Reports/evidence/PLAN-0015/final_after_layout_and_diagnostics.json",
+          "observed": "124 fixture/regression tests and eight native QGIS checks pass, with preserved outputs and option routing.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ],
+      "reason": "Synthetic/native routing passed; real-product, complete CRS suitability/provenance, large-scene/concurrency/recovery acceptance remains unverified."
+    },
+    {
+      "id": "C4",
+      "statement": "`documentation/` contains user help and project references; English/Arabic guides explain each tool, available/gated science, installation, folder roles and a concrete first run. Historical records preserved, moved paths discoverable.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "documentation/index.html",
+          "observed": "Local EN/AR portal and guides generated; current links and explicit historical migrations validated.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "C5",
+      "statement": "Supplied logo appears before banner in both READMEs and HTML portal, local assets work offline and retain original proportions. Original input PNGs preserved.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "Reports/evidence/PLAN-0015/portal-mobile.json",
+          "observed": "Images decoded, original hashes match, logo precedes banner, exact mobile viewport 390 pixels passes.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "C6",
+      "statement": "Correct release/support claims and distinguish observed T0/T1, native host tests, real products and clean install. Fresh package/unit/native checks and report, indexes, state and canonical journal updated.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "PROJECT_STATE.md",
+          "observed": "Current state and report/indexes reflect development/Active status and explicit unverified checks; canonical journal finalized separately.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    }
+  ]
+}

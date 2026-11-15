@@ -1,0 +1,19 @@
+{
+  "date_observed": "2026-11-14",
+  "kind": "Summary of actually observed native command output, not a raw transcript",
+  "command": "& 'C:/Program Files/ArcGIS/Pro/bin/Python/scripts/propy.bat' -u tests/native_arcgis/test_arcgis_workflow.py",
+  "exit_code": 0,
+  "tests": 6,
+  "observed_result": "Ran 6 tests in 4.659s; OK",
+  "host": "ArcGIS Pro 3.6 build 59527, Advanced license",
+  "cases": [
+    "Six native parameter lists: sensor first, output folder last, explicit empty calculation defaults",
+    "Arabic toolbox parameter labels loaded",
+    "Empty selections and sensor mismatch rejected",
+    "Native spectral NDVI and actual output CRS EPSG:32635 readback",
+    "Native official LST and geological ratio execution",
+    "Native hotspots, Landsat 7 albedo and two-epoch NDVI difference execution"
+  ],
+  "warning": "GDAL reported unavailable CF-1 standard-name database; CF-1 lookup functionality was not tested",
+  "scope": "Synthetic local fixtures. This is not GUI clicking, real satellite product validation or clean-machine installation."
+}

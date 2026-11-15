@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "sequence": 40,
+  "timestamp_utc": "2026-11-15T12:27:28+00:00",
+  "kind": "request",
+  "status": "approved",
+  "summary": "Implement consolidated PLAN-0015 r2-r5 tool and interpretation changes",
+  "details": "User says execute. Implement manual native bands, input labels, thematic groups/search removal, temperature/unit/NDVI-assisted path with science gates, QGIS-owned distribution, sourced bilingual per-method interpretation and optional local classification. Preserve all original acceptance/history; new indices only after formula review. No upstream skill changes or upload. Native runtimes available but fresh evidence required; real local scenes/clean-machine not supplied.",
+  "references": [
+    38
+  ],
+  "task_id": "PLAN-0015",
+  "plan_revision": "r6",
+  "changed_files": [],
+  "tests": [],
+  "test_result": "not_run",
+  "commit": "",
+  "previous_hash": "ffb9b99b08af58a67722a9d242045c52d3e6297dac2566beb53a964fea74daa8",
+  "hash": "109b0fb5e369dd9d1eb197c6f9c2381f450f9f3458987755422b3d9703b0b035"
+}

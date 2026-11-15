@@ -1,0 +1,33 @@
+{
+  "request_id": "ATIAF-REPAIR-2026-11-14",
+  "revision": "r6",
+  "source": "Development_Plans/Active/PLAN-0015_usability_branding_and_recovery.md",
+  "tasks": [
+    {
+      "id": "PLAN-0015",
+      "acceptance_criteria": [
+        "One implementation package `atiaf_core`; any old spelling is an explicitly documented compatibility shim, with identical nested module/class identity. ArcGIS and QGIS remain thin separate adapters.",
+        "All six tool dialogs expose sensor, input, QA/preprocessing, optional mosaic, explicit tool calculations (initially unselected), AOI, native CRS, map option and output folder LAST. Invalid or unsupported choices give actionable reasons. Sensor choices must affect preflight.",
+        "Selected calculations, QA, AOI, CRS, destination and mosaic must reach actual processing, with output readback. Fail safely for missing science prerequisites. Expert mapping must be explicit and validated or visibly blocked, never silently ignored.",
+        "`documentation/` contains user help and project references; English/Arabic guides explain each tool, available/gated science, installation, folder roles and a concrete first run. Historical records preserved, moved paths discoverable.",
+        "Supplied logo appears before banner in both READMEs and HTML portal, local assets work offline and retain original proportions. Original input PNGs preserved.",
+        "Correct release/support claims and distinguish observed T0/T1, native host tests, real products and clean install. Fresh package/unit/native checks and report, indexes, state and canonical journal updated.",
+        "equivalent input labels and optional manual-mode visibility in the six native tools of both hosts, verified in the actual dialogs.",
+        "red/NIR-only manual fixture runs NDVI without unrelated bands; missing blue prevents EVI with an explanation; JSON is optional, and unknown calibration remains gated.",
+        "a self-contained current QGIS ZIP is generated in the agreed QGIS-owned directory, and relocated native execution plus source identity pass.",
+        "current documentation/CI/tests/build defaults use the agreed path; core/test artifacts are separately identified; history is retained. Previous r1 test counts are not r2 acceptance evidence.",
+        "inspect all six actual dialogs in both hosts; no custom calculation search remains, thematic groups and selection behavior are usable in English/Arabic, and unrelated portal search remains separate.",
+        "each accepted new index has reviewed original citations/variant, explicit sensor/level/band requirements, independent numeric fixtures and real-product/native readback evidence; others remain proposed or gated. No sensor is declared supported from band matching alone.",
+        "agreed temperature UI explains units and emissivity; unit conversion is verified numerically (303.15 K = 30 °C), official L2 ST is not corrected twice, and Sentinel-2 optical-only input cannot masquerade as thermal LST. Native UI/readback checks must be fresh.",
+        "EN/AR help, registry statuses, examples, packaging and reports match the agreed implemented scope. r1 test counts do not validate r2/r3 behavior.",
+        "both host dialogs expose the agreed optional NDVI-assisted path, compatible existing/computed NDVI, actionable missing-input gates and fresh thermal output readback; producing emissivity alone is insufficient.",
+        "original method/sensor-specific equations, calibrated thermal/atmospheric inputs, NDVI provenance and uncertainty validated on independent fixtures/real products; official L2 ST never corrected twice.",
+        "documentation keeps Sentinel-1 parser/helpers distinct from native validated SAR workflows. If a future radar phase is selected, start with an explicit GRD/backscatter scope and separate SLC/InSAR scope, with calibration/noise/terrain/orbit/DEM dependencies declared and supplied locally when needed.",
+        "all exposed calculation IDs/variants have complete matching EN/AR interpretation entries or explicit scientifically justified no-classification status; generator coverage checks detect missing entries and rebuilt docs retain them.",
+        "references and standard-vs-guidance-vs-local status are verified; the NDVI example carries a visible local-applicability warning and no unsupported global class/health claim.",
+        "tests verify exact class boundaries, no overlapping bins, gaps handled explicitly, NoData/masks/out-of-range handling, and identical meaning across both languages. Continuous source output remains unchanged. Where adjustable classes are implemented, actual native host checks verify optional controls and saved effective settings.",
+        "generated docs/portal/help, raster legends and EN/AR reports agree with the effective class scheme; original/custom settings and provenance survive package/rebuild/readback. Real local validation remains NOT RUN until real evidence exists; do not confuse a configuration test with validated ecological thresholds."
+      ]
+    }
+  ]
+}

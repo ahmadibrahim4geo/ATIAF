@@ -1,0 +1,79 @@
+<!doctype html><html lang="en" dir="ltr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ATIAF — SENSORS_AND_DOWNLOADS</title><style>body{max-width:980px;margin:auto;padding:28px;color:#062d46;background:#f5f9fc;font:17px/1.85 "Segoe UI",Tahoma,sans-serif}a{color:#075f9c}header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #d8e5ed;padding-bottom:18px}header img{width:150px;height:auto}pre,.table{overflow-x:auto}pre,code{background:#e7f0f6;padding:3px 6px;border-radius:4px;unicode-bidi:isolate}pre{padding:18px}table{border-collapse:collapse;background:white;width:100%}td{padding:12px;border:1px solid #d8e5ed}h2{margin-top:40px}h1{line-height:1.5}</style><header><img src="../assets/atiaf-logo.png" alt="ATIAF"><a href="../index.html">Documentation home</a></header><main><h1 id="satellite-sensors-guide---free-data-acquisition-portals">Satellite Sensors Guide &amp; Free Data Acquisition Portals</h1>
+<p><strong>Advanced Thematic Imagery Analysis Framework (أطياف)</strong>  </p>
+<p>*How to download, extract, and use free satellite data in ATIAF without coding or API keys*</p>
+<p>---</p>
+<h2 id="1--quick-data-flow-overview">1. Quick Data Flow Overview</h2>
+<p>ATIAF operates on a <strong>zero-cloud, local-first</strong> principle:</p>
+<p>1. <strong>Download:</strong> You download satellite scenes freely from official agencies (USGS, Copernicus, NASA).</p>
+<p>2. <strong>Extract:</strong> Unpack the downloaded <code>.tar</code>, <code>.zip</code>, or <code>.tar.gz</code> archive completely into a normal folder.</p>
+<p>3. <strong>Select:</strong> In ArcGIS Pro or QGIS, simply browse and pick that unpacked scene folder (or a parent directory with multiple scenes).</p>
+<p>4. <strong>Run:</strong> ATIAF&#x27;s automated metadata scanner detects the satellite mission, sensor, processing level, calibration coefficients, and band roles automatically!</p>
+<p>---</p>
+<h2 id="2--supported-missions---recommended-free-portals">2. Supported Missions &amp; Recommended Free Portals</h2>
+<h3 id="2-1-landsat-8---9--oli---tirs-">2.1 Landsat 8 &amp; 9 (OLI / TIRS)</h3>
+<p>- <strong>Official Free Portal:</strong> <a href="https://earthexplorer.usgs.gov/">USGS EarthExplorer</a></p>
+<p>- <strong>Recommended Data Product:</strong> <code>Landsat Collection 2 Level-2</code> (Surface Reflectance + Surface Temperature)</p>
+<p>- <strong>Spatial Resolution:</strong> $30\text{ m}$ (Optical Reflectance &amp; delivered Thermal grid)</p>
+<p>- <strong>Supported ATIAF Tools:</strong> Tools 01, 02, 03, 04, 05, 06.</p>
+<p>- <strong>Scene Folder Structure (Unpacked):</strong></p>
+<p>  ```text</p>
+<p>  LC08_L2SP_176039_20230520_20230527_02_T1/</p>
+<p>  ├── LC08_L2SP_176039_20230520_20230527_02_T1_MTL.txt   &lt;-- Metadata (Essential)</p>
+<p>  ├── LC08_L2SP_176039_20230520_20230527_02_T1_SR_B2.TIF  &lt;-- Blue (482 nm)</p>
+<p>  ├── LC08_L2SP_176039_20230520_20230527_02_T1_SR_B3.TIF  &lt;-- Green (561 nm)</p>
+<p>  ├── LC08_L2SP_176039_20230520_20230527_02_T1_SR_B4.TIF  &lt;-- Red (654 nm)</p>
+<p>  ├── LC08_L2SP_176039_20230520_20230527_02_T1_SR_B5.TIF  &lt;-- NIR (865 nm)</p>
+<p>  ├── LC08_L2SP_176039_20230520_20230527_02_T1_SR_B6.TIF  &lt;-- SWIR-1 (1608 nm)</p>
+<p>  ├── LC08_L2SP_176039_20230520_20230527_02_T1_SR_B7.TIF  &lt;-- SWIR-2 (2200 nm)</p>
+<p>  ├── LC08_L2SP_176039_20230520_20230527_02_T1_ST_B10.TIF &lt;-- Thermal ST (10.9 µm)</p>
+<p>  └── LC08_L2SP_176039_20230520_20230527_02_T1_QA_PIXEL.TIF &lt;-- Cloud Mask</p>
+<p>  ```</p>
+<p>---</p>
+<h3 id="2-2-sentinel-2a---2b--msi-">2.2 Sentinel-2A &amp; 2B (MSI)</h3>
+<p>- <strong>Official Free Portal:</strong> <a href="https://dataspace.copernicus.eu/browser/">Copernicus Data Space Ecosystem (CDSE)</a></p>
+<p>- <strong>Recommended Data Product:</strong> <code>Sentinel-2 Level-2A (BOA Surface Reflectance)</code></p>
+<p>- <strong>Spatial Resolution:</strong> $10\text{ m}$ (B2, B3, B4, B8), $20\text{ m}$ (Red Edge, SWIR), $60\text{ m}$ (Atmospheric)</p>
+<p>- <strong>Supported ATIAF Tools:</strong> Tools 01, 04 (Albedo), 05 (Optical Ratios), 06.</p>
+<p>- <strong>Important Physical Boundary:</strong> Sentinel-2 does not possess a thermal sensor. Tools 02 (LST) and 03 (Thermal Urban) are automatically blocked with a clear scientific message.</p>
+<p>- <strong>Scene Folder Structure (Unpacked <code>.SAFE</code>):</strong></p>
+<p>  ```text</p>
+<p>  S2A_MSIL2A_20230520T082601_N0509_R064_T36RUU_20230520T121500.SAFE/</p>
+<p>  ├── MTD_MSIL2A.xml                                      &lt;-- Root XML Metadata</p>
+<p>  └── GRANULE/</p>
+<p>      └── L2A_T36RUU_A041302_20230520T083424/</p>
+<p>          ├── MTD_TL.xml</p>
+<p>          └── IMG_DATA/</p>
+<p>              ├── R10m/ (B02_10m.jp2, B03_10m.jp2, B04_10m.jp2, B08_10m.jp2)</p>
+<p>              └── R20m/ (B05_20m.jp2, B06_20m.jp2, B07_20m.jp2, B11_20m.jp2, B12_20m.jp2, SCL_20m.jp2)</p>
+<p>  ```</p>
+<p>---</p>
+<h3 id="2-3-terra-aster--advanced-spaceborne-thermal-emission-and-reflection-radiometer-">2.3 Terra ASTER (Advanced Spaceborne Thermal Emission and Reflection Radiometer)</h3>
+<p>- <strong>Official Free Portal:</strong> <a href="https://search.earthdata.nasa.gov/">NASA Earthdata Search</a></p>
+<p>- <strong>Recommended Data Products:</strong></p>
+<p>  - <code>AST_07</code> / <code>AST_07XT</code> (Surface Reflectance VNIR/SWIR)</p>
+<p>  - <code>AST_08</code> (Surface Kinetic Temperature TIR)</p>
+<p>- <strong>Spatial Resolution:</strong> $15\text{ m}$ (VNIR), $30\text{ m}$ (SWIR), $90\text{ m}$ (TIR)</p>
+<p>- <strong>Special Historical Notice:</strong> In April 2008, the ASTER SWIR sensor&#x27;s cryocooler failed. ATIAF permits SWIR ratios only on scenes acquired before May 2008.</p>
+<p>---</p>
+<h3 id="2-4-sentinel-1a---1c--c-sar-radar-">2.4 Sentinel-1A &amp; 1C (C-SAR Radar)</h3>
+<p>- <strong>Official Free Portal:</strong> <a href="https://dataspace.copernicus.eu/">Copernicus Data Space Ecosystem</a> or <a href="https://search.asf.alaska.edu/">Alaska Satellite Facility (ASF Vertex)</a></p>
+<p>- <strong>Recommended Data Product:</strong> <code>Sentinel-1 Level-1 GRD (Ground Range Detected)</code></p>
+<p>- <strong>Spatial Resolution:</strong> $\approx 10\text{ m}$ (Interferometric Wide Swath)</p>
+<p>- <strong>Supported Capabilities in ATIAF:</strong> Radiometric calibration ($\sigma^0$ in dB), Cross-pol ratio ($VH/VV$), Radar Vegetation Index ($RVI$), and Lee speckle filtering.</p>
+<p>---</p>
+<h2 id="3--step-by-step-acquisition-guide">3. Step-by-Step Acquisition Guide</h2>
+<p>1. <strong>Create a Free Account:</strong>  </p>
+<p>   - Visit <a href="https://earthexplorer.usgs.gov/">USGS EarthExplorer</a> or <a href="https://dataspace.copernicus.eu/browser/">Copernicus Browser</a>. Registration takes 2 minutes and is 100% free.</p>
+<p>2. <strong>Define Area of Interest (AOI):</strong>  </p>
+<p>   - Draw a polygon or upload a KML/Shapefile over your study site.</p>
+<p>3. <strong>Set Cloud Cover Filter:</strong>  </p>
+<p>   - Set maximum cloud cover to $&lt; 10\%$ or $&lt; 20\%$ for clean optical calculations.</p>
+<p>4. <strong>Select Dataset:</strong>  </p>
+<p>   - For Landsat: *Landsat -&gt; Landsat Collection 2 Level-2 -&gt; Landsat 8-9 OLI/TIRS C2 L2*.</p>
+<p>   - For Sentinel: *Sentinel-2 -&gt; Level-2A*.</p>
+<p>5. <strong>Download Product Bundle:</strong>  </p>
+<p>   - Download the full scene bundle (<code>.tar</code> for Landsat, <code>.zip</code> for Sentinel).</p>
+<p>6. <strong>Extract Archive:</strong>  </p>
+<p>   - Use 7-Zip, WinRAR, or native Windows extractor to unpack the archive completely.</p>
+<p>7. <strong>Point ATIAF to Folder:</strong>  </p>
+<p>   - Select the resulting unpacked folder in the ATIAF tool in ArcGIS Pro or QGIS!</p></main></html>

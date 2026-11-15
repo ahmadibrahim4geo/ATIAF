@@ -1,0 +1,15 @@
+<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ATIAF — EXPERT_MAPPING</title><style>body{max-width:980px;margin:auto;padding:28px;color:#062d46;background:#f5f9fc;font:17px/1.85 "Segoe UI",Tahoma,sans-serif}a{color:#075f9c}header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #d8e5ed;padding-bottom:18px}header img{width:150px;height:auto}pre,.table{overflow-x:auto}pre,code{background:#e7f0f6;padding:3px 6px;border-radius:4px;unicode-bidi:isolate}pre{padding:18px}table{border-collapse:collapse;background:white;width:100%}td{padding:12px;border:1px solid #d8e5ed}h2{margin-top:40px}h1{line-height:1.5}</style><header><img src="../assets/atiaf-logo.png" alt="ATIAF"><a href="../index.html">الرئيسية</a></header><main><h1 id="----------------------------">تعيين الباندات يدويًا للخبير</h1>
+<p>هذا تعريف JSON قديم واختياري عند معرفة المستشعر والتاريخ والباندات ومعايرتها ومستوى المنتج. في الواجهة الحالية اختر المستشعر الفعلي وفعّل التعيين اليدوي، ثم استورد الملف اختياريًا؛ <a href="MANUAL_BANDS.html">حقول الباندات الأصلية</a> لا تحتاج JSON. المسار البرمجي القديم sensor=EXPERT ما زال يقبل هذا التعريف بمسارات داخل المشهد. التشغيل اليدوي المباشر يصدر تعريف atiaf_manual_v1 الأحدث داخل تقريره الفريد. لا يحدث تنزيل أثناء المعالجة.</p>
+<pre dir="ltr"><code>{
+  &quot;scene_id&quot;: &quot;MY_SCENE&quot;,
+  &quot;platform&quot;: &quot;Landsat 8&quot;,
+  &quot;instrument&quot;: &quot;OLI_TIRS&quot;,
+  &quot;sensor_family&quot;: &quot;Landsat&quot;,
+  &quot;product_level&quot;: &quot;L2_SR&quot;,
+  &quot;acquisition_date&quot;: &quot;2023-05-20&quot;,
+  &quot;bands&quot;: {
+    &quot;red&quot;: {&quot;file&quot;: &quot;red.tif&quot;, &quot;scale&quot;: 0.0000275, &quot;offset&quot;: -0.2, &quot;unit&quot;: &quot;reflectance&quot;, &quot;wavelength_nm&quot;: 655, &quot;provenance&quot;: &quot;دليل USGS C2 L2 مع التحقق أن الملف أرقام SR الخام&quot;},
+    &quot;nir&quot;: {&quot;file&quot;: &quot;nir.tif&quot;, &quot;scale&quot;: 0.0000275, &quot;offset&quot;: -0.2, &quot;unit&quot;: &quot;reflectance&quot;, &quot;wavelength_nm&quot;: 865, &quot;provenance&quot;: &quot;دليل USGS C2 L2 مع التحقق أن الملف أرقام SR الخام&quot;}
+  }
+}</code></pre>
+<p>القيم مثال لمنتج Landsat C2 L2 SR غير المحوّل، وليست ثوابت لكل الصور. الانعكاسية المحوّلة بالفعل تستخدم معامل 1 وإزاحة 0 مع إثبات المصدر. لكل باند معامل وإزاحة وطول موجي ومصدر معايرة صريح. المسقط المجهول والباند الناقص والمستوى غير المدعوم تمنع التنفيذ. صيغة التعيين الحالية لا تتضمن تعيين أقنعة الجودة؛ إبقاء تطبيق الجودة مفعّلًا يمنع التشغيل دون القناع، ويمكن للخبير إلغاؤه صراحةً بعد تقييم السحب والإشباع. لا تُوصف النتيجة حينئذ بأنها موثقة الجودة. لا يحوّل هذا الوضع أرقام الحرارة العشوائية أو حرارة السطوع إلى حرارة سطح. تعيين ملفين خبيرين للمقارنة الزمنية غير متاح حاليًا.</p></main></html>

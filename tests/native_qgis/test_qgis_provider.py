@@ -144,6 +144,7 @@ END_GROUP = L1_METADATA_FILE
     def test_03_native_spectral_indices_execution(self):
         """Executes atyaf:spectral_indices natively, verifying raster output and manifest."""
         alg = SpectralIndicesAlgorithm()
+        alg.language = "en"
         alg.initAlgorithm()
 
         context = QgsProcessingContext()
@@ -192,6 +193,7 @@ END_GROUP = L1_METADATA_FILE
     def test_04_enforce_decision_d007_crs_rejection(self):
         """Verifies that passing unprojected geographic CRS (EPSG:4326) raises QgsProcessingException."""
         alg = SpectralIndicesAlgorithm()
+        alg.language = "en"
         alg.initAlgorithm()
 
         context = QgsProcessingContext()
@@ -239,8 +241,124 @@ END_GROUP = L1_METADATA_FILE
             self.assertIn("CRS", param_names, f"CRS parameter missing in {alg.id()}")
 
             # Bilingual description check: name, group, and help must have Arabic
+            alg.language = "ar"
             self.assertTrue(any("\u0600" <= c <= "\u06FF" for c in alg.displayName()))
             self.assertTrue(any("\u0600" <= c <= "\u06FF" for c in alg.shortHelpString()))
+
+    def test_06_execute_all_six_shared_workflows(self):
+        sys.path.insert(0, str(PROJECT_ROOT/'tests'))
+        from workflow_fixture import make_scene
+        from atiaf.algorithms.surface_temperature import SurfaceTemperatureAlgorithm
+        from atiaf.algorithms.thermal_urban import ThermalUrbanAlgorithm
+        from atiaf.algorithms.environmental_drought import EnvironmentalDroughtAlgorithm
+        from atiaf.algorithms.geological_analysis import GeologicalAnalysisAlgorithm
+        from atiaf.algorithms.temporal_change import TemporalChangeAlgorithm
+        scene = make_scene(self.temp_dir, 'full')
+        later = make_scene(self.temp_dir, 'later', date='2023-06-20', red_dn=12000)
+        l7 = make_scene(self.temp_dir, 'l7', platform=7)
+        cases = [(SpectralIndicesAlgorithm, scene, 'NDVI'),
+                 (SurfaceTemperatureAlgorithm, scene, 'LST_CELSIUS'),
+                 (ThermalUrbanAlgorithm, scene, 'HOTSPOTS'),
+                 (EnvironmentalDroughtAlgorithm, l7, 'ALBEDO'),
+                 (GeologicalAnalysisAlgorithm, scene, 'IRON_OXIDE'),
+                 (TemporalChangeAlgorithm, scene, 'NDVI')]
+        for algorithm, folder, calculation in cases:
+            with self.subTest(tool=algorithm.__name__):
+                alg = algorithm()
+                alg.language = 'en'
+                alg.initAlgorithm()
+                params = {'INPUT_FOLDER': str(folder), 'INDICES': [alg.index_keys.index(calculation)],
+                          'OUTPUT_FOLDER': str(self.output_dir), 'APPLY_QA': True,
+                          'SECOND_FOLDER': str(later)}
+                result = alg.processAlgorithm(params, QgsProcessingContext(), QgsProcessingFeedback())
+                self.assertTrue(result['OUTPUT_RASTERS'])
+                for path in result['OUTPUT_RASTERS']:
+                    self.assertTrue(QgsRasterLayer(path, calculation).isValid())
+
+    def test_07_crs_output_and_empty_selection(self):
+        alg = SpectralIndicesAlgorithm()
+        alg.language = 'en'
+        alg.initAlgorithm()
+        params = {'INPUT_FOLDER': str(self.scene_dir), 'INDICES': [], 'OUTPUT_FOLDER': str(self.output_dir)}
+        with self.assertRaisesRegex(QgsProcessingException, 'Select at least one'):
+            alg.processAlgorithm(params, QgsProcessingContext(), QgsProcessingFeedback())
+        params.update(INDICES=[0], CRS=QgsCoordinateReferenceSystem('EPSG:32635'))
+        result = alg.processAlgorithm(params, QgsProcessingContext(), QgsProcessingFeedback())
+        self.assertEqual(QgsRasterLayer(result['OUTPUT_RASTERS'][0], 'projected').crs().authid(), 'EPSG:32635')
+
+    def test_08_native_event_queue_layer_loading(self):
+        from qgis.core import QgsProject
+        alg = SpectralIndicesAlgorithm()
+        alg.language = 'en'
+        alg.initAlgorithm()
+        project, context = QgsProject(), QgsProcessingContext()
+        context.setProject(project)
+        feedback = QgsProcessingFeedback()
+        params = {'INPUT_FOLDER': str(self.scene_dir), 'INDICES': [0], 'ADD_TO_MAP': True,
+                  'OUTPUT_FOLDER': str(self.output_dir)}
+        alg.processAlgorithm(params, context, feedback)
+        self.assertEqual(len(project.mapLayers()), 0)
+        alg.postProcessAlgorithm(context, feedback)
+        for _ in range(8):
+            QgsApplication.processEvents()
+        self.assertEqual(len(project.mapLayers()), 1)
+        project.clear()
+
+    def test_09_grouped_native_panel_and_manual_visibility(self):
+        sys.path.insert(0,str(Path(QgsApplication.prefixPath())/'python'/'plugins'))
+        from qgis.PyQt.QtWidgets import QMainWindow
+        from qgis.gui import QgsMessageBar
+        class Parent(QMainWindow):
+            def __init__(self):
+                super().__init__(); self.bar=QgsMessageBar(self)
+            def messageBar(self): return self.bar
+        alg=SpectralIndicesAlgorithm(); alg.language='ar'; alg.initAlgorithm()
+        parent=Parent()
+        panel=alg.createCustomParametersWidget(parent)
+        self.assertIn('Vegetation',panel._group_boxes)
+        self.assertIn('Water',panel._group_boxes)
+        self.assertTrue(panel._group_boxes['Manual'].isHidden())
+        panel.setParameters({'manual_mode':True})
+        panel.refresh_visibility()
+        self.assertFalse(panel._group_boxes['Manual'].isHidden())
+        self.assertFalse(panel._field_widgets['band_red'].isHidden())
+        panel.setParameters({'manual_mode':False})
+        panel.refresh_visibility()
+        self.assertTrue(panel._field_widgets['band_red'].isHidden())
+        evidence=PROJECT_ROOT/'Reports'/'evidence'/'PLAN-0015'/'r6'
+        evidence.mkdir(parents=True,exist_ok=True)
+        parent.setCentralWidget(panel); parent.resize(1000,1000); parent.show()
+        QgsApplication.processEvents()
+        panel.grab().save(str(evidence/'qgis_groups_ar.png'))
+        panel.deleteLater(); parent.deleteLater()
+
+    def test_10_native_manual_and_classification(self):
+        sys.path.insert(0,str(PROJECT_ROOT/'tests'))
+        from test_consolidated_changes import ConsolidatedChanges
+        fixture=ConsolidatedChanges(); fixture.setUp()
+        try:
+            folder,options=fixture.manual()
+            alg=SpectralIndicesAlgorithm(); alg.language='en'; alg.initAlgorithm()
+            params=dict(INPUT_FOLDER=str(folder),SENSOR=1,calc_NDVI=True,calc_EVI2=True,calc_NIRv=True,APPLY_QA=False,
+                classify_ndvi=True,classification_basis='Synthetic native QGIS fixture',**options)
+            result=alg.processAlgorithm(params,QgsProcessingContext(),QgsProcessingFeedback())
+            self.assertEqual(len(result['OUTPUT_RASTERS']),4)
+            self.assertTrue(all(QgsRasterLayer(p,'test').isValid() for p in result['OUTPUT_RASTERS']))
+        finally: fixture.tearDown()
+
+    def test_11_native_ndvi_assisted_temperature(self):
+        sys.path.insert(0,str(PROJECT_ROOT/'tests'))
+        from test_consolidated_changes import ConsolidatedChanges
+        from atiaf.algorithms.surface_temperature import SurfaceTemperatureAlgorithm
+        fixture=ConsolidatedChanges(); fixture.setUp()
+        try:
+            options,expected=fixture.thermal()
+            alg=SurfaceTemperatureAlgorithm(); alg.language='en'; alg.initAlgorithm()
+            params=dict(INPUT_FOLDER=str(fixture.scene),calc_LST=True,temperature_unit=1,**options)
+            result=alg.processAlgorithm(params,QgsProcessingContext(),QgsProcessingFeedback())
+            with rasterio.open(result['OUTPUT_RASTERS'][0]) as ds:
+                self.assertAlmostEqual(float(ds.read(1)[1,1]),expected,places=3)
+        finally: fixture.tearDown()
 
 
 if __name__ == "__main__":

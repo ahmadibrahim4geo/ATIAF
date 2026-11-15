@@ -8,10 +8,10 @@ import unittest
 import numpy as np
 import rasterio
 
-from atyaf_core.discovery import LandsatParser, Sentinel2Parser
-from atyaf_core.discovery.models import BandRole
-from atyaf_core.indices import INDEX_CATALOG, SpectralIndicesEngine
-from atyaf_core.raster import CRSManager
+from atiaf_core.discovery import LandsatParser, Sentinel2Parser
+from atiaf_core.discovery.models import BandRole
+from atiaf_core.indices import INDEX_CATALOG, SpectralIndicesEngine
+from atiaf_core.raster import CRSManager
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = ROOT / "tests" / "fixtures" / "synthetic_scenes"

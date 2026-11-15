@@ -1,0 +1,22 @@
+<!doctype html><html lang="en" dir="ltr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ATIAF — QUICK_START</title><style>body{max-width:980px;margin:auto;padding:28px;color:#062d46;background:#f5f9fc;font:17px/1.85 "Segoe UI",Tahoma,sans-serif}a{color:#075f9c}header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #d8e5ed;padding-bottom:18px}header img{width:150px;height:auto}pre,.table{overflow-x:auto}pre,code{background:#e7f0f6;padding:3px 6px;border-radius:4px;unicode-bidi:isolate}pre{padding:18px}table{border-collapse:collapse;background:white;width:100%}td{padding:12px;border:1px solid #d8e5ed}h2{margin-top:40px}h1{line-height:1.5}</style><header><img src="../assets/atiaf-logo.png" alt="ATIAF"><a href="../index.html">Documentation home</a></header><main><h1 id="first-workflow">First workflow</h1>
+<p>Start with <a href="INSTALLATION.html">installation</a>. These steps explain usage, not validation of every satellite product.</p>
+<p>1. <strong>Sensor / Product:</strong> choose AUTO or the actual mission/level. Metadata mismatch stops automatic discovery. With incomplete metadata choose the actual supported sensor and enable <a href="MANUAL_BANDS.html">manual band mapping</a>; JSON is optional.</p>
+<p>2. <strong>Input Data Folder:</strong> one unpacked scene or a folder containing scenes. Keep original metadata, bands and QA together where available. Work/Results are excluded from discovery. Manual mode accepts selected local band files without a header.</p>
+<p>3. <strong>QA / preprocessing:</strong> QA is ON by default. Scaling is applied once from the product profile; no automatic atmospheric correction. Missing QA blocks a QA-enabled run. Explicit opt-out lowers assurance.</p>
+<p>4. <strong>Mosaic:</strong> OFF by default. ON combines compatible same-day per-scene products and retains their source provenance. Different sensors/dates need a validated harmonization method.</p>
+<p>5. <strong>Calculations:</strong> check named boxes under thematic headings in both hosts. All defaults are empty; calculation search is removed. Gated selections explain missing prerequisites. The <a href="INDICATORS_CATALOG.html">catalog</a> explains output meaning, units, ranges and limits. Optional local NDVI classes need a justification and preserve the original raster.</p>
+<p>6. <strong>AOI:</strong> optional nonempty valid polygon with known CRS, independently of mosaic. An invalid AOI stops instead of silently processing full extent.</p>
+<p>7. <strong>Output CRS:</strong> native host chooser. Blank reuses a known suitable projected metre source. Unknown/geographic/foot-based CRS needs correction or selection. No global EPSG default. Your selection changes the saved raster grid.</p>
+<p>8. <strong>Map loading:</strong> optional and OFF by default. Saved products survive rendering errors. Native map queue/RTL visual acceptance is separately recorded.</p>
+<p>9. <strong>Output folder:</strong> LAST setting. Blank or equal to input keeps each scene&#x27;s Work/Results. A custom destination creates a scene-named subfolder. Reruns retain earlier files.</p>
+<p>For a first NDVI run use red and NIR surface reflectance with QA. <code>(NIR-Red)/(NIR+Red)</code> gives 0.6667 for red 0.1 and NIR 0.5; DN must be calibrated first. Open the GeoTIFF, inspect CRS/NoData, then open <code>Results/Reports/index.html</code> and the run&#x27;s manifest.</p>
+<div class="table"><table>
+<tr><td>Tool</td><td>First useful selection</td><td>Prerequisite</td></tr>
+<tr><td>Spectral</td><td>NDVI</td><td>Red/NIR surface reflectance</td></tr>
+<tr><td>Temperature</td><td>LST, then Celsius/Kelvin unit</td><td>Official ST or explicit <a href="SURFACE_TEMPERATURE.html">local NDVI/RTE inputs</a></td></tr>
+<tr><td>Thermal &amp; urban</td><td>UTFVI or HOTSPOTS</td><td>Official LST; SUHI is gated</td></tr>
+<tr><td>Environment</td><td>ALBEDO</td><td>Current Landsat TM/ETM+ profile only; TVDI is gated</td></tr>
+<tr><td>Geology</td><td>IRON_OXIDE</td><td>Correct calibrated red/blue; indication only</td></tr>
+<tr><td>Temporal</td><td>NDVI, NBR or LST</td><td>Select second scene, matching sensor/level and later known date; T2 minus T1</td></tr>
+</table></div>
+<p><a href="INDICATORS_CATALOG.html">Formula cards</a> · <a href="TOOL_UI_AND_WORKSPACE.html">Folders</a> · <a href="TROUBLESHOOTING.html">Troubleshooting</a>.</p></main></html>

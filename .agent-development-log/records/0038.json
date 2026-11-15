@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "sequence": 38,
+  "timestamp_utc": "2026-11-15T12:22:25+00:00",
+  "kind": "revision",
+  "status": "proposed",
+  "summary": "Require bilingual interpretation and sourced locally adjustable index classes",
+  "details": "User requests documentation of each index output meaning/range, whether classification is internationally standardized, class descriptions and local threshold adjustment with scientifically accurate labels. Audit: generated catalogs have formulas/band roles/citations but not complete interpretation tables; scientific-methods guide points to tables that are absent. Add PLAN-0015 r5 requirements and acceptance; do not claim universal NDVI thresholds or implemented classification controls.",
+  "references": [
+    36
+  ],
+  "task_id": "PLAN-0015",
+  "plan_revision": "r5",
+  "changed_files": [],
+  "tests": [],
+  "test_result": "not_run",
+  "commit": "",
+  "previous_hash": "77a5bda00860b5fbb311f5fd70e01e5d3dc02476a49f5f8043105d854aae8f73",
+  "hash": "f81bcad3503df7f3cb58072ba87f59435b89d203d7581ffca28ba4d28a241a24"
+}

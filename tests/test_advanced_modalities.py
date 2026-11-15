@@ -17,7 +17,7 @@ import tempfile
 import unittest
 import numpy as np
 
-from atyaf_core.discovery import (
+from atiaf_core.discovery import (
     BandAsset,
     BandRole,
     ProductLevel,
@@ -26,9 +26,9 @@ from atyaf_core.discovery import (
     SceneScanner,
     SensorFamily,
 )
-from atyaf_core.discovery.sentinel1 import Sentinel1Parser
-from atyaf_core.indices import SpectralIndicesEngine
-from atyaf_core.modalities import (
+from atiaf_core.discovery.sentinel1 import Sentinel1Parser
+from atiaf_core.indices import SpectralIndicesEngine
+from atiaf_core.modalities import (
     HyperspectralCubeMetadata,
     HyperspectralEngine,
     ModalityCapabilityError,
@@ -37,7 +37,7 @@ from atyaf_core.modalities import (
     SAREngine,
     SensorModality,
 )
-from atyaf_core.temperature import SurfaceTemperatureEngine
+from atiaf_core.temperature import SurfaceTemperatureEngine
 
 
 class TestSAREngineAndGating(unittest.TestCase):

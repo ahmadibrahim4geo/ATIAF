@@ -1,0 +1,1 @@
+Historical source snapshot only, never imported. The PLAN-0014 facade had no host-specific implementation. Canonical source is now atiaf_core. نسخة تاريخية فقط لا تُنفذ؛ لم تكن واجهة المحرك السابقة محركًا خاصًا بأحد المضيفين.

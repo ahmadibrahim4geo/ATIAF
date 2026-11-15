@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "sequence": 35,
+  "timestamp_utc": "2026-11-15T12:09:53+00:00",
+  "kind": "handoff",
+  "status": "in_progress",
+  "summary": "Recorded r3 index research and grouped calculation/temperature requirements",
+  "details": "Bilingual research notes and report 0018 saved; source navigation, active plan and both indexes/current state updated. Final validate_package.py exit 0: structural PASS, 353 Markdown, 53 JSON before this handoff. No runtime code, formula, host UI, sensor reader, package or support status changed. Original-paper variants and native/real-product acceptance remain NOT RUN. Continue consolidated user discussion before implementation. PLAN-0015 remains Active/partial.",
+  "references": [
+    34
+  ],
+  "task_id": "PLAN-0015",
+  "plan_revision": "r3",
+  "changed_files": [
+    "Reports/0018_indices_research_and_temperature_requirements.md",
+    "documentation/en/INDICES_AND_TEMPERATURE_REVIEW.md",
+    "documentation/ar/INDICES_AND_TEMPERATURE_REVIEW.md"
+  ],
+  "tests": [
+    "Installed Python tools/validate_package.py: exit 0 structural documentation/link checks"
+  ],
+  "test_result": "passed",
+  "commit": "",
+  "previous_hash": "13e0407587024283c4a3b4a57095af98cf5ba359dbf4fd3cbc74a6f92309dbde",
+  "hash": "442ce1098d9de17b3b4b6202d1af8bfca63389292ad5fbeed6a38182dcd1f7e7"
+}

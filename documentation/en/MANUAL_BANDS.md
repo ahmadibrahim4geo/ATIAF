@@ -1,0 +1,11 @@
+# Manual bands with incomplete metadata
+
+Select the actual sensor/product first, then enable **Assign available bands manually**. AUTO cannot identify a missing product header. Input Data Folder is the scene's result workspace; choose only local band files you possess/need. NDVI needs red and NIR; EVI also needs blue. Red-edge inputs are invalid for Landsat. Current manual profiles: Landsat 4/5/7/8/9 C2 L2 and Sentinel-2 L2A.
+
+Enter the exact platform (LANDSAT_8, LANDSAT_9, LANDSAT_7, LANDSAT_4, LANDSAT_5, SENTINEL_2A/B/C), acquisition date YYYY-MM-DD and calibration source. Optical scale and offset are required explicitly. Already calibrated reflectance commonly uses 1 and 0 only when you can establish that provenance. Landsat C2 L2 raw SR DN uses 0.0000275 and -0.2; do not apply this twice. Sentinel-2 quantification/offset depends on processing baseline; read actual metadata or document the supplied calibration, not a universal divide-by-10000 assumption.
+
+An optional official ST file needs its own explicit scale/offset to Kelvin. Do not map radiance or brightness temperature into this slot. For local NDVI-assisted thermal derivation use the separate radiance settings in the [temperature guide](SURFACE_TEMPERATURE.md). A missing quality file prevents a QA-enabled run; supply QA_PIXEL/SCL or explicitly opt out with the limitation recorded. Only selected calculations are run.
+
+Optional saved JSON import retains the strict [expert schema](EXPERT_MAPPING.md) and must match the selected actual sensor/product. It is not necessary for direct file selection. There is no automatic inference of absent wavelengths/calibration from filenames; sensor-profile wavelengths are identified as profile context, not missing metadata readback. No original input is edited.
+
+Saved processing parameters/manifests record the chosen mapping/calibration. Direct manual runs also export `Manual_Band_Mapping.json` into their unique report folder; reuse it through the optional saved-mapping file control with the same actual sensor. The file references local source paths, so keep inputs in place and inspect it before reuse. Temporal comparison currently requires automatic discovery of one scene per epoch; two independent manual epoch mappings remain gated.

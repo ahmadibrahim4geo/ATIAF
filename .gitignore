@@ -26,3 +26,13 @@ build/
 *.egg-info/
 # Reports/ contains development reports and MUST be versioned, not excluded.
 !Reports/.gitkeep
+# Generated QGIS installables; source and distribution guide remain versioned.
+QGIS Tools/Distribution/*.zip
+
+# Local supplied originals are preserved; reviewed integrated assets are versioned.
+/Modern ATIAF Wave Logo.png
+/ATIAF Workflow with Earth Horizon.png
+# Host-generated metadata/cache; do not publish workstation artifacts.
+*.pyt.xml
+Thumbs.db
+.DS_Store

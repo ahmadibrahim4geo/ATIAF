@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "sequence": 37,
+  "timestamp_utc": "2026-11-15T12:15:08+00:00",
+  "kind": "handoff",
+  "status": "in_progress",
+  "summary": "Recorded NDVI-assisted LST gap and honest Sentinel-1 status",
+  "details": "PLAN-0015 r4 and report 0019 preserve optional NDVI use within LST derivation; separate gated emissivity output does not satisfy it. Bilingual review notes updated with original Sobrino research and official Copernicus/USGS references. Current SAR parser/helpers do not constitute a dedicated validated tool. Final structural validation exit 0, 356 Markdown/55 JSON before this handoff. Runtime/native/real-product checks NOT RUN; no processing code or package changed. Continue consolidated discussion then agreed implementation.",
+  "references": [
+    36
+  ],
+  "task_id": "PLAN-0015",
+  "plan_revision": "r4",
+  "changed_files": [
+    "Reports/0019_ndvi_assisted_lst_and_sentinel1_clarification.md"
+  ],
+  "tests": [
+    "Installed Python tools/validate_package.py: exit 0 structural/link checks"
+  ],
+  "test_result": "passed",
+  "commit": "",
+  "previous_hash": "652072ecdfd2d8bbdbc869101bb1ff371e11bb70825d86b84e37dace7f6fa4b9",
+  "hash": "77a5bda00860b5fbb311f5fd70e01e5d3dc02476a49f5f8043105d854aae8f73"
+}

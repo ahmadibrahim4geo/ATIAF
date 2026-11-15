@@ -7,7 +7,7 @@ import shutil
 import tempfile
 import unittest
 
-from atyaf_core.raster.workspace import WorkspaceManager
+from atiaf_core.raster.workspace import WorkspaceManager
 
 
 class TestHtmlReporting(unittest.TestCase):

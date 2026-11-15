@@ -1,0 +1,18 @@
+{
+  "request_id": "ATIAF-REPAIR-2026-11-14",
+  "revision": "r1",
+  "source": "Development_Plans/Active/PLAN-0015_usability_branding_and_recovery.md",
+  "tasks": [
+    {
+      "id": "PLAN-0015",
+      "acceptance_criteria": [
+        "One implementation package `atiaf_core`; any old spelling is an explicitly documented compatibility shim, with identical nested module/class identity. ArcGIS and QGIS remain thin separate adapters.",
+        "All six tool dialogs expose sensor, input, QA/preprocessing, optional mosaic, explicit tool calculations (initially unselected), AOI, native CRS, map option and output folder LAST. Invalid or unsupported choices give actionable reasons. Sensor choices must affect preflight.",
+        "Selected calculations, QA, AOI, CRS, destination and mosaic must reach actual processing, with output readback. Fail safely for missing science prerequisites. Expert mapping must be explicit and validated or visibly blocked, never silently ignored.",
+        "`documentation/` contains user help and project references; English/Arabic guides explain each tool, available/gated science, installation, folder roles and a concrete first run. Historical records preserved, moved paths discoverable.",
+        "Supplied logo appears before banner in both READMEs and HTML portal, local assets work offline and retain original proportions. Original input PNGs preserved.",
+        "Correct release/support claims and distinguish observed T0/T1, native host tests, real products and clean install. Fresh package/unit/native checks and report, indexes, state and canonical journal updated."
+      ]
+    }
+  ]
+}

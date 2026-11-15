@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "sequence": 39,
+  "timestamp_utc": "2026-11-15T12:23:56+00:00",
+  "kind": "handoff",
+  "status": "in_progress",
+  "summary": "Recorded r5 output interpretation and locally adjustable classification scope",
+  "details": "Report 0020, plan r5, matching EN/AR requirements notes, source navigation, indexes and current state saved. Existing catalogs have formulas/roles/citations but lack full interpretation tables. No universal NDVI class standard claimed; numeric guidance remains illustrative, not a runtime preset. Final validate_package.py exit 0 structural PASS, 361 Markdown/57 JSON before this handoff. No runtime change or classification/native/field validation; full interpretation/generator/report integration remains pending consolidated implementation.",
+  "references": [
+    38
+  ],
+  "task_id": "PLAN-0015",
+  "plan_revision": "r5",
+  "changed_files": [
+    "Reports/0020_output_interpretation_and_local_classification_requirements.md",
+    "documentation/ar/OUTPUT_INTERPRETATION_REQUIREMENTS.md",
+    "documentation/en/OUTPUT_INTERPRETATION_REQUIREMENTS.md"
+  ],
+  "tests": [
+    "Installed Python tools/validate_package.py: exit 0 structure/link validation"
+  ],
+  "test_result": "passed",
+  "commit": "",
+  "previous_hash": "f81bcad3503df7f3cb58072ba87f59435b89d203d7581ffca28ba4d28a241a24",
+  "hash": "ffb9b99b08af58a67722a9d242045c52d3e6297dac2566beb53a964fea74daa8"
+}

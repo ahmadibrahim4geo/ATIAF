@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "sequence": 31,
+  "timestamp_utc": "2026-11-15T10:54:07+00:00",
+  "kind": "verification",
+  "status": "completed",
+  "summary": "Verified final repair checks; overall plan remains Active and partial",
+  "details": "Continuation on 2026-11-15 under updated root contract. Final source: 124 tests PASS; QGIS 8 native tests PASS; Pro 6 native tests PASS with corrected Spectral_Indices output folder. Raw final native output and captured commands retained under Reports/evidence/PLAN-0015. Refreshed wheel/ZIP bytes match current source; relocated plugin native NDVI PASS. Offline browser desktop/mobile tests PASS. Report 0016, both indexes, PROJECT_STATE and plan-bound partial DoneProof written. Real products, full native GUI/RTL, clean-machine install and broader CRS/concurrency acceptance remain unverified. No stable-release, commit/push or upstream edit claim.",
+  "references": [
+    30
+  ],
+  "task_id": "PLAN-0015",
+  "plan_revision": "r1",
+  "changed_files": [
+    "Reports/0016_usability_repair_and_verified_handoff.md",
+    "PROJECT_STATE.md",
+    "Reports/evidence/PLAN-0015/doneproof.json"
+  ],
+  "tests": [
+    "python -m unittest discover tests: 124 OK; native QGIS: 8 OK; native ArcGIS Pro: 6 OK; built/relocated packages and offline browser: PASS"
+  ],
+  "test_result": "passed",
+  "commit": "",
+  "previous_hash": "211f64f746ba0186145c4d8b291b6151e87d84a0df7ab89d00db4dedc395b8de",
+  "hash": "5601c610b0e0eed2bcd9b65fc7a11a68687beecd62d1d97418976450b742f069"
+}

@@ -1,16 +1,45 @@
-name: Documentation structure
+name: Headless package verification
 on:
   push:
     branches: [main]
   pull_request:
   workflow_dispatch:
+permissions:
+  contents: read
 jobs:
   structure:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.14'
+      - name: Install pinned headless test dependencies (not native GIS environments)
+        run: python -m pip install -c development_resources/headless-test-constraints.txt . geopandas wheel
+      - name: Build offline bilingual help
+        run: python tools/build_documentation.py
       - name: Validate Markdown/JSON package (not GIS runtime)
         run: python tools/validate_package.py
+      - name: Headless fixture and regression tests
+        run: python -m unittest discover tests
+      - name: Build QGIS-owned installable ZIP and separate core wheel
+        run: |
+          python tools/build_qgis_plugin.py
+          python -m pip wheel . --no-deps --no-build-isolation --wheel-dir dist
+      - name: Verify package source identity and isolated wheel import
+        run: python tools/test_built_packages.py
+      - name: Upload QGIS development installable
+        uses: actions/upload-artifact@v4
+        with:
+          name: ATIAF-QGIS-development
+          path: QGIS Tools/Distribution/*.zip
+          if-no-files-found: error
+          retention-days: 30
+      - name: Upload separate Python core wheel
+        uses: actions/upload-artifact@v4
+        with:
+          name: ATIAF-core-development
+          path: dist/*.whl
+          if-no-files-found: error
+          retention-days: 30
+      # Native ArcGIS Pro/QGIS, real-product and clean-machine validation remain separate.
