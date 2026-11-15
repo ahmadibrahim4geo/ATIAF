@@ -13,3 +13,9 @@
 ## PLAN-0015 observed environment correction
 
 Measured versions and limits are in tested_environments.json. The standalone test constraints are developer-only, not instructions to mix binary stacks in Pro/QGIS. Native Pro 3.6 and QGIS 4.2.3 synthetic workflows were observed separately. QGIS Python is 3.12.15 on this session, correcting older report claims of 3.12.9. SciPy is absent in standalone Python; optional paths are not asserted as installed. No packages were installed into either GIS host. The helpers now diagnose without pip installation. Clean-machine installation and real products remain NOT RUN.
+
+## Publication build tools
+
+The headless CI explicitly installs constrained `setuptools==84.0.0` (measured on the development host) and `wheel==0.48.0` (observed on the hosted runner) before its `--no-build-isolation` wheel build. Python 3.14 runners do not include setuptools by default. These are developer build dependencies, not satellite-processing requirements or changes to native GIS environments.
+
+يثبّت فحص GitHub أدوات البناء المثبّتة الإصدارات صراحةً قبل إنشاء حزمة Python؛ بيئة Python الجديدة لا تتضمن setuptools تلقائيًا. هذه متطلبات بناء للمطوّر فقط، ولا تُثبّت داخل ArcGIS Pro أو QGIS ولا تُطلب أثناء معالجة المرئيات المحلية.
