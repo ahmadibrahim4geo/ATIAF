@@ -22,7 +22,7 @@ class LocalHTMLLinks(HTMLParser):
 def broken_links():
     broken = []
     for source in ROOT.rglob('*'):
-        if not source.is_file() or any(p in source.parts for p in ('.agent_resources', '.git', 'dist', 'build', '__pycache__')):
+        if not source.is_file() or any(p in source.relative_to(ROOT).parts for p in ('.agent_resources', '.git', 'dist', 'build', '__pycache__')):
             continue
         if source.suffix not in ('.md', '.html') or source.name == 'site_template.html':
             continue

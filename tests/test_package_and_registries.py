@@ -52,6 +52,20 @@ class TestRepositoryStructure(unittest.TestCase):
         from tools.link_validation import broken_links
         self.assertEqual(broken_links(), [])
 
+    def test_link_checks_use_project_relative_exclusions(self):
+        import tempfile
+        from unittest.mock import patch
+        from tools import link_validation
+        with tempfile.TemporaryDirectory(prefix='atiaf-link-check-') as directory:
+            nested_root = pathlib.Path(directory) / '.agent_resources' / 'ATIAF'
+            nested_root.mkdir(parents=True)
+            (nested_root / 'README.md').write_text('[missing](absent.md)', encoding='utf-8')
+            cache = nested_root / '.agent_resources'
+            cache.mkdir()
+            (cache / 'ignored.md').write_text('[missing](ignored.md)', encoding='utf-8')
+            with patch.object(link_validation, 'ROOT', nested_root):
+                self.assertEqual(link_validation.broken_links(), ['README.md -> absent.md'])
+
 
 
 class TestScientificRegistries(unittest.TestCase):
