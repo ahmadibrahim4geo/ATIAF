@@ -1,0 +1,13 @@
+{
+  "plan": "PLAN-0016",
+  "revision": "r1",
+  "date": "2026-11-15",
+  "directory": ".agent_resources/publication-check-03/ATIAF",
+  "commands": ["git checkout-index --all --prefix=<fresh ATIAF directory>/", "python tools/build_documentation.py", "python tools/validate_package.py", "python -m unittest discover tests", "python tools/build_qgis_plugin.py", "python -m pip wheel . --no-deps --no-build-isolation --wheel-dir dist", "python tools/test_built_packages.py"],
+  "structure": "PASS: 167 Markdown and 72 JSON files; local links validated without a skills checkout",
+  "headless": "PASS: 141 tests, 4.707 seconds, zero failures",
+  "packages": "PASS: fresh QGIS ZIP and wheel, isolated wheel import, source/core/adapter/bilingual-help identity",
+  "portability_fixes": ["Generated parser stubs in isolated temporary storage", "Resource exclusions relative to project root, with negative link-check regression", "55 historical plan skill links migrated to reviewed pinned upstream URLs; requirements unchanged"],
+  "exit_code": 0,
+  "scope": "Headless clean-source export with existing developer dependencies; not clean-machine native GIS or scientific real-product validation"
+}

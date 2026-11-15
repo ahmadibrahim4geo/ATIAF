@@ -20,9 +20,9 @@
   - `DECISIONS.md` (D-001 through D-020)
   - Python Packaging Authority (PyPA) standards (PEP 517, PEP 621)
 - **Skills and links selected:**
-  - [`skills/clean-room-reference-implementation/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/clean-room-reference-implementation/SKILL.md)
-  - [`skills/completion-evidence/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/completion-evidence/SKILL.md)
-  - [`skills/agent-development-journal/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/agent-development-journal/SKILL.md)
+  - [`skills/clean-room-reference-implementation/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/clean-room-reference-implementation/SKILL.md)
+  - [`skills/completion-evidence/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/completion-evidence/SKILL.md)
+  - [`skills/agent-development-journal/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/agent-development-journal/SKILL.md)
 - **Affected paths:**
   - `pyproject.toml`
   - `atyaf_core/cli.py`

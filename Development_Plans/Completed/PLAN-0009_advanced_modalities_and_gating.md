@@ -31,10 +31,10 @@
   - ESA Sentinel-1 Product Specification & Calibration Technical Guide.
   - DLR EnMAP / ASI PRISMA Level-2 User Handbooks.
 - **Skills and links selected:**
-  - [`skills/remote-sensing-pipelines/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/remote-sensing-pipelines/SKILL.md)
-  - [`skills/geospatial-data-processing/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/geospatial-data-processing/SKILL.md)
-  - [`skills/completion-evidence/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/completion-evidence/SKILL.md)
-  - [`skills/agent-development-journal/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/agent-development-journal/SKILL.md)
+  - [`skills/remote-sensing-pipelines/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/remote-sensing-pipelines/SKILL.md)
+  - [`skills/geospatial-data-processing/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/geospatial-data-processing/SKILL.md)
+  - [`skills/completion-evidence/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/completion-evidence/SKILL.md)
+  - [`skills/agent-development-journal/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/agent-development-journal/SKILL.md)
 - **Affected paths:**
   - `atyaf_core/modalities/__init__.py`
   - `atyaf_core/modalities/models.py`

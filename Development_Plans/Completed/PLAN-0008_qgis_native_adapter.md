@@ -30,11 +30,11 @@
   - `DECISIONS.md` (D-002, D-003, D-007, D-011, D-018, D-020)
   - QGIS 4.2.3 PyQGIS Core & Processing API
 - **Skills and links selected:**
-  - [`skills/qgis-plugin-development/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/qgis-plugin-development/SKILL.md)
-  - [`skills/qgis-engine-integration/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/qgis-engine-integration/SKILL.md)
-  - [`skills/coordinate-reference-systems/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/coordinate-reference-systems/SKILL.md)
-  - [`skills/completion-evidence/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/completion-evidence/SKILL.md)
-  - [`skills/agent-development-journal/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/agent-development-journal/SKILL.md)
+  - [`skills/qgis-plugin-development/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/qgis-plugin-development/SKILL.md)
+  - [`skills/qgis-engine-integration/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/qgis-engine-integration/SKILL.md)
+  - [`skills/coordinate-reference-systems/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/coordinate-reference-systems/SKILL.md)
+  - [`skills/completion-evidence/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/completion-evidence/SKILL.md)
+  - [`skills/agent-development-journal/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/agent-development-journal/SKILL.md)
 - **Affected paths:**
   - `qgis/metadata.txt`
   - `qgis/__init__.py`

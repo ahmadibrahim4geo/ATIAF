@@ -24,12 +24,12 @@
   - Ninomiya et al. (2005), Mineral mapping with ASTER thermal infrared multispectral data
   - USGS Landsat Collection 2 Surface Temperature Product Guide
 - **Skills and links selected:**
-  - [`skills/remote-sensing-pipelines/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/remote-sensing-pipelines/SKILL.md)
-  - [`skills/arcgis-toolbox-engineering/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/arcgis-toolbox-engineering/SKILL.md)
-  - [`skills/geospatial-data-processing/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/geospatial-data-processing/SKILL.md)
-  - [`skills/coordinate-reference-systems/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/coordinate-reference-systems/SKILL.md)
-  - [`skills/completion-evidence/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/completion-evidence/SKILL.md)
-  - [`skills/agent-development-journal/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/agent-development-journal/SKILL.md)
+  - [`skills/remote-sensing-pipelines/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/remote-sensing-pipelines/SKILL.md)
+  - [`skills/arcgis-toolbox-engineering/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/arcgis-toolbox-engineering/SKILL.md)
+  - [`skills/geospatial-data-processing/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/geospatial-data-processing/SKILL.md)
+  - [`skills/coordinate-reference-systems/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/coordinate-reference-systems/SKILL.md)
+  - [`skills/completion-evidence/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/completion-evidence/SKILL.md)
+  - [`skills/agent-development-journal/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/agent-development-journal/SKILL.md)
 - **Affected paths:**
   - `atyaf_core/temperature/__init__.py`
   - `atyaf_core/temperature/emissivity.py`

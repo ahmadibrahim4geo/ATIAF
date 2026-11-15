@@ -15,13 +15,13 @@
   - `scientific_library/sensors/sensor_registry.json`
   - `scientific_library/indices/candidate_indices.json`
 - **Skills and links selected:**
-  - [`skills/agent-development-journal/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/agent-development-journal/SKILL.md)
-  - [`skills/completion-evidence/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/completion-evidence/SKILL.md)
-  - [`skills/gis-development/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/gis-development/SKILL.md)
-  - [`skills/gis-security-guardian/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/gis-security-guardian/SKILL.md)
-  - [`skills/prompt-intent-orchestrator/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/prompt-intent-orchestrator/SKILL.md)
-  - [`skills/coordinate-reference-systems/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/coordinate-reference-systems/SKILL.md)
-  - [`skills/gis-internationalization-arabic/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/gis-internationalization-arabic/SKILL.md)
+  - [`skills/agent-development-journal/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/agent-development-journal/SKILL.md)
+  - [`skills/completion-evidence/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/completion-evidence/SKILL.md)
+  - [`skills/gis-development/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/gis-development/SKILL.md)
+  - [`skills/gis-security-guardian/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/gis-security-guardian/SKILL.md)
+  - [`skills/prompt-intent-orchestrator/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/prompt-intent-orchestrator/SKILL.md)
+  - [`skills/coordinate-reference-systems/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/coordinate-reference-systems/SKILL.md)
+  - [`skills/gis-internationalization-arabic/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/gis-internationalization-arabic/SKILL.md)
 - **Affected paths:**
   - `START_AGENT_PROMPT.txt`
   - `.agent_resources/GIS-Development-Skills/`

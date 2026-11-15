@@ -22,12 +22,12 @@
   - ESA Sentinel-2 Products Specification Document
   - NASA ASTER Product User Handbook
 - **Skills and links selected:**
-  - [`skills/remote-sensing-pipelines/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/remote-sensing-pipelines/SKILL.md)
-  - [`skills/gis-development/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/gis-development/SKILL.md)
-  - [`skills/geospatial-data-processing/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/geospatial-data-processing/SKILL.md)
-  - [`skills/gis-data-flow-diagnostics/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/gis-data-flow-diagnostics/SKILL.md)
-  - [`skills/completion-evidence/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/completion-evidence/SKILL.md)
-  - [`skills/agent-development-journal/SKILL.md`](../../.agent_resources/GIS-Development-Skills/skills/agent-development-journal/SKILL.md)
+  - [`skills/remote-sensing-pipelines/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/remote-sensing-pipelines/SKILL.md)
+  - [`skills/gis-development/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/gis-development/SKILL.md)
+  - [`skills/geospatial-data-processing/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/geospatial-data-processing/SKILL.md)
+  - [`skills/gis-data-flow-diagnostics/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/gis-data-flow-diagnostics/SKILL.md)
+  - [`skills/completion-evidence/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/completion-evidence/SKILL.md)
+  - [`skills/agent-development-journal/SKILL.md`](https://github.com/ahmadibrahim4geo/GIS-Development-Skills/blob/2a0a9a23618e40218484ec8ae5848a481df51f1a/skills/agent-development-journal/SKILL.md)
 - **Affected paths:**
   - `atyaf_core/__init__.py`
   - `atyaf_core/discovery/__init__.py`
