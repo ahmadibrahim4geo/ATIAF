@@ -1,5 +1,5 @@
 # Development Reports — chronological index
-**Latest: 0023 — project published; clean-runner portability fixes, final hosted checks pending. PLAN-0016 Active; PLAN-0015 remains Active / PARTIAL. Earlier completion rows are not current release certification.**
+**Latest: 0024 — verified GitHub/Pages delivery; PLAN-0016 COMPLETE, 141 hosted tests and package/artifact checks PASS. PLAN-0015 remains Active / PARTIAL. Earlier completion rows are not current release certification.**
 
 Every real work/verification/handoff batch gets a new monotonically numbered report: `0001_<slug>.md`, then `0002_...` and so on.
 
@@ -34,3 +34,5 @@ Every real work/verification/handoff batch gets a new monotonically numbered rep
 | [0022_professional_presentation_and_publication_preparation.md](0022_professional_presentation_and_publication_preparation.md) | 2026-11-15 | PLAN-0016 r1 | PREPARED / NOT YET PUBLISHED | dev1 professional EN/AR README/Index, audit, 140 tests, browser/card routes and package checks PASS | Fresh staged export, normal commit/push, independent remote/CI readback |
 
 | [0023_github_publication_and_clean_runner_portability.md](0023_github_publication_and_clean_runner_portability.md) | 2026-11-15 | PLAN-0016 r1 | PUBLISHED / ACTIVE | Remote SHA/files verified, Pages HTTP 200; clean-source 141 tests and packages PASS; two hosted portability failures diagnosed/fixed | Observe final hosted checks/artifacts before archiving |
+
+| [0024_verified_github_delivery.md](0024_verified_github_delivery.md) | 2026-11-15 | PLAN-0016 r1 | VERIFIED / COMPLETE | Normal push/remote file identities, successful hosted 141-test/package/artifact pipeline and Pages deployment; journal/DoneProof/archive | Continue PLAN-0015 real products/full native and clean-machine acceptance |

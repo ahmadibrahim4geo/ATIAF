@@ -1,6 +1,6 @@
 # PLAN-0016 — Professional presentation and GitHub publication
 
-- Revision: r1; 2026-11-15. Status: Active.
+- Revision: r1; 2026-11-15. Status: Verified Completed.
 - User request: prepare professional project files, Index and README, and upload to https://github.com/ahmadibrahim4geo/ATIAF.git.
 - Authorization: local presentation/project hygiene, commit and normal non-force push to the specified user-owned repository. No unrelated upstream changes, source imagery upload or false stable-release claim.
 - Baseline: main at 08954fc; extensive accepted local PLAN-0015 repairs remain uncommitted. Remote is public/empty, default main; connector confirms push/admin; native ls-remote returns no refs. Preserve all local inputs/history and PLAN-0015 Active/partial.
@@ -18,3 +18,9 @@
 Professional EN/AR README, improved generated landing pages, community/citation/build artifact guidance and publication audit; report 0022 preparation then a new observed publication handoff if successful. No runtime algorithm change is needed for this presentation task. Rebuild generated HTML from its source template, not hand edits.
 
 مطلوب تجهيز عرض المشروع وملفاته ورفعه للمستودع المحدد، مع بقاء قيود النسخة التطويرية واضحة وحفظ المصدر والتاريخ والملفات المحلية. نجاح الرفع لا يعني اكتمال شروط التحقق العلمي في PLAN-0015.
+
+## Delivery / revision history
+
+- r1 acceptance unchanged. Report 0024 written before archival. Verified source 31794beb5c58b59b997d862d4689cb4001b56432, hosted run 43733305094 and Pages run 43733304028 succeeded; remote SHA/key files matched, 141 headless tests and package/artifact checks passed. Failures retained in reports 0022/0023 and evidence.
+- Archived after observed publication checks; original science plan PLAN-0015 stays Active/partial. Remaining real-product/native/clean-machine work is not claimed complete.
+- اكتملت خطة العرض والنشر بعد التحقق الفعلي، دون إغلاق خطة التحقق العلمي المتبقية.

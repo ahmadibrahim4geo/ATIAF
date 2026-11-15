@@ -1,11 +1,10 @@
 # Project development state — agent handoff
 
 Read with INDEX.md and the linked reports. Independently inspect code and tests.
-Recorded steps: 45
+Recorded steps: 46
 
 ## Latest records
 
-- #0036 [proposed] Clarify NDVI-assisted LST requirement and Sentinel-1 scope (related: #0034)
 - #0037 [in_progress] Recorded NDVI-assisted LST gap and honest Sentinel-1 status (related: #0036)
 - #0038 [proposed] Require bilingual interpretation and sourced locally adjustable index classes (related: #0036)
 - #0039 [in_progress] Recorded r5 output interpretation and locally adjustable classification scope (related: #0038)
@@ -15,6 +14,7 @@ Recorded steps: 45
 - #0043 [approved] Prepare professional project presentation and publish to user-owned GitHub ATIAF
 - #0044 [in_progress] Prepared professional EN/AR presentation and dev1 GitHub publication snapshot (related: #0043)
 - #0045 [in_progress] Verified normal GitHub pushes and clean-source publication checks (related: #0044)
+- #0046 [completed] Delivered professional ATIAF repository, live Index and successful hosted packages (related: #0045)
 
 ## Open/blocked records (confirm whether still applicable)
 

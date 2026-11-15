@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "request_id": "ATIAF-PUBLICATION-2026-11-15",
+  "task_id": "PLAN-0016",
+  "revision": "r1",
+  "overall_status": "verified",
+  "criteria": [
+    {
+      "id": "C1",
+      "statement": "Matching professional EN/AR README and offline root/documentation Index retain supplied logo then banner, explain six tools, installation, manual inputs, result interpretation, local processing and honest development/support limits.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "Reports/evidence/PLAN-0016/site_asset_order_verification.json",
+          "observed": "EN/AR README and portals inspected; desktop/mobile checks passed; actual remote img order logo then banner confirmed.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "C2",
+      "statement": "Portable project/navigation/community/citation files and Git hygiene exclude local originals duplicated by integrated assets, GIS-generated metadata, scenes, Work/Results, caches, skills checkout and build archives without deleting them. Publication audit detects accidental data/secrets/large artifacts; history remains intact.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "command_output",
+          "reference": "Reports/evidence/PLAN-0016/publication_audit_staged.json",
+          "observed": "Narrow publication audit passed; ignored scenes/builds/skills not uploaded and original Git history retained.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "C3",
+      "statement": "Documentation build, local links/JSON, relevant regression and offline desktop/mobile interaction/render checks pass on final source. CI builds/tests current source and exposes QGIS/core install artifacts with truthful scope; hosted CI status is observed separately.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "provider_receipt",
+          "reference": "Reports/evidence/PLAN-0016/hosted_success_excerpts.json",
+          "observed": "Hosted 141 tests/docs/package/source-identity/artifact checks passed; local desktop/mobile and relocated QGIS package checks passed with declared synthetic scope.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "C4",
+      "statement": "Commit and normal push the intended project to the exact requested repository; independently verify published main SHA and key remote files/assets. No force push or claiming publication from a local commit alone.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "provider_receipt",
+          "reference": "Reports/evidence/PLAN-0016/github_publication_receipt.json",
+          "observed": "Normal push succeeded; remote SHA matched 31794be and key file/asset Git blobs match; Pages success and HTTP 200 observed.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "C5",
+      "statement": "New numbered reports, indexes, PROJECT_STATE and canonical journal record actual commands, failures, Git SHA/publication result and next step. Archive this plan only after its publication checks pass; do not close PLAN-0015's remaining scientific/native acceptance.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "Reports/0024_verified_github_delivery.md",
+          "observed": "Numbered delivery report, both indexes, PROJECT_STATE and canonical journal updated; PLAN-0016 archived after report, PLAN-0015 remains Active.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    }
+  ]
+}

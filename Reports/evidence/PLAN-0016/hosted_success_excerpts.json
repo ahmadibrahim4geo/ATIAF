@@ -1,0 +1,19 @@
+{
+  "run_id": 43733305094,
+  "job_id": 132870328252,
+  "source_sha": "31794beb5c58b59b997d862d4689cb4001b56432",
+  "observed_lines": [
+    "2026-11-15T16:03:54.9264508Z   Created wheel for atiaf: filename=atiaf-1.0.2.dev1-py3-none-any.whl size=116978 sha256=81ea928333dcfe41fbe64378218df89d397e096b39bf5c5a3d7e4e2fcd2ed7c5",
+    "2026-11-15T16:04:13.7917410Z Successfully installed affine-3.0.1 atiaf-1.0.2.dev1 attrs-26.1.0 certifi-2026.10.23 click-8.5.1 geopandas-1.2.0 numpy-2.5.3 packaging-26.3 pandas-3.1.1 pyogrio-0.13.0 pyparsing-3.3.3 pyproj-3.8.0 python-dateutil-4.0.0 rasterio-1.5.2 setuptools-84.0.0 shapely-2.1.2 tzdata-2026.6 wheel-0.48.0",
+    "2026-11-15T16:04:14.7946599Z STRUCTURAL VALIDATION PASS � documentation only. Native ArcGIS/QGIS tests NOT RUN.",
+    "2026-11-15T16:04:20.4729245Z Ran 141 tests in 4.236s",
+    "2026-11-15T16:04:20.4729396Z OK",
+    "2026-11-15T16:04:22.2911510Z   Created wheel for atiaf: filename=atiaf-1.0.2.dev1-py3-none-any.whl size=116979 sha256=3ca4bddacecbfe8ec7c26afc54e39c590f645bb9c5961f79934d7a7b9463c29a",
+    "2026-11-15T16:04:23.9860549Z WHEEL PASS: isolated installed core, six catalogs, scientific imports",
+    "2026-11-15T16:04:23.9861260Z SOURCE IDENTITY PASS: wheel, QGIS core/adapter and bundled bilingual help match current source; icon included",
+    "2026-11-15T16:04:25.9538524Z Artifact ATIAF-QGIS-development.zip successfully finalized. Artifact ID 14169342634",
+    "2026-11-15T16:04:25.9539396Z Artifact ATIAF-QGIS-development has been successfully uploaded! Final size is 3598601 bytes. Artifact ID is 14169342634",
+    "2026-11-15T16:04:27.2233652Z Artifact ATIAF-core-development.zip successfully finalized. Artifact ID 14168829836",
+    "2026-11-15T16:04:27.2234599Z Artifact ATIAF-core-development has been successfully uploaded! Final size is 112759 bytes. Artifact ID is 14168829836"
+  ]
+}

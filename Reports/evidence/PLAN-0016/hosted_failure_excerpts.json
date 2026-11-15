@@ -1,0 +1,43 @@
+{
+  "source": "Observed GitHub job log excerpts; failures retained, later fixes do not erase them",
+  "runs": [
+    {
+      "run_id": 43732501951,
+      "url": "https://github.com/ahmadibrahim4geo/ATIAF/actions/runs/43732501951",
+      "observed_lines": [
+        "2026-11-15T15:55:32.6417749Z STRUCTURAL VALIDATION FAILED:",
+        "2026-11-15T15:55:32.6418989Z Broken local link Development_Plans\\Completed\\PLAN-0001_bootstrap.md -> ../../.agent_resources/GIS-Development-Skills/skills/agent-development-journal/SKILL.md",
+        "2026-11-15T15:55:32.6420232Z Broken local link Development_Plans\\Completed\\PLAN-0001_bootstrap.md -> ../../.agent_resources/GIS-Development-Skills/skills/completion-evidence/SKILL.md",
+        "2026-11-15T15:55:32.6421247Z Broken local link Development_Plans\\Completed\\PLAN-0001_bootstrap.md -> ../../.agent_resources/GIS-Development-Skills/skills/gis-development/SKILL.md",
+        "2026-11-15T15:55:32.6422196Z Broken local link Development_Plans\\Completed\\PLAN-0001_bootstrap.md -> ../../.agent_resources/GIS-Development-Skills/skills/gis-security-guardian/SKILL.md",
+        "2026-11-15T15:55:32.6423778Z Broken local link Development_Plans\\Completed\\PLAN-0001_bootstrap.md -> ../../.agent_resources/GIS-Development-Skills/skills/prompt-intent-orchestrator/SKILL.md",
+        "2026-11-15T15:55:32.6425028Z Broken local link Development_Plans\\Completed\\PLAN-0001_bootstrap.md -> ../../.agent_resources/GIS-Development-Skills/skills/coordinate-reference-systems/SKILL.md",
+        "2026-11-15T15:55:32.6426368Z Broken local link Development_Plans\\Completed\\PLAN-0001_bootstrap.md -> ../../.agent_resources/GIS-Development-Skills/skills/gis-internationalization-arabic/SKILL.md"
+      ]
+    },
+    {
+      "run_id": 43732778478,
+      "url": "https://github.com/ahmadibrahim4geo/ATIAF/actions/runs/43732778478",
+      "observed_lines": [
+        "2026-11-15T15:58:54.6170229Z FAIL: test_workspace_roots_custom_destination (test_raster_core.TestWorkspaceManager.test_workspace_roots_custom_destination)",
+        "2026-11-15T15:58:54.6181092Z AssertionError: WindowsPath('C:/Users/runneradmin/AppData/Local/Temp/tmpat7_zir[37 chars]520') != WindowsPath('C:/Users/RUNNER~1/AppData/Local/Temp/tmpat7_ziru/C[34 chars]520')",
+        "2026-11-15T15:58:54.6182439Z FAIL: test_workspace_roots_single_scene_default (test_raster_core.TestWorkspaceManager.test_workspace_roots_single_scene_default)",
+        "2026-11-15T15:58:54.6185923Z AssertionError: WindowsPath('C:/Users/runneradmin/AppData/Local/Temp/tmpgqqmg4x[24 chars]520') != WindowsPath('C:/Users/RUNNER~1/AppData/Local/Temp/tmpgqqmg4x3/L[21 chars]520')",
+        "2026-11-15T15:58:54.6187346Z FAIL: test_default_destination_and_immutable_reruns (test_workflow_repair.TestWorkflowRepair.test_default_destination_and_immutable_reruns)",
+        "2026-11-15T15:58:54.6190047Z AssertionError: False is not true",
+        "2026-11-15T15:58:54.6190643Z Ran 141 tests in 6.420s",
+        "2026-11-15T15:58:54.6190850Z FAILED (failures=3)"
+      ]
+    },
+    {
+      "run_id": 43733059500,
+      "url": "https://github.com/ahmadibrahim4geo/ATIAF/actions/runs/43733059500",
+      "observed_lines": [
+        "2026-11-15T16:02:02.0675178Z Ran 141 tests in 9.142s",
+        "2026-11-15T16:02:02.0675477Z OK",
+        "2026-11-15T16:02:03.9724525Z   Cannot import build backend 'setuptools.build_meta'.",
+        "2026-11-15T16:02:03.9725287Z   ModuleNotFoundError: No module named 'setuptools'"
+      ]
+    }
+  ]
+}

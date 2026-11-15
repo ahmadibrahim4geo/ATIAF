@@ -1,0 +1,11 @@
+{
+  "url": "https://ahmadibrahim4geo.github.io/ATIAF/",
+  "method": "HTMLParser img elements in document order, excluding social metadata",
+  "images": [
+    "documentation/assets/atiaf-logo.png",
+    "documentation/assets/atiaf-banner.png"
+  ],
+  "logo_before_banner": true,
+  "correction": "github_publication_receipt.json raw string-position field was false because social-image metadata mentions the banner before displayed images; that heuristic does not measure visible order",
+  "visual_evidence": "Local desktop/mobile screenshots and browser checks in this plan; remote HTML asset order independently checked"
+}

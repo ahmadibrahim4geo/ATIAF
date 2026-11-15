@@ -1,0 +1,81 @@
+{
+  "observed_utc": "2026-11-15T16:05:04.3747082Z",
+  "repository": "https://github.com/ahmadibrahim4geo/ATIAF",
+  "main_sha": "31794beb5c58b59b997d862d4689cb4001b56432",
+  "normal_push": true,
+  "files": [
+    {
+      "path": "README.md",
+      "git_blob": "f5cad37d83e2635c936b122efd1493e055ad1afd",
+      "size": 8805,
+      "matches_local": true
+    },
+    {
+      "path": "README.ar.md",
+      "git_blob": "efc29b95d1fb6deeaaa30ac22dea4bece40f9c24",
+      "size": 11765,
+      "matches_local": true
+    },
+    {
+      "path": "index.html",
+      "git_blob": "2b35868a06ea6a33fa482ffccd7d3697174e86c3",
+      "size": 111324,
+      "matches_local": true
+    },
+    {
+      "path": "documentation/assets/atiaf-logo.png",
+      "git_blob": "a67d76f9f644a5034b6aa9f74b12de3843676ede",
+      "size": 1173577,
+      "matches_local": true
+    },
+    {
+      "path": "documentation/assets/atiaf-banner.png",
+      "git_blob": "b029129f36f18e2bc33818528a6cac8ce452f5ae",
+      "size": 1694299,
+      "matches_local": true
+    }
+  ],
+  "runs": [
+    {
+      "id": 43733304028,
+      "name": "pages build and deployment",
+      "head_sha": "31794beb5c58b59b997d862d4689cb4001b56432",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/ahmadibrahim4geo/ATIAF/actions/runs/43733304028"
+    },
+    {
+      "id": 43733305094,
+      "name": "Headless package verification",
+      "head_sha": "31794beb5c58b59b997d862d4689cb4001b56432",
+      "status": "completed",
+      "conclusion": "success",
+      "html_url": "https://github.com/ahmadibrahim4geo/ATIAF/actions/runs/43733305094"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 14169342634,
+      "name": "ATIAF-QGIS-development",
+      "size_in_bytes": 3598601,
+      "digest": "sha256:2aa16f3f3d297e8e1c7d99aac03f5d3fe2dfcf6f5171218a543803ed02aac3b9",
+      "expired": false,
+      "archive_download_url": "https://api.github.com/repos/ahmadibrahim4geo/ATIAF/actions/artifacts/14169342634/zip"
+    },
+    {
+      "id": 14168829836,
+      "name": "ATIAF-core-development",
+      "size_in_bytes": 112759,
+      "digest": "sha256:a27003b7bb3aec04023d5b3f5f201da4e05c166a42003a981e97feba5e12ec7a",
+      "expired": false,
+      "archive_download_url": "https://api.github.com/repos/ahmadibrahim4geo/ATIAF/actions/artifacts/14168829836/zip"
+    }
+  ],
+  "site": {
+    "http_status": 200,
+    "logo_before_banner": false,
+    "url": "https://ahmadibrahim4geo.github.io/ATIAF/",
+    "version_dev1": true
+  },
+  "scope": "Published development source and install artifacts; native real-product and clean-machine acceptance remains in Active PLAN-0015"
+}

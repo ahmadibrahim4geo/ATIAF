@@ -1,4 +1,4 @@
-"""Local link checks with two explicit immutable-report path migrations."""
+"""Local link checks with explicit immutable-report path migrations."""
 from html.parser import HTMLParser
 from pathlib import Path
 import re
@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 HISTORICAL = {
     ('Reports/0009_advanced_modalities_and_gating.md', '../docs/en/ADVANCED_MODALITIES.md'): 'documentation/en/ADVANCED_MODALITIES.md',
     ('Reports/0009_advanced_modalities_and_gating.md', '../docs/ar/ADVANCED_MODALITIES.md'): 'documentation/ar/ADVANCED_MODALITIES.md',
+    ('Reports/0022_professional_presentation_and_publication_preparation.md', '../Development_Plans/Active/PLAN-0016_professional_presentation_and_github_publication.md'): 'Development_Plans/Completed/PLAN-0016_professional_presentation_and_github_publication.md',
 }
 
 
