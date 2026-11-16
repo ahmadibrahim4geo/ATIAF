@@ -1,0 +1,1 @@
+PASS: final real QGIS metadata reopened; both recipes have3 channel statistics,40394219 valid/channel, actual Landsat8 identity, NaN analytic NoData. Source archive integrity and relocation verified; packages hashed.

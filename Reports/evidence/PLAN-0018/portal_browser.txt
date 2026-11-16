@@ -1,0 +1,2 @@
+desktop {"allPass":false,"error":"Error: Headless browser did not expose a local test endpoint"}
+mobile {"allPass":false,"error":"Error: Headless browser did not expose a local test endpoint"}

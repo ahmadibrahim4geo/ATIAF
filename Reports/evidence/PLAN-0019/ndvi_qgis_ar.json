@@ -1,0 +1,36 @@
+{
+  "status": "pass",
+  "host": "qgis",
+  "language": "ar",
+  "path": "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0019\\ndvi_qgis_ar\\LC81760392014234LGN00\\Results\\Spectral_Indices\\Vegetation\\NDVI_TOA\\NDVI_TOA_LC81760392014234LGN00_FULL_RUN-d6e11ba8529e4efa967fed0a1150dfde.tif",
+  "grid": {
+    "crs": "EPSG:32636",
+    "transform": [
+      30.0,
+      0.0,
+      282885.0,
+      0.0,
+      -30.0,
+      3470715.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "width": 7711,
+    "height": 7861,
+    "nodata": -9999.0
+  },
+  "samples": 261,
+  "max_absolute_error": 7.618022214439524e-08,
+  "source_stat_unchanged": true,
+  "unit": "diagnostic TOA NDVI; not SR NDVI",
+  "result": {
+    "OUTPUT_FOLDER": "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0019\\ndvi_qgis_ar",
+    "OUTPUT_RASTERS": [
+      "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0019\\ndvi_qgis_ar\\LC81760392014234LGN00\\Results\\Spectral_Indices\\Vegetation\\NDVI_TOA\\NDVI_TOA_LC81760392014234LGN00_FULL_RUN-d6e11ba8529e4efa967fed0a1150dfde.tif"
+    ],
+    "RUN_MANIFESTS": [
+      "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0019\\ndvi_qgis_ar\\LC81760392014234LGN00\\Results\\Reports\\Runs\\RUN_20261116_033934_34d36a5d"
+    ]
+  }
+}

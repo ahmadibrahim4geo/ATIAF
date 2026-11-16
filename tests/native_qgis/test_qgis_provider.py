@@ -13,6 +13,7 @@ Validates:
 
 from pathlib import Path
 import shutil
+import os
 import sys
 import tempfile
 import unittest
@@ -132,6 +133,7 @@ END_GROUP = L1_METADATA_FILE
             "atiaf:environmental_drought",
             "atiaf:geological_analysis",
             "atiaf:temporal_change",
+            "atiaf:geological_composites",
         ]
         registered_prov = QgsApplication.processingRegistry().providerById("atiaf")
         prov_alg_ids = [a.id() for a in registered_prov.algorithms()]
@@ -325,7 +327,7 @@ END_GROUP = L1_METADATA_FILE
         panel.setParameters({'manual_mode':False})
         panel.refresh_visibility()
         self.assertTrue(panel._field_widgets['band_red'].isHidden())
-        evidence=PROJECT_ROOT/'Reports'/'evidence'/'PLAN-0015'/'r6'
+        evidence=Path(os.environ.get('ATIAF_TEST_EVIDENCE_DIR',str(self.temp_dir/'ui_evidence')))
         evidence.mkdir(parents=True,exist_ok=True)
         parent.setCentralWidget(panel); parent.resize(1000,1000); parent.show()
         QgsApplication.processEvents()

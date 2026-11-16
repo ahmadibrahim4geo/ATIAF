@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "sequence": 55,
+  "timestamp_utc": "2026-11-16T04:49:29+00:00",
+  "kind": "revision",
+  "status": "proposed",
+  "summary": "Discuss actual Pro trial errors, short user filenames and NDVI-first vegetation-driven thermal UI",
+  "details": "User asks to discuss next changes after screenshots: T07 missing rasterio import, T05 select-at-least-one warning, long SceneID/FULL/RUN result names, optional Study Area Name in all tools and automatic vegetation-index compute/save/use in temperature. User clarifies selectable vegetation list with NDVI first/default. Inspected actual updateMessages, workspace naming, UI schema/current NDVI RTE engine, prior report29 and primary Esri/USGS/Sobrino references. Screenshot error does not establish invalid legacy imagery or identify current live environment. Empty selection warning is attached to input folder in source. Current engine can compute NDVI internally but does not supply the requested simple saved-output/selector flow; alternate vegetation indices need distinct validated emissivity models. Appended proposed r2 to existing PLAN-0019 with original requests, six proposed acceptance outcomes and PLAN-0015 cross-reference; report0030 and indexes/state updated. This phase is discussion/inspection only: no processing code, environment switch/install, raster names/results, model, version or package changed. Previous183 tests are historical, not live GUI proof. Structural links/JSON pass; journal54 verified before this append. Next work requires actual same-session Pro environment evidence before claiming a user fix; protect prior scene/results and retain original14 criteria/gaps.",
+  "references": [
+    54
+  ],
+  "task_id": "PLAN-0019",
+  "plan_revision": "r2-proposed",
+  "changed_files": [
+    "Development_Plans/Active/PLAN-0019_Legacy_Imagery_and_Geological_Outputs_Audit.md",
+    "Reports/0030_user_trial_feedback_and_proposed_usability_revision.md",
+    "PROJECT_STATE.md"
+  ],
+  "tests": [
+    "Read-only source/screenshot inspection; structural links/JSON PASS; no new native/science runtime tests"
+  ],
+  "test_result": "not_run",
+  "commit": "1d15bad",
+  "previous_hash": "9fef42cc58bdaa1c858a232db1f62bab458ae2ecb880096edf5732c24e9c6a7d",
+  "hash": "23e07994d31901580f4f0fde2bb1aa80acde48344263ef8114f522eabba8321e"
+}

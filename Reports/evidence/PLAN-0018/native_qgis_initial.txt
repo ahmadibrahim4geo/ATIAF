@@ -1,0 +1,13 @@
+test_native_methods_both_languages_and_queued_rgb_renderer (__main__.NativeComposites.test_native_methods_both_languages_and_queued_rgb_renderer) ... C:\Users\ahmad\AppData\Roaming\Python\Python312\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_native_panel_and_async_before_after_preview (__main__.NativeComposites.test_native_panel_and_async_before_after_preview) ... D:\My Software\ATIAF\atiaf_core\composites\engine.py:313: PendingDeprecationWarning: Use `@` matmul instead of `*` mul operator for matrix multiplication
+  transform=transform*transform.scale(width/small_width,height/small_height)
+C:\Users\ahmad\AppData\Roaming\Python\Python312\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 3.388s
+
+OK

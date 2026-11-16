@@ -1,0 +1,52 @@
+test_arithmetic_rejects_executable_content (test_geological_composites.TestGeologicalComposites.test_arithmetic_rejects_executable_content) ... ok
+test_aster_invalid_date_and_stack_mapping_rejected (test_geological_composites.TestGeologicalComposites.test_aster_invalid_date_and_stack_mapping_rejected) ... ok
+test_batch_mosaic_has_one_scene_for_whole_rgb_pixel (test_geological_composites.TestGeologicalComposites.test_batch_mosaic_has_one_scene_for_whole_rgb_pixel) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_bilingual_fields_no_mixed_interface_and_output_last_contract (test_geological_composites.TestGeologicalComposites.test_bilingual_fields_no_mixed_interface_and_output_last_contract) ... ok
+test_cancel_before_any_writes (test_geological_composites.TestGeologicalComposites.test_cancel_before_any_writes) ... ok
+test_custom_preset_export_import_and_spoofing (test_geological_composites.TestGeologicalComposites.test_custom_preset_export_import_and_spoofing) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_different_dates_mosaic_rejected_before_writes (test_geological_composites.TestGeologicalComposites.test_different_dates_mosaic_rejected_before_writes) ... ok
+test_direct_and_ratio_independent_reference_values_and_masks (test_geological_composites.TestGeologicalComposites.test_direct_and_ratio_independent_reference_values_and_masks) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_display_settings_do_not_change_analysis (test_geological_composites.TestGeologicalComposites.test_display_settings_do_not_change_analysis) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_experimental_is_explicit (test_geological_composites.TestGeologicalComposites.test_experimental_is_explicit) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_explicit_aster_stack_maps_scientific_band_not_position (test_geological_composites.TestGeologicalComposites.test_explicit_aster_stack_maps_scientific_band_not_position) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_gates_before_writes (test_geological_composites.TestGeologicalComposites.test_gates_before_writes) ... ok
+test_imported_preset_cannot_escape_output_directory (test_geological_composites.TestGeologicalComposites.test_imported_preset_cannot_escape_output_directory) ... ok
+test_legacy_qa_not_applied_to_collection1_by_filename (test_geological_composites.TestGeologicalComposites.test_legacy_qa_not_applied_to_collection1_by_filename) ... ok
+test_legacy_toa_solar_scaling_and_exact_bqa_schema (test_geological_composites.TestGeologicalComposites.test_legacy_toa_solar_scaling_and_exact_bqa_schema) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_polygon_clip_and_output_crs (test_geological_composites.TestGeologicalComposites.test_polygon_clip_and_output_crs) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_preview_does_not_create_results_or_full_raster (test_geological_composites.TestGeologicalComposites.test_preview_does_not_create_results_or_full_raster) ... D:\My Software\ATIAF\atiaf_core\composites\engine.py:318: PendingDeprecationWarning: Use `@` matmul instead of `*` mul operator for matrix multiplication
+  transform=transform*transform.scale(width/small_width,height/small_height)
+C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_render_fixed_limits_and_invalid_controls (test_geological_composites.TestGeologicalComposites.test_render_fixed_limits_and_invalid_controls) ... ok
+test_rerun_destination_and_source_preserved (test_geological_composites.TestGeologicalComposites.test_rerun_destination_and_source_preserved) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_second_published_ratio_variant (test_geological_composites.TestGeologicalComposites.test_second_published_ratio_variant) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_zero_near_zero_nonfinite_and_negative_ratio (test_geological_composites.TestGeologicalComposites.test_zero_near_zero_nonfinite_and_negative_ratio) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 2.648s
+
+OK

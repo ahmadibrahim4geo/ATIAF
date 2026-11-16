@@ -24,3 +24,6 @@
 | الزمن | NDVI أو NBR أو LST | مرئية ثانية أحدث وبالمستشعر والمستوى نفسيهما؛ الفرق الثاني ناقص الأول |
 
 [المعادلات](INDICATORS_CATALOG.md) · [المجلدات](TOOL_UI_AND_WORKSPACE.md) · [الأخطاء](TROUBLESHOOTING.md).
+
+
+لمرئيات Landsat الأرشيفية يقرأ AUTO المجموعة والمستوى من الميتاداتا. يمكن تفعيل NDVI_TOA التشخيصي والتراكيب المعايرة صراحة؛ تبقى طرق الانعكاس السطحي مقيدة. راجع [دليل المنتجات والمخرجات](GEOLOGICAL_COLOR_COMPOSITES.md) و[تدقيق التوافق](../../Reports/PLAN-0019_Audit/01_Sensor_Product_Compatibility_Matrix.md).

@@ -41,3 +41,16 @@
 - D-030: 1.0.2.dev0 remains a development build. First numerical additions EVI2 2.5/2.4 and unadjusted NIRv; other candidates require further scientific/product validation. Preliminary Sentinel-1 helpers are not a complete native radar tool. No publication or upstream skill changes authorized by this batch.
 
 اعتمد المستخدم التنفيذ: اسم الإدخال موحّد، والتعيين اليدوي خيار مستقل، والحسابات في مجموعات دون بحث. الحرارة باختيار واحد ووحدة إخراج مع مسار NDVI المحلي عند اكتمال مدخلاته. تفسير النتائج والفئات موثق باللغتين مع ضبط محلي اختياري لا يغيّر القيم الأصلية أو يدعي معيارًا عالميًا. توزيع QGIS في مكان تابع له، والدعم الجديد يظل مقيدًا بمستوى أدلته الفعلية.
+
+## 2026-11-15 Geological Color Composites execution
+
+- D-031: User authorizes PLAN-0018 from the supplied Geological Color Composites plan. Add a seventh independent native tool in the existing toolbox/provider, sharing core logic, with initially unselected Direct RGB and Ratio RGB. Display/preview remain separate from continuous analytical values; no automatic classification or confirmed rock labels. Preserve all original acceptance and source text. Exact-band/calibration evidence, ASTER date gates, explicit TOA/experimental choices and separate EN/AR help remain mandatory. Real L1T numerical evidence is not field validation or blanket sensor support; local 1.0.3.dev1 is not publication or stable-release authorization.
+
+اعتمد المستخدم تنفيذ التراكيب اللونية الجيولوجية على نمط الأدوات القائمة. يضاف مدخل مستقل للطريقتين بمحرك مشترك، دون تصنيف أو أسماء صخرية مؤكدة، مع فصل العرض والمعاينة عن القيم التحليلية. تبقى المعايرة والباندات والتواريخ والتوثيق والقبول الفعلي شروطًا مستقلة؛ الاختبار الحقيقي المتاح لا يعمم الدعم ولا يأذن بالنشر.
+
+## 2026-11-16 Legacy imagery audit and supplied-plan relocation
+
+- D-032: The explicit move instruction supersedes copy-and-leave-root. Relocate supplied plans into stable numbered lifecycle paths before implementation; retain source filename/path/title/SHA and optional pristine reference only in Source_Archive. No root/general duplicate unless expressly requested. Partials stay Active; verify integrity/status/index links at handoff. EN/AR requirements agree.
+- D-033: PLAN-0019 independently audits legacy imagery/results. Retain CRC1 equation/order unless evidence proves a defect. Shared metadata/calibration/QA fixes and clearer outputs/display/interpretation are authorized; explicit TOA differs from SR. Fixture/native evidence cannot certify missing products or mineral classes. Local 1.0.4.dev0 is development only; no publication, forced download or upstream skill edit.
+
+نقل الخطة يحفظ ملف عمل مرقم داخل مجلد الخطط، ولا يترك نسخة توهم بأنها لم تنفذ. لا يبرر التدقيق تبديل المعادلات دون دليل، ولا إغلاق الخطة قبل التحقق من جميع بنودها.

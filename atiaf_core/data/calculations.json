@@ -378,6 +378,58 @@
         "thermal_2"
       ],
       "citation": "Ninomiya et al. (2005), Mineral mapping with ASTER thermal infrared multispectral data"
+    },
+    {
+      "id": "FEAI",
+      "en": "Ferric Iron Alteration Index (FEAI - ENVI)",
+      "ar": "مؤشر تحورات الحديد ثلاثي التكافؤ (ENVI)",
+      "category": "Geology",
+      "formula": "(SWIR2 / NIR) + (Green / Red)",
+      "roles": [
+        "swir_2",
+        "nir",
+        "green",
+        "red"
+      ],
+      "citation": "NV5 ENVI Spectral Indices / Crowley et al. (1989)"
+    },
+    {
+      "id": "FEI",
+      "en": "Ferrous Iron Index (FEI - ENVI)",
+      "ar": "مؤشر الحديد ثنائي التكافؤ (ENVI)",
+      "category": "Geology",
+      "formula": "(SWIR2 + NIR) / (Green + Red)",
+      "roles": [
+        "swir_2",
+        "nir",
+        "green",
+        "red"
+      ],
+      "citation": "NV5 ENVI Spectral Indices / Segal (1983)"
+    },
+    {
+      "id": "FESI",
+      "en": "Ferrous Silicates Index (FESI - ENVI)",
+      "ar": "مؤشر سيليكات الحديد (ENVI)",
+      "category": "Geology",
+      "formula": "SWIR2 / SWIR1",
+      "roles": [
+        "swir_2",
+        "swir_1"
+      ],
+      "citation": "NV5 ENVI Spectral Indices / Rowan et al. (1986)"
+    },
+    {
+      "id": "LATI",
+      "en": "Laterite Index (LATI - ENVI)",
+      "ar": "مؤشر صخور اللاتريت (ENVI)",
+      "category": "Geology",
+      "formula": "SWIR1 / Green",
+      "roles": [
+        "swir_1",
+        "green"
+      ],
+      "citation": "NV5 ENVI Spectral Indices / Boettinger et al. (2008)"
     }
   ]
 }

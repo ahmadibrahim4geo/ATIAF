@@ -1,0 +1,21 @@
+{
+  "plan": "PLAN-0019",
+  "revision": "r1",
+  "source_sha256": "3A00DBDEECEF2412DD2789FF0132D9C567F5250E29942C17D9A9233BE17721F3",
+  "source_requirements_preserved_as_prefix": true,
+  "source_snapshot_reference_only": true,
+  "intake_root_absent": true,
+  "status": "active_partial",
+  "packages": [
+    {
+      "path": "QGIS Tools/Distribution/ATIAF-QGIS-1.0.4.dev0.zip",
+      "size": 3651479,
+      "sha256": "15d6837dd511b04d9fad6550b0f1097bff00bc74f29f5a4a5c9fb2570cae35df"
+    },
+    {
+      "path": "dist/atiaf-1.0.4.dev0-py3-none-any.whl",
+      "size": 147634,
+      "sha256": "a47c4f194375c6efdc630d8197ab01add225e2d95de08da69c1d50d651239e2f"
+    }
+  ]
+}

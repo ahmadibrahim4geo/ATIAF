@@ -124,6 +124,10 @@ class GeologicalAnalysisEngine:
                         scaled[raw < asset.valid_min] = np.nan
                     if asset.valid_max is not None:
                         scaled[raw > asset.valid_max] = np.nan
+                    # Negative reflectance clamping for optical reflective bands
+                    if r != BandRole.THERMAL_1 and r != BandRole.THERMAL_2:
+                        valid_px = np.isfinite(scaled)
+                        scaled[valid_px & (scaled < 0.0001)] = 0.0001
                     scaled_bands[r] = scaled
 
                 clear_mask = None

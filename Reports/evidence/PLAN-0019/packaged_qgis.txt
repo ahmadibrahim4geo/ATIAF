@@ -1,0 +1,2 @@
+PACKAGED PLUGIN PASS: relocated core, seven algorithms, native synthetic NDVI and RGB readback
+

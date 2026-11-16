@@ -1,0 +1,2 @@
+before arcpy
+{'LicenseLevel': 'Advanced', 'InstallDir': 'c:\\program files\\arcgis\\pro\\', 'Installer': 'ahmad', 'ProductName': 'ArcGISPro', 'Version': '3.6', 'SourceDir': 'D:\\New folder (2)\\Be GISer ArcGIS Pro 3.6\\1 Arcgis pro 3.6\\ArcGISPro\\', 'InstallType': 'N/A', 'BuildNumber': '59527', 'InstallDate': '11/08/2026', 'InstallTime': '14:35:07', 'SPNumber': 'N/A', 'SPBuild': 'N/A', 'LicenseType': ''}

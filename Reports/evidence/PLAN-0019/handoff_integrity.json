@@ -1,0 +1,13 @@
+{
+  "plan": "PLAN-0019",
+  "revision": "r1",
+  "source_sha256": "3A00DBDEECEF2412DD2789FF0132D9C567F5250E29942C17D9A9233BE17721F3",
+  "all14_requirements_verbatim": true,
+  "working_checkmarks_only_updated": true,
+  "root_intake_absent": true,
+  "active": true,
+  "verified_criteria": 10,
+  "partial_criteria": 4,
+  "report": "0029",
+  "packages": "relocation_and_packages.json"
+}

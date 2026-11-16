@@ -1,9 +1,10 @@
 """Additive, non-destructive Work/Results workspace and run manifest manager."""
 
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 import hashlib
 import json
 from pathlib import Path
+import re
 from typing import Any, Dict, List, Optional
 import uuid
 from html import escape
@@ -91,24 +92,84 @@ class WorkspaceManager:
         scene_id: str,
         is_clip: bool = False,
         aoi_slug: Optional[str] = None,
+        date_str: Optional[str] = None,
+        study_area: Optional[str] = None,
     ) -> Path:
-        """Determines the standard hierarchical output path for a calculated product."""
+        """Determines the clean, standard hierarchical output path for a calculated product."""
         cat_dir = results_dir / category / method_name
         cat_dir.mkdir(parents=True, exist_ok=True)
 
-        if is_clip:
-            slug = aoi_slug or "AOI"
-            filename = f"{method_name}_{scene_id}_{slug}_CLIP.tif"
+        opts = RUN_OPTIONS.get() or {}
+        user_opts = opts.get('user_options') or {}
+
+        # Resolve optional study area name
+        study = study_area or opts.get('study_area_name') or user_opts.get('study_area_name') or ''
+        study_clean = re.sub(r'[^\w-]', '_', str(study).strip()) if study else ''
+
+        # Resolve acquisition date string (YYYYMMDD)
+        if not date_str:
+            source_scene = opts.get('source_scene') or {}
+            m = source_scene.get('metadata') or {}
+            acq = m.get('acquisition_date')
+            if acq:
+                try:
+                    dt = datetime.fromisoformat(str(acq))
+                    date_str = dt.strftime('%Y%m%d')
+                except Exception:
+                    pass
+            if not date_str and scene_id:
+                m_date = re.search(r'_(20\d{6})_', scene_id)
+                if m_date:
+                    date_str = m_date.group(1)
+                else:
+                    m_julian = re.search(r'L[CTEOM]\d{2}\d{4}(20\d{2})(\d{3})', scene_id)
+                    if m_julian:
+                        try:
+                            year, jday = int(m_julian.group(1)), int(m_julian.group(2))
+                            dt = datetime(year, 1, 1) + timedelta(days=jday - 1)
+                            date_str = dt.strftime('%Y%m%d')
+                        except Exception:
+                            pass
+
+        parts = []
+        if study_clean:
+            parts.append(study_clean)
+        parts.append(method_name)
+        if date_str:
+            parts.append(date_str)
         else:
-            filename = f"{method_name}_{scene_id}_FULL.tif"
+            short_id = scene_id[:12] if scene_id else 'SCENE'
+            parts.append(short_id)
+
+        if is_clip:
+            slug = aoi_slug or "CLIP"
+            filename = f"{'_'.join(parts)}_{slug}.tif"
+        else:
+            filename = f"{'_'.join(parts)}.tif"
 
         return cls.unique_path(cat_dir / filename)
 
     @staticmethod
     def unique_path(path: Path) -> Path:
-        """A separate immutable filename for every calculation, including concurrent runs."""
+        """A separate collision-free filename; appends clean _v02, _v03 if file already exists."""
         path = Path(path)
-        return path.with_name(f'{path.stem}_RUN-{uuid.uuid4().hex}{path.suffix}')
+        if not path.exists():
+            return path
+        parent = path.parent
+        stem = path.stem
+        suffix = path.suffix
+        m = re.search(r'_v(\d{2,})$', stem)
+        if m:
+            base_stem = stem[:m.start()]
+            v_num = int(m.group(1)) + 1
+        else:
+            base_stem = stem
+            v_num = 2
+        while True:
+            candidate = parent / f"{base_stem}_v{v_num:02d}{suffix}"
+            if not candidate.exists():
+                return candidate
+            v_num += 1
 
     @classmethod
     def _generate_run_html(

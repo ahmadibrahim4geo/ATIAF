@@ -1,0 +1,12 @@
+LC81760392014234LGN00
+C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+LC81760392014234LGN00
+Traceback (most recent call last):
+  File "D:\My Software\ATIAF\tools\verify_geological_composites.py", line 103, in <module>
+    args=ap.parse_args(); verify(args.input.resolve(),args.output.resolve(),args.receipt.resolve(),args.host,args.language,args.preview)
+                          ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My Software\ATIAF\tools\verify_geological_composites.py", line 77, in verify
+    if 'DIRECT_RGB' in str(path.parent) or ds.descriptions==('B7','B5','B3'):
+                           ^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'parent'

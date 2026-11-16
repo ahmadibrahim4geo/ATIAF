@@ -7,8 +7,10 @@ import tempfile
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-wheel = ROOT/'dist/atiaf-1.0.2.dev1-py3-none-any.whl'
-plugin = ROOT/'QGIS Tools/Distribution/ATIAF-QGIS-1.0.2.dev1.zip'
+sys.path.insert(0,str(ROOT))
+from atiaf_core import __version__
+wheel = ROOT/f'dist/atiaf-{__version__}-py3-none-any.whl'
+plugin = ROOT/f'QGIS Tools/Distribution/ATIAF-QGIS-{__version__}.zip'
 with zipfile.ZipFile(wheel) as whl, zipfile.ZipFile(plugin) as archive:
     for source in (ROOT/'atiaf_core').rglob('*'):
         if source.is_file() and '__pycache__' not in source.parts and source.suffix in ('.py', '.json'):
@@ -21,7 +23,7 @@ with zipfile.ZipFile(wheel) as whl, zipfile.ZipFile(plugin) as archive:
             relative=source.relative_to(ROOT/'QGIS Tools').as_posix()
             assert archive.read(relative)==source.read_bytes(), f'Stale plugin source: {relative}'
     for language in ('en','ar'):
-        for page in ('INDICATORS_CATALOG','MANUAL_BANDS','SURFACE_TEMPERATURE'):
+        for page in ('INDICATORS_CATALOG','MANUAL_BANDS','SURFACE_TEMPERATURE','GEOLOGICAL_COLOR_COMPOSITES'):
             assert archive.read(f'atiaf/help/{language}/{page}.html') == (ROOT/'documentation'/language/(page+'.html')).read_bytes()
     assert not any(p.startswith('atyaf_core/') for p in whl.namelist())
 with tempfile.TemporaryDirectory(prefix='atiaf_wheel_') as directory:
@@ -35,8 +37,10 @@ import sys,atiaf_core
 from atiaf_core.tool_contract import CATALOG
 from atiaf_core.indices.registry import INDEX_CATALOG
 assert Path(atiaf_core.__file__).is_relative_to(Path(sys.argv[1]))
-assert len(CATALOG)==6 and 'NDVI' in INDEX_CATALOG
-print('WHEEL PASS: isolated installed core, six catalogs, scientific imports')
+assert len(CATALOG)==7 and 'NDVI' in INDEX_CATALOG and 'geological_composites' in CATALOG
+from atiaf_core.composites.expressions import parse
+assert parse('B6/B7')[1]=={'B6','B7'}
+print('WHEEL PASS: isolated installed core, seven catalogs, scientific/composite imports')
 ''', directory], cwd=directory, env=environment, capture_output=True, text=True, timeout=30)
     print(result.stdout)
     if result.returncode:

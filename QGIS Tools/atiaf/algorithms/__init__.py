@@ -7,6 +7,7 @@ from .thermal_urban import ThermalUrbanAlgorithm
 from .environmental_drought import EnvironmentalDroughtAlgorithm
 from .geological_analysis import GeologicalAnalysisAlgorithm
 from .temporal_change import TemporalChangeAlgorithm
+from .geological_composites import GeologicalCompositesAlgorithm
 
 __all__ = [
     "SpectralIndicesAlgorithm",
@@ -15,4 +16,5 @@ __all__ = [
     "EnvironmentalDroughtAlgorithm",
     "GeologicalAnalysisAlgorithm",
     "TemporalChangeAlgorithm",
+    "GeologicalCompositesAlgorithm",
 ]

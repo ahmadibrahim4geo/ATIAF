@@ -1,0 +1,43 @@
+test_all_six_native_parameters (__main__.TestArcGISNativeWorkflow.test_all_six_native_parameters) ... ERROR 1: Unable to load CF-1 standard name database C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\Library\share\gdal\cf_standard_name_table.db. CF-1 lookups will fail.
+ok
+test_arabic_toolbox_parameter_labels (__main__.TestArcGISNativeWorkflow.test_arabic_toolbox_parameter_labels) ... ok
+ERROR: Select at least one calculation; nothing is selected by default
+test_empty_and_mismatch_are_errors (__main__.TestArcGISNativeWorkflow.test_empty_and_mismatch_are_errors) ... ok
+no_header
+C:\Users\ahmad\AppData\Local\Temp\atiaf_r6_hmppz9a4\no_header\Results\Spectral_Indices\Vegetation\NDVI\NDVI_no_header_FULL_RUN-053c12b549da4dd298f8c18f03985271.tif
+C:\Users\ahmad\AppData\Local\Temp\atiaf_r6_hmppz9a4\no_header\Results\Spectral_Indices\Vegetation\NDVI\NDVI_no_header_FULL_RUN-053c12b549da4dd298f8c18f03985271_LOCAL_CLASSES_RUN-56397a90688743fda78c211e17855bb6.tif
+C:\Users\ahmad\AppData\Local\Temp\atiaf_r6_hmppz9a4\no_header\Results\Spectral_Indices\Vegetation\EVI2\EVI2_no_header_FULL_RUN-501d3821bed8443491225b182516b941.tif
+C:\Users\ahmad\AppData\Local\Temp\atiaf_r6_hmppz9a4\no_header\Results\Spectral_Indices\Vegetation\NIRv\NIRv_no_header_FULL_RUN-4232771cda7f409ca89aaa5fa0e2c514.tif
+test_manual_inputs_groups_and_optional_classes (__main__.TestArcGISNativeWorkflow.test_manual_inputs_groups_and_optional_classes) ... FAIL
+LC08_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\atiaf_r6_6s2mknqq\scene\Results\Surface_Temperature\LST_NDVI_RTE_KELVIN\LST_NDVI_RTE_KELVIN_LC08_L2SP_176039_20230520_20230527_02_T1_FULL_RUN-ac8a3e6fab7242de80781713eb72b31f.tif
+test_ndvi_assisted_temperature (__main__.TestArcGISNativeWorkflow.test_ndvi_assisted_temperature) ... ok
+LC08_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\atiaf_pro__lnbij5d\scene\Results\Spectral_Indices\Vegetation\NDVI\NDVI_LC08_L2SP_176039_20230520_20230527_02_T1_FULL_RUN-587dc050b3484c8a80cd1fbfca2e8578.tif
+test_spectral_execution_and_crs (__main__.TestArcGISNativeWorkflow.test_spectral_execution_and_crs) ... ok
+LC08_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\atiaf_pro_pkkat1nh\scene\Results\Surface_Temperature\LST_CELSIUS\LST_CELSIUS_LC08_L2SP_176039_20230520_20230527_02_T1_FULL_RUN-db6f8f50da4e42f5acf7531cdb1fec6e.tif
+LC08_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\atiaf_pro_pkkat1nh\scene\Results\Geological_Analysis\Iron_Oxide\Iron_Oxide_LC08_L2SP_176039_20230520_20230527_02_T1_FULL_RUN-14c429bec09a4115ad5d3608327f5b05.tif
+test_temperature_and_geology_execution (__main__.TestArcGISNativeWorkflow.test_temperature_and_geology_execution) ... ok
+LC08_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\atiaf_pro_3azt7zoj\scene\Results\Thermal_Analysis\THERMAL_HOTSPOTS_LC08_L2SP_176039_20230520_20230527_02_T1_FULL_RUN-6c92afe1303c4d2e879186a30f975214.tif
+LE07_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\atiaf_pro_3azt7zoj\l7\Results\Environmental_Analysis\ALBEDO_LE07_L2SP_176039_20230520_20230527_02_T1_FULL_RUN-732903e8127b407dbb99e6e8a4ec5537.tif
+LC08_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\atiaf_pro_3azt7zoj\scene\Results\Temporal_Change\NDVI\Delta_NDVI_LC08_L2SP_176039_20230520_20230527_02_T1_to_LC08_L2SP_176039_20230620_20230527_02_T1_DIFF_FULL_RUN-0019f89601d14497abb9f7aac084b50b.tif
+test_urban_environment_and_temporal_execution (__main__.TestArcGISNativeWorkflow.test_urban_environment_and_temporal_execution) ... ok
+
+======================================================================
+FAIL: test_manual_inputs_groups_and_optional_classes (__main__.TestArcGISNativeWorkflow.test_manual_inputs_groups_and_optional_classes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\My Software\ATIAF\tests\native_arcgis\test_arcgis_workflow.py", line 86, in test_manual_inputs_groups_and_optional_classes
+    self.assertTrue(list((folder/'Results').rglob('*LOCAL_CLASSES.tif')))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+----------------------------------------------------------------------
+Ran 8 tests in 7.308s
+
+FAILED (failures=1)

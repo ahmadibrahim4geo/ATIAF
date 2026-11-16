@@ -1,0 +1,4 @@
+Candidate indices: 26
+Planned sensors: 19
+Markdown files: 907 JSON: 190
+STRUCTURAL VALIDATION PASS � documentation only. Native ArcGIS/QGIS tests NOT RUN.

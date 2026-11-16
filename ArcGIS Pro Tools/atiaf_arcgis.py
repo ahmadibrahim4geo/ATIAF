@@ -5,6 +5,13 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
+import site
+try:
+    user_site = site.getusersitepackages()
+    if user_site and Path(user_site).exists() and user_site not in sys.path:
+        sys.path.append(user_site)
+except Exception:
+    pass
 try:
     import arcpy
 except ImportError:
@@ -21,6 +28,8 @@ class NativeTool:
         self.label = title(self.tool_id, self.language)
         self.description = help_text(self.tool_id, self.language)
         self.canRunInBackground = False
+        if self.tool_id == 'geological_composites':
+            self.category = 'التحليل الجيولوجي' if self.language == 'ar' else 'Geological Analysis'
 
     def getParameterInfo(self):
         if arcpy is None:
@@ -40,8 +49,18 @@ class NativeTool:
         for spec in [s for s in self.field_specs if s['group'] in (None, 'Manual')]:
             p = self._field(spec)
             params.append(p)
-        params.extend([param('apply_qa_mask', 'GPBoolean', default=True),
-                       param('enable_mosaic', 'GPBoolean', default=False)])
+        qa_param = param('apply_qa_mask', 'GPBoolean', default=True)
+        qa_mode = param('qa_mask_mode', 'GPString', default='Cloud_Only_Arid')
+        qa_mode.filter.type = 'ValueList'
+        qa_mode_choices = [
+            ('Cloud_Only_Arid', 'Arid Region / Cloud Only (Recommended)', 'المناطق الجافة والصحراوية / سحب فقط (موصى به)'),
+            ('Full_Strict', 'Full Strict (Clouds, Cirrus, Shadows)', 'حجب صارم كامل (سحب وسمحاق وظلال)'),
+            ('Water_Protected', 'Water-Protected (Preserve Water & Coasts)', 'حماية المسطحات المائية والشواطئ'),
+            ('None', 'None (Cloud-free scene)', 'بدون قناع (مرئية خالية من السحب)'),
+        ]
+        qa_mode.filter.list = [c[2 if self.language == 'ar' else 1] for c in qa_mode_choices]
+        qa_mode.value = qa_mode_choices[0][2 if self.language == 'ar' else 1]
+        params.extend([qa_param, qa_mode, param('enable_mosaic', 'GPBoolean', default=False)])
         for row in ui_rows(self.tool_id):
             p = arcpy.Parameter(name='calc_' + row['id'], displayName=f"{row['id']} — {row[self.language]}",
                                 datatype='GPBoolean', parameterType='Optional', direction='Input')
@@ -49,9 +68,10 @@ class NativeTool:
             p.category = group_name(row['category'], self.language)
             params.append(p)
         params.extend(self._field(s) for s in self.field_specs if s['group'] not in (None, 'Manual'))
+        study_area = param('study_area_name', 'GPString')
         aoi = param('aoi_features', 'GPFeatureLayer')
         aoi.filter.list = ['Polygon']
-        params.extend([aoi, param('output_crs', 'GPCoordinateSystem'),
+        params.extend([study_area, aoi, param('output_crs', 'GPCoordinateSystem'),
                        param('add_to_map', 'GPBoolean', default=False), param('output_folder', 'DEFolder')])
         return params
 
@@ -82,6 +102,21 @@ class NativeTool:
             if spec['choices']:
                 value = next((c[0] for c in spec['choices'] if value in c), value)
             result[spec['name']] = value
+        if 'study_area_name' in p and p['study_area_name'].valueAsText:
+            result['study_area_name'] = p['study_area_name'].valueAsText
+        if 'qa_mask_mode' in p and p['qa_mask_mode'].valueAsText:
+            val_text = p['qa_mask_mode'].valueAsText
+            for code, en_name, ar_name in [
+                ('Cloud_Only_Arid', 'Arid Region / Cloud Only (Recommended)', 'المناطق الجافة والصحراوية / سحب فقط (موصى به)'),
+                ('Full_Strict', 'Full Strict (Clouds, Cirrus, Shadows)', 'حجب صارم كامل (سحب وسمحاق وظلال)'),
+                ('Water_Protected', 'Water-Protected (Preserve Water & Coasts)', 'حماية المسطحات المائية والشواطئ'),
+                ('None', 'None (Cloud-free scene)', 'بدون قناع (مرئية خالية من السحب)'),
+            ]:
+                if val_text in (code, en_name, ar_name):
+                    result['qa_mask_mode'] = code
+                    break
+            else:
+                result['qa_mask_mode'] = val_text
         return result
 
     def isLicensed(self):
@@ -92,6 +127,8 @@ class NativeTool:
         source, dest = p['input_folder'], p['output_folder']
         if source.valueAsText and (not dest.altered or not dest.valueAsText):
             dest.value = source.valueAsText
+        if 'qa_mask_mode' in p and 'apply_qa_mask' in p:
+            p['qa_mask_mode'].enabled = bool(p['apply_qa_mask'].value)
         for spec in fields(self.tool_id):
             p[spec['name']].enabled = not spec['when'] or bool(p[spec['when']].value)
 
@@ -104,6 +141,13 @@ class NativeTool:
         try:
             from atiaf_core.workflow import discover, unavailable_reason, preflight
             values = self._values(p)
+            if self.tool_id == 'geological_composites':
+                from atiaf_core.composites.engine import validate_request
+                selected = [r['id'] for r in ui_rows(self.tool_id) if p['calc_' + r['id']].value]
+                if selected:
+                    validate_request(p['input_folder'].valueAsText, selected, p['sensor_product'].valueAsText or 'AUTO',
+                        values, bool(p['apply_qa_mask'].value), bool(p['enable_mosaic'].value), self._crs(p['output_crs']))
+                return
             scenes = discover(p['input_folder'].valueAsText, p['sensor_product'].valueAsText or 'AUTO',
                               manual_options=values)
             selected = [r['id'] for r in ui_rows(self.tool_id) if p['calc_' + r['id']].value]
@@ -115,8 +159,10 @@ class NativeTool:
                     item = p['calc_' + row['id']]
                     (item.setErrorMessage if item.value else item.setWarningMessage)(message)
             if not selected:
-                p['input_folder'].setWarningMessage('اختر حسابًا واحدًا على الأقل من المربعات أدناه.' if self.language == 'ar'
-                                             else 'Select at least one calculation checkbox below.')
+                rows = ui_rows(self.tool_id)
+                if rows and ('calc_' + rows[0]['id']) in p:
+                    p['calc_' + rows[0]['id']].setWarningMessage('اختر حسابًا واحدًا على الأقل من المربعات أدناه.' if self.language == 'ar'
+                                                                 else 'Select at least one calculation checkbox below.')
             crs = self._crs(p['output_crs'])
             if selected:
                 preflight(self.tool_id, scenes, selected, bool(p['apply_qa_mask'].value), bool(p['enable_mosaic'].value), crs, values)
@@ -168,7 +214,9 @@ class NativeTool:
             raise arcpy.ExecuteError from exc
         for path in result['OUTPUT_RASTERS']:
             arcpy.AddMessage(path)
-        self._pending_layers = result['OUTPUT_RASTERS'] if p['add_to_map'].value else []
+        for path in result.get('PREVIEWS', []):
+            arcpy.AddMessage(('المعاينة: ' if self.language == 'ar' else 'Preview: ') + path)
+        self._pending_layers = (result.get('DISPLAY_RASTERS') or result['OUTPUT_RASTERS']) if p['add_to_map'].value else []
 
     def postExecute(self, parameters):
         """Host invokes this on its UI thread after execution. Saved outputs survive rendering failures."""
@@ -180,8 +228,24 @@ class NativeTool:
                 raise ValueError('No active map')
             for path in self._pending_layers:
                 try:
-                    active.addDataFromPath(path)
+                    layer = active.addDataFromPath(path)
+                    if self.tool_id == 'geological_composites' and Path(path).stem.endswith('_DISPLAY'):
+                        self.style_composite_display(layer)
                 except Exception as exc:
                     arcpy.AddWarning(self._error(f'Map loading failed: {exc}; saved raster: {path}'))
         except Exception as exc:
             arcpy.AddWarning(self._error(f'Map loading failed: {exc}; saved products are preserved'))
+
+    @staticmethod
+    def style_composite_display(layer):
+        """Saved display pixels already contain enhancement: do not stretch them twice."""
+        definition=layer.getDefinition('V3')
+        colorizer=arcpy.cim.CreateCIMObjectFromClassName('CIMRasterRGBColorizer','V3')
+        colorizer.redBandIndex,colorizer.greenBandIndex,colorizer.blueBandIndex=0,1,2
+        colorizer.useRedBand=colorizer.useGreenBand=colorizer.useBlueBand=True
+        colorizer.useDefaultMapping=False
+        colorizer.stretchType='None'
+        colorizer.useGammaStretch=False
+        colorizer.gammaR=colorizer.gammaG=colorizer.gammaB=1.0
+        definition.colorizer=colorizer
+        layer.setDefinition(definition)

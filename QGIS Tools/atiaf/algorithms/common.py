@@ -50,8 +50,9 @@ class ATIAFAlgorithm(QgsProcessingAlgorithm):
 
     def helpUrl(self):
         plugin = Path(__file__).resolve().parents[1]
-        packaged = plugin/'help'/self.lang()/'INDICATORS_CATALOG.html'
-        source = plugin.parents[1]/'documentation'/self.lang()/'INDICATORS_CATALOG.html'
+        page = 'GEOLOGICAL_COLOR_COMPOSITES.html' if self.tool_id == 'geological_composites' else 'INDICATORS_CATALOG.html'
+        packaged = plugin/'help'/self.lang()/page
+        source = plugin.parents[1]/'documentation'/self.lang()/page
         return (packaged if packaged.is_file() else source).as_uri()
 
     def createInstance(self):
@@ -72,6 +73,17 @@ class ATIAFAlgorithm(QgsProcessingAlgorithm):
         for spec in [s for s in self.field_specs if s['group'] in (None, 'Manual')]:
             self._add_field(spec)
         self.addParameter(QgsProcessingParameterBoolean(self.APPLY_QA, label('apply_qa_mask', lang), defaultValue=True))
+        qa_choices = [
+            ('Cloud_Only_Arid', 'Arid Region / Cloud Only (Recommended)', 'المناطق الجافة والصحراوية / سحب فقط (موصى به)'),
+            ('Full_Strict', 'Full Strict (Clouds, Cirrus, Shadows)', 'حجب صارم كامل (سحب وسمحاق وظلال)'),
+            ('Water_Protected', 'Water-Protected (Preserve Water & Coasts)', 'حماية المسطحات المائية والشواطئ'),
+            ('None', 'None (Cloud-free scene)', 'بدون قناع (مرئية خالية من السحب)'),
+        ]
+        self.addParameter(QgsProcessingParameterEnum(
+            'QA_MASK_MODE', label('qa_mask_mode', lang),
+            options=[c[2 if lang == 'ar' else 1] for c in qa_choices],
+            defaultValue=0
+        ))
         self.addParameter(QgsProcessingParameterBoolean(self.ENABLE_MOSAIC, label('enable_mosaic', lang), defaultValue=False))
         rows = calculations(self.tool_id, lang)
         self.index_keys = [i for i, _ in rows]
@@ -84,6 +96,7 @@ class ATIAFAlgorithm(QgsProcessingAlgorithm):
             self.addParameter(QgsProcessingParameterBoolean('calc_' + row['id'], row['id'] + ' — ' + row[lang], defaultValue=False))
         for spec in [s for s in self.field_specs if s['group'] not in (None, 'Manual')]:
             self._add_field(spec)
+        self.addParameter(QgsProcessingParameterString('STUDY_AREA_NAME', label('study_area_name', lang), optional=True))
         self.addParameter(QgsProcessingParameterFeatureSource(self.AOI, label('aoi_features', lang), types=[QgsProcessing.TypeVectorPolygon], optional=True))
         self.addParameter(QgsProcessingParameterCrs(self.CRS, label('output_crs', lang), optional=True))
         self.addParameter(QgsProcessingParameterBoolean('ADD_TO_MAP', label('add_to_map', lang), defaultValue=False))
@@ -136,8 +149,17 @@ class ATIAFAlgorithm(QgsProcessingAlgorithm):
         crs = self.parameterAsCrs(parameters, self.CRS, context)
         if parameters.get(self.CRS) and not crs.isValid():
             raise ValueError('Decision D-007: invalid output CRS')
+        field_opts = self._field_values(parameters, context)
+        qa_choices = ['Cloud_Only_Arid', 'Full_Strict', 'Water_Protected', 'None']
+        if 'QA_MASK_MODE' in parameters:
+            qa_idx = self.parameterAsEnum(parameters, 'QA_MASK_MODE', context)
+            if 0 <= qa_idx < len(qa_choices):
+                field_opts['qa_mask_mode'] = qa_choices[qa_idx]
+        study_val = self.parameterAsString(parameters, 'STUDY_AREA_NAME', context) if parameters.get('STUDY_AREA_NAME') else None
+        if study_val:
+            field_opts['study_area_name'] = study_val
         return dict(tool=self.tool_id, input_folder=self.parameterAsString(parameters, self.INPUT_FOLDER, context),
-                    selected=selected, options=self._field_values(parameters, context),
+                    selected=selected, options=field_opts,
                     sensor=self.sensor_keys[self.parameterAsEnum(parameters, 'SENSOR', context)],
                     apply_qa=self.parameterAsBool(parameters, self.APPLY_QA, context),
                     mosaic=self.parameterAsBool(parameters, self.ENABLE_MOSAIC, context),
@@ -153,6 +175,10 @@ class ATIAFAlgorithm(QgsProcessingAlgorithm):
         try:
             from atiaf_core.workflow import discover, preflight
             options = self._options(parameters, context)
+            if self.tool_id == 'geological_composites':
+                from atiaf_core.composites.engine import validate_request
+                validate_request(**options)
+                return True, ''
             scenes = discover(options['input_folder'], options['sensor'], manual_options=options['options'])
             preflight(self.tool_id, scenes, options['selected'], options['apply_qa'], options['mosaic'], options['output_crs'], options['options'])
             return True, ''
@@ -177,7 +203,9 @@ class ATIAFAlgorithm(QgsProcessingAlgorithm):
                 aoi = unary_union(shapes)
             result = run_tool(**options, aoi_geometry=aoi, aoi_crs=aoi_crs,
                               canceled=feedback.isCanceled, progress=feedback.pushInfo)
-            self._pending_layers = result['OUTPUT_RASTERS'] if self.parameterAsBool(parameters, 'ADD_TO_MAP', context) else []
+            for path in result.get('PREVIEWS', []):
+                feedback.pushInfo(('المعاينة: ' if self.lang() == 'ar' else 'Preview: ') + path)
+            self._pending_layers = (result.get('DISPLAY_RASTERS') or result['OUTPUT_RASTERS']) if self.parameterAsBool(parameters, 'ADD_TO_MAP', context) else []
             feedback.setProgress(100)
             return result
         except Exception as exc:
@@ -194,6 +222,9 @@ class ATIAFAlgorithm(QgsProcessingAlgorithm):
             path = queue.pop(0)
             layer = QgsRasterLayer(path, Path(path).stem)
             if layer.isValid():
+                if self.tool_id == 'geological_composites':
+                    from qgis.core import QgsMultiBandColorRenderer
+                    layer.setRenderer(QgsMultiBandColorRenderer(layer.dataProvider(), 1, 2, 3))
                 project.addMapLayer(layer)
             else:
                 QgsMessageLog.logMessage(f'Layer load failed; saved raster: {path}', 'ATIAF')

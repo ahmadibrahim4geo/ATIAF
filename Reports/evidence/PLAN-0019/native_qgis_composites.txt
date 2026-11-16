@@ -1,0 +1,47 @@
+test_native_methods_both_languages_and_queued_rgb_renderer (__main__.NativeComposites.test_native_methods_both_languages_and_queued_rgb_renderer) ... ERROR
+test_native_panel_and_async_before_after_preview (__main__.NativeComposites.test_native_panel_and_async_before_after_preview) ... D:\My Software\ATIAF\atiaf_core\composites\engine.py:309: PendingDeprecationWarning: Use `@` matmul instead of `*` mul operator for matrix multiplication
+  transform=transform*transform.scale(width/small_width,height/small_height)
+C:\Users\ahmad\AppData\Roaming\Python\Python312\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_real_scene_native_before_after_previews (__main__.NativeComposites.test_real_scene_native_before_after_previews) ... D:\My Software\ATIAF\atiaf_core\composites\engine.py:309: PendingDeprecationWarning: Use `@` matmul instead of `*` mul operator for matrix multiplication
+  transform=transform*transform.scale(width/small_width,height/small_height)
+C:\Users\ahmad\AppData\Roaming\Python\Python312\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+
+======================================================================
+ERROR: test_native_methods_both_languages_and_queued_rgb_renderer (__main__.NativeComposites.test_native_methods_both_languages_and_queued_rgb_renderer)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\My Software\ATIAF\QGIS Tools\atiaf\algorithms\common.py", line 183, in processAlgorithm
+    result = run_tool(**options, aoi_geometry=aoi, aoi_crs=aoi_crs,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My Software\ATIAF\atiaf_core\workflow.py", line 212, in run_tool
+    return run(input_folder, selected, sensor=sensor, options=options, apply_qa=apply_qa, mosaic=mosaic,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My Software\ATIAF\atiaf_core\composites\engine.py", line 365, in run
+    plans=validate_request(input_folder,selected,sensor,options,apply_qa,mosaic,output_crs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My Software\ATIAF\atiaf_core\composites\engine.py", line 182, in validate_request
+    config=render.settings(options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My Software\ATIAF\atiaf_core\composites\render.py", line 16, in settings
+    deviations=float(options.get('display_stddev',2))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: float() argument must be a string or a real number, not 'NoneType'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\My Software\ATIAF\tests\native_qgis\test_composites.py", line 42, in test_native_methods_both_languages_and_queued_rgb_renderer
+    result=a.processAlgorithm(dict(INPUT_FOLDER=str(self.scene),calc_DIRECT_RGB=True,calc_RATIO_RGB=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\My Software\ATIAF\QGIS Tools\atiaf\algorithms\common.py", line 191, in processAlgorithm
+    raise QgsProcessingException(arabic_error(str(exc)) if self.lang() == 'ar' else str(exc)) from exc
+_core.QgsProcessingException: float() argument must be a string or a real number, not 'NoneType'
+
+----------------------------------------------------------------------
+Ran 3 tests in 7.790s
+
+FAILED (errors=1)

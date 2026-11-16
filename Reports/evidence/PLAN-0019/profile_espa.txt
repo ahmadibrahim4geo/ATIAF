@@ -1,0 +1,23 @@
+test_collection1_l1_qa_schema_not_precollection (test_legacy_profiles_and_audit.HistoricalProducts.test_collection1_l1_qa_schema_not_precollection) ... ok
+test_collection1_sr_never_uses_collection2_offset (test_legacy_profiles_and_audit.HistoricalProducts.test_collection1_sr_never_uses_collection2_offset) ... ok
+test_collection2_l1_and_l2_keep_distinct_physical_scaling (test_legacy_profiles_and_audit.HistoricalProducts.test_collection2_l1_and_l2_keep_distinct_physical_scaling) ... ok
+test_companion_espa_and_mtl_identity_checked (test_legacy_profiles_and_audit.HistoricalProducts.test_companion_espa_and_mtl_identity_checked) ... ok
+test_explicit_espa_sr_band_metadata (test_legacy_profiles_and_audit.HistoricalProducts.test_explicit_espa_sr_band_metadata) ... ok
+test_generation_mixture_not_silently_mosaicked (test_legacy_profiles_and_audit.HistoricalProducts.test_generation_mixture_not_silently_mosaicked) ... ok
+test_legacy_identity_not_inferred_from_folder_name (test_legacy_profiles_and_audit.HistoricalProducts.test_legacy_identity_not_inferred_from_folder_name) ... ok
+test_legacy_ndvi_is_opt_in_and_named_toa (test_legacy_profiles_and_audit.HistoricalProducts.test_legacy_ndvi_is_opt_in_and_named_toa) ... ok
+test_metadata_conflict_and_missing_coefficients_fail_safe (test_legacy_profiles_and_audit.HistoricalProducts.test_metadata_conflict_and_missing_coefficients_fail_safe) ... ok
+test_metadata_path_and_xml_entity_rejections (test_legacy_profiles_and_audit.HistoricalProducts.test_metadata_path_and_xml_entity_rejections) ... ok
+test_missing_rgb_band_fails_before_writes (test_legacy_profiles_and_audit.HistoricalProducts.test_missing_rgb_band_fails_before_writes) ... ok
+test_mss123_uses_bands4_to7_without_thermal (test_legacy_profiles_and_audit.HistoricalProducts.test_mss123_uses_bands4_to7_without_thermal) ... ok
+test_mss45_uses_different_band_numbers_and_no_swir (test_legacy_profiles_and_audit.HistoricalProducts.test_mss45_uses_different_band_numbers_and_no_swir) ... ok
+test_mtl_xml_and_json (test_legacy_profiles_and_audit.HistoricalProducts.test_mtl_xml_and_json) ... ok
+test_sentinel_missing_available_band_offset_and_quantification_rejected (test_legacy_profiles_and_audit.HistoricalProducts.test_sentinel_missing_available_band_offset_and_quantification_rejected) ... ok
+test_sentinel_old_baseline_zero_offset_and_missing_modern_offset_rejected (test_legacy_profiles_and_audit.HistoricalProducts.test_sentinel_old_baseline_zero_offset_and_missing_modern_offset_rejected) ... ok
+test_sentinel_per_band_offset_quantum_and_namespace (test_legacy_profiles_and_audit.HistoricalProducts.test_sentinel_per_band_offset_quantum_and_namespace) ... ok
+test_tm_etm_roles_and_slc_dates (test_legacy_profiles_and_audit.HistoricalProducts.test_tm_etm_roles_and_slc_dates) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.751s
+
+OK

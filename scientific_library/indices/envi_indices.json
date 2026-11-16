@@ -1,0 +1,2043 @@
+{
+  "catalog_source": "NV5 Geospatial ENVI 6.3 Standard Spectral Index Registry",
+  "citation": "https://www.nv5geospatialsoftware.com/docs/SpectralIndices.html",
+  "license_note": "Public scientific equations and wavelength ranges transcribed for MIT clean-room implementation",
+  "total_indices": 120,
+  "indices": {
+    "ALUI": {
+      "name": "Alunite Index",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "(w2260 / w2165) * (w2260 / w2330)",
+      "bands": [
+        "w2165",
+        "w2260",
+        "w2330"
+      ]
+    },
+    "ARI1": {
+      "name": "Anthocyanin Reflectance Index 1",
+      "type": [
+        "Vegetation",
+        "Leaf Pigments"
+      ],
+      "equation": "(1.0 / w550) - (1.0 / w700)",
+      "bands": [
+        "w550",
+        "w700"
+      ]
+    },
+    "ARI2": {
+      "name": "Anthocyanin Reflectance Index 2",
+      "type": [
+        "Vegetation",
+        "Leaf Pigments"
+      ],
+      "equation": "w800n * ((1.0 / w550) - (1.0 / w700))",
+      "bands": [
+        "w800n",
+        "w550",
+        "w700"
+      ]
+    },
+    "ARVI": {
+      "name": "Atmospherically Resistant Vegetation Index",
+      "type": [
+        "Vegetation",
+        "Narrowband Greenness",
+        "Normalized"
+      ],
+      "equation": "(w800w - (w680 - 1.0 * tmp)) / (w800w + (w680 - 1.0 * tmp)); tmp = w450 - w680",
+      "bands": [
+        "w800w",
+        "w680",
+        "w450"
+      ]
+    },
+    "BAI": {
+      "name": "Burn Area Index",
+      "type": [
+        "Vegetation"
+      ],
+      "equation": "1.0 / ((0.1 - red)^2 + (0.06 - nir)^2)",
+      "bands": [
+        "nir",
+        "red"
+      ]
+    },
+    "CALI": {
+      "name": "Calcite Index",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "(w2205 / w2330) * (w2395 / w2330)",
+      "bands": [
+        "w2205",
+        "w2330",
+        "w2395"
+      ]
+    },
+    "CARI": {
+      "name": "Carbonate Index",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "w10600 / w11300",
+      "bands": [
+        "w10600",
+        "w11300"
+      ]
+    },
+    "CRI1": {
+      "name": "Carotenoid Reflectance Index 1",
+      "type": [
+        "Vegetation",
+        "Leaf Pigments"
+      ],
+      "equation": "(1.0 / w510) - (1.0 / w550)",
+      "bands": [
+        "w510",
+        "w550"
+      ]
+    },
+    "CRI2": {
+      "name": "Carotenoid Reflectance Index 2",
+      "type": [
+        "Vegetation",
+        "Leaf Pigments"
+      ],
+      "equation": "(1.0 / w510) - (1.0 / w700)",
+      "bands": [
+        "w510",
+        "w700"
+      ]
+    },
+    "CAI": {
+      "name": "Cellulose Absorption Index",
+      "type": [
+        "Vegetation",
+        "Dry or Senescent Carbon"
+      ],
+      "equation": "0.5*(w2000 + w2200) - w2100",
+      "bands": [
+        "w2000",
+        "w2200",
+        "w2100"
+      ]
+    },
+    "CLAI": {
+      "name": "Clay Alteration Index",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "(w1650 + w2205) / w2165",
+      "bands": [
+        "w1650",
+        "w2165",
+        "w2205"
+      ]
+    },
+    "CLAY": {
+      "name": "Clay Minerals",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "tm5 / tm7",
+      "bands": [
+        "tm5",
+        "tm7"
+      ]
+    },
+    "DVI": {
+      "name": "Difference Vegetation Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "nir - red",
+      "bands": [
+        "nir",
+        "red"
+      ]
+    },
+    "DWSI": {
+      "name": "Disease Water Stress Index",
+      "type": [
+        "Vegetation"
+      ],
+      "equation": "(nir + green) / (swir1 + red)",
+      "bands": [
+        "nir",
+        "green",
+        "swir1",
+        "red"
+      ]
+    },
+    "DOLI": {
+      "name": "Dolomite Index",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "(w2205 + w2330) / w2300",
+      "bands": [
+        "w2205",
+        "w2300",
+        "w2330"
+      ]
+    },
+    "EVI": {
+      "name": "Enhanced Vegetation Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "(2.5 * (nir - red)) / (nir + 6.0 * red - 7.5 * blue + 1.0)",
+      "bands": [
+        "nir",
+        "red",
+        "blue"
+      ]
+    },
+    "ECAI": {
+      "name": "Epidote / Chlorite / Amphibole Index",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "(w2205 + w2395) / (w2300 + w2330)",
+      "bands": [
+        "w2205",
+        "w2300",
+        "w2330",
+        "w2395"
+      ]
+    },
+    "FCI1": {
+      "name": "Forest Cover Index 1",
+      "type": [
+        "Vegetation"
+      ],
+      "equation": "red * rededge",
+      "bands": [
+        "red",
+        "rededge"
+      ]
+    },
+    "FCI2": {
+      "name": "Forest Cover Index 2",
+      "type": [
+        "Vegetation"
+      ],
+      "equation": "red * nir",
+      "bands": [
+        "red",
+        "nir"
+      ]
+    },
+    "FEAI": {
+      "name": "Ferric Iron Alteration Index",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "(w2165 / w820) + (w560 / tm3)",
+      "bands": [
+        "w560",
+        "tm3",
+        "w820",
+        "w2165"
+      ]
+    },
+    "FEI": {
+      "name": "Ferrous Iron (Fe2+) Index",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "(w2165 + w820) / (w560 + tm3)",
+      "bands": [
+        "w560",
+        "tm3",
+        "w820",
+        "w2165"
+      ]
+    },
+    "FERROUS": {
+      "name": "Ferrous Minerals",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "tm5 / tm4",
+      "bands": [
+        "tm5",
+        "tm4"
+      ]
+    },
+    "FESI": {
+      "name": "Ferrous Silicates Index",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "w2165 / w1650",
+      "bands": [
+        "w1650",
+        "w2165"
+      ]
+    },
+    "GEMI": {
+      "name": "Global Environmental Monitoring Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "tmp * (1.0 - 0.25 * tmp) - ((red - 0.125) / (1.0-red)); tmp = (2.0*(nir^2-red^2) + 1.5*nir + 0.5*red) / (nir+red+0.5)",
+      "bands": [
+        "nir",
+        "red"
+      ]
+    },
+    "GARI": {
+      "name": "Green Atmospherically Resistant Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "(nir - tmp) / (nir + tmp); tmp = green - 1.7 * (blue - red)",
+      "bands": [
+        "nir",
+        "red",
+        "green",
+        "blue"
+      ]
+    },
+    "GCI": {
+      "name": "Green Chlorophyll Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "(nir / green) - 1.0",
+      "bands": [
+        "nir",
+        "green"
+      ]
+    },
+    "GDVI": {
+      "name": "Green Difference Vegetation Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "nir - green",
+      "bands": [
+        "nir",
+        "green"
+      ]
+    },
+    "GLI": {
+      "name": "Green Leaf Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "(tmp - red - blue) / (tmp + red + blue); tmp = 2.0 * green",
+      "bands": [
+        "red",
+        "green",
+        "blue"
+      ]
+    },
+    "GNDVI": {
+      "name": "Green Normalized Difference Vegetation Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness",
+        "Normalized"
+      ],
+      "equation": "(nir - green) / (nir + green)",
+      "bands": [
+        "nir",
+        "green"
+      ]
+    },
+    "GOSAVI": {
+      "name": "Green Optimized Soil Adjusted Vegetation Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "(nir - green) / (nir + green + 0.16)",
+      "bands": [
+        "nir",
+        "green"
+      ]
+    },
+    "GRVI": {
+      "name": "Green Ratio Vegetation Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "nir / green",
+      "bands": [
+        "nir",
+        "green"
+      ]
+    },
+    "GSAVI": {
+      "name": "Green Soil Adjusted Vegetation Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "1.5 * (nir - green) / (nir + green + 0.5)",
+      "bands": [
+        "nir",
+        "green"
+      ]
+    },
+    "GVI": {
+      "name": "Green Vegetation Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "(-0.2848*tm1) + (-0.2435*tm2) + (-0.5436*tm3) + (0.7243*tm4) + (0.0840*tm5) + (-0.1800*tm7)",
+      "bands": [
+        "tm1",
+        "tm2",
+        "tm3",
+        "tm4",
+        "tm5",
+        "tm7"
+      ]
+    },
+    "OHI1": {
+      "name": "Hydroxyl-Bearing (OH) Altered Minerals Index 1",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "(w2260 / w2205) * (w1650 / w2205)",
+      "bands": [
+        "w1650",
+        "w2205",
+        "w2260"
+      ]
+    },
+    "OHI2": {
+      "name": "Hydroxyl-Bearing (OH) Altered Minerals Index 2",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "(w1650 * w2260) / (w2205 * w2205)",
+      "bands": [
+        "w1650",
+        "w2205",
+        "w2260"
+      ]
+    },
+    "OHI3": {
+      "name": "Hydroxyl-Bearing (OH) Altered Minerals Index 3",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "(w1650 * w2260) / (w2165 * w2165)",
+      "bands": [
+        "w1650",
+        "w2165",
+        "w2260"
+      ]
+    },
+    "IPVI": {
+      "name": "Infrared Percentage Vegetation Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "nir / (nir + red)",
+      "bands": [
+        "nir",
+        "red"
+      ]
+    },
+    "IRONOXIDE": {
+      "name": "Iron Oxide",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "tm3 / tm1",
+      "bands": [
+        "tm3",
+        "tm1"
+      ]
+    },
+    "KAI1": {
+      "name": "Kaolinite Index 1",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "w2300 / w2165",
+      "bands": [
+        "w2165",
+        "w2300"
+      ]
+    },
+    "KAI2": {
+      "name": "Kaolinite Index 2",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "(w1650 / w2165) * (w2330 / w2205)",
+      "bands": [
+        "w1650",
+        "w2165",
+        "w2205",
+        "w2330"
+      ]
+    },
+    "KAI3": {
+      "name": "Kaolinite Index 3",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "(w1650 + w2260) / w2205",
+      "bands": [
+        "w1650",
+        "w2205",
+        "w2260"
+      ]
+    },
+    "LATI": {
+      "name": "Laterite Index",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "w1650 / w560",
+      "bands": [
+        "w560",
+        "w1650"
+      ]
+    },
+    "LAI": {
+      "name": "Leaf Area Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "(0.0 != den) && (lai >= 0) ? lai : 0.0; lai = 3.618 * ((2.5 * (nir - red)) / den) - 0.118; den = 1.0 + nir + 6.0 * red - 7.5 * blue",
+      "bands": [
+        "nir",
+        "red",
+        "blue"
+      ]
+    },
+    "LCI": {
+      "name": "Leaf Chlorophyll Index",
+      "type": [
+        "Vegetation"
+      ],
+      "equation": "(w850 - w710) / (w850 + w680)",
+      "bands": [
+        "w850",
+        "w710",
+        "w680"
+      ]
+    },
+    "LWVI1": {
+      "name": "Leaf Water Vegetation Index 1",
+      "type": [
+        "Vegetation"
+      ],
+      "equation": "(w1094 - w983) / (w1094 + w983)",
+      "bands": [
+        "w1094",
+        "w983"
+      ]
+    },
+    "LWVI2": {
+      "name": "Leaf Water Vegetation Index 2",
+      "type": [
+        "Vegetation"
+      ],
+      "equation": "(w1094 - w1205) / (w1094 + w1205)",
+      "bands": [
+        "w1094",
+        "w1205"
+      ]
+    },
+    "LCAI": {
+      "name": "Lignin Cellulose Absorption Index",
+      "type": [
+        "Vegetation",
+        "Dry or Senescent Carbon"
+      ],
+      "equation": "100.0 * ((w2205-w2165) + (w2205-w2330))",
+      "bands": [
+        "w2205",
+        "w2165",
+        "w2330"
+      ]
+    },
+    "MAGI": {
+      "name": "Magnesite Index",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "(w2205 + w2330) / (w2260 + w2395)",
+      "bands": [
+        "w2205",
+        "w2260",
+        "w2330",
+        "w2395"
+      ]
+    },
+    "METHANE": {
+      "name": "Methane Index",
+      "type": [
+        "Gas"
+      ],
+      "equation": "w2300 / w2100",
+      "bands": [
+        "w2300",
+        "w2100"
+      ]
+    },
+    "AVIRIS-METHANE": {
+      "name": "Methane Index for AVIRIS",
+      "type": [
+        "Gas"
+      ],
+      "equation": "((nw2185 + nw2305 + nw2325 + nw2385)/4.0) / ((nw2195 + nw2295 + nw2347 + nw2375)/4.0)",
+      "bands": [
+        "nw2185",
+        "nw2195",
+        "nw2295",
+        "nw2305",
+        "nw2325",
+        "nw2347",
+        "nw2375",
+        "nw2385"
+      ]
+    },
+    "AVIRIS-NG-METHANE": {
+      "name": "Methane Index for AVIRIS-NG",
+      "type": [
+        "Gas"
+      ],
+      "equation": "((nw2190 + nw2210 + nw2310 + nw2330)/4.0) / ((nw2200 + nw2200 + nw2300 + nw2320)/4.0)",
+      "bands": [
+        "nw2190",
+        "nw2200",
+        "nw2210",
+        "nw2300",
+        "nw2310",
+        "nw2320",
+        "nw2330"
+      ]
+    },
+    "EMIT-METHANE": {
+      "name": "Methane Index for EMIT",
+      "type": [
+        "Gas"
+      ],
+      "equation": "((nw2212 + nw2310 + nw2325 + nw2382)/4.0) / ((nw2204 + nw2300 + nw2347 + nw2374)/4.0)",
+      "bands": [
+        "nw2204",
+        "nw2212",
+        "nw2300",
+        "nw2310",
+        "nw2325",
+        "nw2347",
+        "nw2374",
+        "nw2382"
+      ]
+    },
+    "ENMAP-METHANE": {
+      "name": "Methane Index for EnMAP",
+      "type": [
+        "Gas"
+      ],
+      "equation": "((nw2210 + nw2280 + nw2330 + nw2360)/4.0) / ((nw2200 + nw2300 + nw2347 + nw2370)/4.0)",
+      "bands": [
+        "nw2200",
+        "nw2210",
+        "nw2280",
+        "nw2300",
+        "nw2330",
+        "nw2347",
+        "nw2360",
+        "nw2370"
+      ]
+    },
+    "PRISMA-METHANE": {
+      "name": "Methane Index for PRISMA",
+      "type": [
+        "Gas"
+      ],
+      "equation": "((nw2310 + nw2325 + nw2382)/3.0) / ((nw2300 + nw2347 + nw2374)/3.0)",
+      "bands": [
+        "nw2300",
+        "nw2310",
+        "nw2325",
+        "nw2347",
+        "nw2374",
+        "nw2382"
+      ]
+    },
+    "MGAI": {
+      "name": "MgOH-Carbonate Abundance Index",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "(w2395 + w2205) / w2330",
+      "bands": [
+        "w2205",
+        "w2330",
+        "w2395"
+      ]
+    },
+    "MCARI": {
+      "name": "Modified Chlorophyll Absorption Ratio Index",
+      "type": [
+        "Vegetation",
+        "Narrowband Greenness"
+      ],
+      "equation": "((w700 - w680) - 0.2 * (w700 - w550)) * (w700 / w680)",
+      "bands": [
+        "w700",
+        "w680",
+        "w550"
+      ]
+    },
+    "MCARI2": {
+      "name": "Modified Chlorophyll Absorption Ratio Index - Improved",
+      "type": [
+        "Vegetation",
+        "Narrowband Greenness"
+      ],
+      "equation": "num/denom; num = (1.5 * (2.5 * (w800n - w680) - 1.3 * (w800n - w550))); denom = sqrt(tmp * tmp - (6.0 * w800n - 5.0 * sqrt(w680)) - 0.5); tmp = 2.0 * w800n + 1",
+      "bands": [
+        "w800n",
+        "w680",
+        "w550"
+      ]
+    },
+    "MNLI": {
+      "name": "Modified Non-Linear Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "((nirsq - red) * (1.0 + 0.5)) / (nirsq + red + 0.5); nirsq=nir^2",
+      "bands": [
+        "nir",
+        "red"
+      ]
+    },
+    "MNDWI": {
+      "name": "Modified Normalized Difference Water Index",
+      "type": [
+        "Vegetation",
+        "Normalized"
+      ],
+      "equation": "(green - swir1) / (green + swir1)",
+      "bands": [
+        "green",
+        "swir1"
+      ]
+    },
+    "MRENDVI": {
+      "name": "Modified Red Edge Normalized Difference Vegetation Index",
+      "type": [
+        "Vegetation",
+        "Narrowband Greenness"
+      ],
+      "equation": "(w750w - w705) / (w750w + w705 - 2.0 * w445)",
+      "bands": [
+        "w750w",
+        "w705",
+        "w445"
+      ]
+    },
+    "MRESR": {
+      "name": "Modified Red Edge Simple Ratio",
+      "type": [
+        "Vegetation",
+        "Narrowband Greenness"
+      ],
+      "equation": "(w750w - w445) / (w705 - w445)",
+      "bands": [
+        "w750w",
+        "w445",
+        "w705"
+      ]
+    },
+    "MSR": {
+      "name": "Modified Simple Ratio",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "(tmp - 1.0) / sqrt(tmp + 1.0); tmp = nir / red",
+      "bands": [
+        "nir",
+        "red"
+      ]
+    },
+    "MSAVI2": {
+      "name": "Modified Soil Adjusted Vegetation Index 2",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "(tmp - sqrt(tmp^2 - 8.0 * (nir - red))) / 2.0; tmp = 2.0 * nir + 1.0",
+      "bands": [
+        "nir",
+        "red"
+      ]
+    },
+    "MTVI": {
+      "name": "Modified Triangular Vegetation Index",
+      "type": [
+        "Vegetation",
+        "Narrowband Greenness"
+      ],
+      "equation": "1.2 * (1.2 * (w800n - w550) - 2.5 * (w680 - w550))",
+      "bands": [
+        "w550",
+        "w680",
+        "w800n"
+      ]
+    },
+    "MTVI2": {
+      "name": "Modified Triangular Vegetation Index - Improved",
+      "type": [
+        "Vegetation",
+        "Narrowband Greenness"
+      ],
+      "equation": "num/denom; num = 1.5 * (1.2 * (w800n - w550) - 2.5 * (w680 - w550)); denom = sqrt((2.0 * w800n + 1)^2 - (6.0 * w800n - 5.0 * sqrt(w680)) - 0.5)",
+      "bands": [
+        "w550",
+        "w680",
+        "w800n"
+      ]
+    },
+    "MSI": {
+      "name": "Moisture Stress Index",
+      "type": [
+        "Vegetation",
+        "Canopy Water Content"
+      ],
+      "equation": "w1599 / w819",
+      "bands": [
+        "w1599",
+        "w819"
+      ]
+    },
+    "MONI": {
+      "name": "Montmorillonite Index",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "(w1650 + w2205) / w2260",
+      "bands": [
+        "w1650",
+        "w2205",
+        "w2260"
+      ]
+    },
+    "MUSI": {
+      "name": "Muscovite Index",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "w2300 / w2205",
+      "bands": [
+        "w2205",
+        "w2300"
+      ]
+    },
+    "NLI": {
+      "name": "Non-Linear Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness",
+        "Normalized"
+      ],
+      "equation": "(tmp - red) / (tmp + red); tmp = nir^2",
+      "bands": [
+        "nir",
+        "red"
+      ]
+    },
+    "NBR": {
+      "name": "Normalized Burn Ratio",
+      "type": [
+        "Vegetation",
+        "Normalized"
+      ],
+      "equation": "(tm4 - tm7) / (tm4 + tm7)",
+      "bands": [
+        "tm4",
+        "tm7"
+      ]
+    },
+    "NBRT1": {
+      "name": "Normalized Burn Ratio Thermal 1",
+      "type": [
+        "Vegetation",
+        "Normalized"
+      ],
+      "equation": "(nir - tmp) / (nir + tmp); tmp = swir1 * (thermal / 1000.0)",
+      "bands": [
+        "nir",
+        "swir1",
+        "thermal"
+      ]
+    },
+    "NDBI": {
+      "name": "Normalized Difference Built-Up Index",
+      "type": [
+        "Vegetation",
+        "Normalized"
+      ],
+      "equation": "(tm5 - tm4) / (tm5 + tm4)",
+      "bands": [
+        "tm5",
+        "tm4"
+      ]
+    },
+    "NDII": {
+      "name": "Normalized Difference Infrared Index",
+      "type": [
+        "Vegetation",
+        "Canopy Water Content",
+        "Normalized"
+      ],
+      "equation": "(w819 - w1649) / (w819 + w1649)",
+      "bands": [
+        "w819",
+        "w1649"
+      ]
+    },
+    "NDLI": {
+      "name": "Normalized Difference Lignin Index",
+      "type": [
+        "Vegetation",
+        "Dry or Senescent Carbon",
+        "Normalized"
+      ],
+      "equation": "(tmp1 - tmp2) / (tmp1 + tmp2); tmp1 = log(1.0 / w1754); tmp2 = log(1.0 / w1680)",
+      "bands": [
+        "w1754",
+        "w1680"
+      ]
+    },
+    "NDMI": {
+      "name": "Normalized Difference Mud Index",
+      "type": [
+        "Vegetation",
+        "Normalized"
+      ],
+      "equation": "(w795 - w990) / (w795 + w990)",
+      "bands": [
+        "w795",
+        "w990"
+      ]
+    },
+    "NDMSI": {
+      "name": "Normalized Difference Moisture Index",
+      "type": [
+        "Water",
+        "Normalized"
+      ],
+      "equation": "(nir - swir1) / (nir + swir1)",
+      "bands": [
+        "nir",
+        "swir1"
+      ]
+    },
+    "NDNI": {
+      "name": "Normalized Difference Nitrogen Index",
+      "type": [
+        "Vegetation",
+        "Canopy Nitrogen",
+        "Normalized"
+      ],
+      "equation": "(tmp1 - tmp2) / (tmp1 + tmp2); tmp1 = log(1.0 / w1510); tmp2 = log(1.0 / w1680)",
+      "bands": [
+        "w1510",
+        "w1680"
+      ]
+    },
+    "NDPI": {
+      "name": "Normalized Difference Pond Index",
+      "type": [
+        "Water",
+        "Normalized"
+      ],
+      "equation": "(swir1 - green) / (swir1 + green)",
+      "bands": [
+        "green",
+        "swir1"
+      ]
+    },
+    "NDRE": {
+      "name": "Normalized Difference Red Edge",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness",
+        "Normalized"
+      ],
+      "equation": "(nir - rededge) / (nir + rededge)",
+      "bands": [
+        "nir",
+        "rededge"
+      ]
+    },
+    "NDSI": {
+      "name": "Normalized Difference Snow Index",
+      "type": [
+        "Snow",
+        "Normalized"
+      ],
+      "equation": "(green - swir1) / (green + swir1)",
+      "bands": [
+        "green",
+        "swir1"
+      ]
+    },
+    "NDVI": {
+      "name": "Normalized Difference Vegetation Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness",
+        "Normalized"
+      ],
+      "equation": "(nir - red) / (nir + red)",
+      "bands": [
+        "nir",
+        "red"
+      ]
+    },
+    "NDWI": {
+      "name": "Normalized Difference Water Index",
+      "type": [
+        "Vegetation",
+        "Canopy Water Content",
+        "Normalized"
+      ],
+      "equation": "(w857 - midir) / (w857 + midir)",
+      "bands": [
+        "w857",
+        "midir"
+      ]
+    },
+    "NMDI": {
+      "name": "Normalized Multiband Drought Index",
+      "type": [
+        "Vegetation",
+        "Canopy Water Content",
+        "Normalized"
+      ],
+      "equation": "(w860 - tmp) / (w860 + tmp); tmp = w1640 - w2130",
+      "bands": [
+        "w860",
+        "w1640",
+        "w2130"
+      ]
+    },
+    "NPCI": {
+      "name": "Normalized Pigment Chlorophyll Index",
+      "type": [
+        "Vegetation",
+        "Normalized"
+      ],
+      "equation": "(w680 - w430) / (w680 + w430)",
+      "bands": [
+        "w680",
+        "w430"
+      ]
+    },
+    "OSAVI": {
+      "name": "Optimized Soil Adjusted Vegetation Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "(nir - red) / (nir + red + 0.16)",
+      "bands": [
+        "nir",
+        "red"
+      ]
+    },
+    "PHEI": {
+      "name": "Phengitic Index",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "w2165 / w2205",
+      "bands": [
+        "w2165",
+        "w2205"
+      ]
+    },
+    "PRI": {
+      "name": "Photochemical Reflectance Index",
+      "type": [
+        "Vegetation",
+        "Light Use Efficiency",
+        "Normalized"
+      ],
+      "equation": "(w531 - w570) / (w531 + w570)",
+      "bands": [
+        "w531",
+        "w570"
+      ]
+    },
+    "PHAI": {
+      "name": "Phyllic Alteration Index",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "(w2165 + w2260) / w2205",
+      "bands": [
+        "w2165",
+        "w2205",
+        "w2260"
+      ]
+    },
+    "PSRI": {
+      "name": "Plant Senescence Reflectance Index",
+      "type": [
+        "Vegetation",
+        "Dry or Senescent Carbon"
+      ],
+      "equation": "(w680 - w500) / w750w",
+      "bands": [
+        "w680",
+        "w500",
+        "w750w"
+      ]
+    },
+    "PRAI": {
+      "name": "Propylitic Alteration Index",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "(w2260 + w2395) / w2330",
+      "bands": [
+        "w2260",
+        "w2330",
+        "w2395"
+      ]
+    },
+    "QRRI": {
+      "name": "Quartz Rich Rocks Index",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "w11300 / w9100",
+      "bands": [
+        "w9100",
+        "w11300"
+      ]
+    },
+    "QSRI": {
+      "name": "Quartz / Siliceous Rocks Index",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "(w8650 * w8650) / (w8300 * w9100)",
+      "bands": [
+        "w8300",
+        "w8650",
+        "w9100"
+      ]
+    },
+    "RENDVI": {
+      "name": "Red Edge Normalized Difference Vegetation Index",
+      "type": [
+        "Vegetation",
+        "Narrowband Greenness",
+        "Normalized"
+      ],
+      "equation": "(w750n - w705) / (w750n + w705)",
+      "bands": [
+        "w750n",
+        "w705"
+      ]
+    },
+    "REPI": {
+      "name": "Red Edge Position Index",
+      "type": [
+        "Vegetation",
+        "Narrowband Greenness"
+      ],
+      "equation": "",
+      "bands": [
+        "maxderivrededge"
+      ]
+    },
+    "RGRI": {
+      "name": "Red Green Ratio Index",
+      "type": [
+        "Vegetation",
+        "Light Use Efficiency"
+      ],
+      "equation": "(sumred / sumgreen) * (nbandsgreen / nbandsred)",
+      "bands": [
+        "sumred",
+        "sumgreen",
+        "nbandsgreen",
+        "nbandsred"
+      ]
+    },
+    "RDVI": {
+      "name": "Renormalized Difference Vegetation Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "(nir - red) / sqrt(nir + red)",
+      "bands": [
+        "nir",
+        "red"
+      ]
+    },
+    "SIDI": {
+      "name": "Silica Dioxide Index",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "w9100 / w10600",
+      "bands": [
+        "w9100",
+        "w10600"
+      ]
+    },
+    "SR": {
+      "name": "Simple Ratio",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "nir / red",
+      "bands": [
+        "nir",
+        "red"
+      ]
+    },
+    "SAVI": {
+      "name": "Soil Adjusted Vegetation Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "1.5 * (nir - red) / (nir + red + 0.5)",
+      "bands": [
+        "nir",
+        "red"
+      ]
+    },
+    "SIPI1": {
+      "name": "Structure Independent Pigment Index",
+      "type": [
+        "Vegetation"
+      ],
+      "equation": "(w445 - w800n) / (w670 - w800n)",
+      "bands": [
+        "w445",
+        "w800n",
+        "w670"
+      ]
+    },
+    "SIPI": {
+      "name": "Structure Insensitive Pigment Index",
+      "type": [
+        "Vegetation",
+        "Light Use Efficiency"
+      ],
+      "equation": "(w800n - w445) / (w800n - w680)",
+      "bands": [
+        "w800n",
+        "w445",
+        "w680"
+      ]
+    },
+    "SULI": {
+      "name": "Sulfate Index",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "(w8300 * w9100) / (w8650 * w8650)",
+      "bands": [
+        "w8300",
+        "w8650",
+        "w9100"
+      ]
+    },
+    "SGI": {
+      "name": "Sum Green Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "sumgreen / nbandsgreen",
+      "bands": [
+        "sumgreen",
+        "nbandsgreen"
+      ]
+    },
+    "SWI": {
+      "name": "Simple Water Index",
+      "type": [
+        "Water"
+      ],
+      "equation": "1.0 / sqrt(blue - swir1)",
+      "bands": [
+        "blue",
+        "swir1"
+      ]
+    },
+    "TCARI": {
+      "name": "Transformed Chlorophyll Absorption Reflectance Index",
+      "type": [
+        "Vegetation",
+        "Narrowband Greenness"
+      ],
+      "equation": "3.0 * ((w700 - w680) - 0.2 * (w700 - w550) * (w700 / w680))",
+      "bands": [
+        "w550",
+        "w680",
+        "w700"
+      ]
+    },
+    "TDVI": {
+      "name": "Transformed Difference Vegetation Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "sqrt(0.5 + ((nir - red) / (nir + red)))",
+      "bands": [
+        "nir",
+        "red"
+      ]
+    },
+    "TGI": {
+      "name": "Triangular Greenness Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "((centerred - centerblue) * (red - green) - (centerred - centergreen) * (red - blue)) / -2.0",
+      "bands": [
+        "centerred",
+        "centergreen",
+        "centerblue",
+        "red",
+        "green",
+        "blue"
+      ]
+    },
+    "TVI": {
+      "name": "Triangular Vegetation Index",
+      "type": [
+        "Vegetation",
+        "Narrowband Greenness"
+      ],
+      "equation": "0.5 * (120.0 * (w750w - w550) - 200.0 * (w680 - w550))",
+      "bands": [
+        "w550",
+        "w680",
+        "w750w"
+      ]
+    },
+    "VARI": {
+      "name": "Visible Atmospherically Resistant Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness"
+      ],
+      "equation": "(green - red) / (green + red - blue)",
+      "bands": [
+        "red",
+        "green",
+        "blue"
+      ]
+    },
+    "VREI1": {
+      "name": "Vogelmann Red Edge Index 1",
+      "type": [
+        "Vegetation",
+        "Narrowband Greenness"
+      ],
+      "equation": "w740 / w720",
+      "bands": [
+        "w740",
+        "w720"
+      ]
+    },
+    "VREI2": {
+      "name": "Vogelmann Red Edge Index 2",
+      "type": [
+        "Vegetation",
+        "Narrowband Greenness"
+      ],
+      "equation": "(w734 - w747) / (w715w + w726)",
+      "bands": [
+        "w734",
+        "w747",
+        "w715w",
+        "w726"
+      ]
+    },
+    "WBI": {
+      "name": "Water Band Index",
+      "type": [
+        "Vegetation",
+        "Canopy Water Content"
+      ],
+      "equation": "w970 / w900",
+      "bands": [
+        "w970",
+        "w900"
+      ]
+    },
+    "WDRVI": {
+      "name": "Wide Dynamic Range Vegetation Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness",
+        "Normalized"
+      ],
+      "equation": "(tmp - red) / (tmp + red); tmp = 0.2 * nir",
+      "bands": [
+        "nir",
+        "red"
+      ]
+    },
+    "WRI": {
+      "name": "Water Ratio Index",
+      "type": [
+        "Water"
+      ],
+      "equation": "(green + red) / (nir + swir1)",
+      "bands": [
+        "green",
+        "red",
+        "nir",
+        "swir1"
+      ]
+    },
+    "WV-BI": {
+      "name": "WorldView Built-Up Index",
+      "type": [
+        "Vegetation",
+        "Normalized"
+      ],
+      "equation": "(wv2coastal - wv2rededge) / (wv2coastal + wv2rededge)",
+      "bands": [
+        "wv2coastal",
+        "wv2rededge"
+      ]
+    },
+    "WV-VI": {
+      "name": "WorldView Improved Vegetative Index",
+      "type": [
+        "Vegetation",
+        "Broadband Greenness",
+        "Normalized"
+      ],
+      "equation": "(wv2nir2 - wv2redcenter)/ (wv2nir2 + wv2redcenter)",
+      "bands": [
+        "wv2nir2",
+        "wv2redcenter"
+      ]
+    },
+    "WV-II": {
+      "name": "WorldView New Iron Index",
+      "type": [
+        "Mineral"
+      ],
+      "equation": "(wv2green * wv2yellow) / (wv2blue * 1000.0)",
+      "bands": [
+        "wv2green",
+        "wv2yellow",
+        "wv2blue"
+      ]
+    },
+    "WV-NHFD": {
+      "name": "WorldView Non-Homogeneous Feature Difference",
+      "type": [
+        "Vegetation",
+        "Normalized"
+      ],
+      "equation": "(wv2rededge - wv2coastal) / (wv2rededge + wv2coastal)",
+      "bands": [
+        "wv2rededge",
+        "wv2coastal"
+      ]
+    },
+    "WV-SI": {
+      "name": "WorldView Soil Index",
+      "type": [
+        "Vegetation",
+        "Normalized"
+      ],
+      "equation": "(wv2green - wv2yellow) / (wv2green + wv2yellow)",
+      "bands": [
+        "wv2green",
+        "wv2yellow"
+      ]
+    },
+    "WV-WI": {
+      "name": "WorldView Water Index",
+      "type": [
+        "Vegetation",
+        "Normalized"
+      ],
+      "equation": "(wv2coastal - wv2nir2) / (wv2coastal + wv2nir2)",
+      "bands": [
+        "wv2coastal",
+        "wv2nir2"
+      ]
+    }
+  },
+  "wavelength_ranges_nm": {
+    "wv2coastal": [
+      396,
+      427,
+      458
+    ],
+    "w430": [
+      380,
+      430,
+      480
+    ],
+    "w445": [
+      435,
+      445,
+      448
+    ],
+    "w450": [
+      425,
+      450,
+      475
+    ],
+    "blue": [
+      400,
+      470,
+      500
+    ],
+    "wv2blue": [
+      442,
+      478,
+      515
+    ],
+    "tm1": [
+      450,
+      485,
+      520
+    ],
+    "w500": [
+      480,
+      500,
+      520
+    ],
+    "w510": [
+      500,
+      510,
+      515
+    ],
+    "w531": [
+      525,
+      531,
+      535
+    ],
+    "wv2green": [
+      506,
+      546,
+      586
+    ],
+    "w550": [
+      540,
+      550,
+      560
+    ],
+    "w560": [
+      520,
+      560,
+      600
+    ],
+    "green": [
+      500,
+      550,
+      600
+    ],
+    "tm2": [
+      520,
+      569,
+      600
+    ],
+    "w570": [
+      560,
+      570,
+      575
+    ],
+    "wv2yellow": [
+      584,
+      608,
+      632
+    ],
+    "red": [
+      600,
+      650,
+      700
+    ],
+    "wv2redcenter": [
+      624,
+      659,
+      694
+    ],
+    "tm3": [
+      630,
+      660,
+      690
+    ],
+    "w670": [
+      620,
+      670,
+      720
+    ],
+    "w680": [
+      650,
+      680,
+      690
+    ],
+    "w700": [
+      680,
+      700,
+      730
+    ],
+    "w705": [
+      697,
+      705,
+      708
+    ],
+    "rededge": [
+      690,
+      700,
+      740
+    ],
+    "w710": [
+      660,
+      710,
+      760
+    ],
+    "w715n": [
+      714,
+      715,
+      716
+    ],
+    "w715w": [
+      710,
+      715,
+      719
+    ],
+    "w720": [
+      718,
+      720,
+      722
+    ],
+    "wv2rededge": [
+      699,
+      724,
+      749
+    ],
+    "w726": [
+      725,
+      726,
+      727
+    ],
+    "w734": [
+      730,
+      734,
+      736
+    ],
+    "w740": [
+      730,
+      740,
+      750
+    ],
+    "w747": [
+      742,
+      747,
+      748
+    ],
+    "w750n": [
+      730,
+      750,
+      760
+    ],
+    "w750w": [
+      730,
+      750,
+      780
+    ],
+    "w795": [
+      720,
+      795,
+      800
+    ],
+    "w800n": [
+      780,
+      800,
+      865
+    ],
+    "w800w": [
+      750,
+      800,
+      870
+    ],
+    "w819": [
+      815,
+      819,
+      824
+    ],
+    "w820": [
+      780,
+      820,
+      860
+    ],
+    "wv2nir1": [
+      765,
+      833,
+      901
+    ],
+    "tm4": [
+      760,
+      850,
+      900
+    ],
+    "w850": [
+      800,
+      850,
+      900
+    ],
+    "w857": [
+      854,
+      857,
+      860
+    ],
+    "w860": [
+      841,
+      860,
+      876
+    ],
+    "nir": [
+      760,
+      860,
+      960
+    ],
+    "w900": [
+      860,
+      900,
+      910
+    ],
+    "wv2nir2": [
+      856,
+      949,
+      1043
+    ],
+    "w970": [
+      965,
+      970,
+      975
+    ],
+    "w983": [
+      933,
+      983,
+      1033
+    ],
+    "w990": [
+      830,
+      990,
+      995
+    ],
+    "w1094": [
+      1044,
+      1094,
+      1144
+    ],
+    "w1205": [
+      1155,
+      1205,
+      1255
+    ],
+    "midir": [
+      1230,
+      1241,
+      1250
+    ],
+    "cirrus": [
+      1360,
+      1372,
+      1385
+    ],
+    "w1510": [
+      1500,
+      1510,
+      1515
+    ],
+    "w1599": [
+      1590,
+      1599,
+      1620
+    ],
+    "w1640": [
+      1628,
+      1640,
+      1652
+    ],
+    "w1649": [
+      1645,
+      1649,
+      1655
+    ],
+    "swir1": [
+      1550,
+      1650,
+      1750
+    ],
+    "w1650": [
+      1600,
+      1650,
+      1700
+    ],
+    "tm5": [
+      1550,
+      1676,
+      1750
+    ],
+    "w1680": [
+      1670,
+      1680,
+      1690
+    ],
+    "w1754": [
+      1750,
+      1754,
+      1758
+    ],
+    "w2000": [
+      1980,
+      2000,
+      2040
+    ],
+    "w2100": [
+      2085,
+      2100,
+      2110
+    ],
+    "nw2100": [
+      2095,
+      2100,
+      2103
+    ],
+    "w2130": [
+      2105,
+      2130,
+      2155
+    ],
+    "w2165": [
+      2145,
+      2165,
+      2185
+    ],
+    "nw2185": [
+      2180,
+      2185,
+      2188
+    ],
+    "nw2190": [
+      2185,
+      2190,
+      2193
+    ],
+    "nw2195": [
+      2190,
+      2195,
+      2198
+    ],
+    "w2200": [
+      2170,
+      2200,
+      2220
+    ],
+    "nw2200": [
+      2195,
+      2200,
+      2209
+    ],
+    "swir2": [
+      2080,
+      2220,
+      2350
+    ],
+    "w2205": [
+      2185,
+      2205,
+      2225
+    ],
+    "nw2204": [
+      2200,
+      2204,
+      2208
+    ],
+    "nw2210": [
+      2205,
+      2210,
+      2215
+    ],
+    "nw2212": [
+      2206,
+      2212,
+      2218
+    ],
+    "tm7": [
+      2080,
+      2223,
+      2350
+    ],
+    "w2260": [
+      2235,
+      2260,
+      2285
+    ],
+    "nw2280": [
+      2279,
+      2280,
+      2285
+    ],
+    "nw2295": [
+      2291,
+      2295,
+      2299
+    ],
+    "w2300": [
+      2294,
+      2300,
+      2306
+    ],
+    "nw2300": [
+      2296,
+      2300,
+      2304
+    ],
+    "nw2305": [
+      2301,
+      2305,
+      2309
+    ],
+    "nw2310": [
+      2306,
+      2310,
+      2314
+    ],
+    "nw2325": [
+      2321,
+      2325,
+      2329
+    ],
+    "nw2320": [
+      2316,
+      2320,
+      2324
+    ],
+    "w2330": [
+      2295,
+      2330,
+      2365
+    ],
+    "nw2330": [
+      2326,
+      2330,
+      2334
+    ],
+    "nw2347": [
+      2343,
+      2347,
+      2350
+    ],
+    "nw2360": [
+      2355,
+      2360,
+      2365
+    ],
+    "nw2370": [
+      2366,
+      2370,
+      2375
+    ],
+    "nw2374": [
+      2370,
+      2374,
+      2377
+    ],
+    "nw2375": [
+      2371,
+      2375,
+      2379
+    ],
+    "nw2382": [
+      2377,
+      2382,
+      2384
+    ],
+    "nw2385": [
+      2381,
+      2385,
+      2389
+    ],
+    "w2395": [
+      2360,
+      2395,
+      2430
+    ],
+    "w8300": [
+      8125,
+      8300,
+      8475
+    ],
+    "w8650": [
+      8475,
+      8650,
+      8825
+    ],
+    "w9100": [
+      8925,
+      9100,
+      9275
+    ],
+    "thermal": [
+      10400,
+      11435,
+      12500
+    ],
+    "tm6": [
+      10400,
+      11435,
+      12500
+    ],
+    "w10600": [
+      10250,
+      10600,
+      10950
+    ],
+    "w11300": [
+      10950,
+      11300,
+      11650
+    ]
+  }
+}

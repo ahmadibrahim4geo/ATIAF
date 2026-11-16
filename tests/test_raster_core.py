@@ -109,6 +109,68 @@ class TestQualityMaskEngine(unittest.TestCase):
         self.assertTrue(np.isnan(cleaned[3]))  # < 5.0
         self.assertTrue(np.isnan(cleaned[4]))  # nodata
 
+    def test_granular_qa_modes_landsat_c2(self):
+        # Pixel flags
+        clear_px = 1 << QualityMaskEngine.LANDSAT_BIT_CLEAR
+        cirrus_px = (1 << QualityMaskEngine.LANDSAT_BIT_CIRRUS) | clear_px
+        shadow_px = (1 << QualityMaskEngine.LANDSAT_BIT_CLOUD_SHADOW) | clear_px
+        cloud_px = (1 << QualityMaskEngine.LANDSAT_BIT_CLOUD)
+        water_shadow_px = (1 << QualityMaskEngine.LANDSAT_BIT_WATER) | (1 << QualityMaskEngine.LANDSAT_BIT_CLOUD_SHADOW)
+        fill_px = 1 << QualityMaskEngine.LANDSAT_BIT_FILL
+
+        qa = np.array([clear_px, cirrus_px, shadow_px, cloud_px, water_shadow_px, fill_px], dtype=np.uint16)
+
+        # 1. Cloud_Only_Arid: cirrus and terrain shadows are preserved! Only real cloud and fill are masked.
+        arid_mask = QualityMaskEngine.get_landsat_c2_clear_mask(qa, mode='Cloud_Only_Arid')
+        self.assertTrue(arid_mask[0])   # Clear
+        self.assertTrue(arid_mask[1])   # Cirrus on mountain: PRESERVED!
+        self.assertTrue(arid_mask[2])   # Shadow in wadi: PRESERVED!
+        self.assertFalse(arid_mask[3])  # Real opaque cloud: MASKED
+        self.assertTrue(arid_mask[4])   # Water shadow: PRESERVED
+        self.assertFalse(arid_mask[5])  # Fill: MASKED
+
+        # 2. Water_Protected: water pixel is protected, cirrus unmasked, real cloud masked
+        water_mask = QualityMaskEngine.get_landsat_c2_clear_mask(qa, mode='Water_Protected')
+        self.assertTrue(water_mask[0])
+        self.assertTrue(water_mask[1])   # Cirrus unmasked
+        self.assertFalse(water_mask[2])  # Land shadow masked in strict
+        self.assertFalse(water_mask[3])  # Cloud masked
+        self.assertTrue(water_mask[4])   # Water pixel protected even with shadow flag!
+        self.assertFalse(water_mask[5])
+
+        # 3. None: everything except fill is valid
+        none_mask = QualityMaskEngine.get_landsat_c2_clear_mask(qa, mode='None')
+        self.assertTrue(none_mask[0])
+        self.assertTrue(none_mask[1])
+        self.assertTrue(none_mask[2])
+        self.assertTrue(none_mask[3])
+        self.assertTrue(none_mask[4])
+        self.assertFalse(none_mask[5])  # Fill masked
+
+    def test_granular_qa_modes_sentinel2_scl(self):
+        scl = np.array([
+            QualityMaskEngine.S2_SCL_VEGETATION,
+            QualityMaskEngine.S2_SCL_CLOUD_SHADOW,
+            QualityMaskEngine.S2_SCL_THIN_CIRRUS,
+            QualityMaskEngine.S2_SCL_CLOUD_HIGH_PROB,
+            QualityMaskEngine.S2_SCL_NODATA,
+        ], dtype=np.uint8)
+
+        arid_mask = QualityMaskEngine.get_sentinel2_scl_clear_mask(scl, mode='Cloud_Only_Arid')
+        self.assertTrue(arid_mask[0])   # Veg: True
+        self.assertTrue(arid_mask[1])   # Shadow: PRESERVED in Arid!
+        self.assertTrue(arid_mask[2])   # Cirrus: PRESERVED in Arid!
+        self.assertFalse(arid_mask[3])  # High prob cloud: MASKED
+        self.assertFalse(arid_mask[4])  # NoData: MASKED
+
+    def test_negative_reflectance_clamping(self):
+        raw = np.array([-0.05, 0.00005, 0.25, np.nan], dtype=np.float32)
+        clamped = QualityMaskEngine.apply_valid_range_and_nodata(raw, clamp_negative=True, min_positive_epsilon=0.0001)
+        self.assertEqual(clamped[0], 0.0001)
+        self.assertEqual(clamped[1], 0.0001)
+        self.assertEqual(clamped[2], 0.25)
+        self.assertTrue(np.isnan(clamped[3]))
+
 
 class TestWindowedRasterEngine(unittest.TestCase):
     def setUp(self):

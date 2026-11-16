@@ -1,0 +1,15 @@
+{
+  "status": "pass",
+  "comparisons": [
+    {
+      "left": "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0019\\ndvi_qgis_ar\\LC81760392014234LGN00\\Results\\Spectral_Indices\\Vegetation\\NDVI_TOA\\NDVI_TOA_LC81760392014234LGN00_FULL_RUN-d6e11ba8529e4efa967fed0a1150dfde.tif",
+      "right": "Testing Results\\PLAN-0019\\ndvi_pro_en\\LC81760392014234LGN00\\Results\\Spectral_Indices\\Vegetation\\NDVI_TOA\\NDVI_TOA_LC81760392014234LGN00_FULL_RUN-acd1799c184748628c81a0ec41748a33.tif",
+      "total_pixels_per_channel": 60616171,
+      "valid_pixels_per_channel": 40394219,
+      "channels": 1,
+      "crs": "EPSG:32636",
+      "valid_values_exactly_equal": true,
+      "masks_exactly_equal": true
+    }
+  ]
+}

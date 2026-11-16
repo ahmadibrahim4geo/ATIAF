@@ -1,0 +1,14 @@
+{
+  "version": "1.0.3.dev1",
+  "published": false,
+  "packages": {
+    "QGIS Tools\\Distribution\\ATIAF-QGIS-1.0.3.dev1.zip": {
+      "bytes": 3640678,
+      "sha256": "61ff026cc5ae15124e8527f8daf5ac308df0aeb8749ddcce25ee90b30eb2a37b"
+    },
+    "dist\\atiaf-1.0.3.dev1-py3-none-any.whl": {
+      "bytes": 139109,
+      "sha256": "6face099eb12ffee03a880c6cc11aeb55aeca6cc13387b238a1e875e61189f8b"
+    }
+  }
+}

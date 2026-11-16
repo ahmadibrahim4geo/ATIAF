@@ -1,0 +1,32 @@
+{
+  "status": "pass",
+  "host": "pro",
+  "language": "en",
+  "path": "Testing Results\\PLAN-0019\\ndvi_pro_en\\LC81760392014234LGN00\\Results\\Spectral_Indices\\Vegetation\\NDVI_TOA\\NDVI_TOA_LC81760392014234LGN00_FULL_RUN-acd1799c184748628c81a0ec41748a33.tif",
+  "grid": {
+    "crs": "EPSG:32636",
+    "transform": [
+      30.0,
+      0.0,
+      282885.0,
+      0.0,
+      -30.0,
+      3470715.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "width": 7711,
+    "height": 7861,
+    "nodata": -9999.0
+  },
+  "samples": 261,
+  "max_absolute_error": 7.618022214439524e-08,
+  "source_stat_unchanged": true,
+  "unit": "diagnostic TOA NDVI; not SR NDVI",
+  "result": {
+    "OUTPUT_RASTERS": [
+      "Testing Results\\PLAN-0019\\ndvi_pro_en\\LC81760392014234LGN00\\Results\\Spectral_Indices\\Vegetation\\NDVI_TOA\\NDVI_TOA_LC81760392014234LGN00_FULL_RUN-acd1799c184748628c81a0ec41748a33.tif"
+    ]
+  }
+}

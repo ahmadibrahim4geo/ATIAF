@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "sequence": 47,
+  "timestamp_utc": "2026-11-15T17:05:53+00:00",
+  "kind": "request",
+  "status": "approved",
+  "summary": "Clarify mandatory descriptive plan and report numbering for any user-supplied plan or development request",
+  "details": "User explicitly requests editing agent instructions: preserve an existing descriptive plan name or derive one when absent; add sequential plan number; reports require independent sequential number plus descriptive report name. Authorized local instruction/documentation changes only. Preserve geological source plan; do not implement geological processing. Prior explanatory-turn journal append failed with WinError 5; verify still shows 46 canonical records. Register this governance work as PLAN-0017 r1 and report 0025 after verification.",
+  "references": [],
+  "task_id": "PLAN-0017",
+  "plan_revision": "r1",
+  "changed_files": [],
+  "tests": [],
+  "test_result": "not_run",
+  "commit": "1d15bad",
+  "previous_hash": "26f12934dc5e1c1e6381685f4e12ac3f76c29596b3dad5927d90bd0a3d6353da",
+  "hash": "c781d411cd334f7697aa03d35ab10646df9d74092f24c563a794d2f091a5a74e"
+}

@@ -1,0 +1,3 @@
+C:\Users\ahmad\AppData\Roaming\Python\Python312\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+{"host": "qgis", "language": "en", "elapsed": 51.7969999999998, "outputs": 2, "receipt": "D:\\My Software\\ATIAF\\Reports\\evidence\\PLAN-0019\\real_qgis_en_final.json"}

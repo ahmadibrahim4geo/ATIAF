@@ -36,3 +36,8 @@ QGIS Tools/Distribution/*.zip
 *.pyt.xml
 Thumbs.db
 .DS_Store
+# User-supplied satellite imagery stays local and is never included in source publication.
+/Testing Data/
+/Testing Results/
+# Real-scene native screenshots are local verification assets, not release content.
+/Reports/evidence/PLAN-0018/native_ui_final/qgis_real_preview_*.png

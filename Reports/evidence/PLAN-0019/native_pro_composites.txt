@@ -1,0 +1,22 @@
+test_native_temporary_preview_has_no_results (__main__.NativeComposites.test_native_temporary_preview_has_no_results) ... ERROR 1: Unable to load CF-1 standard name database C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\Library\share\gdal\cf_standard_name_table.db. CF-1 lookups will fail.
+LC08_L2SP_176039_20230520_20230527_02_T1
+Preview: C:\Users\ahmad\AppData\Local\Temp\atiaf_rgb_preview_6vufaq7e\Preview.html
+ok
+LC08_L2SP_176039_20230520_20230527_02_T1
+LC08_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\tmphlrpflgi\en\scene\Results\Geological_Color_Composites\Direct_RGB\L89_753\b0456864d060\Analytical\LC08_L2SP_176039_20230520_20230527_02_T1_Landsat8_Geology_753_Direct_RGB_Analytical.tif
+C:\Users\ahmad\AppData\Local\Temp\tmphlrpflgi\en\scene\Results\Geological_Color_Composites\Band_Ratio_RGB\L89_CRC1\8844176fb741\Analytical\LC08_L2SP_176039_20230520_20230527_02_T1_Landsat8_Geology_CRC1_Ratios_RGB_Analytical.tif
+Preview: C:\Users\ahmad\AppData\Local\Temp\tmphlrpflgi\en\scene\Results\Geological_Color_Composites\Direct_RGB\L89_753\b0456864d060\Display\LC08_L2SP_176039_20230520_20230527_02_T1_Landsat8_Geology_753_Direct_RGB.preview.html
+Preview: C:\Users\ahmad\AppData\Local\Temp\tmphlrpflgi\en\scene\Results\Geological_Color_Composites\Band_Ratio_RGB\L89_CRC1\8844176fb741\Display\LC08_L2SP_176039_20230520_20230527_02_T1_Landsat8_Geology_CRC1_Ratios_RGB.preview.html
+LC08_L2SP_176039_20230520_20230527_02_T1
+LC08_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\tmphlrpflgi\ar\scene\Results\Geological_Color_Composites\Direct_RGB\L89_753\98780df72549\Analytical\LC08_L2SP_176039_20230520_20230527_02_T1_Landsat8_Geology_753_Direct_RGB_Analytical.tif
+C:\Users\ahmad\AppData\Local\Temp\tmphlrpflgi\ar\scene\Results\Geological_Color_Composites\Band_Ratio_RGB\L89_CRC1\588f25adbbee\Analytical\LC08_L2SP_176039_20230520_20230527_02_T1_Landsat8_Geology_CRC1_Ratios_RGB_Analytical.tif
+��������: C:\Users\ahmad\AppData\Local\Temp\tmphlrpflgi\ar\scene\Results\Geological_Color_Composites\Direct_RGB\L89_753\98780df72549\Display\LC08_L2SP_176039_20230520_20230527_02_T1_Landsat8_Geology_753_Direct_RGB.preview.html
+��������: C:\Users\ahmad\AppData\Local\Temp\tmphlrpflgi\ar\scene\Results\Geological_Color_Composites\Band_Ratio_RGB\L89_CRC1\588f25adbbee\Display\LC08_L2SP_176039_20230520_20230527_02_T1_Landsat8_Geology_CRC1_Ratios_RGB.preview.html
+test_parameters_and_both_methods_both_languages (__main__.NativeComposites.test_parameters_and_both_methods_both_languages) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 6.848s
+
+OK

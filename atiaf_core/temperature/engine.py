@@ -89,8 +89,15 @@ class SurfaceTemperatureEngine:
         def block_calc(blocks: Dict[str, np.ndarray]) -> np.ndarray:
             raw_therm = blocks["therm"].astype(np.float32)
 
-            # Preprocessing: convert raw DN to Kelvin
-            st_k = raw_therm * therm_asset.scale_factor + therm_asset.offset
+            # Preprocessing: convert raw DN or radiance to Kelvin
+            if therm_asset.unit != 'Kelvin' and is_landsat:
+                rad = raw_therm * therm_asset.scale_factor + therm_asset.offset
+                plat = scene.metadata.platform.upper()
+                k1, k2 = (774.89, 1321.08) if ('8' in plat or '9' in plat) else ((666.09, 1282.71) if '7' in plat else (607.76, 1260.56))
+                with np.errstate(divide="ignore", invalid="ignore"):
+                    st_k = np.where(rad > 0, k2 / np.log1p(k1 / rad), np.nan)
+            else:
+                st_k = raw_therm * therm_asset.scale_factor + therm_asset.offset
 
             # Nodata handling
             if therm_asset.nodata is not None:

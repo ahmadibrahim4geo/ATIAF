@@ -1,0 +1,1 @@
+{"host": "artifact_readback_only", "language": "ar", "elapsed": 2.789987600001041, "outputs": 2, "receipt": "D:\\My Software\\ATIAF\\Reports\\evidence\\PLAN-0018\\pro_real_readback.json"}

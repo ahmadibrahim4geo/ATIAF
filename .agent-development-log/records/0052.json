@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "sequence": 52,
+  "timestamp_utc": "2026-11-15T18:15:26+00:00",
+  "kind": "request",
+  "status": "approved",
+  "summary": "Execute legacy imagery and geological output audit as PLAN-0019; relocate supplied plans into plan folders",
+  "details": "User supplies ATYAF_Legacy_Imagery_and_Geological_Outputs_Audit_Plan.md and authorizes execution plus a policy change: move supplied plans out of root/general paths into numbered lifecycle folders so they cannot be mistaken for unexecuted work. This supersedes the earlier copy-and-leave-root policy. Original moved to Development_Plans/Active/PLAN-0019_Legacy_Imagery_and_Geological_Outputs_Audit.md; pristine byte-identical source snapshot under Development_Plans/Source_Archive/SOURCE-0019_ATYAF_Legacy_Imagery_and_Geological_Outputs_Audit_Plan.md. SHA256 3A00DBDEECEF2412DD2789FF0132D9C567F5250E29942C17D9A9233BE17721F3 verified before intake notes. Root has no remaining supplied plan after move; previous PLAN-0018 original root source was already absent at start of this turn and was not deleted by this agent. Preserve all existing uncommitted code and previous records. Audit all seven actual tools, metadata/calibration/product generations and exact referenced CRC1 artifacts before changing algorithms. Deliver six scoped audit documents, compatibility and numeric/visual QA, minimal verified fixes, tests and numbered reports. No imagery download, publication or original scene edits authorized.",
+  "references": [],
+  "task_id": "PLAN-0019",
+  "plan_revision": "r1",
+  "changed_files": [
+    "AGENTS.md",
+    "Development_Plans/Active/PLAN-0019_Legacy_Imagery_and_Geological_Outputs_Audit.md"
+  ],
+  "tests": [
+    "Journal verify:51 existing records valid; source and moved plan SHA256 equal; approved skills SHA verified"
+  ],
+  "test_result": "passed",
+  "commit": "1d15bad",
+  "previous_hash": "2d778ca80e9df4835aa227e13d1e1cb60d9e22d1a4f434c6b191798dfaaa6c84",
+  "hash": "d01aaac11d0e26e457e2bfb82176cfe5f5fead365ad3e258609406e8f0939f07"
+}

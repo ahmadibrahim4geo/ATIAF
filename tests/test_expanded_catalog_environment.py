@@ -158,7 +158,8 @@ class TestArcGISProAllSixTools(unittest.TestCase):
         tb = namespace["Toolbox"]()
         tool_names = [t.__name__ for t in tb.tools]
 
-        self.assertEqual(len(tool_names), 6)
+        self.assertEqual(len(tool_names), 7)
+        self.assertIn("GeologicalColorCompositesTool", tool_names)
         self.assertIn("SpectralIndicesTool", tool_names)
         self.assertIn("SurfaceTemperatureTool", tool_names)
         self.assertIn("ThermalUrbanTool", tool_names)

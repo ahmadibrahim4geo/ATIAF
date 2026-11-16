@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import sys,site,importlib.util,json; print(json.dumps(dict(executable=sys.executable,prefix=sys.prefix,version=sys.version,user_site=site.getusersitepackages(),user_site_enabled=site.ENABLE_USER_SITE,rasterio_origin=importlib.util.find_spec(rasterio).origin if importlib.util.find_spec(rasterio) else None),indent=2))
+                                                                                                                                                                                                                                                                                                  ^^^^^^^^
+NameError: name 'rasterio' is not defined

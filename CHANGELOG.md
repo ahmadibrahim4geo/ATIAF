@@ -1,5 +1,42 @@
 # Change log
 
+## 1.0.5.dev0 — 2026-11-17 Intelligent QA Mask Engine & Advanced ENVI Indices Integration
+
+- Intelligent Quality Mask Engine: 4 granular operational modes (`Cloud_Only_Arid` default, `Full_Strict`, `Water_Protected`, `None`). Completely eliminates "missing cells / white holes" over desert mountains (23,676 rock pixels recovered) and deep river channels.
+- Clamped optical negative reflectance to $\epsilon = 0.0001$ across indices, geology, environment, and composites engines to prevent NaN and division-by-zero artifacts.
+- Advanced NV5 ENVI 6.3 & Geoscience Indices: 6 new indices fully integrated (`MTVI2`, `MCARI2`, `NDRE2`, `CIGREEN`, `CIREDEDGE`, `NDSI_SALINITY`) with dependency-free catalog definitions, compute functions, and bilingual interpretations.
+- Usability Overhaul: Added optional Study Area Name across all 7 tools, producing clean short output filenames `[<StudyArea>_]<Method>_<YYYYMMDD>.tif` without UUID clutter.
+- Simplified Surface Temperature: Defaulted RTE and Planck parameters with automatic computation and saving of intermediate NDVI to `Results/Vegetation/NDVI/`.
+- Simplified Geological Presets (`7-5-3`, `7-6-2`, `CRC1`, `CRC2`) with dual Analytical (Float32) and Display (Byte RGB 2% stretch) GeoTIFFs.
+- Multi-Generation Landsat Support: Hardened XML/TXT metadata parsing, preventing Level-1 provenance overwrite of Level-2 products, and enabled legacy thermal radiance derivation.
+- Results Directory Tree Guide: Documented standard ASCII output folder hierarchy and file types for end users.
+- Host UI parity across ArcGIS Pro and QGIS with `qa_mask_mode`, maintaining strict bilingual isolation (D-008).
+- Verification: 192 automated unit tests passing (100%), verified with real dual-scene processing on modern Landsat 9 C2 L2 and legacy Landsat 8 L1T scenes with 0 NaN corruption. Delivery reports [0031](Reports/0031_comprehensive_usability_geological_and_envi_integration.md) and [0032](Reports/0032_advanced_envi_indices_and_qa_mask_engine.md).
+- تحديث شامل لمحرك الجودة الذكي بأنماطه المتعددة وإلغاء الإنذارات الكاذبة للقضاء التام على الثقوب البيضاء في الجبال ومجرى النيل، وإضافة 6 مؤشرات جديدة من ENVI 6.3، وتبسيط حساب الحرارة بحساب NDVI تلقائياً، ودعم متعدد الأجيال للمرئيات القديمة والحديثة، وتوثيق شجرة النواتج باللغتين.
+
+## 1.0.4.dev0 — 2026-11-16 legacy imagery/output audit (local development)
+
+- Shared metadata-first Landsat pre-Collection/C1/C2 calibration/QA, explicit ESPA companion validation, TM/ETM+/MSS roles and corrected SLC-off dates. Diagnostic NDVI TOA is opt-in and separately named; SR/LST gates retained.
+- Sentinel2 per-band L1C/L2A offsets, quantification and baseline checks replace a single assumed offset; missing modern calibration rejects processing.
+- Independent read-only CRC1 audit verified arithmetic, masks and measured cyan display; formulas/order unchanged. Seven-tool/product/method inventory distinguishes eligibility from real validation.
+- Composite runs separate Analytical/Display/Metadata/QA_Reports, readable satellite/recipe names, optional Work channels, full channel moments, NaN analytical NoData and linear/percentile/stddev display stretch. EN/AR preview explains source/limits.
+- Supplied plans move into numbered plan folders; pristine references only in Source_Archive with identity/SHA, no root duplicate. PLAN-0019 stays Active for unavailable real/reference/clean-install checks. No publication.
+- أُصلحت قراءة المنتجات القديمة ومعايرتها وأقنعتها، ووُثّق سبب اللون السماوي حسابيًا دون تغيير الوصفة. تنظيم المخرجات ونقل الخطط موثق باللغتين؛ النسخة محلية تجريبية.
+
+## 1.0.3.dev1 — 2026-11-15 geological color composites (local development)
+
+- Added a seventh independent native tool with Direct RGB and Ratio RGB, shared bounded arithmetic/multichannel core, source-checked Landsat presets and explicit experimental/custom choices.
+- Separate reproducible display GeoTIFFs, sampled before/after preview, QGIS background preview dialog, Pro temporary HTML preview and preset export/import. Continuous Float32 values and original sources are preserved.
+- Added exact multiband mapping/calibration, historical ASTER SWIR gates, pre-Collection Landsat 8 L1T TOA/legacy BQA handling, polygon clip and complete-triplet mosaic provenance. No classification, automatic atmospheric correction or field accuracy claim.
+- EN/AR guide and native/package verification updated; per-criterion evidence and outstanding real Sentinel-2/ASTER/full Pro GUI/clean-install acceptance remain in PLAN-0018. No publication in this phase.
+- أُضيفت أداة مستقلة للتراكيب اللونية الجيولوجية بطريقتي الدمج المباشر والنسب، مع معاينة وعرض منفصلين عن التحليل وحفظ التركيبات والمعايرة والمصادر باللغتين. النسخة محلية تجريبية وليست اعتمادًا جيولوجيًا حقليًا.
+
+## Unreleased — 2026-11-15 agent instructions
+
+- Plan intake now explicitly covers supplied files with any name and conversational development requests. Preserve or derive a descriptive title, copy supplied sources unchanged, and name working plans with a stable sequential ID plus subject.
+- Reports require an independent sequential number plus descriptive name/heading and plan/revision link. Synchronized agent startup, indexes, skills registry and EN/AR specification addenda; no processing behavior changed.
+- أصبحت تعليمات الوكيل تشمل الخطط بأي اسم وطلبات التطوير في المحادثة، مع اسم وصفي ورقم ثابت للخطة وحفظ الأصل، ورقم مستقل واسم وصفي لكل تقرير.
+
 ## 1.0.1.dev0 — 2026-11-14 recovery build
 
 - One `atiaf_core` implementation, thin shared workflow adapters, explicit calculation choices and sensor-first/output-last order.

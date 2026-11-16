@@ -4,6 +4,9 @@ import argparse
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
+import sys
+sys.path.insert(0,str(ROOT))
+from atiaf_core import __version__
 
 
 def build(destination):
@@ -25,5 +28,5 @@ def build(destination):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output', default='QGIS Tools/Distribution/ATIAF-QGIS-1.0.2.dev1.zip')
+    parser.add_argument('--output', default=f'QGIS Tools/Distribution/ATIAF-QGIS-{__version__}.zip')
     print(build(parser.parse_args().output))

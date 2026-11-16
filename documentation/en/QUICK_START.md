@@ -24,3 +24,6 @@ For a first NDVI run use red and NIR surface reflectance with QA. `(NIR-Red)/(NI
 | Temporal | NDVI, NBR or LST | Select second scene, matching sensor/level and later known date; T2 minus T1 |
 
 [Formula cards](INDICATORS_CATALOG.md) · [Folders](TOOL_UI_AND_WORKSPACE.md) · [Troubleshooting](TROUBLESHOOTING.md).
+
+
+Archived Landsat: AUTO reads actual generation/level metadata. Only explicitly enabled diagnostic NDVI_TOA and calibrated RGB can use TOA; SR-dependent methods remain gated. See [legacy product/output guide](GEOLOGICAL_COLOR_COMPOSITES.md) and [compatibility audit](../../Reports/PLAN-0019_Audit/01_Sensor_Product_Compatibility_Matrix.md).

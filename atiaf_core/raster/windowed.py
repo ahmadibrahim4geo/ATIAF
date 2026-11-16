@@ -31,6 +31,8 @@ class WindowedRasterEngine:
         block_size: int = DEFAULT_BLOCK_SIZE,
         compress: str = "lzw",
         predictor: int = 3,
+        output_count: int = 1,
+        band_indexes: Optional[Dict[str, int]] = None,
     ) -> Dict[str, Any]:
         """Executes a block-by-block computation across aligned input bands.
         
@@ -48,8 +50,9 @@ class WindowedRasterEngine:
             raise ValueError("No input bands provided for computation.")
         band_paths = dict(band_paths)
         run_options = RUN_OPTIONS.get()
+        from atiaf_core.raster.masks import QualityMaskEngine
         for key, asset in run_options.get('quality_masks', {}).items():
-            if key in ('QA_PIXEL', 'SCL', 'QA_RADSAT'):
+            if key in ('QA_PIXEL', 'SCL', 'QA_RADSAT')+QualityMaskEngine.LEGACY_SCHEMAS:
                 band_paths[f'__WORKFLOW_{key}'] = asset.file_path
 
         output_path = Path(output_path).resolve()
@@ -76,7 +79,7 @@ class WindowedRasterEngine:
         profile.update(
             {
                 "driver": "GTiff",
-                "count": 1,
+                "count": output_count,
                 "dtype": output_dtype,
                 "nodata": output_nodata,
                 "compress": compress,
@@ -129,29 +132,31 @@ class WindowedRasterEngine:
                         blocks = {}
                         input_invalid = np.zeros((h_win, w_win), dtype=bool)
                         for k, ds in handles.items():
-                            data = ds.read(1, window=win)
+                            index = (band_indexes or {}).get(k, 1)
+                            data = ds.read(index, window=win)
                             blocks[k] = data
                             if not k.startswith('__'):
-                                input_invalid |= ds.read_masks(1, window=win) == 0
+                                input_invalid |= ds.read_masks(index, window=win) == 0
 
                         # Run computation function on the block dictionary
                         result_block = compute_fn(blocks)
                         from atiaf_core.raster.masks import QualityMaskEngine
-                        if '__WORKFLOW_QA_PIXEL' in blocks:
-                            input_invalid |= ~QualityMaskEngine.get_landsat_c2_clear_mask(blocks['__WORKFLOW_QA_PIXEL'])
-                        if '__WORKFLOW_SCL' in blocks:
-                            input_invalid |= ~QualityMaskEngine.get_sentinel2_scl_clear_mask(blocks['__WORKFLOW_SCL'])
-                        if '__WORKFLOW_QA_RADSAT' in blocks:
-                            input_invalid |= blocks['__WORKFLOW_QA_RADSAT'] != 0
+                        for key in ('QA_PIXEL','SCL','QA_RADSAT')+QualityMaskEngine.LEGACY_SCHEMAS:
+                            if '__WORKFLOW_'+key in blocks:
+                                input_invalid |= ~QualityMaskEngine.clear_for_schema(blocks['__WORKFLOW_'+key],key)
 
                         # Ensure output shape matches window
-                        if result_block.shape != (h_win, w_win):
+                        expected_shape = (h_win, w_win) if output_count == 1 else (output_count, h_win, w_win)
+                        if result_block.shape != expected_shape:
                             raise ValueError(
-                                f"compute_fn returned shape {result_block.shape}, expected {(h_win, w_win)}"
+                                f"compute_fn returned shape {result_block.shape}, expected {expected_shape}"
                             )
 
                         # Handle NaNs and infinite values -> set to output_nodata
                         invalid_mask = np.isnan(result_block) | np.isinf(result_block) | input_invalid
+                        if output_count > 1:
+                            # One common RGB validity mask: invalid channels are never false colors.
+                            invalid_mask = np.broadcast_to(np.any(invalid_mask, axis=0), result_block.shape)
                         result_block_clean = np.where(invalid_mask, output_nodata, result_block).astype(output_dtype)
 
                         # Accumulate streaming statistics
@@ -170,7 +175,10 @@ class WindowedRasterEngine:
                             sum_sq_val += float(np.sum(valid_pixels.astype(np.float64) ** 2))
 
                         # Write block to output raster
-                        out_ds.write(result_block_clean, 1, window=win)
+                        if output_count == 1:
+                            out_ds.write(result_block_clean, 1, window=win)
+                        else:
+                            out_ds.write(result_block_clean, window=win)
 
         except Exception as e:
             # Clean up temporary file on failure

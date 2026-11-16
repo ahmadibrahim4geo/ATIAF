@@ -1,0 +1,9 @@
+Processing .\.
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: atiaf
+  Building wheel for atiaf (pyproject.toml): started
+  Building wheel for atiaf (pyproject.toml): finished with status 'done'
+  Created wheel for atiaf: filename=atiaf-1.0.4.dev0-py3-none-any.whl size=147634 sha256=a47c4f194375c6efdc630d8197ab01add225e2d95de08da69c1d50d651239e2f
+  Stored in directory: C:\Users\ahmad\AppData\Local\Packages\OpenAI.Codex_2p2nqsd0c76g0\AC\#!sandbox.{17545fcd-3180-4d45-a690-ca08f9b04583}\Temp\pip-ephem-wheel-cache-d1idf40c\wheels\ea\41\89\9f67314dc718a4588f6216f65c0a689f939815c6636204dbdb
+Successfully built atiaf

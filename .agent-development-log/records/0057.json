@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "sequence": 57,
+  "timestamp_utc": "2026-11-16T05:03:19+00:00",
+  "kind": "revision",
+  "status": "in_progress",
+  "summary": "Prioritize basic band composition; defer enhancement UI and clarify direct versus ratio method",
+  "details": "User requests simplifying geological composites to ordinary band-derived products, removing/postponing lighting/saturation/strong contrast enhancement controls. They call the desired method band ratio while describing direct band mixing and explicitly note terminology uncertainty. Asked one focused clarification using actual direct7/5/3 and ratio6/7,6/2,(4/5)*(6/5) examples, with an option to retain both basic methods without enhancements. Await the required computation choice before removing a method; do not infer that brightness enhancement is a separate scientific RGB method. Inspected schema, registry, adapters and tests read-only; appended priority revision to existing PLAN-0019 r2 annex. No processing code/native UI/result/environment change performed. Source calibration, QA, prior outputs and existing runtime repair/short-name requirements retained.",
+  "references": [
+    56
+  ],
+  "task_id": "PLAN-0019",
+  "plan_revision": "r2-proposed",
+  "changed_files": [
+    "Development_Plans/Active/PLAN-0019_Legacy_Imagery_and_Geological_Outputs_Audit.md"
+  ],
+  "tests": [
+    "Read-only schema/registry/adapter/test inspection; no new runtime tests"
+  ],
+  "test_result": "not_run",
+  "commit": "1d15bad",
+  "previous_hash": "9eaa4475a575655d803b1bd8412f207d4b4d4470d41cff4bedb71ea1395dcd99",
+  "hash": "04666da543e5c192f6e6db15b2e852e932e4252e803f91585e7d6b43c81f3571"
+}

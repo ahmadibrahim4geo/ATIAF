@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "sequence": 59,
+  "timestamp_utc": "2026-11-16T20:57:00+00:00",
+  "kind": "implementation",
+  "status": "in_progress",
+  "summary": "Execute PLAN-0019 r2: usability, geological composites, legacy support, ENVI integration and dual-scene testing",
+  "details": "User authorizes execution of the 8-pillar plan: (1) Pro environment fix and message placement; (2) short clean naming [StudyArea_]index_date.tif and Study Area Name in all tools; (3) simplified LST with automatic NDVI compute/save/feed; (4) simplified geological composites generating separate 3-band rasters per preset; (5) multi-generation Landsat/Sentinel-2 legacy and modern product support; (6) strict bilingual UI separation; (7) NV5/ENVI spectral library/indices integration in sources and Tool 05; (8) dual-scene testing on modern LC09 and legacy LC08 scenes into Testing Results, verified report 0031.",
+  "references": [
+    58
+  ],
+  "task_id": "PLAN-0019",
+  "plan_revision": "r2",
+  "changed_files": [],
+  "tests": [
+    "Dual-scene real tests and test suites"
+  ],
+  "test_result": "not_run",
+  "commit": "",
+  "previous_hash": "2fd86f6bdf31c003d4b5413458b92b9691e98e2ac97d8d48b2a91162ac4406c7",
+  "hash": "e8246c77b861527cb0d22c569ff8b3708981978873c533d57030e12a58b72c58"
+}

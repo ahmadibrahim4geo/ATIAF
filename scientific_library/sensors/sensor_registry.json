@@ -1,6 +1,7 @@
 {
   "schema_version": "0.1",
   "status": "candidate_planning_only",
+  "composites_support_reference": "scientific_library/composites/support.json",
   "sensors": [
     {
       "id": "LANDSAT_MSS_1_3",
@@ -503,5 +504,7 @@
       "implementation_status": "PLANNED_NOT_TESTED",
       "validated_products": []
     }
-  ]
+  ],
+  "legacy_product_audit_reference": "Reports/PLAN-0019_Audit/01_Sensor_Product_Compatibility_Matrix.md",
+  "support_note": "Broad sensor entries remain planning candidates. Actual reader/calibration/QA eligibility and limited fixture/real evidence are separate in the linked audit; no blanket sensor implementation promoted."
 }

@@ -1,0 +1,34 @@
+test_all_six_native_parameters (__main__.TestArcGISNativeWorkflow.test_all_six_native_parameters) ... ERROR 1: Unable to load CF-1 standard name database C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\Library\share\gdal\cf_standard_name_table.db. CF-1 lookups will fail.
+ok
+test_arabic_toolbox_parameter_labels (__main__.TestArcGISNativeWorkflow.test_arabic_toolbox_parameter_labels) ... ok
+ERROR: Select at least one calculation; nothing is selected by default
+test_empty_and_mismatch_are_errors (__main__.TestArcGISNativeWorkflow.test_empty_and_mismatch_are_errors) ... ok
+no_header
+C:\Users\ahmad\AppData\Local\Temp\atiaf_r6_il_80h3p\no_header\Results\Spectral_Indices\Vegetation\NDVI\NDVI_no_header_FULL_RUN-128e61ab3f444402846d53633b9ff0b1.tif
+C:\Users\ahmad\AppData\Local\Temp\atiaf_r6_il_80h3p\no_header\Results\Spectral_Indices\Vegetation\NDVI\NDVI_no_header_FULL_RUN-128e61ab3f444402846d53633b9ff0b1_LOCAL_CLASSES_RUN-cf5ac5392bd449a088c2821a5b4f3e87.tif
+C:\Users\ahmad\AppData\Local\Temp\atiaf_r6_il_80h3p\no_header\Results\Spectral_Indices\Vegetation\EVI2\EVI2_no_header_FULL_RUN-ba76c873debd4f62a65ac834caec0a2e.tif
+C:\Users\ahmad\AppData\Local\Temp\atiaf_r6_il_80h3p\no_header\Results\Spectral_Indices\Vegetation\NIRv\NIRv_no_header_FULL_RUN-a8b4e8f70b2b49b881b591105377570d.tif
+test_manual_inputs_groups_and_optional_classes (__main__.TestArcGISNativeWorkflow.test_manual_inputs_groups_and_optional_classes) ... ok
+LC08_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\atiaf_r6_ddwi9hmh\scene\Results\Surface_Temperature\LST_NDVI_RTE_KELVIN\LST_NDVI_RTE_KELVIN_LC08_L2SP_176039_20230520_20230527_02_T1_FULL_RUN-ceff7db761b14d658d32c05bcf1633c9.tif
+test_ndvi_assisted_temperature (__main__.TestArcGISNativeWorkflow.test_ndvi_assisted_temperature) ... ok
+LC08_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\atiaf_pro_v8itxntp\scene\Results\Spectral_Indices\Vegetation\NDVI\NDVI_LC08_L2SP_176039_20230520_20230527_02_T1_FULL_RUN-dd2be18ca3384812928453c94fb28a3e.tif
+test_spectral_execution_and_crs (__main__.TestArcGISNativeWorkflow.test_spectral_execution_and_crs) ... ok
+LC08_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\atiaf_pro_txyo52nj\scene\Results\Surface_Temperature\LST_CELSIUS\LST_CELSIUS_LC08_L2SP_176039_20230520_20230527_02_T1_FULL_RUN-e1c649f13f134e9da283d6a9f95167a0.tif
+LC08_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\atiaf_pro_txyo52nj\scene\Results\Geological_Analysis\Iron_Oxide\Iron_Oxide_LC08_L2SP_176039_20230520_20230527_02_T1_FULL_RUN-834882d231064f74b4e48fec272acd75.tif
+test_temperature_and_geology_execution (__main__.TestArcGISNativeWorkflow.test_temperature_and_geology_execution) ... ok
+LC08_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\atiaf_pro_9lnuh4fl\scene\Results\Thermal_Analysis\THERMAL_HOTSPOTS_LC08_L2SP_176039_20230520_20230527_02_T1_FULL_RUN-1c31cef9682b424aba97e4ec4031474f.tif
+LE07_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\atiaf_pro_9lnuh4fl\l7\Results\Environmental_Analysis\ALBEDO_LE07_L2SP_176039_20230520_20230527_02_T1_FULL_RUN-0b535150087145fbbc725420b2344196.tif
+LC08_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\atiaf_pro_9lnuh4fl\scene\Results\Temporal_Change\NDVI\Delta_NDVI_LC08_L2SP_176039_20230520_20230527_02_T1_to_LC08_L2SP_176039_20230620_20230527_02_T1_DIFF_FULL_RUN-f0e3fe82af0240e6b160a4228c3e6b47.tif
+test_urban_environment_and_temporal_execution (__main__.TestArcGISNativeWorkflow.test_urban_environment_and_temporal_execution) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 6.196s
+
+OK

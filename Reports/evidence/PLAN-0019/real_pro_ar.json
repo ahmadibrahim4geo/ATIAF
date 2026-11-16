@@ -1,0 +1,109 @@
+{
+  "date": "2026-11-16T03:40:05.731411+00:00",
+  "host": "pro",
+  "language": "ar",
+  "version": {
+    "LicenseLevel": "Advanced",
+    "InstallDir": "c:\\program files\\arcgis\\pro\\",
+    "Installer": "ahmad",
+    "ProductName": "ArcGISPro",
+    "Version": "3.6",
+    "SourceDir": "D:\\New folder (2)\\Be GISer ArcGIS Pro 3.6\\1 Arcgis pro 3.6\\ArcGISPro\\",
+    "InstallType": "N/A",
+    "BuildNumber": "59527",
+    "InstallDate": "11/08/2026",
+    "InstallTime": "14:35:07",
+    "SPNumber": "N/A",
+    "SPBuild": "N/A",
+    "LicenseType": ""
+  },
+  "input_scene": "LC81760392014234LGN00",
+  "input_level": "pre-Collection Landsat8 L1T; TOA reflectance; no atmospheric correction",
+  "source_metadata_sha256": "d89a2c2cacac32810f57a58e8a74efe0e6e564928f7dc891590b86778105cf4f",
+  "source_stat_unchanged": true,
+  "elapsed_seconds": 126.88261609999995,
+  "outputs": [
+    {
+      "path": "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0019\\pro_ar\\LC81760392014234LGN00\\Results\\Geological_Color_Composites\\Band_Ratio_RGB\\L89_CRC1\\5b817e9049a9\\Analytical\\LC81760392014234LGN00_Landsat8_Geology_CRC1_Ratios_RGB_Analytical.tif",
+      "width": 7711,
+      "height": 7861,
+      "crs": "EPSG:32636",
+      "cell_size": [
+        30.0,
+        30.0
+      ],
+      "dtype": [
+        "float32",
+        "float32",
+        "float32"
+      ],
+      "channels": [
+        "B6/B7",
+        "B6/B2",
+        "(B4/B5)*(B6/B5)"
+      ],
+      "samples": 324,
+      "max_absolute_error": 9.521160249104099e-07,
+      "grid": [
+        30.0,
+        0.0,
+        282885.0,
+        0.0,
+        -30.0,
+        3470715.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "product": "analytical_continuous_RGB",
+      "status": "pass"
+    },
+    {
+      "path": "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0019\\pro_ar\\LC81760392014234LGN00\\Results\\Geological_Color_Composites\\Direct_RGB\\L89_753\\a6c33be9bdc5\\Analytical\\LC81760392014234LGN00_Landsat8_Geology_753_Direct_RGB_Analytical.tif",
+      "width": 7711,
+      "height": 7861,
+      "crs": "EPSG:32636",
+      "cell_size": [
+        30.0,
+        30.0
+      ],
+      "dtype": [
+        "float32",
+        "float32",
+        "float32"
+      ],
+      "channels": [
+        "B7",
+        "B5",
+        "B3"
+      ],
+      "samples": 324,
+      "max_absolute_error": 4.9955973024928824e-08,
+      "grid": [
+        30.0,
+        0.0,
+        282885.0,
+        0.0,
+        -30.0,
+        3470715.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "product": "analytical_continuous_RGB",
+      "status": "pass"
+    }
+  ],
+  "result": {
+    "OUTPUT_RASTERS": [
+      "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0019\\pro_ar\\LC81760392014234LGN00\\Results\\Geological_Color_Composites\\Band_Ratio_RGB\\L89_CRC1\\5b817e9049a9\\Analytical\\LC81760392014234LGN00_Landsat8_Geology_CRC1_Ratios_RGB_Analytical.tif",
+      "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0019\\pro_ar\\LC81760392014234LGN00\\Results\\Geological_Color_Composites\\Direct_RGB\\L89_753\\a6c33be9bdc5\\Analytical\\LC81760392014234LGN00_Landsat8_Geology_753_Direct_RGB_Analytical.tif"
+    ],
+    "RUN_MANIFESTS": [
+      "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0019\\pro_ar\\LC81760392014234LGN00\\Results\\Reports\\Runs\\RUN_20261116_033944_fdf55b49",
+      "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0019\\pro_ar\\LC81760392014234LGN00\\Results\\Reports\\Runs\\RUN_20261116_034002_a42a0064"
+    ]
+  },
+  "science": "Independent sample arithmetic only; no field lithological classification or accuracy claim",
+  "status": "pass"
+}

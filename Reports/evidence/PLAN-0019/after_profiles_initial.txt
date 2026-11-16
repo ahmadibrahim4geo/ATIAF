@@ -1,0 +1,244 @@
+test_absorption_feature_depth (test_advanced_modalities.TestHyperspectralEngineAndGating.test_absorption_feature_depth) ... ok
+test_spectral_angle_mapper_identical_and_scaled (test_advanced_modalities.TestHyperspectralEngineAndGating.test_spectral_angle_mapper_identical_and_scaled) ... ok
+test_spectral_angle_mapper_orthogonal (test_advanced_modalities.TestHyperspectralEngineAndGating.test_spectral_angle_mapper_orthogonal) ... ok
+test_strict_hyperspectral_l1_gating (test_advanced_modalities.TestHyperspectralEngineAndGating.test_strict_hyperspectral_l1_gating)
+Verifies that uncalibrated TOA/L1 hyperspectral cubes are rejected from mineral unmixing. ... ok
+test_water_vapor_absorption_detection (test_advanced_modalities.TestHyperspectralEngineAndGating.test_water_vapor_absorption_detection) ... ok
+test_apply_lee_filter (test_advanced_modalities.TestSAREngineAndGating.test_apply_lee_filter) ... ok
+test_cross_polarization_ratio (test_advanced_modalities.TestSAREngineAndGating.test_cross_polarization_ratio) ... ok
+test_db_to_linear (test_advanced_modalities.TestSAREngineAndGating.test_db_to_linear) ... ok
+test_linear_to_db (test_advanced_modalities.TestSAREngineAndGating.test_linear_to_db) ... ok
+test_radar_vegetation_index (test_advanced_modalities.TestSAREngineAndGating.test_radar_vegetation_index) ... ok
+test_strict_sar_optical_rejection (test_advanced_modalities.TestSAREngineAndGating.test_strict_sar_optical_rejection)
+Verifies that attempting to run optical equations on SAR raises ModalityCapabilityError. ... ok
+test_scene_scanner_identifies_sentinel1 (test_advanced_modalities.TestSentinel1DiscoveryAndScanner.test_scene_scanner_identifies_sentinel1) ... ok
+test_sentinel1_parser_can_parse (test_advanced_modalities.TestSentinel1DiscoveryAndScanner.test_sentinel1_parser_can_parse) ... ok
+test_sentinel1_parser_extracts_bands_and_metadata (test_advanced_modalities.TestSentinel1DiscoveryAndScanner.test_sentinel1_parser_extracts_bands_and_metadata) ... ok
+test_additional_index_independent_pixels (test_consolidated_changes.ConsolidatedChanges.test_additional_index_independent_pixels) ... ok
+test_classification_outputs_and_reports_preserve_continuous (test_consolidated_changes.ConsolidatedChanges.test_classification_outputs_and_reports_preserve_continuous) ... ok
+test_generated_catalogs_retain_interpretation_and_local_class_warning (test_consolidated_changes.ConsolidatedChanges.test_generated_catalogs_retain_interpretation_and_local_class_warning) ... ok
+test_interpretation_coverage_and_language_independence (test_consolidated_changes.ConsolidatedChanges.test_interpretation_coverage_and_language_independence) ... ok
+test_local_class_boundaries_and_nodata (test_consolidated_changes.ConsolidatedChanges.test_local_class_boundaries_and_nodata) ... ok
+test_local_classes_require_order_and_basis (test_consolidated_changes.ConsolidatedChanges.test_local_classes_require_order_and_basis) ... ok
+test_manual_mapping_export_import_and_sensor_mismatch (test_consolidated_changes.ConsolidatedChanges.test_manual_mapping_export_import_and_sensor_mismatch) ... ok
+test_manual_qa_is_optional_only_by_explicit_optout (test_consolidated_changes.ConsolidatedChanges.test_manual_qa_is_optional_only_by_explicit_optout) ... ok
+test_manual_red_nir_only_and_missing_blue (test_consolidated_changes.ConsolidatedChanges.test_manual_red_nir_only_and_missing_blue) ... ok
+test_manual_requires_actual_sensor_and_calibration (test_consolidated_changes.ConsolidatedChanges.test_manual_requires_actual_sensor_and_calibration) ... ok
+test_rte_computed_ndvi_and_optical_sensor_rejection (test_consolidated_changes.ConsolidatedChanges.test_rte_computed_ndvi_and_optical_sensor_rejection) ... ok
+test_rte_independent_forward_inverse (test_consolidated_changes.ConsolidatedChanges.test_rte_independent_forward_inverse) ... ok
+test_rte_native_raster_pipeline_kelvin_celsius (test_consolidated_changes.ConsolidatedChanges.test_rte_native_raster_pipeline_kelvin_celsius) ... ok
+test_rte_negative_ndvi_not_assumed_water (test_consolidated_changes.ConsolidatedChanges.test_rte_negative_ndvi_not_assumed_water) ... ok
+test_rte_no_automatic_default_inputs (test_consolidated_changes.ConsolidatedChanges.test_rte_no_automatic_default_inputs) ... ok
+test_rte_refuses_official_st_as_radiance (test_consolidated_changes.ConsolidatedChanges.test_rte_refuses_official_st_as_radiance) ... ok
+test_toolbox_all_six_tools (test_expanded_catalog_environment.TestArcGISProAllSixTools.test_toolbox_all_six_tools) ... ok
+test_liang_broadband_albedo (test_expanded_catalog_environment.TestEnvironmentalDroughtFormulas.test_liang_broadband_albedo) ... ok
+test_tvdi_normalization (test_expanded_catalog_environment.TestEnvironmentalDroughtFormulas.test_tvdi_normalization) ... ok
+test_gli (test_expanded_catalog_environment.TestExpandedCatalog.test_gli) ... ok
+test_msavi (test_expanded_catalog_environment.TestExpandedCatalog.test_msavi) ... ok
+test_ndmi (test_expanded_catalog_environment.TestExpandedCatalog.test_ndmi) ... ok
+test_osavi (test_expanded_catalog_environment.TestExpandedCatalog.test_osavi) ... ok
+test_tasseled_cap_transformations (test_expanded_catalog_environment.TestExpandedCatalog.test_tasseled_cap_transformations) ... ok
+test_vari (test_expanded_catalog_environment.TestExpandedCatalog.test_vari) ... ok
+test_thermal_hotspots (test_expanded_catalog_environment.TestThermalUrbanFormulas.test_thermal_hotspots) ... ok
+test_utfvi_math_and_classes (test_expanded_catalog_environment.TestThermalUrbanFormulas.test_utfvi_math_and_classes) ... ok
+test_arithmetic_rejects_executable_content (test_geological_composites.TestGeologicalComposites.test_arithmetic_rejects_executable_content) ... ok
+test_aster_invalid_date_and_stack_mapping_rejected (test_geological_composites.TestGeologicalComposites.test_aster_invalid_date_and_stack_mapping_rejected) ... ok
+test_batch_mosaic_has_one_scene_for_whole_rgb_pixel (test_geological_composites.TestGeologicalComposites.test_batch_mosaic_has_one_scene_for_whole_rgb_pixel) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_bilingual_fields_no_mixed_interface_and_output_last_contract (test_geological_composites.TestGeologicalComposites.test_bilingual_fields_no_mixed_interface_and_output_last_contract) ... ok
+test_cancel_before_any_writes (test_geological_composites.TestGeologicalComposites.test_cancel_before_any_writes) ... ok
+test_custom_preset_export_import_and_spoofing (test_geological_composites.TestGeologicalComposites.test_custom_preset_export_import_and_spoofing) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_different_dates_mosaic_rejected_before_writes (test_geological_composites.TestGeologicalComposites.test_different_dates_mosaic_rejected_before_writes) ... ok
+test_direct_and_ratio_independent_reference_values_and_masks (test_geological_composites.TestGeologicalComposites.test_direct_and_ratio_independent_reference_values_and_masks) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_display_settings_do_not_change_analysis (test_geological_composites.TestGeologicalComposites.test_display_settings_do_not_change_analysis) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_experimental_is_explicit (test_geological_composites.TestGeologicalComposites.test_experimental_is_explicit) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_explicit_aster_stack_maps_scientific_band_not_position (test_geological_composites.TestGeologicalComposites.test_explicit_aster_stack_maps_scientific_band_not_position) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_gates_before_writes (test_geological_composites.TestGeologicalComposites.test_gates_before_writes) ... ok
+test_imported_preset_cannot_escape_output_directory (test_geological_composites.TestGeologicalComposites.test_imported_preset_cannot_escape_output_directory) ... ok
+test_legacy_qa_not_applied_to_collection1_by_filename (test_geological_composites.TestGeologicalComposites.test_legacy_qa_not_applied_to_collection1_by_filename) ... FAIL
+test_legacy_toa_solar_scaling_and_exact_bqa_schema (test_geological_composites.TestGeologicalComposites.test_legacy_toa_solar_scaling_and_exact_bqa_schema) ... ERROR
+test_polygon_clip_and_output_crs (test_geological_composites.TestGeologicalComposites.test_polygon_clip_and_output_crs) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_preview_does_not_create_results_or_full_raster (test_geological_composites.TestGeologicalComposites.test_preview_does_not_create_results_or_full_raster) ... D:\My Software\ATIAF\atiaf_core\composites\engine.py:308: PendingDeprecationWarning: Use `@` matmul instead of `*` mul operator for matrix multiplication
+  transform=transform*transform.scale(width/small_width,height/small_height)
+C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_render_fixed_limits_and_invalid_controls (test_geological_composites.TestGeologicalComposites.test_render_fixed_limits_and_invalid_controls) ... ok
+test_rerun_destination_and_source_preserved (test_geological_composites.TestGeologicalComposites.test_rerun_destination_and_source_preserved) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_second_published_ratio_variant (test_geological_composites.TestGeologicalComposites.test_second_published_ratio_variant) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_zero_near_zero_nonfinite_and_negative_ratio (test_geological_composites.TestGeologicalComposites.test_zero_near_zero_nonfinite_and_negative_ratio) ... ok
+test_toolbox_tools_list_phase5 (test_mosaic_temporal.TestArcGISProToolboxPhase5.test_toolbox_tools_list_phase5) ... ok
+test_burn_severity_classification_math (test_mosaic_temporal.TestChangeDetectionEngine.test_burn_severity_classification_math) ... ok
+test_run_change_detection_nbr_burn (test_mosaic_temporal.TestChangeDetectionEngine.test_run_change_detection_nbr_burn) ... ok
+test_std_change_classification (test_mosaic_temporal.TestChangeDetectionEngine.test_std_change_classification) ... ok
+test_mosaic_latest_date_strategy (test_mosaic_temporal.TestQualityMosaicEngine.test_mosaic_latest_date_strategy) ... ok
+test_mosaic_mean_valid_strategy (test_mosaic_temporal.TestQualityMosaicEngine.test_mosaic_mean_valid_strategy) ... ok
+test_mosaic_union_extent_and_provenance (test_mosaic_temporal.TestQualityMosaicEngine.test_mosaic_union_extent_and_provenance) ... ok
+test_geospatial_packages_available (test_package_and_registries.TestEnvironmentLibraries.test_geospatial_packages_available)
+Verifies core standalone Python libraries needed for headless calculations. ... ok
+test_json_files_well_formed (test_package_and_registries.TestRepositoryStructure.test_json_files_well_formed) ... ok
+test_link_checks_use_project_relative_exclusions (test_package_and_registries.TestRepositoryStructure.test_link_checks_use_project_relative_exclusions) ... ok
+test_no_broken_local_markdown_links (test_package_and_registries.TestRepositoryStructure.test_no_broken_local_markdown_links) ... ok
+test_required_files_exist (test_package_and_registries.TestRepositoryStructure.test_required_files_exist) ... ok
+test_candidate_indices (test_package_and_registries.TestScientificRegistries.test_candidate_indices) ... ok
+test_sensor_registry (test_package_and_registries.TestScientificRegistries.test_sensor_registry) ... ok
+test_docs_index_html (test_packaging.TestPackagingAndReleaseReadiness.test_docs_index_html) ... ok
+test_pyproject_toml_structure (test_packaging.TestPackagingAndReleaseReadiness.test_pyproject_toml_structure) ... ok
+test_readme_and_changelog (test_packaging.TestPackagingAndReleaseReadiness.test_readme_and_changelog) ... ok
+test_run_diagnostics_cli (test_packaging.TestPackagingAndReleaseReadiness.test_run_diagnostics_cli)
+Verifies that the CLI diagnostics utility runs and returns 0 errors. ... ok
+test_aster_post_2008_swir_degradation (test_product_recognition.TestAsterRecognition.test_aster_post_2008_swir_degradation) ... ok
+test_aster_pre_2008_valid_swir (test_product_recognition.TestAsterRecognition.test_aster_pre_2008_valid_swir) ... ok
+test_landsat7_slc_off_warning (test_product_recognition.TestLandsatRecognition.test_landsat7_slc_off_warning) ... ok
+test_landsat8_c2_l2_discovery (test_product_recognition.TestLandsatRecognition.test_landsat8_c2_l2_discovery) ... FAIL
+test_manual_band_mapper (test_product_recognition.TestManualBandMapping.test_manual_band_mapper) ... ok
+test_parent_directory_scan_ignores_work_results (test_product_recognition.TestSceneScanner.test_parent_directory_scan_ignores_work_results) ... ok
+test_single_scene_scan (test_product_recognition.TestSceneScanner.test_single_scene_scan) ... ok
+test_sentinel2_l1c_toa_warning (test_product_recognition.TestSentinel2Recognition.test_sentinel2_l1c_toa_warning) ... ok
+test_sentinel2_l2a_safe (test_product_recognition.TestSentinel2Recognition.test_sentinel2_l2a_safe) ... ok
+test_algorithm_names_and_display_names (test_qgis_adapter.TestQGISAlgorithmDefinitions.test_algorithm_names_and_display_names) ... ok
+test_canonical_parameter_names (test_qgis_adapter.TestQGISAlgorithmDefinitions.test_canonical_parameter_names) ... ok
+test_create_instance (test_qgis_adapter.TestQGISAlgorithmDefinitions.test_create_instance) ... ok
+test_metadata_conforms_to_qgis_standard (test_qgis_adapter.TestQGISMetadata.test_metadata_conforms_to_qgis_standard) ... ok
+test_metadata_file_exists (test_qgis_adapter.TestQGISMetadata.test_metadata_file_exists) ... ok
+test_class_factory (test_qgis_adapter.TestQGISPluginLifecycle.test_class_factory) ... ok
+test_provider_algorithms_instantiation (test_qgis_adapter.TestQGISPluginLifecycle.test_provider_algorithms_instantiation) ... ok
+test_provider_identity (test_qgis_adapter.TestQGISPluginLifecycle.test_provider_identity) ... ok
+test_geographic_degree_rejected (test_raster_core.TestCRSValidation.test_geographic_degree_rejected) ... ok
+test_invalid_string_rejected (test_raster_core.TestCRSValidation.test_invalid_string_rejected) ... ok
+test_projected_metre_accepted (test_raster_core.TestCRSValidation.test_projected_metre_accepted) ... ok
+test_web_mercator_accepted (test_raster_core.TestCRSValidation.test_web_mercator_accepted) ... ok
+test_polygon_clip (test_raster_core.TestPolygonClipping.test_polygon_clip) ... ok
+test_apply_valid_range_and_nodata (test_raster_core.TestQualityMaskEngine.test_apply_valid_range_and_nodata) ... ok
+test_landsat_c2_qa_mask (test_raster_core.TestQualityMaskEngine.test_landsat_c2_qa_mask) ... ok
+test_sentinel2_scl_mask (test_raster_core.TestQualityMaskEngine.test_sentinel2_scl_mask) ... ok
+test_atomic_write_failure_cleanup (test_raster_core.TestWindowedRasterEngine.test_atomic_write_failure_cleanup) ... ok
+test_windowed_ndvi_computation (test_raster_core.TestWindowedRasterEngine.test_windowed_ndvi_computation) ... ok
+test_cache_fingerprint (test_raster_core.TestWorkspaceManager.test_cache_fingerprint) ... ok
+test_run_manifest_generation (test_raster_core.TestWorkspaceManager.test_run_manifest_generation) ... ok
+test_workspace_roots_custom_destination (test_raster_core.TestWorkspaceManager.test_workspace_roots_custom_destination) ... ok
+test_workspace_roots_single_scene_default (test_raster_core.TestWorkspaceManager.test_workspace_roots_single_scene_default) ... ok
+test_cumulative_index_multiple_runs (test_reports_html.TestHtmlReporting.test_cumulative_index_multiple_runs)
+Verifies that multiple runs are cumulatively aggregated without losing past history. ... ok
+test_single_run_html_and_index_generation (test_reports_html.TestHtmlReporting.test_single_run_html_and_index_generation)
+Verifies report.html and index.html are generated on run completion. ... ok
+test_pyt_file_valid_python (test_spectral_indices.TestArcGISProToolboxStructure.test_pyt_file_valid_python) ... ok
+test_gndvi (test_spectral_indices.TestIndexFormulas.test_gndvi) ... ok
+test_mndwi (test_spectral_indices.TestIndexFormulas.test_mndwi) ... ok
+test_nbr (test_spectral_indices.TestIndexFormulas.test_nbr) ... ok
+test_ndbi (test_spectral_indices.TestIndexFormulas.test_ndbi) ... ok
+test_ndvi (test_spectral_indices.TestIndexFormulas.test_ndvi) ... ok
+test_ndwi_gao (test_spectral_indices.TestIndexFormulas.test_ndwi_gao) ... ok
+test_savi (test_spectral_indices.TestIndexFormulas.test_savi) ... ok
+test_zero_division_safety (test_spectral_indices.TestIndexFormulas.test_zero_division_safety) ... ok
+test_missing_band_gating (test_spectral_indices.TestSpectralIndicesEngine.test_missing_band_gating) ... ok
+test_run_scene_indices_landsat8 (test_spectral_indices.TestSpectralIndicesEngine.test_run_scene_indices_landsat8) ... ok
+test_toolbox_tools_list (test_temperature_geology.TestArcGISProToolboxPhase4.test_toolbox_tools_list) ... ok
+test_bare_soil_emissivity (test_temperature_geology.TestEmissivityFormulas.test_bare_soil_emissivity) ... ok
+test_dense_vegetation_emissivity (test_temperature_geology.TestEmissivityFormulas.test_dense_vegetation_emissivity) ... ok
+test_mixed_pixel_emissivity (test_temperature_geology.TestEmissivityFormulas.test_mixed_pixel_emissivity) ... ok
+test_nan_ndvi_handling (test_temperature_geology.TestEmissivityFormulas.test_nan_ndvi_handling) ... ok
+test_water_emissivity (test_temperature_geology.TestEmissivityFormulas.test_water_emissivity) ... ok
+test_aster_post_2008_swir_gating (test_temperature_geology.TestGeologicalAnalysisEngine.test_aster_post_2008_swir_gating) ... ok
+test_geological_formulas (test_temperature_geology.TestGeologicalAnalysisEngine.test_geological_formulas) ... ok
+test_landsat8_geological_execution (test_temperature_geology.TestGeologicalAnalysisEngine.test_landsat8_geological_execution) ... ok
+test_emissivity_from_ndvi (test_temperature_geology.TestSurfaceTemperatureEngine.test_emissivity_from_ndvi) ... ok
+test_landsat8_c2_l2_st_celsius (test_temperature_geology.TestSurfaceTemperatureEngine.test_landsat8_c2_l2_st_celsius) ... ok
+test_landsat8_c2_l2_st_kelvin (test_temperature_geology.TestSurfaceTemperatureEngine.test_landsat8_c2_l2_st_kelvin) ... ok
+test_sentinel2_thermal_rejection (test_temperature_geology.TestSurfaceTemperatureEngine.test_sentinel2_thermal_rejection) ... ok
+test_no_duplicate_implementation_package (test_workflow_repair.TestNativeDialogContractWithDouble.test_no_duplicate_implementation_package) ... ok
+test_six_tools_order_empty_defaults_and_language (test_workflow_repair.TestNativeDialogContractWithDouble.test_six_tools_order_empty_defaults_and_language) ... ok
+test_actual_crs_reprojection (test_workflow_repair.TestWorkflowRepair.test_actual_crs_reprojection) ... ok
+test_auto_profile_rejects_potential_double_scaling (test_workflow_repair.TestWorkflowRepair.test_auto_profile_rejects_potential_double_scaling) ... ok
+test_cancellation_preserves_sources_and_leaves_no_partial_raster (test_workflow_repair.TestWorkflowRepair.test_cancellation_preserves_sources_and_leaves_no_partial_raster) ... ok
+test_cross_date_mosaic_rejected (test_workflow_repair.TestWorkflowRepair.test_cross_date_mosaic_rejected) ... ok
+test_default_destination_and_immutable_reruns (test_workflow_repair.TestWorkflowRepair.test_default_destination_and_immutable_reruns) ... ok
+test_degrees_and_feet_rejected (test_workflow_repair.TestWorkflowRepair.test_degrees_and_feet_rejected) ... ok
+test_empty_selection_fails_without_outputs (test_workflow_repair.TestWorkflowRepair.test_empty_selection_fails_without_outputs) ... ok
+test_environment_and_geology (test_workflow_repair.TestWorkflowRepair.test_environment_and_geology) ... ok
+test_expert_invalid_wavelength_and_traversal_are_rejected (test_workflow_repair.TestWorkflowRepair.test_expert_invalid_wavelength_and_traversal_are_rejected) ... ok
+test_expert_mapping_is_executed_and_recorded (test_workflow_repair.TestWorkflowRepair.test_expert_mapping_is_executed_and_recorded) ... ok
+test_invalid_aoi_does_not_silently_process_full_extent (test_workflow_repair.TestWorkflowRepair.test_invalid_aoi_does_not_silently_process_full_extent) ... ok
+test_manifest_includes_exact_sources_and_options (test_workflow_repair.TestWorkflowRepair.test_manifest_includes_exact_sources_and_options) ... ok
+test_missing_dependencies_do_not_erase_arcgis_calculations (test_workflow_repair.TestWorkflowRepair.test_missing_dependencies_do_not_erase_arcgis_calculations) ... ok
+test_missing_qa_explicit_optout (test_workflow_repair.TestWorkflowRepair.test_missing_qa_explicit_optout) ... ok
+test_physics_gates_show_reasons (test_workflow_repair.TestWorkflowRepair.test_physics_gates_show_reasons) ... ok
+test_polygon_clip_independent_of_mosaic (test_workflow_repair.TestWorkflowRepair.test_polygon_clip_independent_of_mosaic) ... ok
+test_quality_nodata_and_saturation (test_workflow_repair.TestWorkflowRepair.test_quality_nodata_and_saturation) ... ok
+test_raw_dn_valid_range_is_applied (test_workflow_repair.TestWorkflowRepair.test_raw_dn_valid_range_is_applied) ... ok
+test_same_date_mosaic_and_prior_outputs_preserved (test_workflow_repair.TestWorkflowRepair.test_same_date_mosaic_and_prior_outputs_preserved) ... ok
+test_sensor_mismatch_fails_without_outputs (test_workflow_repair.TestWorkflowRepair.test_sensor_mismatch_fails_without_outputs) ... ok
+test_temperature_unit_and_urban_selection (test_workflow_repair.TestWorkflowRepair.test_temperature_unit_and_urban_selection) ... ok
+test_temporal_computes_selected_metric (test_workflow_repair.TestWorkflowRepair.test_temporal_computes_selected_metric) ... ok
+test_unsafe_metadata_scene_id_is_rejected (test_workflow_repair.TestWorkflowRepair.test_unsafe_metadata_scene_id_is_rejected) ... FAIL
+
+======================================================================
+ERROR: test_legacy_toa_solar_scaling_and_exact_bqa_schema (test_geological_composites.TestGeologicalComposites.test_legacy_toa_solar_scaling_and_exact_bqa_schema)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\My Software\ATIAF\tests\test_geological_composites.py", line 191, in test_legacy_toa_solar_scaling_and_exact_bqa_schema
+    result=run_tool('geological_composites',folder,['DIRECT_RGB'],options={'allow_toa':True})
+  File "D:\My Software\ATIAF\atiaf_core\workflow.py", line 212, in run_tool
+    return run(input_folder, selected, sensor=sensor, options=options, apply_qa=apply_qa, mosaic=mosaic,
+               output_crs=output_crs, output_folder=output_folder, aoi_geometry=aoi_geometry, aoi_crs=aoi_crs,
+               language=language, canceled=canceled, progress=progress)
+  File "D:\My Software\ATIAF\atiaf_core\composites\engine.py", line 363, in run
+    plans=validate_request(input_folder,selected,sensor,options,apply_qa,mosaic,output_crs)
+  File "D:\My Software\ATIAF\atiaf_core\composites\engine.py", line 201, in validate_request
+    raise ValueError('Composite requested quality mask is absent; explicitly disable QA or supply a complete product')
+ValueError: Composite requested quality mask is absent; explicitly disable QA or supply a complete product
+
+======================================================================
+FAIL: test_legacy_qa_not_applied_to_collection1_by_filename (test_geological_composites.TestGeologicalComposites.test_legacy_qa_not_applied_to_collection1_by_filename)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\My Software\ATIAF\tests\test_geological_composites.py", line 201, in test_legacy_qa_not_applied_to_collection1_by_filename
+    with self.assertRaises(ValueError): validate_request(folder,['DIRECT_RGB'],options={'allow_toa':True})
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_landsat8_c2_l2_discovery (test_product_recognition.TestLandsatRecognition.test_landsat8_c2_l2_discovery)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\My Software\ATIAF\tests\test_product_recognition.py", line 83, in test_landsat8_c2_l2_discovery
+    self.assertIn("cloud_bit", scene.quality_masks["QA_PIXEL"].flags_info)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'cloud_bit' not found in {'schema': 'QA_PIXEL', 'source_metadata': 'LC08_L2SP_176039_20230520_20230527_02_T1_MTL.txt'}
+
+======================================================================
+FAIL: test_unsafe_metadata_scene_id_is_rejected (test_workflow_repair.TestWorkflowRepair.test_unsafe_metadata_scene_id_is_rejected)
+----------------------------------------------------------------------
+ValueError: Landsat surface-reflectance scaling requires a proven collection or explicit ESPA band calibration
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\My Software\ATIAF\tests\test_workflow_repair.py", line 213, in test_unsafe_metadata_scene_id_is_rejected
+    with self.assertRaisesRegex(ValueError, 'unsafe filename'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "unsafe filename" does not match "Landsat surface-reflectance scaling requires a proven collection or explicit ESPA band calibration"
+
+----------------------------------------------------------------------
+Ran 162 tests in 9.953s
+
+FAILED (failures=3, errors=1)

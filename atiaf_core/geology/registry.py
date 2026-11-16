@@ -65,6 +65,22 @@ def calc_aster_mi(bands: Dict[BandRole, np.ndarray], **_) -> np.ndarray:
     return _safe_ratio(bands[BandRole.THERMAL_2], bands[BandRole.THERMAL_1])
 
 
+def calc_feai(bands: Dict[BandRole, np.ndarray], **_) -> np.ndarray:
+    return _safe_ratio(bands[BandRole.SWIR_2], bands[BandRole.NIR]) + _safe_ratio(bands[BandRole.GREEN], bands[BandRole.RED])
+
+
+def calc_fei(bands: Dict[BandRole, np.ndarray], **_) -> np.ndarray:
+    return _safe_ratio(bands[BandRole.SWIR_2] + bands[BandRole.NIR], bands[BandRole.GREEN] + bands[BandRole.RED])
+
+
+def calc_fesi(bands: Dict[BandRole, np.ndarray], **_) -> np.ndarray:
+    return _safe_ratio(bands[BandRole.SWIR_2], bands[BandRole.SWIR_1])
+
+
+def calc_lati(bands: Dict[BandRole, np.ndarray], **_) -> np.ndarray:
+    return _safe_ratio(bands[BandRole.SWIR_1], bands[BandRole.GREEN])
+
+
 GEOLOGICAL_CATALOG: Dict[str, GeologicalIndexDefinition] = {
     "IRON_OXIDE": GeologicalIndexDefinition(
         id="IRON_OXIDE",
@@ -159,5 +175,53 @@ GEOLOGICAL_CATALOG: Dict[str, GeologicalIndexDefinition] = {
         formula_text="B12 / B13",
         requires_thermal=True,
         citation="Ninomiya et al. (2005), Mineral mapping with ASTER thermal infrared multispectral data",
+    ),
+    "FEAI": GeologicalIndexDefinition(
+        id="FEAI",
+        acronym="FEAI",
+        name_en="Ferric Iron Alteration Index (FEAI)",
+        name_ar="مؤشر تحورات الحديد ثلاثي التكافؤ",
+        target_mineral="Ferric Iron Alteration",
+        required_roles=[BandRole.SWIR_2, BandRole.NIR, BandRole.GREEN, BandRole.RED],
+        compute_fn=calc_feai,
+        formula_text="(SWIR2 / NIR) + (Green / Red)",
+        requires_swir=True,
+        citation="NV5 ENVI Spectral Indices / Crowley et al. (1989)",
+    ),
+    "FEI": GeologicalIndexDefinition(
+        id="FEI",
+        acronym="FEI",
+        name_en="Ferrous Iron Index (FEI)",
+        name_ar="مؤشر الحديد ثنائي التكافؤ",
+        target_mineral="Ferrous Iron Minerals",
+        required_roles=[BandRole.SWIR_2, BandRole.NIR, BandRole.GREEN, BandRole.RED],
+        compute_fn=calc_fei,
+        formula_text="(SWIR2 + NIR) / (Green + Red)",
+        requires_swir=True,
+        citation="NV5 ENVI Spectral Indices / Segal (1983)",
+    ),
+    "FESI": GeologicalIndexDefinition(
+        id="FESI",
+        acronym="FESI",
+        name_en="Ferrous Silicates Index (FESI)",
+        name_ar="مؤشر سيليكات الحديد",
+        target_mineral="Ferrous Silicates",
+        required_roles=[BandRole.SWIR_2, BandRole.SWIR_1],
+        compute_fn=calc_fesi,
+        formula_text="SWIR2 / SWIR1",
+        requires_swir=True,
+        citation="NV5 ENVI Spectral Indices / Rowan et al. (1986)",
+    ),
+    "LATI": GeologicalIndexDefinition(
+        id="LATI",
+        acronym="LATI",
+        name_en="Laterite Index (LATI)",
+        name_ar="مؤشر صخور اللاتريت",
+        target_mineral="Laterite / Iron-rich soil",
+        required_roles=[BandRole.SWIR_1, BandRole.GREEN],
+        compute_fn=calc_lati,
+        formula_text="SWIR1 / Green",
+        requires_swir=True,
+        citation="NV5 ENVI Spectral Indices / Boettinger et al. (2008)",
     ),
 }

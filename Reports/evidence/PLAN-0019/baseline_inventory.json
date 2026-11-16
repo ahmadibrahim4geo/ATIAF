@@ -1,0 +1,177 @@
+{
+  "tools": {
+    "spectral_indices": {
+      "title": [
+        "01. Spectral Indices",
+        "01. المؤشرات الطيفية"
+      ],
+      "choices": [
+        "NDVI",
+        "GNDVI",
+        "SAVI",
+        "EVI",
+        "NDRE1",
+        "NDWI_MCFEETERS",
+        "NDWI_GAO",
+        "MNDWI",
+        "NDBI",
+        "UI",
+        "NBR",
+        "NBR2",
+        "NDSI",
+        "BSI",
+        "NDMI",
+        "MSAVI",
+        "OSAVI",
+        "VARI",
+        "GLI",
+        "TCB",
+        "TCG",
+        "TCW",
+        "EVI2",
+        "NIRv"
+      ]
+    },
+    "geological_analysis": {
+      "title": [
+        "05. Geological Analysis & Mineral Alteration",
+        "05. التحليل الجيولوجي ونطاقات التحول المعدني"
+      ],
+      "choices": [
+        "IRON_OXIDE",
+        "FERRIC_IRON",
+        "FERROUS_IRON",
+        "CLAY_ALTERATION",
+        "GOSSAN",
+        "ASTER_QUARTZ",
+        "ASTER_CARBONATE",
+        "ASTER_MAFIC"
+      ]
+    },
+    "surface_temperature": {
+      "title": [
+        "02. Surface Temperature",
+        "02. درجة حرارة السطح"
+      ],
+      "choices": [
+        "LST",
+        "LST_CELSIUS",
+        "LST_KELVIN",
+        "EMISSIVITY_NDVI"
+      ]
+    },
+    "thermal_urban": {
+      "title": [
+        "03. Thermal & Urban Analysis",
+        "03. التحليل الحراري والعمراني"
+      ],
+      "choices": [
+        "UTFVI",
+        "HOTSPOTS",
+        "SUHI"
+      ]
+    },
+    "environmental_drought": {
+      "title": [
+        "04. Environmental & Drought Analysis",
+        "04. التحليل البيئي والجفاف"
+      ],
+      "choices": [
+        "ALBEDO",
+        "TVDI",
+        "VCI_TCI_VHI"
+      ]
+    },
+    "temporal_change": {
+      "title": [
+        "06. Temporal Analysis & Change Detection",
+        "06. التحليل الزمني ورصد التغير"
+      ],
+      "choices": [
+        "NDVI",
+        "NBR",
+        "LST"
+      ]
+    },
+    "geological_composites": {
+      "title": [
+        "07. Geological Color Composites",
+        "07. التراكيب اللونية الجيولوجية"
+      ],
+      "choices": [
+        "DIRECT_RGB",
+        "RATIO_RGB"
+      ]
+    }
+  },
+  "shared_parser": {
+    "level": "UNKNOWN",
+    "bands": 0
+  },
+  "shared_discovery": {
+    "status": "fail",
+    "error": "Real product metadata is required: LC81760392014234LGN00"
+  },
+  "composite_legacy_parser": {
+    "scene": {
+      "scene_id": "LC81760392014234LGN00",
+      "sensor_family": "Landsat",
+      "sensor_id": "LANDSAT_8_OLI_PRECOLLECTION",
+      "platform": "LANDSAT_8",
+      "instrument": "OLI_TIRS",
+      "product_level": "L1T",
+      "acquisition_date": "2014-08-22T00:00:00",
+      "sun_elevation_deg": 61.97972831,
+      "sun_azimuth_deg": null,
+      "cloud_cover_percent": 0.19,
+      "metadata_file": "D:\\My Software\\ATIAF\\Testing Data\\LC81760392014234LGN00\\LC81760392014234LGN00_MTL.txt",
+      "warnings": [],
+      "restrictions": []
+    }
+  },
+  "referenced_display": {
+    "path": "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0018\\standalone\\LC81760392014234LGN00\\Results\\Geological_Color_Composites\\Band_Ratio_RGB\\LC81760392014234LGN00_LANDSAT_8_9_L89_CRC1_B6-B7_B6-B2_B4-B5-B6-B5_dad2439d6ee5_DISPLAY.tif",
+    "bands": 3,
+    "dtype": [
+      "uint8",
+      "uint8",
+      "uint8"
+    ],
+    "crs": "EPSG:32636",
+    "grid": [
+      30.0,
+      0.0,
+      282885.0,
+      0.0,
+      -30.0,
+      3470715.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "nodata": 0.0,
+    "width": 7711,
+    "height": 7861,
+    "tags": {
+      "ATIAF_PRODUCT": "display_RGB_not_analytical_reflectance",
+      "DISPLAY_SETTINGS": "{\"mode\": \"balanced\", \"clip_percent_each_tail\": 2.0, \"gamma\": 1.0, \"saturation\": 1.0, \"fixed_limits\": null, \"sample_policy\": \"Deterministic nearest-neighbor grid, maximum 512 by 512; not full-scene exact quantiles\", \"extent_policy\": \"Fixed output footprint; never current map extent\", \"channel_limits\": [[1.1426069521903992, 2.352415556907654], [0.26689148604869845, 2.8526001787185673], [0.04582135558128357, 1.0303480219841004]], \"method\": \"RATIO_RGB\", \"channels\": [\"B6/B7\", \"B6/B2\", \"(B4/B5)*(B6/B5)\"], \"preset_id\": \"L89_CRC1\"}",
+      "AREA_OR_POINT": "Area"
+    }
+  },
+  "preset": {
+    "id": "L89_CRC1",
+    "sensor": "LANDSAT_8_9",
+    "method": "RATIO_RGB",
+    "channels": [
+      "B6/B7",
+      "B6/B2",
+      "(B4/B5)*(B6/B5)"
+    ],
+    "en": "Duwi ratio composite 1 (source checked)",
+    "ar": "تركيب نسب ضوي الأول (مرجعه مراجع)",
+    "status": "source_verified",
+    "source": "https://www.nature.com/articles/s41598-024-66199-3",
+    "source_location": "CRC; Figure 10"
+  },
+  "source_level": "dimensionless ratio"
+}

@@ -1,9 +1,18 @@
 """ATIAF native Python toolbox. MIT; keep the complete repository together."""
 from pathlib import Path
+import site
 import sys
 HERE = Path(__file__).resolve().parent
-if str(HERE) not in sys.path:
-    sys.path.insert(0, str(HERE))
+ROOT = HERE.parent
+for path in (str(HERE), str(ROOT)):
+    if path not in sys.path:
+        sys.path.insert(0, path)
+try:
+    user_site = site.getusersitepackages()
+    if user_site and Path(user_site).exists() and user_site not in sys.path:
+        sys.path.append(user_site)
+except Exception:
+    pass
 from atiaf_arcgis import NativeTool
 
 
@@ -41,4 +50,9 @@ class Toolbox:
     def __init__(self):
         self.label = "أطياف — تحليل المرئيات"
         self.alias = "atiaf_ar"
-        self.tools = [SpectralIndicesTool, SurfaceTemperatureTool, ThermalUrbanTool, EnvironmentalDroughtTool, GeologicalAnalysisTool, TemporalChangeTool]
+        self.tools = [SpectralIndicesTool, SurfaceTemperatureTool, ThermalUrbanTool, EnvironmentalDroughtTool, GeologicalAnalysisTool, TemporalChangeTool, GeologicalColorCompositesTool]
+
+
+class GeologicalColorCompositesTool(NativeTool):
+    tool_id = "geological_composites"
+    language = "ar"

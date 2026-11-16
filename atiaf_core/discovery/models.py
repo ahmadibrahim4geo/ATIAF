@@ -126,6 +126,18 @@ class SceneMetadata:
     metadata_file: Optional[Path] = None
     warnings: List[str] = field(default_factory=list)
     restrictions: List[str] = field(default_factory=list)
+    source_scene_id: Optional[str] = None
+    product_id: Optional[str] = None
+    collection: Optional[str] = None
+    processing_level: Optional[str] = None
+    processing_date: Optional[str] = None
+    product_generation: Optional[str] = None
+    radiometric_unit: Optional[str] = None
+    wrs_path: Optional[int] = None
+    wrs_row: Optional[int] = None
+    ground_station: Optional[str] = None
+    archive_version: Optional[str] = None
+    calibration_fields: Dict[str, Any] = field(default_factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -142,6 +154,9 @@ class SceneMetadata:
             "metadata_file": str(self.metadata_file) if self.metadata_file else None,
             "warnings": self.warnings,
             "restrictions": self.restrictions,
+            **{name:getattr(self,name) for name in ('source_scene_id','product_id','collection','processing_level',
+                'processing_date','product_generation','radiometric_unit','wrs_path','wrs_row','ground_station',
+                'archive_version','calibration_fields')},
         }
 
 

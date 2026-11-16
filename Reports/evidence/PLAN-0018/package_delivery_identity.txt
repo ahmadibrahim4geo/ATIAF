@@ -1,0 +1,3 @@
+WHEEL PASS: isolated installed core, seven catalogs, scientific/composite imports
+
+SOURCE IDENTITY PASS: wheel, QGIS core/adapter and bundled bilingual help match current source; icon included

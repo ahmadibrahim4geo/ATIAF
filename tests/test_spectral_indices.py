@@ -25,6 +25,7 @@ class TestIndexFormulas(unittest.TestCase):
             BandRole.GREEN: np.array([[0.10]], dtype=np.float32),
             BandRole.RED: np.array([[0.08]], dtype=np.float32),
             BandRole.RED_EDGE_1: np.array([[0.20]], dtype=np.float32),
+            BandRole.RED_EDGE_2: np.array([[0.28]], dtype=np.float32),
             BandRole.NIR: np.array([[0.45]], dtype=np.float32),
             BandRole.SWIR_1: np.array([[0.15]], dtype=np.float32),
             BandRole.SWIR_2: np.array([[0.05]], dtype=np.float32),
@@ -72,6 +73,36 @@ class TestIndexFormulas(unittest.TestCase):
         }
         val = INDEX_CATALOG["NDVI"].compute_fn(zero_bands)
         self.assertTrue(np.isnan(val[0, 0]))
+
+    def test_mtvi2(self):
+        val = INDEX_CATALOG["MTVI2"].compute_fn(self.bands)
+        self.assertTrue(np.isfinite(val[0, 0]))
+        self.assertGreater(float(val[0, 0]), 0.0)
+
+    def test_mcari2(self):
+        val = INDEX_CATALOG["MCARI2"].compute_fn(self.bands)
+        self.assertTrue(np.isfinite(val[0, 0]))
+        self.assertGreater(float(val[0, 0]), 0.0)
+
+    def test_ndre2(self):
+        val = INDEX_CATALOG["NDRE2"].compute_fn(self.bands)
+        expected = (0.45 - 0.28) / (0.45 + 0.28)
+        self.assertAlmostEqual(float(val[0, 0]), expected, places=4)
+
+    def test_cigreen(self):
+        val = INDEX_CATALOG["CIGREEN"].compute_fn(self.bands)
+        expected = (0.45 / 0.10) - 1.0
+        self.assertAlmostEqual(float(val[0, 0]), expected, places=4)
+
+    def test_cirededge(self):
+        val = INDEX_CATALOG["CIREDEDGE"].compute_fn(self.bands)
+        expected = (0.45 / 0.20) - 1.0
+        self.assertAlmostEqual(float(val[0, 0]), expected, places=4)
+
+    def test_ndsi_salinity(self):
+        val = INDEX_CATALOG["NDSI_SALINITY"].compute_fn(self.bands)
+        expected = (0.15 - 0.45) / (0.15 + 0.45)
+        self.assertAlmostEqual(float(val[0, 0]), expected, places=4)
 
 
 class TestSpectralIndicesEngine(unittest.TestCase):

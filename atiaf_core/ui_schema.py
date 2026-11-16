@@ -15,6 +15,10 @@ GROUPS = {
     'Manual': ('Manual band mapping', 'تعيين الباندات يدويًا'),
     'Retrieval': ('NDVI-assisted thermal retrieval', 'اشتقاق الحرارة بمساعدة NDVI'),
     'Classification': ('Optional local classification', 'التصنيف المحلي الاختياري'),
+    'Composites': ('RGB composition methods', 'طرق التراكيب اللونية'),
+    'CompositeSettings': ('RGB channels and presets', 'قنوات RGB والتركيبات المحفوظة'),
+    'Display': ('Display and temporary preview', 'العرض والمعاينة المؤقتة'),
+    'Stack': ('Explicit multiband input', 'إدخال متعدد الباندات بتعيين صريح'),
 }
 ROLES = {
     'blue': ('Blue', 'الأزرق'), 'green': ('Green', 'الأخضر'), 'red': ('Red', 'الأحمر'),
@@ -34,6 +38,8 @@ def group_name(key, language='en'):
 def ui_rows(tool):
     if tool == 'surface_temperature':
         return [dict(id='LST', en='Land surface temperature', ar='درجة حرارة سطح الأرض', category='Temperature')]
+    if tool == 'geological_composites':
+        return [r for r in CATALOG[tool] if r['id'] in ('DIRECT_RGB', 'RATIO_RGB')]
     return CATALOG[tool]
 
 def fields(tool):
@@ -42,6 +48,46 @@ def fields(tool):
     def add(name, kind, en, ar, default=None, choices=None, group='Manual', when='manual_mode'):
         result.append(dict(name=name, kind=kind, en=en, ar=ar, default=default,
                            choices=choices, group=group, when=when))
+    if tool == 'geological_composites':
+        from atiaf_core.composites.registry import PRESETS
+        def field(name,kind,en,ar,default=None,choices=None,group='CompositeSettings',when=None):
+            add(name,kind,en,ar,default,choices,group,when)
+        field('direct_preset','enum','Direct RGB preset','التركيب المباشر المحفوظ','AUTO',
+            [('AUTO','Sensor default','افتراضي حسب المستشعر')]+[(p['id'],p['en'],p['ar']) for p in PRESETS if p['method']=='DIRECT_RGB'])
+        field('ratio_preset','enum','Ratio RGB preset','تركيب النسب المحفوظ','AUTO',
+            [('AUTO','Sensor default','افتراضي حسب المستشعر')]+[(p['id'],p['en'],p['ar']) for p in PRESETS if p['method']=='RATIO_RGB'])
+        field('direct_channels','str','Manual direct R;G;B (e.g. B7;B5;B3)','الباندات المباشرة للقنوات R;G;B (مثل B7;B5;B3)')
+        field('ratio_channels','str','Custom ratio R;G;B expressions','معادلات النسب المخصصة للقنوات R;G;B')
+        field('custom_source','str','Custom preset reference / local justification','مرجع التركيب المخصص أو مبرره المحلي')
+        field('preset_file','file','Import saved composite preset JSON (optional)','استيراد تركيب محفوظ بصيغة JSON (اختياري)')
+        field('restore_preset_display','bool','Restore saved display bounds and settings','استعادة حدود العرض وإعداداته المحفوظة',False)
+        field('allow_experimental','bool','Allow clearly labeled experimental presets','السماح بالتركيبات الموسومة تجريبية',False)
+        field('allow_toa','bool','Allow calibrated TOA (no atmospheric correction)','السماح بانعكاس TOA المعاير (دون تصحيح جوي)',False)
+        field('ratio_epsilon','float','Minimum absolute ratio denominator','أصغر قيمة مطلقة لمقام النسبة',1e-8)
+        field('display_mode','enum','Color enhancement','تحسين العرض اللوني','balanced',[
+            ('quiet','Quiet','هادئ'),('balanced','Balanced','متوازن'),('enhanced','Enhanced','قوي'),('custom','Custom','مخصص')],group='Display')
+        field('display_clip','float','Custom percent clip per tail','نسبة القص المخصصة لكل طرف',2.,group='Display')
+        field('stretch_method','enum','Display stretch method','طريقة تمديد العرض','percentile',[
+            ('percentile','Percentile','المئينات'),('linear','Linear minimum to maximum','خطي من الأدنى إلى الأعلى'),
+            ('stddev','Mean plus/minus standard deviations','المتوسط وعدد الانحرافات المعيارية')],group='Display')
+        field('display_stddev','float','Standard deviation multiplier','عدد الانحرافات المعيارية',2.,group='Display')
+        field('display_gamma','float','Custom gamma','جاما المخصصة',1.,group='Display')
+        field('display_saturation','float','Custom saturation (0 to 3)','التشبع المخصص (من 0 إلى 3)',1.,group='Display')
+        field('display_limits','str','Fixed Rmin,Rmax,Gmin,Gmax,Bmin,Bmax (optional)','حدود ثابتة Rmin,Rmax,Gmin,Gmax,Bmin,Bmax (اختياري)',group='Display')
+        field('save_display','bool','Save separate display RGB GeoTIFF','حفظ GeoTIFF منفصل للعرض الملون',True,group='Display')
+        field('save_intermediates','bool','Save individual analytical channels in Work','حفظ القنوات التحليلية منفردة في Work',False,group='Display')
+        field('preview_only','bool','Temporary before/after preview only (no final rasters)','معاينة مؤقتة قبل وبعد فقط (دون راستر نهائي)',False,group='Display')
+        field('stack_mode','bool','Use an explicitly mapped multiband raster','استخدام راستر متعدد الباندات بتعيين صريح',False,group=None)
+        for name,en,ar in [('stack_raster','Multiband raster','الراستر متعدد الباندات'),
+            ('stack_band_ids','Scientific IDs in file order, comma-separated','معرفات الباندات العلمية بترتيب الملف وبفواصل'),
+            ('stack_scales','Explicit scale(s), comma-separated','معاملات القياس الصريحة مفصولة بفواصل'),
+            ('stack_offsets','Explicit offset(s), comma-separated','الإزاحات الصريحة مفصولة بفواصل'),
+            ('stack_date','Acquisition date (YYYY-MM-DD)','تاريخ الالتقاط (YYYY-MM-DD)'),
+            ('stack_provenance','Calibration / sensor / product provenance','توثيق المعايرة والمستشعر ومستوى المنتج')]:
+            field(name,'file' if name=='stack_raster' else 'str',en,ar,group='Stack',when='stack_mode')
+        field('stack_level','enum','Physical reflectance level','مستوى الانعكاس الفيزيائي','surface_reflectance',[
+            ('surface_reflectance','Surface reflectance','انعكاسية سطحية'),('toa_reflectance','TOA reflectance','انعكاسية أعلى الغلاف الجوي')],group='Stack',when='stack_mode')
+        return result
     add('manual_mode', 'bool', 'Assign available bands manually', 'تعيين الباندات المتاحة يدويًا', False, group=None, when=None)
     add('expert_mapping', 'file', 'Import saved mapping JSON (optional)', 'استيراد تعيين محفوظ بصيغة JSON (اختياري)')
     add('manual_platform', 'str', 'Exact platform (e.g. LANDSAT_8)', 'القمر بالتحديد (مثل LANDSAT_8)')
@@ -76,6 +122,9 @@ def fields(tool):
             add(name, 'float', en, ar, group='Retrieval', when='ndvi_assisted')
         add('retrieval_provenance', 'str', 'Thermal, NDVI, atmospheric and emissivity sources / assumptions',
             'مصادر وافتراضات الحرارة وNDVI والغلاف الجوي والانبعاثية', group='Retrieval', when='ndvi_assisted')
+    if tool in ('spectral_indices', 'geological_analysis'):
+        add('allow_toa','bool','Allow diagnostic calculations from calibrated TOA (not surface reflectance)',
+            'السماح بالحسابات التشخيصية من TOA المعاير (ليس انعكاسًا سطحيًا)',False,group='Calculations',when=None)
     if tool == 'spectral_indices':
         add('classify_ndvi', 'bool', 'Save optional local NDVI greenness classes', 'حفظ تصنيف محلي اختياري لخضرة NDVI',
             False, group='Classification', when=None)

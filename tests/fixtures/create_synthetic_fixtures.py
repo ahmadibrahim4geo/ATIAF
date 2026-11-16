@@ -84,6 +84,8 @@ END_GROUP = L1_METADATA_FILE
 </n1:Level-2A_User_Product>
 """
     (s2_safe / "MTD_MSIL2A.xml").write_text(s2_xml, encoding="utf-8")
+    calibration='<PROCESSING_LEVEL>Level-2A</PROCESSING_LEVEL><PROCESSING_BASELINE>05.09</PROCESSING_BASELINE><BOA_QUANTIFICATION_VALUE>10000</BOA_QUANTIFICATION_VALUE>'+''.join(f'<BOA_ADD_OFFSET band_id="{i}">-1000</BOA_ADD_OFFSET>' for i in range(13))
+    (s2_safe/'MTD_MSIL2A.xml').write_text(s2_xml.replace('</General_Info>',calibration+'</General_Info>'),'utf-8')
     for b in ["B02", "B03", "B04", "B08"]:
         (img_10m / f"T36RUU_20230615T082611_{b}_10m.jp2").write_bytes(b"DUMMY_JP2")
     for b in ["B05", "B06", "B07", "B8A", "B11", "B12", "SCL"]:
@@ -103,6 +105,8 @@ END_GROUP = L1_METADATA_FILE
 </n1:Level-1C_User_Product>
 """
     (s2_l1c / "MTD_MSIL1C.xml").write_text(l1c_xml, encoding="utf-8")
+    calibration='<PROCESSING_LEVEL>Level-1C</PROCESSING_LEVEL><PROCESSING_BASELINE>05.09</PROCESSING_BASELINE><QUANTIFICATION_VALUE>10000</QUANTIFICATION_VALUE>'+''.join(f'<RADIO_ADD_OFFSET band_id="{i}">-1000</RADIO_ADD_OFFSET>' for i in range(13))
+    (s2_l1c/'MTD_MSIL1C.xml').write_text(l1c_xml.replace('</General_Info>',calibration+'</General_Info>'),'utf-8')
     for b in ["B02", "B03", "B04", "B08"]:
         (s2_l1c_img / f"T36RUU_20230710T082609_{b}.jp2").write_bytes(b"DUMMY_JP2")
 

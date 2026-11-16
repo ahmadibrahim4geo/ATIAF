@@ -1,0 +1,28 @@
+{
+  "scope": "Entire real analytical rasters; QGIS English versus actual Pro Arabic; excludes GUI/field accuracy",
+  "outputs": [
+    {
+      "method": "direct",
+      "pixels_per_channel": 60616171,
+      "channels": 3,
+      "bitwise_equal": true,
+      "max_absolute_difference": 0.0,
+      "mask_and_grid_equal": true,
+      "qgis_path": "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0018\\qgis_en\\LC81760392014234LGN00\\Results\\Geological_Color_Composites\\Direct_RGB\\LC81760392014234LGN00_LANDSAT_8_9_L89_753_B7_B5_B3_7c298224188b.tif",
+      "pro_path": "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0018\\pro_ar_final\\LC81760392014234LGN00\\Results\\Geological_Color_Composites\\Direct_RGB\\LC81760392014234LGN00_LANDSAT_8_9_L89_753_B7_B5_B3_fb8dc9a66a45.tif",
+      "status": "pass"
+    },
+    {
+      "method": "ratio",
+      "pixels_per_channel": 60616171,
+      "channels": 3,
+      "bitwise_equal": true,
+      "max_absolute_difference": 0.0,
+      "mask_and_grid_equal": true,
+      "qgis_path": "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0018\\qgis_en\\LC81760392014234LGN00\\Results\\Geological_Color_Composites\\Band_Ratio_RGB\\LC81760392014234LGN00_LANDSAT_8_9_L89_CRC1_B6-B7_B6-B2_B4-B5-B6-B5_e815b45245d4.tif",
+      "pro_path": "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0018\\pro_ar_final\\LC81760392014234LGN00\\Results\\Geological_Color_Composites\\Band_Ratio_RGB\\LC81760392014234LGN00_LANDSAT_8_9_L89_CRC1_B6-B7_B6-B2_B4-B5-B6-B5_83980ba23dff.tif",
+      "status": "pass"
+    }
+  ],
+  "status": "pass"
+}

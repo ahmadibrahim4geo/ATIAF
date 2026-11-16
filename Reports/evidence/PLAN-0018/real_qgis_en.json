@@ -1,0 +1,105 @@
+{
+  "date": "2026-11-15T17:30:44.492213+00:00",
+  "host": "qgis",
+  "language": "en",
+  "version": "4.2.3-Belém do Pará",
+  "input_scene": "LC81760392014234LGN00",
+  "input_level": "pre-Collection Landsat8 L1T; TOA reflectance; no atmospheric correction",
+  "source_metadata_sha256": "d89a2c2cacac32810f57a58e8a74efe0e6e564928f7dc891590b86778105cf4f",
+  "source_stat_unchanged": true,
+  "elapsed_seconds": 43.59400000000096,
+  "outputs": [
+    {
+      "path": "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0018\\qgis_en\\LC81760392014234LGN00\\Results\\Geological_Color_Composites\\Direct_RGB\\LC81760392014234LGN00_LANDSAT_8_9_L89_753_B7_B5_B3_7c298224188b.tif",
+      "width": 7711,
+      "height": 7861,
+      "crs": "EPSG:32636",
+      "cell_size": [
+        30.0,
+        30.0
+      ],
+      "dtype": [
+        "float32",
+        "float32",
+        "float32"
+      ],
+      "channels": [
+        "B7",
+        "B5",
+        "B3"
+      ],
+      "samples": 324,
+      "max_absolute_error": 4.9955973024928824e-08,
+      "grid": [
+        30.0,
+        0.0,
+        282885.0,
+        0.0,
+        -30.0,
+        3470715.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "product": "analytical_continuous_RGB",
+      "status": "pass"
+    },
+    {
+      "path": "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0018\\qgis_en\\LC81760392014234LGN00\\Results\\Geological_Color_Composites\\Band_Ratio_RGB\\LC81760392014234LGN00_LANDSAT_8_9_L89_CRC1_B6-B7_B6-B2_B4-B5-B6-B5_e815b45245d4.tif",
+      "width": 7711,
+      "height": 7861,
+      "crs": "EPSG:32636",
+      "cell_size": [
+        30.0,
+        30.0
+      ],
+      "dtype": [
+        "float32",
+        "float32",
+        "float32"
+      ],
+      "channels": [
+        "B6/B7",
+        "B6/B2",
+        "(B4/B5)*(B6/B5)"
+      ],
+      "samples": 324,
+      "max_absolute_error": 9.521160249104099e-07,
+      "grid": [
+        30.0,
+        0.0,
+        282885.0,
+        0.0,
+        -30.0,
+        3470715.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "product": "analytical_continuous_RGB",
+      "status": "pass"
+    }
+  ],
+  "result": {
+    "OUTPUT_FOLDER": "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0018\\qgis_en",
+    "OUTPUT_RASTERS": [
+      "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0018\\qgis_en\\LC81760392014234LGN00\\Results\\Geological_Color_Composites\\Direct_RGB\\LC81760392014234LGN00_LANDSAT_8_9_L89_753_B7_B5_B3_7c298224188b.tif",
+      "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0018\\qgis_en\\LC81760392014234LGN00\\Results\\Geological_Color_Composites\\Band_Ratio_RGB\\LC81760392014234LGN00_LANDSAT_8_9_L89_CRC1_B6-B7_B6-B2_B4-B5-B6-B5_e815b45245d4.tif"
+    ],
+    "RUN_MANIFESTS": [
+      "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0018\\qgis_en\\LC81760392014234LGN00\\Results\\Reports\\Runs\\RUN_20261115_173020_b8e3c222",
+      "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0018\\qgis_en\\LC81760392014234LGN00\\Results\\Reports\\Runs\\RUN_20261115_173041_f6aae742"
+    ],
+    "PREVIEWS": [
+      "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0018\\qgis_en\\LC81760392014234LGN00\\Results\\Geological_Color_Composites\\Direct_RGB\\LC81760392014234LGN00_LANDSAT_8_9_L89_753_B7_B5_B3_7c298224188b.preview.html",
+      "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0018\\qgis_en\\LC81760392014234LGN00\\Results\\Geological_Color_Composites\\Band_Ratio_RGB\\LC81760392014234LGN00_LANDSAT_8_9_L89_CRC1_B6-B7_B6-B2_B4-B5-B6-B5_e815b45245d4.preview.html"
+    ],
+    "DISPLAY_RASTERS": [
+      "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0018\\qgis_en\\LC81760392014234LGN00\\Results\\Geological_Color_Composites\\Direct_RGB\\LC81760392014234LGN00_LANDSAT_8_9_L89_753_B7_B5_B3_7c298224188b_DISPLAY.tif",
+      "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0018\\qgis_en\\LC81760392014234LGN00\\Results\\Geological_Color_Composites\\Band_Ratio_RGB\\LC81760392014234LGN00_LANDSAT_8_9_L89_CRC1_B6-B7_B6-B2_B4-B5-B6-B5_e815b45245d4_DISPLAY.tif"
+    ],
+    "PREVIEW_ONLY": false
+  },
+  "science": "Independent sample arithmetic only; no field lithological classification or accuracy claim",
+  "status": "pass"
+}

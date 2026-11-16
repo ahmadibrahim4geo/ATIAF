@@ -1,0 +1,53 @@
+test_native_temporary_preview_has_no_results (__main__.NativeComposites.test_native_temporary_preview_has_no_results) ... ERROR 1: Unable to load CF-1 standard name database C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\Library\share\gdal\cf_standard_name_table.db. CF-1 lookups will fail.
+LC08_L2SP_176039_20230520_20230527_02_T1
+Preview: C:\Users\ahmad\AppData\Local\Temp\atiaf_rgb_preview_168d_0zh\Preview.html
+ok
+LC08_L2SP_176039_20230520_20230527_02_T1
+LC08_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\tmpm7ysllqw\en\scene\Results\Geological_Color_Composites\Direct_RGB\LC08_L2SP_176039_20230520_20230527_02_T1_LANDSAT_8_9_L89_753_B7_B5_B3_e6a4c21eb1fc.tif
+C:\Users\ahmad\AppData\Local\Temp\tmpm7ysllqw\en\scene\Results\Geological_Color_Composites\Band_Ratio_RGB\LC08_L2SP_176039_20230520_20230527_02_T1_LANDSAT_8_9_L89_CRC1_B6-B7_B6-B2_B4-B5-B6-B5_b687e266eb67.tif
+Preview: C:\Users\ahmad\AppData\Local\Temp\tmpm7ysllqw\en\scene\Results\Geological_Color_Composites\Direct_RGB\LC08_L2SP_176039_20230520_20230527_02_T1_LANDSAT_8_9_L89_753_B7_B5_B3_e6a4c21eb1fc.preview.html
+Preview: C:\Users\ahmad\AppData\Local\Temp\tmpm7ysllqw\en\scene\Results\Geological_Color_Composites\Band_Ratio_RGB\LC08_L2SP_176039_20230520_20230527_02_T1_LANDSAT_8_9_L89_CRC1_B6-B7_B6-B2_B4-B5-B6-B5_b687e266eb67.preview.html
+LC08_L2SP_176039_20230520_20230527_02_T1
+LC08_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\tmpm7ysllqw\ar\scene\Results\Geological_Color_Composites\Direct_RGB\LC08_L2SP_176039_20230520_20230527_02_T1_LANDSAT_8_9_L89_753_B7_B5_B3_88ec40e5f6dd.tif
+C:\Users\ahmad\AppData\Local\Temp\tmpm7ysllqw\ar\scene\Results\Geological_Color_Composites\Band_Ratio_RGB\LC08_L2SP_176039_20230520_20230527_02_T1_LANDSAT_8_9_L89_CRC1_B6-B7_B6-B2_B4-B5-B6-B5_72dcae377d25.tif
+��������: C:\Users\ahmad\AppData\Local\Temp\tmpm7ysllqw\ar\scene\Results\Geological_Color_Composites\Direct_RGB\LC08_L2SP_176039_20230520_20230527_02_T1_LANDSAT_8_9_L89_753_B7_B5_B3_88ec40e5f6dd.preview.html
+��������: C:\Users\ahmad\AppData\Local\Temp\tmpm7ysllqw\ar\scene\Results\Geological_Color_Composites\Band_Ratio_RGB\LC08_L2SP_176039_20230520_20230527_02_T1_LANDSAT_8_9_L89_CRC1_B6-B7_B6-B2_B4-B5-B6-B5_72dcae377d25.preview.html
+test_parameters_and_both_methods_both_languages (__main__.NativeComposites.test_parameters_and_both_methods_both_languages) ... ERROR
+
+======================================================================
+ERROR: test_parameters_and_both_methods_both_languages (__main__.NativeComposites.test_parameters_and_both_methods_both_languages)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\Lib\shutil.py", line 625, in _rmtree_unsafe
+    os.unlink(fullname)
+    ~~~~~~~~~^^^^^^^^^^
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\ahmad\\AppData\\Local\\Temp\\tmpm7ysllqw\\ar\\scene\\Results\\Geological_Color_Composites\\Band_Ratio_RGB\\LC08_L2SP_176039_20230520_20230527_02_T1_LANDSAT_8_9_L89_CRC1_B6-B7_B6-B2_B4-B5-B6-B5_72dcae377d25_DISPLAY.tif'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\My Software\ATIAF\tests\native_arcgis\test_composites.py", line 12, in tearDown
+    def tearDown(self): self.temp.cleanup()
+                        ~~~~~~~~~~~~~~~~~^^
+  File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\Lib\tempfile.py", line 955, in cleanup
+    self._rmtree(self.name, ignore_errors=self._ignore_cleanup_errors)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\Lib\tempfile.py", line 935, in _rmtree
+    _shutil.rmtree(name, onexc=onexc)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\Lib\shutil.py", line 790, in rmtree
+    return _rmtree_unsafe(path, onexc)
+  File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\Lib\shutil.py", line 629, in _rmtree_unsafe
+    onexc(os.unlink, fullname, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\Lib\tempfile.py", line 910, in onexc
+    _os.unlink(path)
+    ~~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\ahmad\\AppData\\Local\\Temp\\tmpm7ysllqw\\ar\\scene\\Results\\Geological_Color_Composites\\Band_Ratio_RGB\\LC08_L2SP_176039_20230520_20230527_02_T1_LANDSAT_8_9_L89_CRC1_B6-B7_B6-B2_B4-B5-B6-B5_72dcae377d25_DISPLAY.tif'
+
+----------------------------------------------------------------------
+Ran 2 tests in 6.117s
+
+FAILED (errors=1)

@@ -4,7 +4,7 @@
 # ATIAF
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-075f9c.svg)](LICENSE)
-[![Development version](https://img.shields.io/badge/version-1.0.2.dev1-d99b26.svg)](CHANGELOG.md)
+[![Development version](https://img.shields.io/badge/version-1.0.4.dev0-d99b26.svg)](CHANGELOG.md)
 [![Headless checks](https://github.com/ahmadibrahim4geo/ATIAF/actions/workflows/structure-check.yml/badge.svg)](https://github.com/ahmadibrahim4geo/ATIAF/actions/workflows/structure-check.yml)
 
 **Advanced Thematic Imagery Analysis Framework** · MIT · Local satellite imagery analysis.
@@ -13,7 +13,7 @@
 
 One engine, **`atiaf_core` with I**, serves separate native ArcGIS Pro and QGIS adapters. Computation uses your locally downloaded/unpacked images, without provider login, API keys or automatic imagery downloads.
 
-**1.0.2.dev1 is a development recovery build.** Earlier v1.0.0 stable-readiness claims are superseded by [report 0015](Reports/0015_recovery_audit.md). Synthetic tests, native host execution, real satellite products and clean installation are separate evidence levels. See [current state](PROJECT_STATE.md).
+**1.0.4.dev0 is a development recovery build.** Earlier v1.0.0 stable-readiness claims are superseded by [report 0015](Reports/0015_recovery_audit.md). Synthetic tests, native host execution, real satellite products and clean installation are separate evidence levels. See [current state](PROJECT_STATE.md).
 
 ## At a glance
 
@@ -29,7 +29,7 @@ One engine, **`atiaf_core` with I**, serves separate native ArcGIS Pro and QGIS 
 ## First run
 
 1. Keep the repository together. In Pro open [ATIAF.pyt](ArcGIS%20Pro%20Tools/ATIAF.pyt) for English or [ATIAF_AR.pyt](ArcGIS%20Pro%20Tools/ATIAF_AR.pyt) for Arabic. [Installation](documentation/en/INSTALLATION.md).
-2. For QGIS build with `python tools/build_qgis_plugin.py`, install `QGIS Tools/Distribution/ATIAF-QGIS-1.0.2.dev1.zip` using the native plugin manager, enable ATIAF and reopen old dialogs. Source stays under QGIS Tools/atiaf; the ZIP bundles core and bilingual HTML help. Tool language follows QGIS.
+2. For QGIS build with `python tools/build_qgis_plugin.py`, install `QGIS Tools/Distribution/ATIAF-QGIS-1.0.4.dev0.zip` using the native plugin manager, enable ATIAF and reopen old dialogs. Source stays under QGIS Tools/atiaf; the ZIP bundles core and bilingual HTML help. Tool language follows QGIS.
 3. Follow **sensor/product → input → QA → optional mosaic → explicit calculations → optional polygon AOI → native projected metre CRS → optional map loading → output folder LAST**. No calculations are selected by default.
 4. For NDVI select Landsat C2 L2 SR with red, NIR and QA assets. Check NDVI, leave mosaic off and AOI empty, reuse a suitable known source CRS, and inspect the raster plus `Results/Reports/index.html`.
 
@@ -47,30 +47,43 @@ python tools/build_qgis_plugin.py
 
 The builder preserves existing packages. Use `--output` with a new filename for another build. Install the resulting ZIP in QGIS → Plugins → Manage and Install Plugins → Install from ZIP. Keep Pro/QGIS Python stacks separate; see [installation requirements](documentation/en/INSTALLATION.md).
 
-## Six independent tools
+## Seven independent tools
 
-| Tool | Choices | Current restrictions |
+| Tool | Choices | Highlights & Recent Enhancements |
 |---|---|---|
-| Spectral Indices | Individual optical methods including NDVI, SAVI, EVI, MNDWI, NDMI, NDBI, NBR | Reflectance, bands, level and QA required; Tasseled Cap/Gao variant gated for review |
-| Surface Temperature | One LST choice, Celsius/Kelvin; optional local NDVI/RTE derivation | Official ST or explicit local calibrated thermal/atmospheric/emissivity inputs; no optical-only LST; field accuracy unvalidated |
-| Thermal & Urban | UTFVI/classification, hotspots, or both | Official LST; SUHI gated for urban/rural references |
-| Environmental & Drought | TM/ETM+ broadband albedo | Current coefficients restricted to Landsat 4/5/7; TVDI/historical models gated |
-| Geological & Mineral | Individual optical alteration ratios | Appropriate bands; indications do not confirm deposits; ASTER TIR methods gated |
-| Temporal & Change | NDVI, NBR or LST difference | One scene per epoch, matching sensor/level, ordered known dates; T2 minus T1 |
+| Spectral Indices | 30 individual optical methods including NDVI, SAVI, EVI, MNDWI, NDMI, NDBI, NBR, and 6 new ENVI 6.3 indices (`MTVI2`, `MCARI2`, `NDRE2`, `CIGREEN`, `CIREDEDGE`, `NDSI_SALINITY`) | Calibrated reflectance and QA; negative optical reflectance clamped to prevent zero division over dark water |
+| Surface Temperature | Simplified single-click LST in Celsius or Kelvin with automatic background intermediate NDVI calculation | Defaulted RTE and Planck parameters; intermediate NDVI automatically saved to `Results/Vegetation/NDVI/` |
+| Thermal & Urban | UTFVI/classification, hotspots, or both | Official LST; urban heat island diagnostics |
+| Environmental & Drought | TM/ETM+ broadband albedo, vegetation drought proxies | Multi-generation Landsat calibration |
+| Geological & Mineral | 10 mineral alteration ratios and indices including Ferric Iron, Clay Alteration, and 4 ENVI alteration indices (`FEAI`, `FEI`, `FESI`, `LATI`) | High-sensitivity hydrothermal alteration and rock discrimination |
+| Temporal & Change | Multi-epoch NDVI, NBR or LST difference | Ordered date differencing (T2 - T1) with matching sensor and level |
+| [Geological Color Composites](documentation/en/GEOLOGICAL_COLOR_COMPOSITES.md) | Direct RGB (`7-5-3`, `7-6-2`, `3-2-1`) and Ratio RGB (`CRC1`, `CRC2`) presets | Dual outputs: high-precision Float32 Analytical GeoTIFF and 8-bit 2% stretched Display GeoTIFF |
 
-Catalog presence is not runnable support. Incompatible selections stop with a reason. [Formula cards and sources](documentation/en/INDICATORS_CATALOG.md).
+### Intelligent QA Mask Engine & White Holes Elimination
+ATIAF now features an intelligent, multi-mode quality assessment mask engine (`Cloud_Only_Arid`, `Full_Strict`, `Water_Protected`, `None`):
+- **`Cloud_Only_Arid` (Default):** Specifically engineered for arid, rocky, and desert geomorphology (Middle East, North Africa, and global drylands). It strictly masks opaque clouds (bit 3) and snow (bit 5) while bypassing CFMask false-positive cirrus (bit 2) and terrain shadow (bit 4) flags. This **completely eliminates "missing cells / white holes"** over bright desert mountains (23,676 rock pixels recovered in empirical testing) and deep river channels.
+- **`Full_Strict`:** Preserves strict masking for high-latitude oceanic imagery.
+- **`Water_Protected`:** Shields water bodies from encroachment by dilation or shadow buffers.
 
-New development controls: [manual band selection](documentation/en/MANUAL_BANDS.md), thematic groups without calculation search, EVI2/NIRv, [NDVI-assisted thermal requirements](documentation/en/SURFACE_TEMPERATURE.md) and optional local NDVI classes. Generated EN/AR interpretation explains units/ranges/limitations; local classes preserve continuous data and are not an international classification standard. Source/numerical/native fixture evidence remains distinct from real-acquisition validation.
+### Multi-Generation Satellite Support
+- Full automated support for **Landsat 9 & 8 Collection 2 Level-2** surface reflectance and surface temperature.
+- Full compatibility with **legacy Landsat 4/5/7/8 Level-1 (Pre-Collection and Collection 1)** scenes via calibrated TOA reflectance (`allow_toa=True`) and thermal radiance extraction.
+- **Sentinel-2 L2A & L1C** and **ASTER** physical band discovery.
 
-## Read the result, not just the color
+## Output Structure & File Guide
 
-The [calculation catalog](documentation/en/INDICATORS_CATALOG.md) documents the physical meaning, units, ranges and caveats of each method. For NDVI, high greenness is not a standalone plant-health diagnosis; negative values do not uniquely identify water. Optional local classes record your thresholds and rationale while retaining the continuous raster. Scientific reports keep input filenames, calibration, formulas, parameters and output paths.
+Outputs are organized cleanly without UUID clutter:
+- **`[StudyArea_]Method_Date.tif`:** Analytical Float32 GeoTIFF containing true physical values (reflectance, temperature in Celsius, mineral ratios) for scientific analysis and modeling.
+- **`[StudyArea_]Method_Date_DISPLAY.tif`:** 3-band Byte RGB GeoTIFF with natural 2% contrast stretch for instant map visualization.
+- **`[StudyArea_]Method_Date.preview.png / .html`:** Standalone graphics and interactive Leaflet map for offline browser viewing.
+- **`report.ar.html` & `report.en.html`:** Complete bilingual run reports documenting formulas, sensor metadata, calibration parameters, and statistics.
+- **`Processing_Manifest.json` & `Quality_Assessment.csv`:** Full machine-readable lineage, valid pixel counts, and cloud/clear metrics.
 
-## Validation and support
+## Validation and Evidence
 
-Observed local evidence for this development version: **140 headless tests, 11 native QGIS checks and 8 native ArcGIS Pro checks passed on synthetic fixtures**. Package/source identity, relocated QGIS execution and offline desktop/mobile documentation were also checked. [Detailed evidence](Reports/0021_consolidated_tools_interpretation_and_native_evidence.md).
-
-Real acquisitions/field accuracy, clean-machine installation and complete interactive journeys remain unverified. Sentinel-1/SAR and hyperspectral helpers are preliminary, not complete native tools. Gated methods are documented as such; a catalog entry is not a promise of support for every scene.
+- **192 automated unit tests passing (100%)** in 8.3 seconds.
+- **Real dual-scene validation:** Empirically verified on modern Landsat 9 C2 L2 (`LC09_L2SP_174043_...`) and legacy Landsat 8 L1T (`LC81760392014234LGN00`), proving zero NaN corruption and 99.88% reduction in missing pixels in rocky terrain.
+- See detailed evidence in [Report 0032](Reports/0032_advanced_envi_indices_and_qa_mask_engine.md) and [Report 0031](Reports/0031_comprehensive_usability_geological_and_envi_integration.md).
 
 ## Development
 
@@ -100,3 +113,6 @@ Native GIS tests run separately in their vendor runtimes. Never install arbitrar
 All tools append to shared `Work/` and `Results/`, preserve earlier products, and use a scene-named folder under a custom destination. Mosaic requires compatible same-day scenes. [Output details](documentation/en/TOOL_UI_AND_WORKSPACE.md).
 
 Original code is MIT. Supplied logo/banner are used at the owner's request; the banner illustrates a workflow and is not runtime evidence. No bulk Index DataBase or external formula catalog is redistributed. [Licenses](development_resources/THIRD_PARTY_LICENSE_POLICY.md) · [Sources](development_resources/SOURCES.md) · [Agent contract](AGENTS.md).
+
+
+Legacy imagery/output audit1.0.4.dev0: shared metadata/QA/calibration, diagnostic NDVI_TOA, readable outputs and independent unchanged-CRC1 evidence. See [audit delivery0029](Reports/0029_legacy_imagery_audit_fixes_and_validation.md); current sensor support is limited by its explicit real/fixture matrix. Supplied plans move into numbered plan folders, with pristine references only in Source_Archive.

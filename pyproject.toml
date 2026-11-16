@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "atiaf"
-version = "1.0.2.dev1"
+version = "1.0.4.dev0"
 description = "ATIAF (أطياف) — Advanced Thematic Imagery Analysis Framework"
 readme = "README.md"
 requires-python = ">=3.9"

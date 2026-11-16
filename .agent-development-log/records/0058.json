@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "sequence": 58,
+  "timestamp_utc": "2026-11-16T20:22:17+00:00",
+  "kind": "request",
+  "status": "proposed",
+  "summary": "Comprehensive plan discussion: Pro environment, short naming, simple LST and geological composites",
+  "details": "User requests continuing from report 0030 and shared chat discussion to formulate a comprehensive revision of PLAN-0019 r2 covering: (1) ArcGIS Pro rasterio environment fix and validation message placement; (2) shortened result filenames [StudyArea_]index_date.tif and optional Study Area Name across all tools; (3) automatic NDVI calculation and simple LST workflow; (4) simplified geological composites focused on standard band combinations and ratios per sensor without complex enhancement sliders; (5) discussion and alignment before implementation.",
+  "references": [
+    57
+  ],
+  "task_id": "PLAN-0019",
+  "plan_revision": "r2-proposed",
+  "changed_files": [],
+  "tests": [
+    "Read-only environment and code verification"
+  ],
+  "test_result": "not_run",
+  "commit": "",
+  "previous_hash": "04666da543e5c192f6e6db15b2e852e932e4252e803f91585e7d6b43c81f3571",
+  "hash": "2fd86f6bdf31c003d4b5413458b92b9691e98e2ac97d8d48b2a91162ac4406c7"
+}

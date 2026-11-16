@@ -1,0 +1,296 @@
+{
+  "schema_version": "1.0",
+  "task_id": "PLAN-0018",
+  "request_id": "GEOLOGICAL-COLOR-COMPOSITES-20261115",
+  "revision": "r1",
+  "overall_status": "partial",
+  "criteria": [
+    {
+      "id": "AC01",
+      "statement": "يتعرف على Landsat 8/9 وSentinel-2 وASTER المدعوم، ويفحص الحزم/metadata قبل التشغيل.",
+      "status": "partial",
+      "evidence": [
+        {
+          "type": "manual_review",
+          "reference": "documentation/en/GEOLOGICAL_COLOR_COMPOSITES.md",
+          "observed": "Observed source, artifact or actual command result within the bounded scope described in report 0027.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ],
+      "reason": "Landsat 8/9 and Sentinel-2 reuse existing discovery; supplied legacy Landsat8 L1T tested. ASTER exact-band calibration needs explicit multiband mapping; complete automatic ASTER product reader is not implemented."
+    },
+    {
+      "id": "AC02",
+      "statement": "تتاح **Direct RGB** و**Ratio RGB** بصورة مستقلة وقابلة للفهم.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "command_output",
+          "reference": "Reports/evidence/PLAN-0018/native_pro_delivery.txt",
+          "observed": "Observed source, artifact or actual command result within the bounded scope described in report 0027.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "AC03",
+      "statement": "يمكن إنتاج صورة تظهر التراكيب الصخرية مع الاحتفاظ بتفاصيل التضاريس، دون تصنيف أو ترميز فئات.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "Reports/evidence/PLAN-0018/native_ui_final/qgis_real_preview_ar.png",
+          "observed": "Observed source, artifact or actual command result within the bounded scope described in report 0027.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "AC04",
+      "statement": "ينتج تفاوت في شدة العرض (هادئ/متوازن/قوي) **لنفس** المعالجة؛ ولا يُغيّر بيانات التحليل بغير تصريح.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "command_output",
+          "reference": "Reports/evidence/PLAN-0018/headless_delivery.txt",
+          "observed": "Observed source, artifact or actual command result within the bounded scope described in report 0027.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "AC05",
+      "statement": "كل Preset موثّق، وتُرفض الحزم المفقودة أو غير الصالحة أو عدم توافق المستشعر.",
+      "status": "partial",
+      "evidence": [
+        {
+          "type": "manual_review",
+          "reference": "atiaf_core/composites/registry.py",
+          "observed": "Observed source, artifact or actual command result within the bounded scope described in report 0027.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ],
+      "reason": "Three Landsat presets were source-checked. Other exploratory presets and Fawakheir full-text transcription remain explicitly experimental; not promoted to verified science."
+    },
+    {
+      "id": "AC06",
+      "statement": "يرفض/يحذر بوضوح من ASTER SWIR غير الصالح بدءًا من أبريل 2008.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "command_output",
+          "reference": "Reports/evidence/PLAN-0018/composites_expanded.txt",
+          "observed": "Observed source, artifact or actual command result within the bounded scope described in report 0027.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "AC07",
+      "statement": "تُدار المحاذاة وNoData والمقامات الصفرية والـCRS وأحجام البكسل بأمان.",
+      "status": "partial",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "Reports/evidence/PLAN-0018/cross_host_equivalence.json",
+          "observed": "Observed source, artifact or actual command result within the bounded scope described in report 0027.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ],
+      "reason": "Numeric/mask/CRS/grid and polygon fixtures plus a real same-grid Landsat product pass; real mixed-resolution Sentinel-2/ASTER and comprehensive area-of-use/datum suitability remain unverified."
+    },
+    {
+      "id": "AC08",
+      "statement": "تُحفَظ GeoTIFF وMetadata، ولا تتغير البيانات الأصلية.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "Reports/evidence/PLAN-0018/real_qgis_en.json",
+          "observed": "Observed source, artifact or actual command result within the bounded scope described in report 0027.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "AC09",
+      "statement": "تعمل نسخة **ArcGIS Pro عربي / ArcGIS Pro English**.",
+      "status": "partial",
+      "evidence": [
+        {
+          "type": "command_output",
+          "reference": "Reports/evidence/PLAN-0018/native_pro_delivery.txt",
+          "observed": "Observed source, artifact or actual command result within the bounded scope described in report 0027.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ],
+      "reason": "Actual Pro English/Arabic aliases, parameter/execution, saved RGB CIM and temporary preview checks pass. Complete live Pro UI click-through/visual acceptance is not observed."
+    },
+    {
+      "id": "AC10",
+      "statement": "تعمل نسخة **QGIS عربي / QGIS English**.",
+      "status": "partial",
+      "evidence": [
+        {
+          "type": "command_output",
+          "reference": "Reports/evidence/PLAN-0018/native_qgis_delivery.txt",
+          "observed": "Observed source, artifact or actual command result within the bounded scope described in report 0027.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ],
+      "reason": "Native QGIS bilingual parameter panels, background preview dialog, queued RGB layers and both calculations pass; full installed desktop user journeys remain unverified."
+    },
+    {
+      "id": "AC11",
+      "statement": "تعطي المنصتان نتائج حسابية متكافئة عند تثبيت المدخلات والخيارات ونوع البيانات.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "Reports/evidence/PLAN-0018/cross_host_equivalence.json",
+          "observed": "Observed source, artifact or actual command result within the bounded scope described in report 0027.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "AC12",
+      "statement": "ينجح تشغيل مشهد واحد ودفعات مشاهد، مع سجلات إخفاق مفهومة.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "command_output",
+          "reference": "Reports/evidence/PLAN-0018/headless_delivery.txt",
+          "observed": "Observed source, artifact or actual command result within the bounded scope described in report 0027.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "AC13",
+      "statement": "لا توجد تسميات صخرية قطعية مولدة من اللون، ولا Classification تلقائي.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "manual_review",
+          "reference": "atiaf_core/composites/engine.py",
+          "observed": "Observed source, artifact or actual command result within the bounded scope described in report 0027.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "AC14",
+      "statement": "Manual RGB and custom expressions/preset saving/import preserve exact scientific channel order and provenance.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "command_output",
+          "reference": "Reports/evidence/PLAN-0018/composites_expanded.txt",
+          "observed": "Observed source, artifact or actual command result within the bounded scope described in report 0027.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "AC15",
+      "statement": "Separate reproducible display controls and optional display exports preserve the continuous analytical raster.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "command_output",
+          "reference": "Reports/evidence/PLAN-0018/headless_delivery.txt",
+          "observed": "Observed source, artifact or actual command result within the bounded scope described in report 0027.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "AC16",
+      "statement": "Bounded before/after preview is available in both native hosts without writing final analytical rasters.",
+      "status": "partial",
+      "evidence": [
+        {
+          "type": "command_output",
+          "reference": "Reports/evidence/PLAN-0018/native_qgis_delivery.txt",
+          "observed": "Observed source, artifact or actual command result within the bounded scope described in report 0027.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ],
+      "reason": "QGIS native before/after dialog tested including a real scene; Pro temporary HTML generation/no-final-output tested, but opening that preview through the live Pro user journey is not observed."
+    },
+    {
+      "id": "AC17",
+      "statement": "Single/parent-folder input, optional mosaic, independent AOI, native metre CRS, output-last and non-destructive workspace rules are retained.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "command_output",
+          "reference": "Reports/evidence/PLAN-0018/headless_delivery.txt",
+          "observed": "Observed source, artifact or actual command result within the bounded scope described in report 0027.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "AC18",
+      "statement": "Large-scene performance, mid-run interruption, concurrent runs and recovery are independently validated.",
+      "status": "partial",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "Reports/evidence/PLAN-0018/real_qgis_en.json",
+          "observed": "Observed source, artifact or actual command result within the bounded scope described in report 0027.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ],
+      "reason": "Real 7711x7861 processing and windowed reads succeed, and pre-write cancellation is tested. Full mid-write interruption/concurrency/crash-resume stress is not independently validated."
+    },
+    {
+      "id": "AC19",
+      "statement": "Bilingual help, scientific support state, package source identity and distribution agree with the implemented scope.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "command_output",
+          "reference": "Reports/evidence/PLAN-0018/package_delivery_identity.txt",
+          "observed": "Observed source, artifact or actual command result within the bounded scope described in report 0027.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "AC20",
+      "statement": "Real Sentinel-2 and historical ASTER products and independent geological/field interpretation are validated.",
+      "status": "not_run",
+      "evidence": [],
+      "reason": "No real Sentinel-2 or historical ASTER acquisitions or independent field/lithology reference were supplied or downloaded."
+    },
+    {
+      "id": "AC21",
+      "statement": "Clean-machine native installation and complete interactive host journeys are validated.",
+      "status": "not_run",
+      "evidence": [],
+      "reason": "No clean-machine installation or full interactive installed Pro/QGIS journeys performed."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "status": "pass",
+  "comparisons": [
+    {
+      "left": "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0019\\qgis_en\\LC81760392014234LGN00\\Results\\Geological_Color_Composites\\Direct_RGB\\L89_753\\701c9db6e477\\Analytical\\LC81760392014234LGN00_Landsat8_Geology_753_Direct_RGB_Analytical.tif",
+      "right": "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0019\\pro_ar\\LC81760392014234LGN00\\Results\\Geological_Color_Composites\\Direct_RGB\\L89_753\\a6c33be9bdc5\\Analytical\\LC81760392014234LGN00_Landsat8_Geology_753_Direct_RGB_Analytical.tif",
+      "total_pixels_per_channel": 60616171,
+      "valid_pixels_per_channel": 40394219,
+      "channels": 3,
+      "crs": "EPSG:32636",
+      "valid_values_exactly_equal": true,
+      "masks_exactly_equal": true
+    },
+    {
+      "left": "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0019\\qgis_en\\LC81760392014234LGN00\\Results\\Geological_Color_Composites\\Band_Ratio_RGB\\L89_CRC1\\c5afe35aee3a\\Analytical\\LC81760392014234LGN00_Landsat8_Geology_CRC1_Ratios_RGB_Analytical.tif",
+      "right": "D:\\My Software\\ATIAF\\Testing Results\\PLAN-0019\\pro_ar\\LC81760392014234LGN00\\Results\\Geological_Color_Composites\\Band_Ratio_RGB\\L89_CRC1\\5b817e9049a9\\Analytical\\LC81760392014234LGN00_Landsat8_Geology_CRC1_Ratios_RGB_Analytical.tif",
+      "total_pixels_per_channel": 60616171,
+      "valid_pixels_per_channel": 40394219,
+      "channels": 3,
+      "crs": "EPSG:32636",
+      "valid_values_exactly_equal": true,
+      "masks_exactly_equal": true
+    }
+  ]
+}

@@ -20,6 +20,7 @@ from .algorithms.thermal_urban import ThermalUrbanAlgorithm
 from .algorithms.environmental_drought import EnvironmentalDroughtAlgorithm
 from .algorithms.geological_analysis import GeologicalAnalysisAlgorithm
 from .algorithms.temporal_change import TemporalChangeAlgorithm
+from .algorithms.geological_composites import GeologicalCompositesAlgorithm
 
 
 class ATIAFProcessingProvider(QgsProcessingProvider):
@@ -41,3 +42,4 @@ class ATIAFProcessingProvider(QgsProcessingProvider):
         self.addAlgorithm(EnvironmentalDroughtAlgorithm())
         self.addAlgorithm(GeologicalAnalysisAlgorithm())
         self.addAlgorithm(TemporalChangeAlgorithm())
+        self.addAlgorithm(GeologicalCompositesAlgorithm())

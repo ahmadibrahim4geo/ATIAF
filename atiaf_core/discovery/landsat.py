@@ -38,7 +38,9 @@ class LandsatParser:
         if not folder.is_dir():
             return False
         # Search for MTL file
-        mtl_files = list(folder.glob("*_MTL.txt")) + list(folder.glob("*_MTL.json"))
+        mtl_files = list(folder.glob("*_MTL.txt")) + list(folder.glob("*_MTL.json")) + list(folder.glob("*_MTL.xml"))
+        if not mtl_files:
+            mtl_files=[p for p in folder.glob('*.xml') if p.stat().st_size<4*1024*1024 and 'espa_metadata' in p.read_text('utf-8-sig')[:4096]]
         if mtl_files:
             return True
         # Check scene product filenames e.g. LC08_*, LC09_*, LE07_*, LT05_*
@@ -61,6 +63,10 @@ class LandsatParser:
     @classmethod
     def parse(cls, folder: Path) -> Optional[SceneInfo]:
         """Parses the scene folder and extracts scene metadata and bands."""
+        from atiaf_core.discovery.landsat_profiles import parse_profile
+        profiled=parse_profile(folder)
+        if profiled is not None:
+            return profiled
         mtl_txt = list(folder.glob("*_MTL.txt"))
         mtl_json = list(folder.glob("*_MTL.json"))
         mtl_data: Dict[str, Any] = {}

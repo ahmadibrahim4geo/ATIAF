@@ -1,0 +1,22 @@
+test_native_temporary_preview_has_no_results (__main__.NativeComposites.test_native_temporary_preview_has_no_results) ... ERROR 1: Unable to load CF-1 standard name database C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\Library\share\gdal\cf_standard_name_table.db. CF-1 lookups will fail.
+LC08_L2SP_176039_20230520_20230527_02_T1
+Preview: C:\Users\ahmad\AppData\Local\Temp\atiaf_rgb_preview_2gr2hnpq\Preview.html
+ok
+LC08_L2SP_176039_20230520_20230527_02_T1
+LC08_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\tmpqaoavez8\en\scene\Results\Geological_Color_Composites\Direct_RGB\LC08_L2SP_176039_20230520_20230527_02_T1_LANDSAT_8_9_L89_753_B7_B5_B3_a07ed2426d76.tif
+C:\Users\ahmad\AppData\Local\Temp\tmpqaoavez8\en\scene\Results\Geological_Color_Composites\Band_Ratio_RGB\LC08_L2SP_176039_20230520_20230527_02_T1_LANDSAT_8_9_L89_CRC1_B6-B7_B6-B2_B4-B5-B6-B5_d48b3ed75a17.tif
+Preview: C:\Users\ahmad\AppData\Local\Temp\tmpqaoavez8\en\scene\Results\Geological_Color_Composites\Direct_RGB\LC08_L2SP_176039_20230520_20230527_02_T1_LANDSAT_8_9_L89_753_B7_B5_B3_a07ed2426d76.preview.html
+Preview: C:\Users\ahmad\AppData\Local\Temp\tmpqaoavez8\en\scene\Results\Geological_Color_Composites\Band_Ratio_RGB\LC08_L2SP_176039_20230520_20230527_02_T1_LANDSAT_8_9_L89_CRC1_B6-B7_B6-B2_B4-B5-B6-B5_d48b3ed75a17.preview.html
+LC08_L2SP_176039_20230520_20230527_02_T1
+LC08_L2SP_176039_20230520_20230527_02_T1
+C:\Users\ahmad\AppData\Local\Temp\tmpqaoavez8\ar\scene\Results\Geological_Color_Composites\Direct_RGB\LC08_L2SP_176039_20230520_20230527_02_T1_LANDSAT_8_9_L89_753_B7_B5_B3_043123287a5f.tif
+C:\Users\ahmad\AppData\Local\Temp\tmpqaoavez8\ar\scene\Results\Geological_Color_Composites\Band_Ratio_RGB\LC08_L2SP_176039_20230520_20230527_02_T1_LANDSAT_8_9_L89_CRC1_B6-B7_B6-B2_B4-B5-B6-B5_df1df10f76ad.tif
+Preview: C:\Users\ahmad\AppData\Local\Temp\tmpqaoavez8\ar\scene\Results\Geological_Color_Composites\Direct_RGB\LC08_L2SP_176039_20230520_20230527_02_T1_LANDSAT_8_9_L89_753_B7_B5_B3_043123287a5f.preview.html
+Preview: C:\Users\ahmad\AppData\Local\Temp\tmpqaoavez8\ar\scene\Results\Geological_Color_Composites\Band_Ratio_RGB\LC08_L2SP_176039_20230520_20230527_02_T1_LANDSAT_8_9_L89_CRC1_B6-B7_B6-B2_B4-B5-B6-B5_df1df10f76ad.preview.html
+test_parameters_and_both_methods_both_languages (__main__.NativeComposites.test_parameters_and_both_methods_both_languages) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 3.808s
+
+OK

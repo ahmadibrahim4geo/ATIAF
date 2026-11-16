@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "sequence": 48,
+  "timestamp_utc": "2026-11-15T17:09:40+00:00",
+  "kind": "handoff",
+  "status": "completed",
+  "summary": "Delivered descriptive plan and report naming instructions; archived PLAN-0017 after report 0025",
+  "details": "PLAN-0017 r1 four criteria verified in final instruction text/diff: any supplied filename or conversational development request; preserve or derive descriptive plan name; preserve original source and title; stable plan numbering across folders/index and same-ID revisions; independently numbered descriptive reports with matching headings and plan links. Synchronized startup prompt, indexes, registry, EN/AR specification addenda, changelog and state. Wrote Reports/0025_agent_plan_report_naming.md before archiving plan. Final structure/link validator exit 0 (886 Markdown, 96 JSON); git -c core.safecrlf=false diff --check exit 0. Geological source SHA256 remained 07A9D78B226DCD82F56B24096D1B7E61DAEE0CE65546833EAC5C8D9709B23BE8 across checks. No runtime changes, GIS tests, commit or upload. PLAN-0015 remains partial; supplied geological plan not registered for implementation. Next authorized intake must recheck current IDs. Request record 47 resolves prior logging gap; original 46 records preserved.",
+  "references": [
+    47
+  ],
+  "task_id": "PLAN-0017",
+  "plan_revision": "r1",
+  "changed_files": [
+    "AGENTS.md",
+    "Development_Plans/Completed/PLAN-0017_agent_plan_report_naming.md",
+    "Reports/0025_agent_plan_report_naming.md",
+    "PROJECT_STATE.md",
+    "Development_Plans/INDEX.md",
+    "Reports/INDEX.md",
+    "documentation/project/START_AGENT_PROMPT.txt",
+    "development_resources/SKILLS_REGISTRY.md",
+    "documentation/project/PROJECT_SPECIFICATION.md",
+    "documentation/project/PROJECT_SPECIFICATION_AR.md",
+    "CHANGELOG.md"
+  ],
+  "tests": [
+    "python tools/validate_package.py: exit 0, structure/local links/JSON PASS after archive",
+    "git -c core.safecrlf=false diff --check: exit 0",
+    "Manual final diff review against four PLAN-0017 r1 acceptance criteria: PASS"
+  ],
+  "test_result": "passed",
+  "commit": "1d15bad",
+  "previous_hash": "c781d411cd334f7697aa03d35ab10646df9d74092f24c563a794d2f091a5a74e",
+  "hash": "671fed02fb135c810aa70da4c4d21b6be4bb849dcbf314f3509d802599cada77"
+}

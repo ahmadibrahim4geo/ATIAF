@@ -1,0 +1,74 @@
+test_arithmetic_rejects_executable_content (test_geological_composites.TestGeologicalComposites.test_arithmetic_rejects_executable_content) ... ok
+test_aster_invalid_date_and_stack_mapping_rejected (test_geological_composites.TestGeologicalComposites.test_aster_invalid_date_and_stack_mapping_rejected) ... ok
+test_batch_mosaic_has_one_scene_for_whole_rgb_pixel (test_geological_composites.TestGeologicalComposites.test_batch_mosaic_has_one_scene_for_whole_rgb_pixel) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_bilingual_fields_no_mixed_interface_and_output_last_contract (test_geological_composites.TestGeologicalComposites.test_bilingual_fields_no_mixed_interface_and_output_last_contract) ... ok
+test_cancel_before_any_writes (test_geological_composites.TestGeologicalComposites.test_cancel_before_any_writes) ... ok
+test_custom_preset_export_import_and_spoofing (test_geological_composites.TestGeologicalComposites.test_custom_preset_export_import_and_spoofing) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ERROR
+test_different_dates_mosaic_rejected_before_writes (test_geological_composites.TestGeologicalComposites.test_different_dates_mosaic_rejected_before_writes) ... ok
+test_direct_and_ratio_independent_reference_values_and_masks (test_geological_composites.TestGeologicalComposites.test_direct_and_ratio_independent_reference_values_and_masks) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_display_settings_do_not_change_analysis (test_geological_composites.TestGeologicalComposites.test_display_settings_do_not_change_analysis) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_experimental_is_explicit (test_geological_composites.TestGeologicalComposites.test_experimental_is_explicit) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_explicit_aster_stack_maps_scientific_band_not_position (test_geological_composites.TestGeologicalComposites.test_explicit_aster_stack_maps_scientific_band_not_position) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_gates_before_writes (test_geological_composites.TestGeologicalComposites.test_gates_before_writes) ... ok
+test_polygon_clip_and_output_crs (test_geological_composites.TestGeologicalComposites.test_polygon_clip_and_output_crs) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_preview_does_not_create_results_or_full_raster (test_geological_composites.TestGeologicalComposites.test_preview_does_not_create_results_or_full_raster) ... D:\My Software\ATIAF\atiaf_core\composites\engine.py:306: PendingDeprecationWarning: Use `@` matmul instead of `*` mul operator for matrix multiplication
+  transform=ref.transform*ref.transform.scale(ref.width/width,ref.height/height)
+C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_render_fixed_limits_and_invalid_controls (test_geological_composites.TestGeologicalComposites.test_render_fixed_limits_and_invalid_controls) ... ok
+test_rerun_destination_and_source_preserved (test_geological_composites.TestGeologicalComposites.test_rerun_destination_and_source_preserved) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_second_published_ratio_variant (test_geological_composites.TestGeologicalComposites.test_second_published_ratio_variant) ... C:\Users\ahmad\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\rasterio\io.py:144: NotGeoreferencedWarning: Dataset has no geotransform, gcps, or rpcs. The identity matrix will be returned.
+  rd = writer(
+ok
+test_zero_near_zero_nonfinite_and_negative_ratio (test_geological_composites.TestGeologicalComposites.test_zero_near_zero_nonfinite_and_negative_ratio) ... ok
+
+======================================================================
+ERROR: test_custom_preset_export_import_and_spoofing (test_geological_composites.TestGeologicalComposites.test_custom_preset_export_import_and_spoofing)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\My Software\ATIAF\atiaf_core\composites\render.py", line 31, in settings
+    raise ValueError()
+ValueError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\My Software\ATIAF\tests\test_geological_composites.py", line 97, in test_custom_preset_export_import_and_spoofing
+    second=self.run_rgb(['RATIO_RGB'],options={'preset_file':str(preset),'restore_preset_display':True})
+  File "D:\My Software\ATIAF\tests\test_geological_composites.py", line 24, in run_rgb
+    return run_tool('geological_composites',self.scene,methods or ['DIRECT_RGB','RATIO_RGB'],**kwargs)
+  File "D:\My Software\ATIAF\atiaf_core\workflow.py", line 206, in run_tool
+    return run(input_folder, selected, sensor=sensor, options=options, apply_qa=apply_qa, mosaic=mosaic,
+               output_crs=output_crs, output_folder=output_folder, aoi_geometry=aoi_geometry, aoi_crs=aoi_crs,
+               language=language, canceled=canceled, progress=progress)
+  File "D:\My Software\ATIAF\atiaf_core\composites\engine.py", line 353, in run
+    plans=validate_request(input_folder,selected,sensor,options,apply_qa,mosaic,output_crs)
+  File "D:\My Software\ATIAF\atiaf_core\composites\engine.py", line 191, in validate_request
+    config=render.settings(settings_options)
+  File "D:\My Software\ATIAF\atiaf_core\composites\render.py", line 34, in settings
+    raise ValueError('Composite fixed display limits need Rmin,Rmax,Gmin,Gmax,Bmin,Bmax, finite and ascending') from exc
+ValueError: Composite fixed display limits need Rmin,Rmax,Gmin,Gmax,Bmin,Bmax, finite and ascending
+
+----------------------------------------------------------------------
+Ran 18 tests in 2.155s
+
+FAILED (errors=1)

@@ -106,6 +106,8 @@ class EnvironmentalDroughtEngine:
                             scaled[raw < asset.valid_min] = np.nan
                         if asset.valid_max is not None:
                             scaled[raw > asset.valid_max] = np.nan
+                        valid_px = np.isfinite(scaled)
+                        scaled[valid_px & (scaled < 0.0001)] = 0.0001
                         scaled_blocks[k] = scaled
                     return cls.calc_broadband_albedo(scaled_blocks)
 

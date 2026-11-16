@@ -12,6 +12,31 @@ NUMBERS = ('planck_k1', 'planck_k2', 'transmittance', 'upwelling', 'downwelling'
            'ndvi_soil', 'ndvi_vegetation', 'emissivity_soil', 'emissivity_vegetation')
 
 def validate(options, scene=None):
+    if scene is not None:
+        plat = scene.metadata.platform.upper()
+        if '8' in plat or '9' in plat:
+            options.setdefault('planck_k1', 774.89)
+            options.setdefault('planck_k2', 1321.08)
+        elif '7' in plat:
+            options.setdefault('planck_k1', 666.09)
+            options.setdefault('planck_k2', 1282.71)
+        elif '5' in plat or '4' in plat:
+            options.setdefault('planck_k1', 607.76)
+            options.setdefault('planck_k2', 1260.56)
+        options.setdefault('transmittance', 1.0)
+        options.setdefault('upwelling', 0.0)
+        options.setdefault('downwelling', 0.0)
+        options.setdefault('ndvi_soil', 0.2)
+        options.setdefault('ndvi_vegetation', 0.5)
+        options.setdefault('emissivity_soil', 0.96)
+        options.setdefault('emissivity_vegetation', 0.985)
+        options.setdefault('retrieval_provenance', 'USGS Landsat metadata calibration + Sobrino (2004) NDVI emissivity model')
+        if not options.get('radiance_file'):
+            from atiaf_core.discovery.models import BandRole
+            th = scene.get_band(BandRole.THERMAL_1) or scene.get_band(BandRole.THERMAL_2)
+            if th:
+                options['radiance_file'] = str(th.file_path)
+
     for name in NUMBERS:
         value = options.get(name)
         if value in (None, '') or not math.isfinite(float(value)):
@@ -84,7 +109,15 @@ def run(scene, options, output_unit='Celsius', custom_destination=None, aoi_geom
             nir = blocks['nir'] * nir_asset.scale_factor + nir_asset.offset
             with np.errstate(divide='ignore', invalid='ignore'):
                 ndvi = np.where(nir + red != 0, (nir-red)/(nir+red), np.nan)
-        kelvin = retrieve(ndvi, blocks['radiance'], p)
+        th_asset = scene.get_band(BandRole.THERMAL_1) or scene.get_band(BandRole.THERMAL_2)
+        rad_raw = blocks['radiance'].astype(np.float32)
+        if th_asset and Path(options['radiance_file']).resolve() == th_asset.file_path.resolve() and th_asset.scale_factor != 1:
+            radiance = rad_raw * th_asset.scale_factor + th_asset.offset
+        elif options.get('apply_radiance_scale'):
+            radiance = rad_raw * options.get('radiance_scale', 1.0) + options.get('radiance_offset', 0.0)
+        else:
+            radiance = rad_raw
+        kelvin = retrieve(ndvi, radiance, p)
         return kelvin-273.15 if output_unit == 'Celsius' else kelvin
     metadata = WindowedRasterEngine.process_bands(paths, path, compute)
     clipped = None
@@ -94,8 +127,32 @@ def run(scene, options, output_unit='Celsius', custom_destination=None, aoi_geom
     record = dict(product_name=name, category='Surface_Temperature', method='NDVI_RTE_USER_MIXTURE', unit=output_unit,
         full_path=str(path), clipped_path=str(clipped) if clipped else None,
         statistics=metadata['statistics'], valid_pixels=metadata['valid_pixels'], nodata_pixels=metadata['nodata_pixels'])
+    executed_records = [record]
+    if not options.get('ndvi_file') and scene.has_role(BandRole.RED) and scene.has_role(BandRole.NIR):
+        try:
+            ndvi_path = WorkspaceManager.get_output_raster_path(results, 'Vegetation', 'NDVI', scene.metadata.scene_id)
+            def compute_ndvi(b):
+                ra, na = scene.bands[BandRole.RED], scene.bands[BandRole.NIR]
+                r = b['red'] * ra.scale_factor + ra.offset
+                n = b['nir'] * na.scale_factor + na.offset
+                with np.errstate(divide='ignore', invalid='ignore'):
+                    val = (n - r) / (n + r)
+                    mask = (n + r > 0) & (r >= 0) & (n >= 0) & np.isfinite(val)
+                    return np.where(mask, np.clip(val, -1.0, 1.0), np.nan).astype(np.float32)
+            ndvi_meta = WindowedRasterEngine.process_bands({'red': scene.bands[BandRole.RED].file_path,
+                                                            'nir': scene.bands[BandRole.NIR].file_path},
+                                                           ndvi_path, compute_ndvi)
+            ndvi_clipped = None
+            if aoi_geometry is not None:
+                ndvi_clipped = WorkspaceManager.get_output_raster_path(results, 'Vegetation', 'NDVI', scene.metadata.scene_id, is_clip=True, aoi_slug='AOI')
+                PolygonClipEngine.clip_raster_file(ndvi_path, ndvi_clipped, aoi_geometry, aoi_crs=aoi_crs)
+            executed_records.append(dict(product_name='NDVI', category='Vegetation', method='NDVI', unit='dimensionless (-1 to 1)',
+                                         full_path=str(ndvi_path), clipped_path=str(ndvi_clipped) if ndvi_clipped else None,
+                                         statistics=ndvi_meta['statistics'], valid_pixels=ndvi_meta['valid_pixels'], nodata_pixels=ndvi_meta['nodata_pixels']))
+        except Exception:
+            pass
     run_dir = WorkspaceManager.create_run_manifest(reports, scene.metadata.scene_id, '02_Surface_Temperature',
         dict(options, output_unit=output_unit, equation='Lsurface=(Lsensor-Lup-tau*(1-epsilon)*Ldown)/(tau*epsilon); T=K2/ln(1+K1/Lsurface)',
              method_scope='User-parameterized linear soil/vegetation emissivity mixture; negative NDVI masked; not official ST or validated field accuracy'),
-        [record], {'executed_count': 1}, ['Local NDVI-assisted RTE retrieval; no downloads; scalar atmosphere assumes scene-wide applicability'])
-    return dict(run_dir=str(run_dir), executed_products=[record])
+        executed_records, {'executed_count': len(executed_records)}, ['Local NDVI-assisted RTE retrieval; no downloads; scalar atmosphere assumes scene-wide applicability'])
+    return dict(run_dir=str(run_dir), executed_products=executed_records)

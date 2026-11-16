@@ -1,4 +1,6 @@
 # Agent skills registry — approved sources, loading and reuse
+
+PLAN-0019 / D-032 supersedes the former copy-and-leave-root intake rule: move supplied plans to numbered lifecycle folders before implementation, preserve source identity/SHA and optional reference-only snapshots solely in Development_Plans/Source_Archive. Partial work stays Active; verify links and no general-folder duplicate at handoff. Journal and independent human report sequences remain separate.
 **PRIMARY repository:** https://github.com/ahmadibrahim4geo/GIS-Development-Skills (user-owned). **Use the actual checked-out `SKILL.md` and its linked references**, not merely the name here. Source access uses `python tools/bootstrap_skills.py`, which clones a complete read-only snapshot to `.agent_resources/GIS-Development-Skills` and records a commit SHA. Installing a skill does not make it an executable plugin or cause automatic execution on every host; root `AGENTS.md` instructs each agent to load it explicitly.
 
 | Task | Skill path inside GIS-Development-Skills | Status |
@@ -33,7 +35,7 @@ python tools/bootstrap_skills.py --verify
 If network or Git fails, do not claim skills installed. Clone must remain outside versioned source (`.agent_resources/` ignored), while the source URLs, selected skill paths, SHA and license review remain in reports for audit. Agents running in environments without automatic skills discovery should **read** `.agent_resources/GIS-Development-Skills/<relative SKILL.md>` directly, including `../../references` pages.
 
 ## Needed additions to YOUR skills repository (proposals, not automatically installed)
-1. **Project Development Lifecycle Management**: import `PLAN_*.md` in root, stable plan IDs/revisions, active/blocked/completed archive, numbered reports and handoff. Integrate existing `agent-development-journal` and DoneProof, don't fork their canonical logs.
+1. **Project Development Lifecycle Management**: intake user-supplied plan files with any filename or conversational development requests; preserve/derive descriptive names, stable plan IDs/revisions, active/blocked/completed archive, independently numbered descriptive reports and handoff, following root `AGENTS.md`. Integrate existing `agent-development-journal` and DoneProof, don't fork their canonical logs. A future helper would automate these agent duties; it is not currently implemented.
 2. **Spectral Index Engineering**: original DOI/formula/variant verification, wavelength constraints, unit tests, QA/NoData and locale parity.
 3. **Satellite Sensor Compatibility**: mission/product/level/date/band/metadata and instrument physics; ABI interfaces for discovery and method gating.
 4. **Scientific Processing Reports & Provenance**: per-output formula, precise metadata key/value source, QA, raster readback, and multilingual report generation.

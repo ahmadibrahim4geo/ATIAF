@@ -86,10 +86,11 @@ class SpectralIndicesEngine:
                 continue
 
             # Determine output paths
+            product_method=index_def.acronym+('_TOA' if scene.metadata.radiometric_unit=='toa_reflectance' else '')
             full_output_path = WorkspaceManager.get_output_raster_path(
                 results_dir=results_dir,
                 category=f"Spectral_Indices/{index_def.category}",
-                method_name=index_def.acronym,
+                method_name=product_method,
                 scene_id=scene.metadata.scene_id,
                 is_clip=False,
             )
@@ -127,6 +128,10 @@ class SpectralIndicesEngine:
                         scaled[raw < asset.valid_min] = np.nan
                     if asset.valid_max is not None:
                         scaled[raw > asset.valid_max] = np.nan
+                    # Negative reflectance clamping for optical reflective bands
+                    if r != BandRole.THERMAL_1 and r != BandRole.THERMAL_2:
+                        valid_px = np.isfinite(scaled)
+                        scaled[valid_px & (scaled < 0.0001)] = 0.0001
                     scaled_bands[r] = scaled
 
                 # 2. Compute clear mask if QA is enabled
@@ -162,6 +167,8 @@ class SpectralIndicesEngine:
             product_record = {
                 "index_id": idx_id,
                 "acronym": index_def.acronym,
+                "processing_variant": product_method,
+                "input_radiometric_unit": scene.metadata.radiometric_unit,
                 "category": index_def.category,
                 "full_path": str(full_output_path),
                 "clipped_path": None,
@@ -176,7 +183,7 @@ class SpectralIndicesEngine:
                 clip_output_path = WorkspaceManager.get_output_raster_path(
                     results_dir=results_dir,
                     category=f"Spectral_Indices/{index_def.category}",
-                    method_name=index_def.acronym,
+                    method_name=product_method,
                     scene_id=scene.metadata.scene_id,
                     is_clip=True,
                     aoi_slug="AOI",

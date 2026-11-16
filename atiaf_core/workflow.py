@@ -76,7 +76,8 @@ def discover(folder, sensor='AUTO', expert_mapping=None, manual_options=None):
         if sensor.startswith('LANDSAT_'):
             platforms = {'LANDSAT_8_9_C2_L2': ['LANDSAT_8', 'LANDSAT_9'],
                          'LANDSAT_7_C2_L2': ['LANDSAT_7'], 'LANDSAT_4_5_C2_L2': ['LANDSAT_4', 'LANDSAT_5']}[sensor]
-            match = platform in platforms and m.product_level.value in ('L2_SR', 'L2_ST')
+            match = (platform in platforms and m.product_level.value in ('L2_SR', 'L2_ST')
+                     and (m.collection=='02' or scene.expert_mapped))
         elif sensor.startswith('SENTINEL_2'):
             match = m.sensor_family.value == 'Sentinel-2' and m.product_level.value == ('L2A_BOA' if sensor.endswith('L2A') else 'L1C_TOA')
         elif sensor.startswith('ASTER_'):
@@ -114,10 +115,11 @@ def unavailable_reason(tool, calculation, scene, options=None):
     thermal = tool in ('surface_temperature', 'thermal_urban')
     if thermal:
         band = scene.bands.get(BandRole.THERMAL_1)
-        if not band or not band.file_path.is_file() or band.unit != 'Kelvin':
-            return 'Official surface temperature band in Kelvin is required; optical-only imagery cannot provide LST'
-        if m.product_level.value not in ('L2_SR', 'L2_ST', 'AST_08'):
-            return 'Official L2 surface temperature product required; brightness temperature is not LST'
+        if not band or not band.file_path.is_file():
+            return 'Thermal infrared band is required; optical-only imagery cannot provide LST'
+        if band.unit != 'Kelvin' and m.product_level.value not in ('L2_SR', 'L2_ST', 'AST_08'):
+            if not (options or {}).get('allow_toa') and not (options or {}).get('ndvi_assisted'):
+                return 'Official L2 surface temperature product required; for legacy L1 imagery enable allow_toa or ndvi_assisted for calibrated thermal retrieval'
     if tool == 'environmental_drought':
         if m.platform.upper().replace(' ', '_') not in ('LANDSAT_4', 'LANDSAT_5', 'LANDSAT_7'):
             return 'Current albedo coefficients are restricted to Landsat TM/ETM+; other sensors require review'
@@ -125,7 +127,10 @@ def unavailable_reason(tool, calculation, scene, options=None):
     else:
         roles = rows[calculation].get('roles', [])
     if roles and m.product_level.value not in ('L2_SR', 'L2A_BOA', 'AST_07'):
-        return 'Validated surface reflectance product required; TOA/DN cannot be treated as surface reflectance'
+        if not (((tool == 'spectral_indices' and calculation == 'NDVI') or tool == 'geological_analysis')
+                and (options or {}).get('allow_toa') and m.radiometric_unit == 'toa_reflectance'):
+            return ('Validated surface reflectance product required; this product is ' + str(m.product_generation or m.product_level.value) +
+                    '. Enable allow_toa to calculate diagnostic ratios from calibrated TOA; TOA/DN is not surface reflectance')
     for role in roles:
         if not scene.has_role(BandRole(role)):
             return f'Missing physical band: {role}'
@@ -163,7 +168,9 @@ def preflight(tool, scenes, selected, apply_qa=True, mosaic=False, output_crs=No
                 raise ValueError(f'{scene.metadata.scene_id} / {calc}: {reason}')
         if apply_qa:
             expected = 'QA_PIXEL' if scene.metadata.sensor_family.value == 'Landsat' else 'SCL'
-            if expected not in scene.quality_masks:
+            from atiaf_core.raster.masks import QualityMaskEngine
+            acceptable=(expected,)+QualityMaskEngine.LEGACY_SCHEMAS if expected=='QA_PIXEL' else (expected,)
+            if not any(key in scene.quality_masks for key in acceptable):
                 raise ValueError(f'{scene.metadata.scene_id}: requested quality mask {expected} is absent; supply it or explicitly turn QA off')
         for band in scene.bands.values():
             with rasterio.open(band.file_path) as ds:
@@ -177,16 +184,17 @@ def preflight(tool, scenes, selected, apply_qa=True, mosaic=False, output_crs=No
                 if not crs.is_projected or not crs.axis_info or any(abs(a.unit_conversion_factor - 1) > 1e-9 for a in crs.axis_info[:2]):
                     raise ValueError(f'Decision D-007: choose a projected metre CRS; received {crs.to_string()}')
                 if ds.width * ds.height > 16_000_000 and tool in ('thermal_urban', 'environmental_drought', 'temporal_change'):
-                    raise ValueError('This scene exceeds the bounded in-memory analysis limit; large-scene streaming is pending')
+                    if not ((options or {}).get('allow_large_scene') or (options or {}).get('aoi_geometry')):
+                        raise ValueError('This scene exceeds the bounded in-memory analysis limit; large-scene streaming is pending')
                 if output_crs:
                     from pyproj.transformer import TransformerGroup
                     tg = TransformerGroup(ds.crs, output_crs, always_xy=True, allow_ballpark=False)
                     if not tg.transformers or not tg.best_available:
                         raise ValueError('Required datum transformation/grid is unavailable; no automatic grid download')
     if mosaic and len(scenes) > 1:
-        keys = {(s.metadata.sensor_id, s.metadata.product_level.value,
+        keys = {(s.metadata.sensor_id, s.metadata.product_level.value,s.metadata.product_generation,
                  s.metadata.acquisition_date.date() if s.metadata.acquisition_date else None) for s in scenes}
-        if len(keys) != 1 or next(iter(keys))[2] is None:
+        if len(keys) != 1 or next(iter(keys))[3] is None:
             raise ValueError('Mosaic requires matching sensor, product level and acquisition day; cross-date harmonization is not validated')
         if not output_crs:
             crss = set()
@@ -201,6 +209,11 @@ def run_tool(tool, input_folder, selected, sensor='AUTO', expert_mapping=None, a
              mosaic=False, aoi_geometry=None, aoi_crs=None, output_crs=None, output_folder=None,
              second_folder=None, canceled=lambda: False, progress=lambda message: None, language='en', options=None):
     """Validate the whole request before writes. Return immutable outputs plus manifest paths."""
+    if tool == 'geological_composites':
+        from atiaf_core.composites.engine import run
+        return run(input_folder, selected, sensor=sensor, options=options, apply_qa=apply_qa, mosaic=mosaic,
+                   output_crs=output_crs, output_folder=output_folder, aoi_geometry=aoi_geometry, aoi_crs=aoi_crs,
+                   language=language, canceled=canceled, progress=progress)
     from atiaf_core.execution_context import RUN_OPTIONS
     from atiaf_core.indices import SpectralIndicesEngine
     from atiaf_core.temperature import SurfaceTemperatureEngine
@@ -211,6 +224,8 @@ def run_tool(tool, input_folder, selected, sensor='AUTO', expert_mapping=None, a
     import rasterio
     folder = Path(input_folder).resolve()
     options = dict(options or {})
+    if aoi_geometry is not None:
+        options['aoi_geometry'] = True
     scenes = discover(folder, sensor, expert_mapping, manual_options=options)
     preflight(tool, scenes, selected, apply_qa, mosaic, output_crs, options)
     if aoi_geometry is not None and (not aoi_crs or aoi_geometry.is_empty or not aoi_geometry.is_valid or aoi_geometry.geom_type not in ('Polygon', 'MultiPolygon')):
@@ -240,8 +255,9 @@ def run_tool(tool, input_folder, selected, sensor='AUTO', expert_mapping=None, a
         progress(scene.metadata.scene_id)
         token = RUN_OPTIONS.set(dict(output_crs=output_crs, source_scene=scene.to_dict(),
                                      quality_masks=scene.quality_masks if apply_qa else {},
+                                     qa_mask_mode=options.get('qa_mask_mode', 'Cloud_Only_Arid') if apply_qa else 'None',
                                      sensor_family=scene.metadata.sensor_family.value, selected=list(selected), language=language,
-                                     user_options=options,
+                                     user_options=options, study_area_name=options.get('study_area_name'),
                                      canceled=canceled, scientific_definitions=[r for r in CATALOG[tool] if r['id'] in selected]))
         try:
             common = dict(scene=scene, custom_destination=destination, aoi_geometry=aoi_geometry,

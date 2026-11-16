@@ -1,0 +1,209 @@
+{
+  "schema_version": "1.0",
+  "request_id": "LEGACY-IMAGERY-GEOLOGICAL-OUTPUTS-20261115",
+  "task_id": "PLAN-0019",
+  "revision": "r1",
+  "overall_status": "partial",
+  "criteria": [
+    {
+      "id": "AC01",
+      "statement": "**P0** اكتشاف صحيح للمشهد `LC81760392014234LGN00` بوصفه Landsat 8 Pre-Collection، مع تاريخ الالتقاط والمحطة والمسار والصف.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "Reports/evidence/PLAN-0019/inventory/method_product_matrix.json",
+          "observed": "Real metadata identifies legacy L8, date2014-08-22, path176 row39 stationLGN version00.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "AC02",
+      "statement": "**P0** التمييز بين Scene ID القديم وProduct ID الحديث، وقراءة نوع Level/Collection من Metadata لا من تخمين اسم الملف.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "Reports/evidence/PLAN-0019/profile_espa.txt",
+          "observed": "18 profile tests pass; old/new identifiers, C1/C2 L1/L2 scaling and explicit/companion ESPA tested.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "AC03",
+      "statement": "**P0** تتبع المسار `source → calibration → ratio bands → RGB channels → stretch → exported raster` لكل ملف ناتج.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "Reports/evidence/PLAN-0019/exact_crc1_audit/numerical_audit.json",
+          "observed": "Exact source-to-calibration-to-three-ratios-to-stored-display audited independently; hashes preserved.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "AC04",
+      "statement": "**P0** تحديد وتوثيق معادلات `CRC1` وترتيب RGB بدقة ومقارنتها بالمرجع العلمي الصحيح.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "Reports/evidence/PLAN-0019/exact_crc1_audit/numerical_audit.json",
+          "observed": "Saved channels agree with Duwi Fig10 and independently corroborating2022 equation, unchanged.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "AC05",
+      "statement": "**P0** مقارنة حسابات بكسلات عينية بمسار مستقل، مع سماحية رقمية وملف نتيجة الاختبار.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "Reports/evidence/PLAN-0019/exact_crc1_audit/independent_pixels.csv",
+          "observed": "100 selected pixels, with39440 stable native samples passing tolerance; CSV contains expected/saved channels.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "AC06",
+      "statement": "**P0** إثبات أن كل طريقة اختارها المستخدم قد نُفذت، أو إظهار سبب تخطيها بوضوح.",
+      "status": "partial",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "Reports/evidence/PLAN-0019/inventory/method_product_matrix.csv",
+          "observed": "893 method/product gate cells with explicit reasons and NOT_RUN labels; native selected RGB/NDVI runs observed.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ],
+      "reason": "All selected fixture/real executions report outputs or failures, but every method across all historical products has not been executed; inventory gates are not execution proof."
+    },
+    {
+      "id": "AC07",
+      "statement": "**P0** رفض التحويلات غير الصحيحة مثل استعمال `B6` الحراري من TM بدل SWIR1، أو تطبيق `Collection 2 SR scale` على المنتج القديم.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "Reports/evidence/PLAN-0019/headless_final_verified.txt",
+          "observed": "183 tests pass including generation scaling, TM/ETM SWIR1 and MSS numbering/no-TIR rejection.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "AC08",
+      "statement": "**P0** منع أخطاء القسمة على الصفر / NoData / No-finite / السحب والظلال / الفجوات.",
+      "status": "partial",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "Reports/evidence/PLAN-0019/headless_final_verified.txt",
+          "observed": "Denominator/nonfinite/common-mask/NaN sentinel and QA schema tests pass; full real display validity agrees.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ],
+      "reason": "Legacy BQA lacks cloud-shadow/per-band saturation flags; unknown confidence retained with warnings. Real SLC-off/shadow validation unavailable."
+    },
+    {
+      "id": "AC09",
+      "statement": "**P1** حفظ منتجات رقمية تحليلية مستقلة عن منتجات Display، مع Metadata وصيغ أسماء مفهومة.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "Reports/evidence/PLAN-0019/final_metadata_readback.txt",
+          "observed": "Final real outputs reopened: separate analytic/display/metadata, actual satellite, stable recipe, full channel moments.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "AC10",
+      "statement": "**P1** اختبار مشهد صخري مرجعي وآخر زراعي/ساحلي، وعدم ربط جودة الأداة بوضوح اللون وحده.",
+      "status": "partial",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "Reports/evidence/PLAN-0019/exact_crc1_audit/numerical_audit.json",
+          "observed": "Supplied agricultural/coastal scene measured with diagnostic proxies; no independently mapped rocky scene.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ],
+      "reason": "Agricultural/coastal real scene available; independent rocky reference/geological labels not supplied. Proxy masks cannot substitute for field/map truth."
+    },
+    {
+      "id": "AC11",
+      "statement": "**P1** حفظ جميع المصادر الأصلية وإخراج ملفات `Work` و`Results` بصورة منظمة.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "Reports/evidence/PLAN-0019/relocation_and_packages.json",
+          "observed": "Source archive SHA verified; real receipts assert raw source stats unchanged, old exact CRC1 TIFF hashes unchanged, prior outputs retained.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "AC12",
+      "statement": "**P1** تساوي منطق النتائج بين تطبيقات المشروع (ArcGIS Pro / QGIS حيثما كانت مدعومة) وبين الواجهتين العربية والإنجليزية.",
+      "status": "partial",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "Reports/evidence/PLAN-0019/full_final_source_equivalence.json",
+          "observed": "Every pixel/mask/grid agrees between actual QGIS and Pro RGB runs; NDVI also fully agrees; both languages exercised natively.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ],
+      "reason": "Bounded synthetic bilingual/native and real cross-host equality verified. Full interactive journeys, every real product/method and clean installation remain unverified."
+    },
+    {
+      "id": "AC13",
+      "statement": "**P1** مصفوفة معلنة لكل أداة × مستشعر × إصدار منتج × طريقة معالجة، مع نتائج قابلة للتكرار.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "Reports/evidence/PLAN-0019/inventory/method_product_matrix.csv",
+          "observed": "Seven-tool47-entry19-profile893-cell matrix distinguishes gate eligibility, synthetic/real metadata and missing real cases.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    },
+    {
+      "id": "AC14",
+      "statement": "**P2** شرح مرئي داخل الواجهة يبين معنى المنتج وألوانه وحدوده ومصدره العلمي.",
+      "status": "verified",
+      "evidence": [
+        {
+          "type": "artifact_readback",
+          "reference": "Reports/evidence/PLAN-0019/native_ui_final/qgis_real_preview_ar.png",
+          "observed": "Actual bilingual Qt preview shows channel order, grid, before/after, recipe source and color/interpretation warning; Pro HTML uses same core.",
+          "result": "pass",
+          "revision": "r1"
+        }
+      ]
+    }
+  ]
+}

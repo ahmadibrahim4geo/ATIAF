@@ -1,6 +1,7 @@
 """Parser and asset mapper for Copernicus Sentinel-2 MSI products."""
 
 from datetime import datetime
+import math
 from pathlib import Path
 import re
 from typing import Any, Dict, List, Optional, Tuple
@@ -66,12 +67,18 @@ class Sentinel2Parser:
         cloud_cov = None
         scale = cls.DEFAULT_SCALE
         offset = cls.DEFAULT_OFFSET
+        band_offsets={}
+        calibration_source='Sentinel-2 product specification: quantification 10000, pre-04.00 offset zero'
+        baseline=None
 
         # Parse XML if available
         if meta_file and meta_file.name.endswith(".xml"):
             try:
-                tree = ET.parse(meta_file)
-                root = tree.getroot()
+                if meta_file.stat().st_size>4*1024*1024: raise ValueError('Sentinel-2 metadata exceeds 4 MiB')
+                content=meta_file.read_text('utf-8-sig')
+                if '<!DOCTYPE' in content.upper() or '<!ENTITY' in content.upper(): raise ValueError('Sentinel-2 XML declarations are not permitted')
+                root = ET.fromstring(content)
+                for node in root.iter(): node.tag=node.tag.split('}')[-1]
 
                 # Extract Product ID
                 prod_node = root.find(".//PRODUCT_URI")
@@ -119,12 +126,32 @@ class Sentinel2Parser:
                 if cloud_node is not None and cloud_node.text:
                     cloud_cov = float(cloud_node.text)
 
-                # Baseline radiometric offset check (N0400+)
-                offset_node = root.find(".//BOA_ADD_OFFSET")
-                if offset_node is not None and offset_node.text:
-                    offset = float(offset_node.text) * scale
-            except Exception:
-                pass
+                baseline_node=root.find('.//PROCESSING_BASELINE')
+                encoded=re.search(r'_N(\d{4})_',scene_id)
+                baseline=float(baseline_node.text) if baseline_node is not None and baseline_node.text else int(encoded[1])/100 if encoded else None
+                quantum=root.find('.//BOA_QUANTIFICATION_VALUE')
+                if quantum is None: quantum=root.find('.//QUANTIFICATION_VALUE')
+                if quantum is not None and quantum.text:
+                    value=float(quantum.text)
+                    if not math.isfinite(value) or value<=0: raise ValueError('Sentinel-2 invalid quantification value')
+                    scale=1/value
+                elif baseline is not None and baseline>=4:
+                    raise ValueError('Sentinel-2 baseline 04.00+ requires product quantification metadata')
+                offset_tag='BOA_ADD_OFFSET' if proc_level==ProductLevel.L2A_BOA or 'MSIL2A' in scene_id else 'RADIO_ADD_OFFSET'
+                physical=['B01','B02','B03','B04','B05','B06','B07','B08','B8A','B09','B10','B11','B12']
+                for node in root.findall('.//'+offset_tag):
+                    identifier=node.attrib.get('band_id') or node.attrib.get('bandId')
+                    if identifier is None: raise ValueError('Sentinel-2 additive offset needs its physical band_id')
+                    name=physical[int(identifier)] if identifier.isdigit() and 0<=int(identifier)<len(physical) else identifier.upper()
+                    if name not in physical: raise ValueError('Sentinel-2 invalid offset band_id')
+                    value=float(node.text)*scale
+                    if not math.isfinite(value) or name in band_offsets: raise ValueError('Sentinel-2 nonfinite/duplicate band offset')
+                    band_offsets[name]=value
+                if baseline is not None and baseline>=4 and not band_offsets:
+                    raise ValueError('Sentinel-2 baseline 04.00+ requires per-band '+offset_tag+' metadata')
+                calibration_source=f'{meta_file.name}:quantification and {offset_tag}[band_id]; baseline={baseline}'
+            except (ValueError,ET.ParseError,IndexError,TypeError) as exc:
+                raise ValueError('Sentinel-2 metadata/calibration error: '+str(exc)) from exc
 
         # If metadata XML didn't give full info, extract from product title
         if proc_level == ProductLevel.UNKNOWN:
@@ -173,9 +200,18 @@ class Sentinel2Parser:
             metadata_file=meta_file,
             warnings=warnings,
             restrictions=restrictions,
+            processing_level=proc_level.value,product_generation='PROCESSING_BASELINE_'+str(baseline),
+            radiometric_unit='surface_reflectance' if proc_level==ProductLevel.L2A_BOA else 'toa_reflectance' if proc_level==ProductLevel.L1C_TOA else 'unknown',
+            product_id=scene_id,
         )
 
         bands, masks = cls._discover_bands(folder, scale, offset)
+        for band in bands.values():
+            if baseline is not None and baseline>=4 and band.band_name not in band_offsets:
+                raise ValueError('Sentinel-2 missing additive offset for available band '+band.band_name)
+            band.offset=band_offsets.get(band.band_name,0.)
+            band.valid_max=32766 if proc_level==ProductLevel.L1C_TOA else None
+            band.calibration_provenance=calibration_source+'; physical_band='+band.band_name
 
         return SceneInfo(
             scene_path=folder,
@@ -194,7 +230,8 @@ class Sentinel2Parser:
 
         # Look for band files recursively (.jp2, .tif, .tiff)
         raster_extensions = {".jp2", ".tif", ".tiff"}
-        all_rasters = [p for p in folder.rglob("*") if p.suffix.lower() in raster_extensions]
+        all_rasters = [p for p in folder.rglob("*") if p.is_file() and p.suffix.lower() in raster_extensions
+            and not any(x.upper() in ('WORK','RESULTS','REPORTS') or x.startswith('.') for x in p.relative_to(folder).parts[:-1])]
 
         # Definitions for Sentinel-2 bands
         band_defs = [

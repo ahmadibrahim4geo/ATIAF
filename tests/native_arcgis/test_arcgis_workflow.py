@@ -83,7 +83,12 @@ class TestArcGISNativeWorkflow(unittest.TestCase):
             folder,options=fixture.manual()
             arcpy.atiaf.SpectralIndicesTool(input_folder=str(folder),sensor_product='LANDSAT_8_9_C2_L2',
                 calc_NDVI=True, calc_EVI2=True, calc_NIRv=True, apply_qa_mask=False, classify_ndvi=True, classification_basis='Synthetic native Pro fixture', **options)
-            self.assertTrue(list((folder/'Results').rglob('*LOCAL_CLASSES.tif')))
+            classes=list((folder/'Results').rglob('*LOCAL_CLASSES*.tif'))
+            self.assertEqual(len(classes),1)
+            with rasterio.open(classes[0]) as saved:
+                self.assertEqual(saved.count,1)
+                self.assertEqual(saved.dtypes[0],'uint8')
+                self.assertTrue(set(saved.read(1).ravel()) <= {0,1,2,3,4,255})
         finally:
             fixture.tearDown()
 

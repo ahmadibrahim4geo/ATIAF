@@ -46,6 +46,44 @@ def calc_nirv(bands, **unused):
     return n * _safe_divide(n-r, n+r)
 
 
+def calc_mtvi2(bands, **unused):
+    n, r, g = bands[BandRole.NIR], bands[BandRole.RED], bands[BandRole.GREEN]
+    with np.errstate(invalid='ignore'):
+        num = 1.5 * (1.2 * (n - g) - 2.5 * (r - g))
+        inner = (2.0 * n + 1.0) ** 2 - (6.0 * n - 5.0 * np.sqrt(np.maximum(r, 0.0))) - 0.5
+        denom = np.sqrt(np.maximum(inner, 0.0))
+        return _safe_divide(num, denom)
+
+
+def calc_mcari2(bands, **unused):
+    n, r, g = bands[BandRole.NIR], bands[BandRole.RED], bands[BandRole.GREEN]
+    with np.errstate(invalid='ignore'):
+        num = 1.5 * (2.5 * (n - r) - 1.3 * (n - g))
+        inner = (2.0 * n + 1.0) ** 2 - (6.0 * n - 5.0 * np.sqrt(np.maximum(r, 0.0))) - 0.5
+        denom = np.sqrt(np.maximum(inner, 0.0))
+        return _safe_divide(num, denom)
+
+
+def calc_ndre2(bands, **unused):
+    n, re2 = bands[BandRole.NIR], bands[BandRole.RED_EDGE_2]
+    return _safe_divide(n - re2, n + re2)
+
+
+def calc_cigreen(bands, **unused):
+    n, g = bands[BandRole.NIR], bands[BandRole.GREEN]
+    return _safe_divide(n, g) - 1.0
+
+
+def calc_cirededge(bands, **unused):
+    n, re1 = bands[BandRole.NIR], bands[BandRole.RED_EDGE_1]
+    return _safe_divide(n, re1) - 1.0
+
+
+def calc_ndsi_salinity(bands, **unused):
+    s1, n = bands[BandRole.SWIR_1], bands[BandRole.NIR]
+    return _safe_divide(s1 - n, s1 + n)
+
+
 def calc_gndvi(bands: Dict[BandRole, np.ndarray], **_) -> np.ndarray:
     nir = bands[BandRole.NIR]
     green = bands[BandRole.GREEN]
@@ -445,10 +483,20 @@ INDEX_CATALOG: Dict[str, SpectralIndexDefinition] = {
 }
 
 from atiaf_core.catalog_additions import DEFINITIONS
+_FUNCS = {
+    'EVI2': calc_evi2,
+    'NIRv': calc_nirv,
+    'MTVI2': calc_mtvi2,
+    'MCARI2': calc_mcari2,
+    'NDRE2': calc_ndre2,
+    'CIGREEN': calc_cigreen,
+    'CIREDEDGE': calc_cirededge,
+    'NDSI_SALINITY': calc_ndsi_salinity,
+}
 for row in DEFINITIONS:
     INDEX_CATALOG[row['id']] = SpectralIndexDefinition(
         id=row['id'], acronym=row['id'], name_en=row['en'], name_ar=row['ar'], category=row['category'],
         required_roles=[BandRole(r) for r in row['roles']],
-        compute_fn={'EVI2': calc_evi2, 'NIRv': calc_nirv}[row['id']], formula_text=row['formula'],
+        compute_fn=_FUNCS[row['id']], formula_text=row['formula'],
         valid_range=(-float('inf'), float('inf')), citation=row['citation'],
         notes='Numerical implementation; real-product sensor validation remains separate')

@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "request_id": "GEOLOGICAL-COLOR-COMPOSITES-20261115",
+  "revision": "r1",
+  "source": "Development_Plans/Active/PLAN-0018_Geological_Color_Composites.md",
+  "source_preserved_sha256": "07a9d78b226dcd82f56b24096d1b7e61daee0ce65546833eac5c8d9709b23be8",
+  "tasks": [
+    {
+      "id": "PLAN-0018",
+      "acceptance_criteria": [
+        "يتعرف على Landsat 8/9 وSentinel-2 وASTER المدعوم، ويفحص الحزم/metadata قبل التشغيل.",
+        "تتاح **Direct RGB** و**Ratio RGB** بصورة مستقلة وقابلة للفهم.",
+        "يمكن إنتاج صورة تظهر التراكيب الصخرية مع الاحتفاظ بتفاصيل التضاريس، دون تصنيف أو ترميز فئات.",
+        "ينتج تفاوت في شدة العرض (هادئ/متوازن/قوي) **لنفس** المعالجة؛ ولا يُغيّر بيانات التحليل بغير تصريح.",
+        "كل Preset موثّق، وتُرفض الحزم المفقودة أو غير الصالحة أو عدم توافق المستشعر.",
+        "يرفض/يحذر بوضوح من ASTER SWIR غير الصالح بدءًا من أبريل 2008.",
+        "تُدار المحاذاة وNoData والمقامات الصفرية والـCRS وأحجام البكسل بأمان.",
+        "تُحفَظ GeoTIFF وMetadata، ولا تتغير البيانات الأصلية.",
+        "تعمل نسخة **ArcGIS Pro عربي / ArcGIS Pro English**.",
+        "تعمل نسخة **QGIS عربي / QGIS English**.",
+        "تعطي المنصتان نتائج حسابية متكافئة عند تثبيت المدخلات والخيارات ونوع البيانات.",
+        "ينجح تشغيل مشهد واحد ودفعات مشاهد، مع سجلات إخفاق مفهومة.",
+        "لا توجد تسميات صخرية قطعية مولدة من اللون، ولا Classification تلقائي.",
+        "Manual RGB and custom expressions/preset saving/import preserve exact scientific channel order and provenance.",
+        "Separate reproducible display controls and optional display exports preserve the continuous analytical raster.",
+        "Bounded before/after preview is available in both native hosts without writing final analytical rasters.",
+        "Single/parent-folder input, optional mosaic, independent AOI, native metre CRS, output-last and non-destructive workspace rules are retained.",
+        "Large-scene performance, mid-run interruption, concurrent runs and recovery are independently validated.",
+        "Bilingual help, scientific support state, package source identity and distribution agree with the implemented scope.",
+        "Real Sentinel-2 and historical ASTER products and independent geological/field interpretation are validated.",
+        "Clean-machine native installation and complete interactive host journeys are validated."
+      ]
+    }
+  ]
+}

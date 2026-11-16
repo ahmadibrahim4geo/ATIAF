@@ -51,3 +51,20 @@ create a linked revision or cancellation. This local hash chain is not a signatu
 | [#0044](reports/0044.md) | 2026-11-15T13:28:53+00:00 | implementation | in_progress | #0043 | Prepared professional EN/AR presentation and dev1 GitHub publication snapshot |
 | [#0045](reports/0045.md) | 2026-11-15T15:58:41+00:00 | verification | in_progress | #0044 | Verified normal GitHub pushes and clean-source publication checks |
 | [#0046](reports/0046.md) | 2026-11-15T16:07:35+00:00 | handoff | completed | #0045 | Delivered professional ATIAF repository, live Index and successful hosted packages |
+| [#0047](reports/0047.md) | 2026-11-15T17:05:53+00:00 | request | approved | — | Clarify mandatory descriptive plan and report numbering for any user-supplied plan or development request |
+| [#0048](reports/0048.md) | 2026-11-15T17:09:40+00:00 | handoff | completed | #0047 | Delivered descriptive plan and report naming instructions; archived PLAN-0017 after report 0025 |
+| [#0049](reports/0049.md) | 2026-11-15T17:12:07+00:00 | request | approved | — | Execute supplied Geological Color Composites plan as PLAN-0018 r1 |
+| [#0050](reports/0050.md) | 2026-11-15T17:53:21+00:00 | implementation | in_progress | #0049 | Implemented geological RGB tool and real cross-host Landsat verification |
+| [#0051](reports/0051.md) | 2026-11-15T18:06:13+00:00 | handoff | in_progress | #0050 | Deliver PLAN-0018 local dev1 packages and report 0027; retain partial scientific/native acceptance |
+| [#0052](reports/0052.md) | 2026-11-15T18:15:26+00:00 | request | approved | — | Execute legacy imagery and geological output audit as PLAN-0019; relocate supplied plans into plan folders |
+| [#0053](reports/0053.md) | 2026-11-16T03:49:43+00:00 | implementation | in_progress | #0052 | Shared legacy product readers, independent CRC1 audit and native real-scene verification |
+| [#0054](reports/0054.md) | 2026-11-16T04:02:54+00:00 | handoff | in_progress | #0053 | Deliver legacy imagery audit report0029 and local1.0.4.dev0; retain four partial acceptance criteria |
+| [#0055](reports/0055.md) | 2026-11-16T04:49:29+00:00 | revision | proposed | #0054 | Discuss actual Pro trial errors, short user filenames and NDVI-first vegetation-driven thermal UI |
+| [#0056](reports/0056.md) | 2026-11-16T04:57:25+00:00 | revision | in_progress | #0055 | Clarify automatic NDVI thermal assistance and explain current geological composite controls before implementation |
+| [#0057](reports/0057.md) | 2026-11-16T05:03:19+00:00 | revision | in_progress | #0056 | Prioritize basic band composition; defer enhancement UI and clarify direct versus ratio method |
+| [#0058](reports/0058.md) | 2026-11-16T20:22:17+00:00 | request | proposed | #0057 | Comprehensive plan discussion: Pro environment, short naming, simple LST and geological composites |
+| [#0059](reports/0059.md) | 2026-11-16T20:57:00+00:00 | implementation | in_progress | #0058 | Execute PLAN-0019 r2: usability, geological composites, legacy support, ENVI integration and dual-scene testing |
+| [#0060](reports/0060.md) | 2026-11-16T21:32:01+00:00 | verification | completed | #0059 | Deliver PLAN-0019 r2: 8-pillar usability, geological presets, multi-generation support, ENVI indices and dual-scene validation report 0031 |
+| [#0061](reports/0061.md) | 2026-11-16T22:10:00+00:00 | proposal | active | #0060 | Intaking PLAN-0020: Advanced ENVI & geoscience indices integration and intelligent QA mask engine |
+| [#0062](reports/0062.md) | 2026-11-16T22:18:00+00:00 | implementation | in_progress | #0061 | Executing PLAN-0020: Granular QA masks, negative reflectance safety, and ENVI/geoscience indices |
+| [#0063](reports/0063.md) | 2026-11-16T22:42:00+00:00 | delivery | completed | #0061, #0062 | Deliver PLAN-0020: Intelligent QA mask engine, elimination of white holes, ENVI indices, and dual-scene validation report 0032 |

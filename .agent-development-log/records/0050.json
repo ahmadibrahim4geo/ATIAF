@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "sequence": 50,
+  "timestamp_utc": "2026-11-15T17:53:21+00:00",
+  "kind": "implementation",
+  "status": "in_progress",
+  "summary": "Implemented geological RGB tool and real cross-host Landsat verification",
+  "details": "PLAN-0018 r1 retains original acceptance. Added seventh independent native tool, Direct RGB and Ratio RGB, restricted arithmetic, windowed Float32/QA/common masks, exact band/calibration mapping, reviewed Landsat and explicit experimental presets, separate display, bounded QGIS background before/after preview, temporary Pro HTML preview, preset import/export, polygon clip and complete-triplet mosaic/source IDs. User subsequently supplied Testing Data/LC81760392014234LGN00: real pre-Collection Landsat8 L1T, metadata TOA/sun scaling and legacy BQA, no atmospheric correction. QGIS English receipt passes 324 independent samples per output. Actual Pro Arabic GP created both products, but its helper failed when generating the receipt due a datetime name collision; a separate independent artifact-readback receipt verifies outputs. Whole-raster comparison: 60616171 pixels per channel for each method, values/grid/masks bitwise equal. Native QGIS composite/UI tests and legacy regression passed. Retained failures: six-tool count, constant display bounds import, helper Path/alias/date errors and native test layer-handle cleanup. Legacy test screenshot accidentally overwritten and restored exactly from initially unchanged HEAD; test now uses scoped/temp evidence. Local 1.0.3.dev1 wheel/ZIP built with source/help identity and relocated QGIS smoke checks. Earlier journal invocation rejected its unquoted spaced file argument before writing; corrected here. No source imagery changes, publication, environment installation or upstream skill changes. Plan stays Active for real Sentinel2/ASTER, field validation, complete Pro GUI and clean install.",
+  "references": [
+    49
+  ],
+  "task_id": "PLAN-0018",
+  "plan_revision": "r1",
+  "changed_files": [
+    "atiaf_core/composites/engine.py",
+    "atiaf_core/composites/registry.py",
+    "ArcGIS Pro Tools/atiaf_arcgis.py"
+  ],
+  "tests": [
+    "Reports/evidence/PLAN-0018/cross_host_equivalence.json: complete real raster comparison pass"
+  ],
+  "test_result": "passed",
+  "commit": "1d15bad",
+  "previous_hash": "b4abe097f038554d89a68a368a3904943beb6a8debb41ac99cfd56a12547d315",
+  "hash": "388c049365ebf0c710712e58412286e0afb1c7703014f0ef83a8efa30009a711"
+}

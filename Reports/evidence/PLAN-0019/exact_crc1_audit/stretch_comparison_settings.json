@@ -1,0 +1,102 @@
+[
+  {
+    "mode": "custom",
+    "stretch_method": "linear",
+    "standard_deviations": 2.0,
+    "clip_percent_each_tail": 2.0,
+    "gamma": 1.0,
+    "saturation": 1.0,
+    "fixed_limits": null,
+    "sample_policy": "Deterministic nearest-neighbor grid, maximum 512 by 512; not full-scene exact quantiles",
+    "extent_policy": "Fixed output footprint; never current map extent",
+    "channel_limits": [
+      [
+        0.49033376574516296,
+        3.1177189350128174
+      ],
+      [
+        0.053679972887039185,
+        3.466315269470215
+      ],
+      [
+        0.021783379837870598,
+        2.5792348384857178
+      ]
+    ]
+  },
+  {
+    "mode": "custom",
+    "stretch_method": "percentile",
+    "standard_deviations": 2.0,
+    "clip_percent_each_tail": 2.0,
+    "gamma": 1.0,
+    "saturation": 1.0,
+    "fixed_limits": null,
+    "sample_policy": "Deterministic nearest-neighbor grid, maximum 512 by 512; not full-scene exact quantiles",
+    "extent_policy": "Fixed output footprint; never current map extent",
+    "channel_limits": [
+      [
+        1.1426570415496826,
+        2.3532997369766235
+      ],
+      [
+        0.2649243324995041,
+        2.8490331172943115
+      ],
+      [
+        0.04549263045191765,
+        1.030709445476532
+      ]
+    ]
+  },
+  {
+    "mode": "custom",
+    "stretch_method": "stddev",
+    "standard_deviations": 2.0,
+    "clip_percent_each_tail": 2.0,
+    "gamma": 1.0,
+    "saturation": 1.0,
+    "fixed_limits": null,
+    "sample_policy": "Deterministic nearest-neighbor grid, maximum 512 by 512; not full-scene exact quantiles",
+    "extent_policy": "Fixed output footprint; never current map extent",
+    "channel_limits": [
+      [
+        0.7184030477060054,
+        2.102010462838257
+      ],
+      [
+        0.6062042629180797,
+        3.255040231176614
+      ],
+      [
+        0.020847679543081865,
+        1.391707965983989
+      ]
+    ]
+  },
+  {
+    "mode": "custom",
+    "stretch_method": "percentile",
+    "standard_deviations": 2.0,
+    "clip_percent_each_tail": 2.0,
+    "gamma": 0.85,
+    "saturation": 1.0,
+    "fixed_limits": null,
+    "sample_policy": "Deterministic nearest-neighbor grid, maximum 512 by 512; not full-scene exact quantiles",
+    "extent_policy": "Fixed output footprint; never current map extent",
+    "channel_limits": [
+      [
+        1.1426570415496826,
+        2.3532997369766235
+      ],
+      [
+        0.2649243324995041,
+        2.8490331172943115
+      ],
+      [
+        0.04549263045191765,
+        1.030709445476532
+      ]
+    ]
+  }
+]

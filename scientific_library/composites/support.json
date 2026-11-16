@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "tool_id": "geological_composites",
+  "canonical_definitions": "atiaf_core/composites/registry.py",
+  "methods": [
+    "DIRECT_RGB",
+    "RATIO_RGB"
+  ],
+  "classification": false,
+  "formula_status_note": "source_verified records primary-source transcription only, not field validation",
+  "sensor_profiles": {
+    "LANDSAT_8_9_C2_L2": {
+      "input": "existing metadata parser and exact optical bands",
+      "validation": "independent numeric and native synthetic fixtures; no new real L2 product in this phase"
+    },
+    "LANDSAT_8_PRECOLLECTION_L1T": {
+      "input": "Shared metadata-first Landsat reader, MTL per-band TOA calibration and positive pre-Collection BQA identification",
+      "validation": "Real supplied2014 bundle; full analytical/display cross-host parity and independent numeric audit in Reports/evidence/PLAN-0019",
+      "limitations": "TOA, not surface reflectance; no cloud-shadow/per-band saturation flags in legacy BQA"
+    },
+    "SENTINEL_2": {
+      "input": "Metadata quantification and per-band BOA/RADIO offsets with baseline validation, or explicit calibrated stack",
+      "validation": "band mapping and arithmetic fixtures only; no real Sentinel-2 acquisition in this phase",
+      "presets": "experimental"
+    },
+    "ASTER": {
+      "input": "explicit calibrated exact-band multiband mapping; automatic reader incomplete",
+      "validation": "synthetic exact-band/date gates only; no real ASTER acquisition",
+      "swir": "known acquisition before 2008-04-01 required; earlier saturation advisories warned",
+      "presets": "experimental; proposed Fawakheir full-text review pending"
+    },
+    "LANDSAT_C1_C2_METADATA": {
+      "input": "Generation/level-specific MTL TXT/JSON/XML; explicit ESPA SR assets and identity-checked companion metadata",
+      "validation": "Synthetic profiles/QA/roles; no real C1/C2 historical counterpart supplied",
+      "limitations": "No blanket TM/ETM/MSS RGB preset transfer; NDVI TOA opt-in only for diagnostic non-SR index; ancillary methods remain gated"
+    }
+  },
+  "retained_acceptance": [
+    "real Sentinel-2 and ASTER products",
+    "independent field/lithological visual validation",
+    "full interactive ArcGIS Pro journeys",
+    "clean-machine installation"
+  ],
+  "source_plan": "Development_Plans/Active/PLAN-0018_Geological_Color_Composites.md",
+  "audit_reference": "Reports/PLAN-0019_Audit/01_Sensor_Product_Compatibility_Matrix.md",
+  "output_policy": "Separate Analytical/Display/Metadata/QA_Reports per unique run; actual satellite, stable recipe; analytical NaN and display zero NoData"
+}

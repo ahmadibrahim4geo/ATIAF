@@ -1,6 +1,6 @@
 # Installation
 
-Development build **1.0.2.dev1**. Use [project state](../../PROJECT_STATE.md) for measured versions and remaining checks. Import success is not release acceptance.
+Development build **1.0.4.dev0**. Use [project state](../../PROJECT_STATE.md) for measured versions and remaining checks. Import success is not release acceptance.
 
 ## ArcGIS Pro
 
@@ -16,7 +16,7 @@ A missing dependency must produce a clear error while calculation controls remai
 
 ## QGIS
 
-Run `python tools/build_qgis_plugin.py`. Install `QGIS Tools/Distribution/ATIAF-QGIS-1.0.2.dev1.zip` from Plugins → Manage and Install Plugins → Install from ZIP. Enable ATIAF; its six algorithms appear in Processing Toolbox. The ZIP includes the MIT shared core and JSON definitions, not imagery or third-party source. Scientific libraries must be available in QGIS's own Python; never mix host environments.
+Run `python tools/build_qgis_plugin.py`. Install `QGIS Tools/Distribution/ATIAF-QGIS-1.0.4.dev0.zip` from Plugins → Manage and Install Plugins → Install from ZIP. Enable ATIAF; its seven algorithms appear in Processing Toolbox. The ZIP includes the MIT shared core and JSON definitions, not imagery or third-party source. Scientific libraries must be available in QGIS's own Python; never mix host environments.
 
 Tool language follows QGIS locale. Select calculation checkboxes under thematic groups; the manual toggle reveals local band fields. Incompatible selections are rejected with reasons; calculation search is removed. The new parameter set requires updating saved models (the old INDICES enum remains hidden for compatible scripted selection). Restart/refresh the plugin and reopen old dialogs after updating.
 

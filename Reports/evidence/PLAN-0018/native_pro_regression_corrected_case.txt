@@ -1,0 +1,12 @@
+test_manual_inputs_groups_and_optional_classes (__main__.TestArcGISNativeWorkflow.test_manual_inputs_groups_and_optional_classes) ... ERROR 1: Unable to load CF-1 standard name database C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3\Library\share\gdal\cf_standard_name_table.db. CF-1 lookups will fail.
+no_header
+C:\Users\ahmad\AppData\Local\Temp\atiaf_r6_50mi7szp\no_header\Results\Spectral_Indices\Vegetation\NDVI\NDVI_no_header_FULL_RUN-f10a9c8ffebc4b78a14b12b2175f8be8.tif
+C:\Users\ahmad\AppData\Local\Temp\atiaf_r6_50mi7szp\no_header\Results\Spectral_Indices\Vegetation\NDVI\NDVI_no_header_FULL_RUN-f10a9c8ffebc4b78a14b12b2175f8be8_LOCAL_CLASSES_RUN-510f75d114834277aa703b967cfd166c.tif
+C:\Users\ahmad\AppData\Local\Temp\atiaf_r6_50mi7szp\no_header\Results\Spectral_Indices\Vegetation\EVI2\EVI2_no_header_FULL_RUN-041e296c8a1c4f6abb7db9ab84067958.tif
+C:\Users\ahmad\AppData\Local\Temp\atiaf_r6_50mi7szp\no_header\Results\Spectral_Indices\Vegetation\NIRv\NIRv_no_header_FULL_RUN-2adc9e126bfe408382936d68c91fe922.tif
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 2.121s
+
+OK

@@ -260,6 +260,76 @@
 <p><strong>Classification:</strong> No verified universal classification standard; optional local schemes must be justified and recorded.</p>
 <p><a href="https://science.nasa.gov/earth/earth-observatory/measuring-vegetation-ndvi-evi/">Source</a></p>
 <p><a href="https://www.usgs.gov/landsat-missions/landsat-surface-reflectance-derived-spectral-indices">Source</a></p>
+<h3 id="MTVI2">MTVI2 — Modified Triangular Vegetation Index 2 (MTVI2)</h3>
+<p><code>1.5 * (1.2*(NIR - Green) - 2.5*(Red - Green)) / sqrt((2*NIR + 1)^2 - (6*NIR - 5*sqrt(Red)) - 0.5)</code></p>
+<p>Band roles: nir, red, green</p>
+<p>Reference: Haboudane et al. (2004), Hyperspectral vegetation indices for predicting green crop area index, doi:10.1016/j.rse.2003.12.013</p>
+<p><a href="https://doi.org/10.1016/j.rse.2003.12.013">Method source</a></p>
+<p><strong>Meaning:</strong> Modified triangular vegetation index 2; sensitive to green leaf area index and canopy cover, reducing soil background influence.</p>
+<p><strong>Units:</strong> dimensionless</p>
+<p><strong>Range:</strong> No universal fixed interval; use method assumptions and QA</p>
+<p><strong>Limitations:</strong> Interpret with sensor, product level, season, land cover, soil, atmosphere, moisture and resolution. Indicative ranges are not a universal class standard. Local independent validation is required; NoData/QA are not a land-cover class.</p>
+<p><strong>Classification:</strong> No verified universal classification standard; optional local schemes must be justified and recorded.</p>
+<p><a href="https://science.nasa.gov/earth/earth-observatory/measuring-vegetation-ndvi-evi/">Source</a></p>
+<p><a href="https://www.usgs.gov/landsat-missions/landsat-surface-reflectance-derived-spectral-indices">Source</a></p>
+<h3 id="MCARI2">MCARI2 — Modified Chlorophyll Absorption in Reflectance Index 2 (MCARI2)</h3>
+<p><code>1.5 * (2.5*(NIR - Red) - 1.3*(NIR - Green)) / sqrt((2*NIR + 1)^2 - (6*NIR - 5*sqrt(Red)) - 0.5)</code></p>
+<p>Band roles: nir, red, green</p>
+<p>Reference: Haboudane et al. (2004), Hyperspectral vegetation indices for predicting green crop area index, doi:10.1016/j.rse.2003.12.013</p>
+<p><a href="https://doi.org/10.1016/j.rse.2003.12.013">Method source</a></p>
+<p><strong>Meaning:</strong> Modified chlorophyll absorption in reflectance index 2; estimates green biomass and canopy chlorophyll while minimizing soil and non-photosynthetic effects.</p>
+<p><strong>Units:</strong> dimensionless</p>
+<p><strong>Range:</strong> No universal fixed interval; use method assumptions and QA</p>
+<p><strong>Limitations:</strong> Interpret with sensor, product level, season, land cover, soil, atmosphere, moisture and resolution. Indicative ranges are not a universal class standard. Local independent validation is required; NoData/QA are not a land-cover class.</p>
+<p><strong>Classification:</strong> No verified universal classification standard; optional local schemes must be justified and recorded.</p>
+<p><a href="https://science.nasa.gov/earth/earth-observatory/measuring-vegetation-ndvi-evi/">Source</a></p>
+<p><a href="https://www.usgs.gov/landsat-missions/landsat-surface-reflectance-derived-spectral-indices">Source</a></p>
+<h3 id="NDRE2">NDRE2 — Normalized Difference Red Edge 2 (Sentinel-2)</h3>
+<p><code>(NIR - RedEdge2) / (NIR + RedEdge2)</code></p>
+<p>Band roles: nir, red_edge_2</p>
+<p>Reference: Barnes et al. (2000), Coincident detection of crop water stress, nitrogen status and canopy density</p>
+<p><a href="https://doi.org/10.1016/j.rse.2008.06.006">Method source</a></p>
+<p><strong>Meaning:</strong> Red edge index variant using NIR and red-edge 2 bands; sensitive to high-biomass chlorophyll changes where NDVI saturates.</p>
+<p><strong>Units:</strong> dimensionless</p>
+<p><strong>Range:</strong> [-1,1] for nonnegative calibrated operands and a nonzero denominator; QA may expose exceptions</p>
+<p><strong>Limitations:</strong> Interpret with sensor, product level, season, land cover, soil, atmosphere, moisture and resolution. Indicative ranges are not a universal class standard. Local independent validation is required; NoData/QA are not a land-cover class.</p>
+<p><strong>Classification:</strong> No verified universal classification standard; optional local schemes must be justified and recorded.</p>
+<p><a href="https://science.nasa.gov/earth/earth-observatory/measuring-vegetation-ndvi-evi/">Source</a></p>
+<p><a href="https://www.usgs.gov/landsat-missions/landsat-surface-reflectance-derived-spectral-indices">Source</a></p>
+<h3 id="CIGREEN">CIGREEN — Chlorophyll Index Green (CIgreen)</h3>
+<p><code>(NIR / Green) - 1</code></p>
+<p>Band roles: nir, green</p>
+<p>Reference: Gitelson et al. (2005), Remote estimation of chlorophyll content in higher plant leaves, doi:10.1016/j.jplph.2004.12.014</p>
+<p><a href="https://doi.org/10.1016/j.jplph.2004.12.014">Method source</a></p>
+<p><strong>Meaning:</strong> Chlorophyll index green; related to total chlorophyll content in leaves and canopies based on green and NIR reflectance.</p>
+<p><strong>Units:</strong> dimensionless</p>
+<p><strong>Range:</strong> No universal fixed interval; use method assumptions and QA</p>
+<p><strong>Limitations:</strong> Interpret with sensor, product level, season, land cover, soil, atmosphere, moisture and resolution. Indicative ranges are not a universal class standard. Local independent validation is required; NoData/QA are not a land-cover class.</p>
+<p><strong>Classification:</strong> No verified universal classification standard; optional local schemes must be justified and recorded.</p>
+<p><a href="https://science.nasa.gov/earth/earth-observatory/measuring-vegetation-ndvi-evi/">Source</a></p>
+<p><a href="https://www.usgs.gov/landsat-missions/landsat-surface-reflectance-derived-spectral-indices">Source</a></p>
+<h3 id="CIREDEDGE">CIREDEDGE — Chlorophyll Index Red-Edge (CIrededge / Sentinel-2)</h3>
+<p><code>(NIR / RedEdge1) - 1</code></p>
+<p>Band roles: nir, red_edge_1</p>
+<p>Reference: Gitelson et al. (2005), Remote estimation of chlorophyll content in higher plant leaves, doi:10.1016/j.jplph.2004.12.014</p>
+<p><a href="https://doi.org/10.1016/j.jplph.2004.12.014">Method source</a></p>
+<p><strong>Meaning:</strong> Chlorophyll index red-edge; sensitive to chlorophyll concentration across moderate to high canopy densities.</p>
+<p><strong>Units:</strong> dimensionless</p>
+<p><strong>Range:</strong> No universal fixed interval; use method assumptions and QA</p>
+<p><strong>Limitations:</strong> Interpret with sensor, product level, season, land cover, soil, atmosphere, moisture and resolution. Indicative ranges are not a universal class standard. Local independent validation is required; NoData/QA are not a land-cover class.</p>
+<p><strong>Classification:</strong> No verified universal classification standard; optional local schemes must be justified and recorded.</p>
+<p><a href="https://science.nasa.gov/earth/earth-observatory/measuring-vegetation-ndvi-evi/">Source</a></p>
+<p><a href="https://www.usgs.gov/landsat-missions/landsat-surface-reflectance-derived-spectral-indices">Source</a></p>
+<h3 id="NDSI_SALINITY">NDSI_SALINITY — Normalized Difference Salinity Index (NDSI_Salinity)</h3>
+<p><code>(SWIR1 - NIR) / (SWIR1 + NIR)</code></p>
+<p>Band roles: swir_1, nir</p>
+<p>Reference: Major et al. (1990) / Tripathy et al. (2012), Remote sensing of soil salinity in agricultural lands</p>
+<p><a href="https://doi.org/10.1016/j.rse.2012.03.018">Method source</a></p>
+<p><strong>Meaning:</strong> Normalized difference salinity index from SWIR1 and NIR; highlights salt-affected bare soils and crusts.</p>
+<p><strong>Units:</strong> dimensionless</p>
+<p><strong>Range:</strong> [-1,1] for nonnegative calibrated operands and a nonzero denominator; QA may expose exceptions</p>
+<p><strong>Limitations:</strong> Interpret with sensor, product level, season, land cover, soil, atmosphere, moisture and resolution. Indicative ranges are not a universal class standard. Local independent validation is required; NoData/QA are not a land-cover class.</p>
+<p><strong>Classification:</strong> No verified universal classification standard; optional local schemes must be justified and recorded.</p>
 <h2 id="geological_analysis">geological_analysis — 05. Geological Analysis &amp; Mineral Alteration</h2>
 <p><a href="QUICK_START.html">Usage</a></p>
 <h3 id="IRON_OXIDE">IRON_OXIDE — Iron Oxide Ratio (Hematite / Goethite / Limonite)</h3>
@@ -330,6 +400,42 @@
 <p>Band roles: thermal_1, thermal_2</p>
 <p>Reference: Ninomiya et al. (2005), Mineral mapping with ASTER thermal infrared multispectral data</p>
 <p><strong>Meaning:</strong> ASTER TIR mafic proxy; exact product/band emissivity semantics remain gated.</p>
+<p><strong>Units:</strong> dimensionless</p>
+<p><strong>Range:</strong> No universal fixed interval; use method assumptions and QA</p>
+<p><strong>Limitations:</strong> Interpret with sensor, product level, season, land cover, soil, atmosphere, moisture and resolution. Indicative ranges are not a universal class standard. Local independent validation is required; NoData/QA are not a land-cover class.</p>
+<p><strong>Classification:</strong> No verified universal classification standard; optional local schemes must be justified and recorded.</p>
+<h3 id="FEAI">FEAI — Ferric Iron Alteration Index (FEAI - ENVI)</h3>
+<p><code>(SWIR2 / NIR) + (Green / Red)</code></p>
+<p>Band roles: swir_2, nir, green, red</p>
+<p>Reference: NV5 ENVI Spectral Indices / Crowley et al. (1989)</p>
+<p><strong>Meaning:</strong> Ferric Iron Alteration Index (FEAI) from SWIR2/NIR and Green/Red; highlights ferric iron alteration zones.</p>
+<p><strong>Units:</strong> dimensionless</p>
+<p><strong>Range:</strong> No universal fixed interval; use method assumptions and QA</p>
+<p><strong>Limitations:</strong> Interpret with sensor, product level, season, land cover, soil, atmosphere, moisture and resolution. Indicative ranges are not a universal class standard. Local independent validation is required; NoData/QA are not a land-cover class.</p>
+<p><strong>Classification:</strong> No verified universal classification standard; optional local schemes must be justified and recorded.</p>
+<h3 id="FEI">FEI — Ferrous Iron Index (FEI - ENVI)</h3>
+<p><code>(SWIR2 + NIR) / (Green + Red)</code></p>
+<p>Band roles: swir_2, nir, green, red</p>
+<p>Reference: NV5 ENVI Spectral Indices / Segal (1983)</p>
+<p><strong>Meaning:</strong> Ferrous Iron Index (FEI) from (SWIR2+NIR)/(Green+Red); highlights ferrous iron minerals.</p>
+<p><strong>Units:</strong> dimensionless</p>
+<p><strong>Range:</strong> No universal fixed interval; use method assumptions and QA</p>
+<p><strong>Limitations:</strong> Interpret with sensor, product level, season, land cover, soil, atmosphere, moisture and resolution. Indicative ranges are not a universal class standard. Local independent validation is required; NoData/QA are not a land-cover class.</p>
+<p><strong>Classification:</strong> No verified universal classification standard; optional local schemes must be justified and recorded.</p>
+<h3 id="FESI">FESI — Ferrous Silicates Index (FESI - ENVI)</h3>
+<p><code>SWIR2 / SWIR1</code></p>
+<p>Band roles: swir_2, swir_1</p>
+<p>Reference: NV5 ENVI Spectral Indices / Rowan et al. (1986)</p>
+<p><strong>Meaning:</strong> Ferrous Silicates Index (FESI) from SWIR2/SWIR1; highlights ferrous silicate rock units.</p>
+<p><strong>Units:</strong> dimensionless</p>
+<p><strong>Range:</strong> No universal fixed interval; use method assumptions and QA</p>
+<p><strong>Limitations:</strong> Interpret with sensor, product level, season, land cover, soil, atmosphere, moisture and resolution. Indicative ranges are not a universal class standard. Local independent validation is required; NoData/QA are not a land-cover class.</p>
+<p><strong>Classification:</strong> No verified universal classification standard; optional local schemes must be justified and recorded.</p>
+<h3 id="LATI">LATI — Laterite Index (LATI - ENVI)</h3>
+<p><code>SWIR1 / Green</code></p>
+<p>Band roles: swir_1, green</p>
+<p>Reference: NV5 ENVI Spectral Indices / Boettinger et al. (2008)</p>
+<p><strong>Meaning:</strong> Laterite Index (LATI) from SWIR1/Green; highlights laterite and ferric weathered soils.</p>
 <p><strong>Units:</strong> dimensionless</p>
 <p><strong>Range:</strong> No universal fixed interval; use method assumptions and QA</p>
 <p><strong>Limitations:</strong> Interpret with sensor, product level, season, land cover, soil, atmosphere, moisture and resolution. Indicative ranges are not a universal class standard. Local independent validation is required; NoData/QA are not a land-cover class.</p>
@@ -441,5 +547,87 @@
 <p><strong>Meaning:</strong> LST(T2) minus LST(T1); positive means increase, negative decrease. Direction alone does not establish a cause or burn severity.</p>
 <p><strong>Units:</strong> °C difference</p>
 <p><strong>Range:</strong> No universal fixed interval</p>
+<p><strong>Limitations:</strong> Interpret with sensor, product level, season, land cover, soil, atmosphere, moisture and resolution. Indicative ranges are not a universal class standard. Local independent validation is required; NoData/QA are not a land-cover class.</p>
+<p><strong>Classification:</strong> No verified universal classification standard; optional local schemes must be justified and recorded.</p>
+<h2 id="geological_composites">geological_composites — 07. Geological Color Composites</h2>
+<p><a href="QUICK_START.html">Usage</a></p>
+<h3 id="L89_753">L89_753 — Landsat 8/9: 7-5-3 Direct RGB (Lithology &amp; Structure)</h3>
+<p><code>R=B7(2.20µm), G=B5(0.86µm), B=B3(0.56µm)</code></p>
+<p>Reference: https://www.nature.com/articles/s41598-024-66199-3</p>
+<p><strong>Meaning:</strong> Landsat 8/9 7-5-3 Direct RGB: assigns SWIR2, NIR and Green bands to RGB; standard geological composite for rock and vegetation contrast.</p>
+<p><strong>Units:</strong> dimensionless</p>
+<p><strong>Range:</strong> No universal fixed interval; use method assumptions and QA</p>
+<p><strong>Limitations:</strong> Interpret with sensor, product level, season, land cover, soil, atmosphere, moisture and resolution. Indicative ranges are not a universal class standard. Local independent validation is required; NoData/QA are not a land-cover class.</p>
+<p><strong>Classification:</strong> No verified universal classification standard; optional local schemes must be justified and recorded.</p>
+<h3 id="L89_762">L89_762 — Landsat 8/9: 7-6-2 Direct RGB (Geological Boundaries)</h3>
+<p><code>R=B7(2.20µm), G=B6(1.61µm), B=B2(0.48µm)</code></p>
+<p>Reference: Sabins (1999) / USGS Geological Composite standard</p>
+<p><strong>Meaning:</strong> Landsat 8/9 7-6-2 Direct RGB: assigns SWIR2, SWIR1 and Blue bands to RGB; highlights lithological boundaries and structural features.</p>
+<p><strong>Units:</strong> dimensionless</p>
+<p><strong>Range:</strong> No universal fixed interval; use method assumptions and QA</p>
+<p><strong>Limitations:</strong> Interpret with sensor, product level, season, land cover, soil, atmosphere, moisture and resolution. Indicative ranges are not a universal class standard. Local independent validation is required; NoData/QA are not a land-cover class.</p>
+<p><strong>Classification:</strong> No verified universal classification standard; optional local schemes must be justified and recorded.</p>
+<h3 id="L89_CRC1">L89_CRC1 — Landsat 8/9: Sultan CRC1 Ratio RGB (Ophiolite &amp; Carbonates)</h3>
+<p><code>R=B6/B7, G=B6/B2, B=(B4/B5)*(B6/B5)</code></p>
+<p>Reference: Sultan et al. (1987) / Duwi Figure 10</p>
+<p><strong>Meaning:</strong> Landsat 8/9 Sultan CRC1 Ratio RGB: assigns B6/B7, B6/B2, and (B4/B5)*(B6/B5) to RGB; highlights ophiolitic and carbonate rocks.</p>
+<p><strong>Units:</strong> dimensionless</p>
+<p><strong>Range:</strong> No universal fixed interval; use method assumptions and QA</p>
+<p><strong>Limitations:</strong> Interpret with sensor, product level, season, land cover, soil, atmosphere, moisture and resolution. Indicative ranges are not a universal class standard. Local independent validation is required; NoData/QA are not a land-cover class.</p>
+<p><strong>Classification:</strong> No verified universal classification standard; optional local schemes must be justified and recorded.</p>
+<h3 id="L89_CRC2">L89_CRC2 — Landsat 8/9: Sultan CRC2 Ratio RGB (Hydrothermal Alteration)</h3>
+<p><code>R=B4/B6, G=B4/B2, B=B6/B7</code></p>
+<p>Reference: Sultan et al. (1987) / Duwi Figure 11</p>
+<p><strong>Meaning:</strong> Landsat 8/9 Sultan CRC2 Ratio RGB: assigns B4/B6, B4/B2, and B6/B7 to RGB; highlights hydrothermal alteration zones.</p>
+<p><strong>Units:</strong> dimensionless</p>
+<p><strong>Range:</strong> No universal fixed interval; use method assumptions and QA</p>
+<p><strong>Limitations:</strong> Interpret with sensor, product level, season, land cover, soil, atmosphere, moisture and resolution. Indicative ranges are not a universal class standard. Local independent validation is required; NoData/QA are not a land-cover class.</p>
+<p><strong>Classification:</strong> No verified universal classification standard; optional local schemes must be justified and recorded.</p>
+<h3 id="S2_12112">S2_12112 — Sentinel-2: 12-11-2 Direct RGB (Geology &amp; Structures)</h3>
+<p><code>R=B12(2.19µm), G=B11(1.61µm), B=B2(0.49µm)</code></p>
+<p>Reference: Copernicus Sentinel-2 Geological standard</p>
+<p><strong>Meaning:</strong> Sentinel-2 12-11-2 Direct RGB: assigns B12, B11 and B2 to RGB; standard geological composite for lithology and structures.</p>
+<p><strong>Units:</strong> dimensionless</p>
+<p><strong>Range:</strong> No universal fixed interval; use method assumptions and QA</p>
+<p><strong>Limitations:</strong> Interpret with sensor, product level, season, land cover, soil, atmosphere, moisture and resolution. Indicative ranges are not a universal class standard. Local independent validation is required; NoData/QA are not a land-cover class.</p>
+<p><strong>Classification:</strong> No verified universal classification standard; optional local schemes must be justified and recorded.</p>
+<h3 id="S2_12114">S2_12114 — Sentinel-2: 12-11-4 Direct RGB (Lithological Discrimination)</h3>
+<p><code>R=B12(2.19µm), G=B11(1.61µm), B=B4(0.66µm)</code></p>
+<p>Reference: Copernicus Sentinel-2 Lithology standard</p>
+<p><strong>Meaning:</strong> Sentinel-2 12-11-4 Direct RGB: assigns B12, B11 and B4 to RGB; highlights rock units and soil discrimination.</p>
+<p><strong>Units:</strong> dimensionless</p>
+<p><strong>Range:</strong> No universal fixed interval; use method assumptions and QA</p>
+<p><strong>Limitations:</strong> Interpret with sensor, product level, season, land cover, soil, atmosphere, moisture and resolution. Indicative ranges are not a universal class standard. Local independent validation is required; NoData/QA are not a land-cover class.</p>
+<p><strong>Classification:</strong> No verified universal classification standard; optional local schemes must be justified and recorded.</p>
+<h3 id="ASTER_468">ASTER_468 — ASTER: 4-6-8 Direct RGB (SWIR Alteration Zones)</h3>
+<p><code>R=B4(1.65µm), G=B6(2.21µm), B=B8(2.33µm)</code></p>
+<p>Reference: ASTER Science Project / Rowan et al.</p>
+<p><strong>Meaning:</strong> ASTER 4-6-8 Direct RGB: assigns SWIR bands B4, B6 and B8 to RGB; highlights mineral alteration zones.</p>
+<p><strong>Units:</strong> dimensionless</p>
+<p><strong>Range:</strong> No universal fixed interval; use method assumptions and QA</p>
+<p><strong>Limitations:</strong> Interpret with sensor, product level, season, land cover, soil, atmosphere, moisture and resolution. Indicative ranges are not a universal class standard. Local independent validation is required; NoData/QA are not a land-cover class.</p>
+<p><strong>Classification:</strong> No verified universal classification standard; optional local schemes must be justified and recorded.</p>
+<h3 id="ASTER_FAWAKHEIR">ASTER_FAWAKHEIR — ASTER: Fawakheir Ratio RGB (Hydrothermal Mineral Mapping)</h3>
+<p><code>R=(B2+B4)/B3N, G=(B5+B7)/B6, B=(B7+B9)/B8</code></p>
+<p>Reference: Zoheir et al. / Fawakheir study</p>
+<p><strong>Meaning:</strong> ASTER Fawakheir Ratio RGB: assigns band ratios (B2+B4)/B3N, (B5+B7)/B6, (B7+B9)/B8 to RGB; highlights hydrothermal mineralization.</p>
+<p><strong>Units:</strong> dimensionless</p>
+<p><strong>Range:</strong> No universal fixed interval; use method assumptions and QA</p>
+<p><strong>Limitations:</strong> Interpret with sensor, product level, season, land cover, soil, atmosphere, moisture and resolution. Indicative ranges are not a universal class standard. Local independent validation is required; NoData/QA are not a land-cover class.</p>
+<p><strong>Classification:</strong> No verified universal classification standard; optional local schemes must be justified and recorded.</p>
+<h3 id="DIRECT_RGB">DIRECT_RGB — Direct RGB (Sensor default or custom)</h3>
+<p><code>RGB = three explicitly selected scientific bands</code></p>
+<p>Reference: https://www.nature.com/articles/s41598-024-66199-3</p>
+<p><strong>Meaning:</strong> Three calibrated scientific bands assigned to red, green and blue. Spectral colors retain continuous terrain detail; they do not identify rock classes.</p>
+<p><strong>Units:</strong> dimensionless</p>
+<p><strong>Range:</strong> No universal fixed interval; use method assumptions and QA</p>
+<p><strong>Limitations:</strong> Interpret with sensor, product level, season, land cover, soil, atmosphere, moisture and resolution. Indicative ranges are not a universal class standard. Local independent validation is required; NoData/QA are not a land-cover class.</p>
+<p><strong>Classification:</strong> No verified universal classification standard; optional local schemes must be justified and recorded.</p>
+<h3 id="RATIO_RGB">RATIO_RGB — Band Ratio RGB (Sensor default or custom)</h3>
+<p><code>RGB = three independently evaluated spectral expressions</code></p>
+<p>Reference: https://www.nature.com/articles/s41598-024-66199-3</p>
+<p><strong>Meaning:</strong> Three independently calculated spectral expressions displayed as RGB; ratio contrast is not a confirmed rock/mineral classification.</p>
+<p><strong>Units:</strong> dimensionless</p>
+<p><strong>Range:</strong> No universal fixed interval; use method assumptions and QA</p>
 <p><strong>Limitations:</strong> Interpret with sensor, product level, season, land cover, soil, atmosphere, moisture and resolution. Indicative ranges are not a universal class standard. Local independent validation is required; NoData/QA are not a land-cover class.</p>
 <p><strong>Classification:</strong> No verified universal classification standard; optional local schemes must be justified and recorded.</p></main></html>

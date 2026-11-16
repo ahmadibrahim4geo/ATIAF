@@ -10,6 +10,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from atiaf_core.cli import run_diagnostics
+from atiaf_core import __version__
 
 
 class TestPackagingAndReleaseReadiness(unittest.TestCase):
@@ -32,7 +33,7 @@ class TestPackagingAndReleaseReadiness(unittest.TestCase):
 
         if data:
             self.assertIn(data["project"]["name"], ["atiaf", "atyaf"])
-            self.assertEqual(data["project"]["version"], "1.0.2.dev1")
+            self.assertEqual(data["project"]["version"], __version__)
             self.assertEqual(data["project"]["license"]["text"], "MIT")
             self.assertIn("atiaf-verify", data["project"]["scripts"])
             self.assertIn("numpy>=1.22.0", data["project"]["dependencies"])
@@ -40,7 +41,7 @@ class TestPackagingAndReleaseReadiness(unittest.TestCase):
         else:
             text = pyproject_path.read_text(encoding="utf-8")
             self.assertTrue('name = "atiaf"' in text or 'name = "atyaf"' in text)
-            self.assertIn('version = "1.0.2.dev1"', text)
+            self.assertIn(f'version = "{__version__}"', text)
 
     def test_run_diagnostics_cli(self):
         """Verifies that the CLI diagnostics utility runs and returns 0 errors."""
@@ -76,9 +77,9 @@ class TestPackagingAndReleaseReadiness(unittest.TestCase):
         self.assertTrue(readme_ar.is_file())
         self.assertTrue(changelog.is_file())
 
-        self.assertIn("1.0.2.dev1", readme_en.read_text(encoding="utf-8"))
-        self.assertIn("1.0.2.dev1", readme_ar.read_text(encoding="utf-8"))
-        self.assertIn("1.0.2.dev1", changelog.read_text(encoding="utf-8"))
+        self.assertIn(__version__, readme_en.read_text(encoding="utf-8"))
+        self.assertIn(__version__, readme_ar.read_text(encoding="utf-8"))
+        self.assertIn(__version__, changelog.read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

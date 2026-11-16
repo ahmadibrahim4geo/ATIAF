@@ -1,6 +1,7 @@
 """Unit and integration tests for ATIAF Surface Temperature and Geological Analysis (Phase P4)."""
 
 import json
+import runpy
 from pathlib import Path
 import shutil
 import tempfile
@@ -15,6 +16,16 @@ from atiaf_core.temperature import EmissivityEngine, SurfaceTemperatureEngine
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURES = ROOT / "tests" / "fixtures" / "synthetic_scenes"
+
+def setUpModule():
+    global FIXTURES,_fixture_directory
+    _fixture_directory=tempfile.TemporaryDirectory(prefix='atiaf_temperature_parser_')
+    FIXTURES=Path(_fixture_directory.name)/'scenes'
+    helper=runpy.run_path(str(ROOT/'tests/fixtures/create_synthetic_fixtures.py'))
+    helper['create_synthetic_fixtures'].__globals__['FIXTURES_DIR']=FIXTURES
+    helper['create_synthetic_fixtures']()
+
+def tearDownModule(): _fixture_directory.cleanup()
 
 
 class TestEmissivityFormulas(unittest.TestCase):
